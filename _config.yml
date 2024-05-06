@@ -33,44 +33,44 @@ author:
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
   googlescholar    : "https://scholar.google.com/citations?user=Bj9GEfkAAAAJ&hl"
-  # impactstory      : # URL
+  impactstory      : # URL
   orcid            : "http://orcid.org/0000-0002-6210-0678"
-  # pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  # researchgate     : # URL
+  pubmed           : 
+  researchgate     : # URL
 
   # Repositories and software development
-  # bitbucket        : # Username - Update with your username on the site
-  # codepen          : # Username
-  # dribbble         : # Username
+  bitbucket        : # Username - Update with your username on the site
+  codepen          : # Username
+  dribbble         : # Username
   github           : "JesseTNRoberts"
-  # kaggle           : # Username  
-  # stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
+  kaggle           : # Username  
+  stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  # bluesky          : "bsky.app" # Replace this with you Bluesky username
-  # facebook         : # Username
-  # flickr           : # Username
-  # foursquare       : # Username
+  bluesky          : # 
+  facebook         : # Username
+  flickr           : # Username
+  foursquare       : # Username
   goodreads        : "JesseTNRoberts" # Username
-  # google_plus      : # Username
-  # keybase          : # Username
-  # instagram        : # Username
-  # lastfm           : # Username
+  google_plus      : # Username
+  keybase          : # Username
+  instagram        : # Username
+  lastfm           : # Username
   linkedin         : "jessetnroberts" # Username
-  # mastodon         : # URL
-  # medium           : # URL
-  # pinterest        : # Username
-  # soundcloud       : # Username
-  # steam            : # Username
-  # telegram         : # URL
-  # tumblr           : # Username
+  mastodon         : # URL
+  medium           : # URL
+  pinterest        : # Username
+  soundcloud       : # Username
+  steam            : # Username
+  telegram         : # URL
+  tumblr           : # Username
   twitter          : "JesseTNRoberts" # Username for X / Twitter
-  # vine             : # Username
-  # weibo            : # Username
-  # wikipedia        : # Username
-  # xing             : # Username
+  vine             : # Username
+  weibo            : # Username
+  wikipedia        : # Username
+  xing             : # Username
   youtube          : "jesseroberts8170" # Username
-  # zhihu            : # URL
+  zhihu            : # URL
 
 
 # Site Settings
