@@ -6,8 +6,6 @@ tags:
   - theology
 ---
 
-Theology
-======
 
 The Mosaic law is the result of divine inspiration colliding with the reality of leadership. However, what would have happened if God had chosen another to lead the Israelites? Would the resultant written law have been identical? 
 
