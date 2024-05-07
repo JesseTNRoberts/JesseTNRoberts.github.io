@@ -21,4 +21,4 @@ Here you'll find papers and information about current happenings. More interesti
 CV and other items
 ------
 
-https://github.com/JesseTNRoberts/JesseTNRoberts.github.io/blob/master/files/CV.pdf
+[CV](https://github.com/JesseTNRoberts/JesseTNRoberts.github.io/blob/master/files/CV.pdf)
