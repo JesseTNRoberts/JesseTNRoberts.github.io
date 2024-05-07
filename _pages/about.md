@@ -18,7 +18,7 @@ This website
 Here you'll find papers and information about current happenings. More interestingly, I tend to keep an ongoing research journal. Fully formed ideas become papers. The research journal is not that. It's where the ideas take form. Morover, it's where I answer my own questions.
 
 
-CV and Other Items
+CV and other items
 ------
 
 https://github.com/JesseTNRoberts/JesseTNRoberts.github.io/blob/master/files/CV.pdf
