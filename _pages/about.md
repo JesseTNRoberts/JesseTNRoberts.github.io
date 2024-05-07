@@ -8,8 +8,6 @@ redirect_from:
 ---
 
 
-About Me
-======
 
 My name is Jesse. I am an assistant professor at Tennessee Tech University where I research artificial intelligence, language models, and robotics. 
 
