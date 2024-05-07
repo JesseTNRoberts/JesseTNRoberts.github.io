@@ -18,6 +18,11 @@ This website
 Here you'll find papers and information about current happenings. More interestingly, I tend to keep an ongoing research journal. Fully formed ideas become papers. The research journal is not that. It's where the ideas take form. Morover, it's where I answer my own questions.
 
 
+## Exercise
+---
+<iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/100752705/latest-rides/274d85ff1858403cdb3ff73155d333f9acb777f8'></iframe>
+
+
 CV and other items
 ------
 
