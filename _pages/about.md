@@ -13,8 +13,6 @@ My name is Jesse. I am an assistant professor at Tennessee Tech University where
 
 I am currently **accepting applications** for master's and Phd student positions. If you are a curious person with an interest in solving real problems and exploring untrodden paths through AI then feel free to reach out via email! 
 
-[CV](https://github.com/JesseTNRoberts/JesseTNRoberts.github.io/blob/master/files/CV.pdf)
-
 This website
 ------
 Here you'll find papers, work in progress, and whatever I'm up to (usually running/climbing, reading, and research). 
