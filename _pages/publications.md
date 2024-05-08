@@ -10,7 +10,7 @@ author_profile: true
 {% endif %}
 
 <div id="orcidbib">[Bibliography loads here (JavaScript required)]</div>
-<script src="orcidbib.js" type="text/javascript" id="orcid:0000-0002-7970-7855"></script>
+<script src="{{ base.url | prepend: site.url }}/pages/orcidbib.js" type="text/javascript" id="orcid:0000-0002-7970-7855"></script>
 
 {% include base_path %}
 
