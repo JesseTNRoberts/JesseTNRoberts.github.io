@@ -1,0 +1,5 @@
+- name: Get ORCiD publications
+  id: getOrcidPublications
+  uses: TheAlbertDev/get-orcid-publications@v0.1.0
+  with:
+    orcidId: "0000-0001-5293-4487"
