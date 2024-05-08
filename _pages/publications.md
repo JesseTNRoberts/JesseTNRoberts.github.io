@@ -9,7 +9,7 @@ author_profile: true
   <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-<iframe src="https://orcid.org/0000-0002-6210-0678" height="200" width="300" title="ORCID"></iframe>
+<iframe frameborder='0' allowtransparency='true' src="https://www.orcid.org/0000-0002-6210-0678" height="1000" width="1000"></iframe>
 
 {% include base_path %}
 
