@@ -44,8 +44,8 @@ $jq(document).ready(function () {
         return $jq.ajax({
             url: profile_uri,
             type: 'GET',
-            dataType: 'jsonp',
-            accepts: 'application/orcid+json'
+            dataType: 'json',
+            accepts: 'application/json'
         })
     }
 
