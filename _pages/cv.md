@@ -8,5 +8,4 @@ redirect_from:
 ---
 
 {% include base_path %}
-
-<object data="https://github.com/JesseTNRoberts/JesseTNRoberts.github.io/blob/master/files/CV.pdf" width="1000" height="1000" type='application/pdf'></object>
+<object data="{{ site.url }}{{ site.baseurl }}/files/CV.pdf" width="1000" height="1000" type='application/pdf'></object>
