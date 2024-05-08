@@ -40,7 +40,7 @@ $jq(document).ready(function () {
     }
 
     function get_orcid_profile(orcid) {
-        var profile_uri = 'http://pub.orcid.org/v1.1/' + orcid + '/orcid-profile';
+        var profile_uri = 'https://pub.orcid.org/v1.1/' + orcid + '/orcid-profile';
         return $jq.ajax({
             url: profile_uri,
             type: 'GET',
@@ -81,7 +81,7 @@ $jq(document).ready(function () {
             var href = "";
             $jq(extids).each(function (index, value) {
                 if (value['work-external-identifier-type'] === "DOI") {
-                    href = "http://dx.doi.org/";
+                    href = "https://dx.doi.org/";
                     href += value['work-external-identifier-id'].value;
                 }
             });
