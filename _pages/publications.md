@@ -12,7 +12,7 @@ author_profile: true
 <div id="orcid-profiles-widget-js" data-orcids="0000-0002-6210-0678">
       <!-- Container for ORCID profile widget -- Add ORCIDs delimited by commas to -- the data-orcids attribute. -->
     </div>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.9.1.js'></script>
 <script type='text/javascript' src="{{ base.url | prepend: site.url }}/_pages/jquery.orcidProfilesWidget.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ base.url | prepend: site.url }}/_pages/orcid-profiles-widget.css">
 {% include base_path %}
