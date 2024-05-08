@@ -9,7 +9,7 @@ author_profile: true
   <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-<div id="orcid-profiles-widget-js" data-orcids="0000-0002-6398-9317">
+<div id="orcid-profiles-widget-js" data-orcids="0000-0002-6210-0678">
       <!-- Container for ORCID profile widget -- Add ORCIDs delimited by commas to -- the data-orcids attribute. -->
     </div>
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
