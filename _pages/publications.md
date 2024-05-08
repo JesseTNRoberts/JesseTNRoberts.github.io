@@ -15,8 +15,11 @@ author_profile: true
 <script type='text/javascript' src='https://code.jquery.com/jquery-1.9.1.js'></script>
 <script type='text/javascript' src="{{ base.url | prepend: site.url }}/_pages/jquery.orcidProfilesWidget.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ base.url | prepend: site.url }}/_pages/orcid-profiles-widget.css">
-{% include base_path %}
 
+
+{% include publications %}
+
+{% include base_path %}
 {% for post in site.publications reversed %}
   {% include archive-single.html %}
 {% endfor %}
