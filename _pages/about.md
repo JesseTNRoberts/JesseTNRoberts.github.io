@@ -18,11 +18,11 @@ I am currently **accepting applications** for master's and Phd students. If you 
 
 This website
 ------
-Here you'll find papers, work in progress, and whatever I'm up to (usually running/climbing, reading, and writing). 
+Here you'll find [papers](/publications/), work in progress, and whatever I'm up to (usually running/climbing, reading, and writing). 
 
 I think of goals like completing a thru hike. To reach an objective, you need to minimize _zero days_. To do that I track daily progress and below there a set of widgets that show my progress. 
 
-Additionally, I like to keep an ongoing research journal (in the nav bar). It's where ideas take form and I reflect on my own curiousities, questions, and philosophical musings. Some of these go on to be successful research, many don't. 
+Additionally, I like to keep an ongoing [research journal](/year-archive/). It's where ideas take form and I reflect on my own curiousities, questions, and philosophical musings. Some of these go on to be successful research, many don't. 
 
 
 
