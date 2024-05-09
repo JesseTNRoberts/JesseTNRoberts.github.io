@@ -86,7 +86,7 @@ color: gray;
 float: right;
 }
 </style>
-<div width="300px">
+<div style="width: 300px">
 <div id="gr_custom_widget_">
     <div class="gr_custom_container_">
 <h2 class="gr_custom_header_">
