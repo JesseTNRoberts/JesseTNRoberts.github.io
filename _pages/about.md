@@ -18,9 +18,9 @@ I am currently **accepting applications** for master's and Phd students. If you 
 
 This website
 ------
-Here you'll find papers, work in progress, and whatever I'm up to (usually running/climbing, reading, and research). 
+Here you'll find papers, work in progress, and whatever I'm up to (usually running/climbing, reading, and writing). I think of goals like completing a through hike. To reach the objective, you need to minimize "zero days". To do that I track daily progress and below there a set of widgets that do just that. 
 
-I tend to keep an ongoing research journal. Fully formed ideas become papers. The research journal is not that. It's where the ideas take form. Morover, it's where I answer my own questions.
+Additionally, I like to keep an ongoing research journal. It's where ideas take form and I reflect on my own curiousities/questions. Some of these ideas go on to be successful research, many don't. 
 
 
 
