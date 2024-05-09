@@ -37,6 +37,7 @@ I tend to keep an ongoing research journal. Fully formed ideas become papers. Th
   .gr_custom_widget_ {
 /* customize your Goodreads widget  here*/
 float: left;
+width:300px;
 }
 .gr_custom_container_ {
 /* customize your Goodreads widget container here*/
