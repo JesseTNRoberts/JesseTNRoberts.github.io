@@ -34,6 +34,10 @@ I tend to keep an ongoing research journal. Fully formed ideas become papers. Th
 
 <!-- Show static HTML/CSS as a placeholder in case js is not enabled - javascript include will override this if things work -->
 <style type="text/css" media="screen">
+  .gr_custom_widget_ {
+/* customize your Goodreads widget  here*/
+float: left;
+}
 .gr_custom_container_ {
 /* customize your Goodreads widget container here*/
 border: 1px solid gray;
@@ -41,8 +45,7 @@ border-radius:10px;
 padding: 10px 5px 10px 5px;
 background-color: #FFF;
 color: #000;
-width: 300px;
-float: left
+width: 300px
 }
 .gr_custom_header_ {
 /* customize your Goodreads header here*/
