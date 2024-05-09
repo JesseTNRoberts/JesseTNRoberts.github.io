@@ -31,6 +31,8 @@ I tend to keep an ongoing research journal. Fully formed ideas become papers. Th
 
 <script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=ieee-transaction-on-neural-networks&width=300&height=400&view=graph-daily' type='text/javascript'></script>
 
+<script src="https://www.goodreads.com/review/custom_widget/178001093.Jesse's%20bookshelf:%20read?cover_position=&cover_size=&num_books=5&order=&shelf=&sort=&widget_bg_transparent=" type="text/javascript" charset="utf-8"></script>
+
 <!-- Show static HTML/CSS as a placeholder in case js is not enabled - javascript include will override this if things work -->
 <style type="text/css" media="screen">
 .gr_custom_container_ {
@@ -167,7 +169,7 @@ Share <a rel="nofollow" href="https://www.goodreads.com/">book reviews</a> and r
 </div>
 
 </div>
-<script src="https://www.goodreads.com/review/custom_widget/178001093.Jesse's%20bookshelf:%20read?cover_position=&cover_size=&num_books=5&order=&shelf=&sort=&widget_bg_transparent=" type="text/javascript" charset="utf-8"></script>
+
 
 </p>
 
