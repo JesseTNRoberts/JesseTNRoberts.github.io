@@ -89,9 +89,17 @@ float: right;
 <div style="width: 300px; float: left">
 <div id="gr_custom_widget_">
     <div class="gr_custom_container_">
-<h2 class="gr_custom_header_">
+
+<center>
+<a rel="nofollow" href="https://www.goodreads.com/"><img alt="goodreads.com" style="border:0" src="https://s.gr-assets.com/images/widget/widget_logo.gif" /></a>
+  
+<div class="gr_custom_header_">
 <a style="text-decoration: none;" rel="nofollow" href="https://www.goodreads.com/review/list/178001093-jesse-roberts?shelf=read&amp;utm_medium=api&amp;utm_source=custom_widget">Jesse&#39;s books</a>
-</h2>
+</div>
+
+</center>
+
+
 <div class="gr_custom_each_container_">
     <div class="gr_custom_book_container_">
       <a title="The Signalman" rel="nofollow" href="https://www.goodreads.com/review/show/6485616200?utm_medium=api&amp;utm_source=custom_widget"><img alt="The Signalman" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1338150001l/9968921._SY75_.jpg" /></a>
@@ -163,9 +171,7 @@ float: right;
     </div>
 </div>
 <br style="clear: both"/>
-<center>
-<a rel="nofollow" href="https://www.goodreads.com/"><img alt="goodreads.com" style="border:0" src="https://s.gr-assets.com/images/widget/widget_logo.gif" /></a>
-</center>
+
 <noscript>
 Share <a rel="nofollow" href="https://www.goodreads.com/">book reviews</a> and ratings with Jesse, and even join a <a rel="nofollow" href="https://www.goodreads.com/group">book club</a> on Goodreads.
 </noscript>
