@@ -1,6 +1,6 @@
 ---
 title: 'How to Research'
-date: 2024-05-07
+date: 2024-05-09
 permalink: /posts/2024/05/ResearchJournal_2/
 tags:
   - research philosophy
