@@ -7,7 +7,7 @@ tags:
 ---
 
 
-New researchers always struggle with becoming independent researchers. Some advisors prefer to let students wonder and thereby learn to succeed (painful) and others prefer to guide (creates dependency). I have no answers for this philosophical question. However, I do have advice for young researchers gathered along my own journey. 
+New researchers often struggle with developing independent research. Some advisors prefer to let students wonder and thereby learn to succeed (painful) and others prefer to guide (creates dependency). I have no answers for this philosophical question. However, I do have advice for young researchers gathered along my own journey. 
 
 I acquired these pieces of advice from wonderful researchers who have shaped my philosophy of research.
 
