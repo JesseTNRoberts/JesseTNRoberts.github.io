@@ -170,3 +170,6 @@ Share <a rel="nofollow" href="https://www.goodreads.com/">book reviews</a> and r
 
 
 <script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=historical-fiction-ya-mystery-novel&width=300&height=400&view=graph-daily' type='text/javascript'></script>
+
+<script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=ieee-transaction-on-neural-networks&width=300&height=400&view=graph-daily' type='text/javascript'></script>
+
