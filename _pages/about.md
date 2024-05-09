@@ -9,11 +9,11 @@ redirect_from:
 
 
 
-My name is Jesse (Vanderbilt PhD '24). I am an assistant professor at Tennessee Tech University where I research artificial intelligence, language models, and robotics. 
+My name is Jesse (Vanderbilt PhD '24). I am an inately curious assistant professor at Tennessee Tech University where I research artificial intelligence, language models, and robotics. 
 
-Specifically, my research has focused on the theoretical limitations of language models and empirically evaluating their behavior in light of human cognition with applications to human-robot interaction and language preservation. But I'm also interested in game theory and any contribution that can **positively impact people**. I'm endlessly curious.
+Specifically, my research focuses on the theoretical limitations of language models and empirically evaluating their behavior in light of human cognition with applications to human-robot interaction and language preservation. But I'm also interested in game theory and any idea that can **positively impact people**. 
 
-I am currently **accepting applications** for master's and Phd student positions. If you are a curious person with an interest in solving real problems and exploring untrodden paths through AI then feel free to reach out via email!
+I am currently **accepting applications** for master's and Phd students. If you are a curious person with an interest in solving real problems and exploring untrodden paths through AI then feel free to reach out via email!
 
 
 This website
