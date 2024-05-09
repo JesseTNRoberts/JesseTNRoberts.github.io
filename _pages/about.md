@@ -30,7 +30,7 @@ I tend to keep an ongoing research journal. Fully formed ideas become papers. Th
 
 <script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=ieee-transaction-on-neural-networks&width=300&height=400&view=graph-daily' type='text/javascript'></script>
 
-<iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/100752705/latest-rides/274d85ff1858403cdb3ff73155d333f9acb777f8'></iframe>
+<iframe height='454' width='100' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/100752705/latest-rides/274d85ff1858403cdb3ff73155d333f9acb777f8'></iframe>
 
 <!-- Show static HTML/CSS as a placeholder in case js is not enabled - javascript include will override this if things work -->
 <style type="text/css" media="screen">
