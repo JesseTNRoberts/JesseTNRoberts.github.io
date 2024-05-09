@@ -11,10 +11,6 @@ New researchers often struggle with developing independent research. Some adviso
 
 I acquired these pieces of advice from wonderful researchers who have shaped my philosophy of research.
 
-## Anything worth doing is worth doing badly. - Pat Langley
-This quote is not originally from Pat. But Pat repurposed it. His point was, done is better than perfect. This is tremendously important when performing research on a deadline. Get it done.
-
-
 ## Claims first, then the experiments. - Pat Langley
 Researchers often tilt at windmills. They will perform hundreds of experiments and gather tremendous data with no particular purpose. This is not science.  
 
@@ -25,6 +21,9 @@ The point of a paper needs to be unmistakable. Often, a paper's contributions wi
 
 ## Write papers by making figures first. They should tell the story. - Maithilee Kunda
 STEM research can be very technical and dense. Frankly, it's not terribly likely that even other researchers will read your work thoroughly unless the paper is of tremendous import. So, make the narrative easy to follow and tell the story in pictures. 
+
+## Anything worth doing is worth doing badly. - Pat Langley
+This quote is not originally from Pat. But Pat repurposed it. His point was, done is better than perfect. This is tremendously important when performing research on a deadline. Get it done.
 
 
 
