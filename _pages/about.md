@@ -86,7 +86,7 @@ color: gray;
 float: right;
 }
 </style>
-
+<div width="300px">
 <div id="gr_custom_widget_">
     <div class="gr_custom_container_">
 <h2 class="gr_custom_header_">
@@ -175,7 +175,7 @@ Share <a rel="nofollow" href="https://www.goodreads.com/">book reviews</a> and r
 
 <script src="https://www.goodreads.com/review/custom_widget/178001093.Jesse's%20bookshelf:%20read?cover_position=&cover_size=&num_books=5&order=&shelf=&sort=&widget_bg_transparent=" type="text/javascript" charset="utf-8"></script>
 
-
+</div>
 </div>
 
 
