@@ -1,7 +1,7 @@
 ---
 title: 'Fisher Research Group Meeting'
 date: 2024-05-09
-permalink: /posts/2024/05/ResearchJournal_3/
+permalink: /posts/2024/05/09/MeetingNotesFisher
 tags:
   - Meeting Notes
 ---
