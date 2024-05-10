@@ -2,6 +2,7 @@
 title: 'Fisher Research Group Meeting'
 date: 2024-05-09
 permalink: /posts/2024/05/09/MeetingNotesFisher
+redirect_from: /posts/2024/05/ResearchJournal_3/
 tags:
   - Meeting Notes
 ---
