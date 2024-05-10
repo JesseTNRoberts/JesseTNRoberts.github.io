@@ -1,5 +1,5 @@
 ---
-title: 'Meeting Notes'
+title: 'Maclellan Research Meeting Notes'
 date: 2024-05-11
 permalink: /posts/2024/05/10/MeetingNotesMaclellan
 tags:
