@@ -42,8 +42,8 @@ width: 300px
 }
 .gr_custom_container_ {
 /* customize your Goodreads widget container here*/
-border: 1px solid gray;
-border-radius:10px;
+border: 1px solid #f0f0f5;
+/*border-radius:10px;*/
 padding: 10px 5px 10px 5px;
 background-color: #FFF;
 color: #000;
