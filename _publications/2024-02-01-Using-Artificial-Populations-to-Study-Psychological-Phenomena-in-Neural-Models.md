@@ -5,7 +5,7 @@ permalink: /publications/Using-Artificial-Populations-to-Study-Psychological-Phe
 excerpt: 'We leverage work in uncertainty estimation in a novel approach to efficiently construct experimental populations. The resultant tool, PopulationLM, has been made open source. We provide theoretical grounding in the uncertainty estimation literature and motivation from current cognitive work regarding language models.'
 date: 2024-02-01
 venue: "AAAI '24"
-paperurl: '/files/Using-Artificial-Populations-to-Study-Psychological-Phenomena-in-Neural-Models.pdf'
+paperurl: 'https://arxiv.org/abs/2308.08032'
 citation: "Roberts, Jesse, et al. 'Using Artificial Populations to Study Psychological Phenomena in Neural Models.' Proceedings of the AAAI Conference on Artificial Intelligence. Vol. 38. No. 17. 2024."
 ---
 
