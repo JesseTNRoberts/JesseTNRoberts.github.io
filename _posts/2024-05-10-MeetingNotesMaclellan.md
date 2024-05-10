@@ -16,7 +16,7 @@ Show memory-based forgetting and retrieval based forgetting in both the neural a
 
 ## Idea
 
-Good knowledge with appropriate retrieval algorithm with unexpected/non-optimal stopping (possibly from limited resources). Catastrophic retrieval which may be indistinguishable from forgetting. Gives an account of the link between ADHD and risk taking behavior.  
+Good knowledge with appropriate retrieval algorithm with unexpected/non-optimal stopping (possibly from limited resources). Leads to _catastrophic retrieval_ which may be indistinguishable from forgetting. Gives an account of the link between ADHD and risk taking behavior.  
 
 
 
