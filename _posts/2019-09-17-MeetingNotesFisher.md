@@ -12,3 +12,5 @@ tags:
 
 ### Follow up items for next meeting
 - Look into technologies that could be leveraged to cobble together an Auto-Critic (topic modeling, summarization systems, etc.)
+- Build corpus of all ICCC papers
+
