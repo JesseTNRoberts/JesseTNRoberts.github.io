@@ -28,9 +28,9 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 
 <div float="left">
 
-<script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=historical-fiction-ya-mystery-novel&width=300&height=400&view=graph-daily' type='text/javascript'></script>
+<script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=historical-fiction-ya-mystery-novel&width=300&height=400&view=graph-overall' type='text/javascript'></script>
 
-<script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=ieee-transaction-on-neural-networks&width=300&height=400&view=graph-daily' type='text/javascript'></script>
+<script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=ieee-transaction-on-neural-networks&width=300&height=400&view=graph-overall' type='text/javascript'></script>
 
 <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/100752705/latest-rides/274d85ff1858403cdb3ff73155d333f9acb777f8'></iframe>
 
