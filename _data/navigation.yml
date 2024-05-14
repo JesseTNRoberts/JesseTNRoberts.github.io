@@ -8,12 +8,12 @@ main:
 
   # - title: "Teaching"
   #   url: /teaching/    
-    
-  - title: "Meeting Request"
-    url: /meeting/
         
   - title: "Research Journal"
     url: /year-archive/
+    
+  - title: "Meeting Request"
+    url: /meeting/
     
   - title: "CV"
     url: /files/CV.pdf
