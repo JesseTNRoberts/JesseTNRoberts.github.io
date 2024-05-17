@@ -3,7 +3,7 @@ title: 'Fulbight Application'
 date: 2023-05-09
 permalink: /posts/2023/05/09/FulbrightApplication
 tags:
-  - Application
+  - Grant
 ---
 
 These are the notes I took for my first Fulbright application. It was not successful. I applied for Fall 24 in Ireland as phd student expecting to graduate by the end of summer 24. However, I didnt't hear about the opportunity until the deadline was only a month away. I was able to get a letter of invitation from the host school.
