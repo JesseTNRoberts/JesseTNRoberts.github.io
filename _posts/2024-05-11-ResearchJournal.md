@@ -3,7 +3,7 @@ title: 'Does Rhetoric Transcend Language?'
 date: 2024-05-11
 permalink: /posts/2024/05/11/ResearchJournal/
 tags:
-  - question
+  - Question
 ---
 
 Is discourse or rhetoric language transcendant? That is, does rhetoric require language and therefore is dependent on and shaped by it? 
