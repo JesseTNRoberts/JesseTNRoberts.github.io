@@ -26,4 +26,5 @@ group :jekyll_plugins do
   gem 'hawkins'
   gem "webrick", "~> 1.8"
   gem 'jekyll-redirect-from'
+  gem 'jekyll-seo-tag'
 end
