@@ -1,5 +1,5 @@
 ---
-title: 'Meeting with GaTech Colab'
+title: 'Meeting with MacClellan Colab'
 date: 2024-05-17
 permalink: /posts/2024/05/17/MeetingNotes/
 tags:
