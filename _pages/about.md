@@ -1,6 +1,7 @@
 ---
 permalink: /
 title: "About Me"
+seo_title: "Jesse Roberts - Research, Connections, and Updates"
 author_profile: true
 redirect_from: 
   - /about/
