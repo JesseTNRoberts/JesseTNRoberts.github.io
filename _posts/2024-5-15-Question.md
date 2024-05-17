@@ -3,7 +3,7 @@ title: 'Is a Recursive Universal Function Approximator Necessarily Turing Comple
 date: 2024-05-15
 permalink: /posts/2024/05/15/Question/
 tags:
-  - question
+  - Question
 ---
 
 Universal function approximation is unrelated to the computational expressivity of a computing model. Due to this it is unclear if universal function approximation coupled with recursion is necessarily sufficient to guarantee that a model is Turing complete. However, I believe that this is the case. Further, I believe it is provable.
