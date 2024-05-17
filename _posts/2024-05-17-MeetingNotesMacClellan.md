@@ -8,7 +8,7 @@ tags:
 ---
 
 
-## 2024-05-17
+_2024-05-17_
 
 Targeting BabyLM 2024 with a cobweb based implementation. The interface definition for the implementation is housed [here](https://github.com/EleutherAI/lm-evaluation-harness/blob/big-refactor/docs/model_guide.md).
 
