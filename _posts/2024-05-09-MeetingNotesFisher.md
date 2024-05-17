@@ -1,5 +1,5 @@
 ---
-title: 'Fisher Research Group Meeting'
+title: 'Meeting Notes Fisher Colab and Phd Work'
 date: 2024-05-09
 permalink: /posts/2024/05/09/MeetingNotesFisher
 redirect_from: /posts/2024/05/ResearchJournal_3/
