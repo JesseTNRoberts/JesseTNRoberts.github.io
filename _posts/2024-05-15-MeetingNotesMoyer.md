@@ -1,5 +1,5 @@
 ---
-title: 'Meeting with Moyer Colab'
+title: 'Meeting Notes Moyer,Cohen,Talbert Colab'
 date: 2024-05-15
 permalink: /posts/2024/05/15/MeetingNotes/
 tags:
