@@ -1,13 +1,21 @@
 ---
 title: 'Meeting Notes Fisher Colab and Phd Work'
-date: 2024-05-09
+date: 2024-05-22
 permalink: /posts/2024/05/09/MeetingNotesFisher
 redirect_from: /posts/2024/05/ResearchJournal_3/
 tags:
   - Meeting notes
 ---
 
-_2024-05-09_
+_2024-05-22_
+
+There is a proposed experiment to test for fan effects based on typicality effects.
+
+Experiment tests Fisher and Langley theory
+Experiment tests for ICL based fan effects and IWL fan effects
+Unifies a cognitive effect across learning types in LLMs
+
+## 2024-05-09
 
 We discussed potential ideas for how to measure fan effects in language models. I proposed that we vary the number of category members given in the context to a language model and interrogate the presence of the elements. 
 
