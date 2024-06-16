@@ -22,6 +22,6 @@ author_profile: true
 
 ### Venues 
 
-Conferences: AAAI, IAAI, ICML, ICLR, NeurIPS, KDD, EMNLP, CoNLL, IJCNN, CogSci, ICCC, AIES, IEEE CoG, FLAIRs
+Conferences: AAAI, IAAI, ICML, ICLR, NeurIPS, KDD, EMNLP, CoNLL, IJCNN, CogSci, ICCC, AIES, IEEE CoG, FLAIRs, NLLP 
 
-Journals: IEEE Transactions on Neural Networks, Frontiers in Theory of Neural Networks, PLOS Complex Systems
+Journals: AI Magazine, IEEE Transactions on Neural Networks, Frontiers in Theory of Neural Networks, PLOS Complex Systems
