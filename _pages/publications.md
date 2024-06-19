@@ -11,7 +11,7 @@ author_profile: true
 
 ## Textbook
 
-Jesse Roberts, 2024, Introduction to PLC Automation, [fulltext](https://www.jessetnroberts.com/files/Introduction_to_PLC_Automation.pdf)
+Jesse Roberts, 2024, Introduction to PLC Automation, [PDF Version](/files/Introduction_to_PLC_Automation.pdf)
 
 ## Selected Publication 
 
