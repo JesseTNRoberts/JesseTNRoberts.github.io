@@ -9,6 +9,10 @@ author_profile: true
   <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
+## Textbook
+
+Jesse Roberts, 2024, Introduction to PLC Automation, [fulltext](https://www.jessetnroberts.com/files/Introduction_to_PLC_Automation.pdf)
+
 ## Selected Publication 
 
 {% include base_path %}
