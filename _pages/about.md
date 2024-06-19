@@ -182,8 +182,7 @@ Share <a rel="nofollow" href="https://www.goodreads.com/">book reviews</a> and r
 
 </div>
 
-<script src="https://www.goodreads.com/review/custom_widget/178001093.Jesse's%20bookshelf:%20read?cover_position=&cover_size=&num_books=5&order=a&shelf=read&sort=a&widget_bg_transparent=" type="text/javascript" charset="utf-8"></script>
-
+<script src="https://www.goodreads.com/review/custom_widget/178001093.Jesse's%20bookshelf:%20read?cover_position=&cover_size=&num_books=5&order=a&shelf=read&sort=date_read&widget_bg_transparent=" type="text/javascript" charset="utf-8"></script>
 
 
 
