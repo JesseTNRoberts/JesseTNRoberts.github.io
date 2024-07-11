@@ -14,7 +14,7 @@ My name is Jesse (Vanderbilt PhD '24). I am an inately curious assistant profess
 
 My research focuses on the development, evaluation, and application of empirical methods for NLP with emphasis on transformer-based LLMs. I prefer applications that contribute to digital humanities, robotics, law, cognitive science, and the preservation of endangered languages - primarily Cherokee (Tsalagi) and Irish (Gaeilge). But I'm also interested in game theory, computational physics, and any idea that can **positively impact people**. 
 
-The **specific** aims of my research are to (1) understand LLM cognition, (2) preserve endangered languages, (3) improve semantically-complex search, and (4) empower researchers with better tools for the analysis of linguistics and semantics.
+The **specific aims** of my research are to (1) understand LLM cognition, (2) preserve endangered languages, (3) improve semantically-complex search, and (4) empower researchers with better tools for the analysis of linguistics and semantics.
 
 I am currently **accepting applications** for master's and Phd students. If you are a curious person with an interest in solving real problems and exploring untrodden paths through AI then feel free to reach out via email!
 
