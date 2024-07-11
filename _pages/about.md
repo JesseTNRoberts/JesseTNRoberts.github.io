@@ -12,7 +12,7 @@ redirect_from:
 
 My name is Jesse (Vanderbilt PhD '24). I am an inately curious assistant professor at Tennessee Tech University where I research artificial intelligence, language models, and robotics. 
 
-Specifically, my research focuses on the theoretical limitations of language models and empirically evaluating their behavior in light of human cognition with applications to human-robot interaction and language preservation. But I'm also interested in game theory and any idea that can **positively impact people**. 
+My research focuses on the development, evaluation, and application of empirical methods for NLP with emphasis on transformer-based LLMs. I prefer applications that contribute to digital humanities, robotics, law, cognitive science, and the preservation of endangered languages - primarily Cherokee (Tsalagi) and Irish (Gaeilge). But I'm also interested in game theory, computational physics, and any idea that can **positively impact people**. 
 
 I am currently **accepting applications** for master's and Phd students. If you are a curious person with an interest in solving real problems and exploring untrodden paths through AI then feel free to reach out via email!
 
