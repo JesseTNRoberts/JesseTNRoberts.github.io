@@ -40,14 +40,13 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
     height: 150px;
     padding: 20px;
     font-family: 'Nunito', sans-serif;
-    max-width: 650px;
-    margin: 150px auto 300px;
+    margin: 20px auto;
     color: #FFF;
     background-color: #142F4C;
   }
 
   #countdown-wrap #goal {
-    font-size: 48px;
+    font-size: 36px;
     text-align: right;
   }
 
@@ -69,7 +68,7 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   }
 
   #countdown-wrap .goal-stat {
-    width: 25%;
+    width: 50%;
     padding: 10px;
     float: left;
     margin: 0;
@@ -84,9 +83,25 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
     font-weight: bold;
   }
 
-  @media only screen and (max-width: 640px) {
-    #countdown-wrap #goal { text-align: center; }
-    #countdown-wrap .goal-stat { width: 50%; text-align: center; }
+  @media screen and (min-width: 480px) {
+    #countdown-wrap {
+      max-width: 90%;
+    }
+    #countdown-wrap #goal {
+      font-size: 42px;
+    }
+    #countdown-wrap .goal-stat {
+      width: 25%;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    #countdown-wrap {
+      max-width: 650px;
+    }
+    #countdown-wrap #goal {
+      font-size: 48px;
+    }
   }
 </style>
 
