@@ -36,14 +36,16 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 
 <style>
   .countdown-wrap {
-    width: 100%;
-    height: 150px;
-    padding: 20px;
-    font-family: 'Nunito', sans-serif;
-    margin: 20px auto;
-    color: #FFF;
-    background-color: #142F4C;
-  }
+  width: 100%;
+  min-height: 150px;
+  height: auto;
+  padding: 20px;
+  font-family: 'Nunito', sans-serif;
+  margin: 20px auto;
+  color: #FFF;
+  background-color: #142F4C;
+  overflow: hidden;
+}
 
   .countdown-wrap .goal { font-size: 36px; text-align: right; }
   .countdown-wrap .glass {
