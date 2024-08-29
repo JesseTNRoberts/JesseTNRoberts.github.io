@@ -32,7 +32,7 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 <div float="left">
 
 
-
+<!-- This is the area where writing progress is shown -->
 
 <style>
   .countdown-wrap {
@@ -81,6 +81,18 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   @media screen and (min-width: 768px) {
     .countdown-wrap { max-width: 650px; }
     .countdown-wrap .goal { font-size: 48px; }
+	  .countdown-wrap .goal { 
+  font-size: 28px; 
+  text-align: right; 
+}
+
+@media screen and (min-width: 480px) {
+  .countdown-wrap .goal { font-size: 32px; }
+}
+
+@media screen and (min-width: 768px) {
+  .countdown-wrap .goal { font-size: 36px; }
+}
   }
 </style>
 
@@ -144,7 +156,7 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   updateProgress('progress2', 10000, 3000);  // Creative goal
 </script>
 
-
+<!-- This is the end of writing progress -->
 
 
 
