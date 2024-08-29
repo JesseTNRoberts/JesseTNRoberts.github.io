@@ -142,11 +142,6 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 </div>
 
 <script>
-  const TARGET_DATES = {
-    'progress1': '2025-01-01',
-    'progress2': '2024-12-01'
-  };
-
   function updateProgress(goalId, goal, progress) {
     const progressElement = document.getElementById(goalId);
     const percentage = (progress / goal) * 100;
@@ -180,6 +175,10 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   }
 
   // Set goals and progress
+  const TARGET_DATES = {
+    'progress1': '2025-01-01',
+    'progress2': '2024-12-01'
+  };
   updateProgress('progress1', 50000, 35500); // Research goal
   updateProgress('progress2', 10000, 3000);  // Creative goal
 </script>
