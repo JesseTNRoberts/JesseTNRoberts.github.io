@@ -31,18 +31,76 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 
 <div float="left">
 
-<div id="countdown-wrap" style="width: 100%; height: 300px; padding: 20px; font-family: 'Nunito', sans-serif; max-width: 650px; margin: 150px auto 300px;">
-  <div id="goal" style="font-size: 48px; text-align: right; color: #FFF;">40,000 words</div>
-  <div id="glass" style="width: 100%; height: 20px; background: #c7c7c7; border-radius: 10px; float: left; overflow: hidden;">
-    <div id="progress" style="float: left; width: 16%; height: 20px; background: #FF5D50; z-index: 333;"></div>
+
+
+
+<style>
+  #countdown-wrap {
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    font-family: 'Nunito', sans-serif;
+    max-width: 650px;
+    margin: 150px auto 300px;
+    color: #FFF;
+  }
+
+  #countdown-wrap #goal {
+    font-size: 48px;
+    text-align: right;
+  }
+
+  #countdown-wrap #glass {
+    width: 100%;
+    height: 20px;
+    background: #c7c7c7;
+    border-radius: 10px;
+    float: left;
+    overflow: hidden;
+  }
+
+  #countdown-wrap #progress {
+    float: left;
+    width: 16%;
+    height: 20px;
+    background: #FF5D50;
+    z-index: 333;
+  }
+
+  #countdown-wrap .goal-stat {
+    width: 25%;
+    padding: 10px;
+    float: left;
+    margin: 0;
+  }
+
+  #countdown-wrap .goal-number,
+  #countdown-wrap .goal-label {
+    display: block;
+  }
+
+  #countdown-wrap .goal-number {
+    font-weight: bold;
+  }
+
+  @media only screen and (max-width: 640px) {
+    #countdown-wrap #goal { text-align: center; }
+    #countdown-wrap .goal-stat { width: 50%; text-align: center; }
+  }
+</style>
+
+<div id="countdown-wrap">
+  <div id="goal">40,000 words</div>
+  <div id="glass">
+    <div id="progress"></div>
   </div>
-  <div class="goal-stat" style="width: 25%; padding: 10px; float: left; margin: 0; color: #FFF;">
-    <span class="goal-number" style="display: block; font-weight: bold;">35,500</span>
-    <span class="goal-label" style="display: block;">Written</span>
+  <div class="goal-stat">
+    <span class="goal-number">1,640</span>
+    <span class="goal-label">Written</span>
   </div>
-  <div class="goal-stat" style="width: 25%; padding: 10px; float: left; margin: 0; color: #FFF;">
-    <span class="goal-number" style="display: block; font-weight: bold;"><div id="daysLeft"></div></span>
-    <span class="goal-label" style="display: block;">Days to Go</span>
+  <div class="goal-stat">
+    <span class="goal-number"><div id="daysLeft"></div></span>
+    <span class="goal-label">Days to Go</span>
   </div>
 </div>
 
@@ -56,18 +114,6 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   }
   document.getElementById("daysLeft").textContent = getDaysLeftInYear();
 </script>
-
-<style>
-  body {
-    background-color: #142F4C;
-    font-family: 'Nunito', sans-serif;
-  }
-  
-  @media only screen and (max-width: 640px) {
-    #goal { text-align: center; }
-    .goal-stat { width: 50%; text-align: center; }
-  }
-</style>
 
 
 
