@@ -37,12 +37,13 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 <style>
   #countdown-wrap {
     width: 100%;
-    height: 300px;
+    height: 150px;
     padding: 20px;
     font-family: 'Nunito', sans-serif;
     max-width: 650px;
     margin: 150px auto 300px;
     color: #FFF;
+    background-color: #142F4C;
   }
 
   #countdown-wrap #goal {
@@ -90,12 +91,12 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 </style>
 
 <div id="countdown-wrap">
-  <div id="goal">40,000 words</div>
+  <div id="goal">Research Goal: 40,000 Words</div>
   <div id="glass">
     <div id="progress"></div>
   </div>
   <div class="goal-stat">
-    <span class="goal-number">1,640</span>
+    <span class="goal-number">35,500</span>
     <span class="goal-label">Written</span>
   </div>
   <div class="goal-stat">
