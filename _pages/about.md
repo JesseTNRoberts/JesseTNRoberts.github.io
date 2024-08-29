@@ -31,9 +31,47 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 
 <div float="left">
 
-<script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=historical-fiction-ya-mystery-novel&width=300&height=400&view=graph-overall' type='text/javascript'></script>
+<div id="countdown-wrap" style="width: 100%; height: 300px; padding: 20px; font-family: 'Nunito', sans-serif; max-width: 650px; margin: 150px auto 300px;">
+  <div id="goal" style="font-size: 48px; text-align: right; color: #FFF;">40,000 words</div>
+  <div id="glass" style="width: 100%; height: 20px; background: #c7c7c7; border-radius: 10px; float: left; overflow: hidden;">
+    <div id="progress" style="float: left; width: 16%; height: 20px; background: #FF5D50; z-index: 333;"></div>
+  </div>
+  <div class="goal-stat" style="width: 25%; padding: 10px; float: left; margin: 0; color: #FFF;">
+    <span class="goal-number" style="display: block; font-weight: bold;">35,500</span>
+    <span class="goal-label" style="display: block;">Written</span>
+  </div>
+  <div class="goal-stat" style="width: 25%; padding: 10px; float: left; margin: 0; color: #FFF;">
+    <span class="goal-number" style="display: block; font-weight: bold;"><div id="daysLeft"></div></span>
+    <span class="goal-label" style="display: block;">Days to Go</span>
+  </div>
+</div>
 
-<script src='//s3-us-west-2.amazonaws.com/pacemaker-project-widgets/js/pacemaker-project-widgets-loader.js?username=JesseTNRoberts&planName=research-papers&width=300&height=400&view=graph-overall' type='text/javascript'></script>
+<script>
+  function getDaysLeftInYear() {
+    var today = new Date();
+    var endOfYear = new Date(today.getFullYear(), 11, 31);
+    var oneDay = 1000 * 60 * 60 * 24;
+    var daysLeft = Math.ceil((endOfYear.getTime() - today.getTime()) / oneDay);
+    return daysLeft;
+  }
+  document.getElementById("daysLeft").textContent = getDaysLeftInYear();
+</script>
+
+<style>
+  body {
+    background-color: #142F4C;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  @media only screen and (max-width: 640px) {
+    #goal { text-align: center; }
+    .goal-stat { width: 50%; text-align: center; }
+  }
+</style>
+
+
+
+
 
 <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/100752705/latest-rides/274d85ff1858403cdb3ff73155d333f9acb777f8'></iframe>
 
