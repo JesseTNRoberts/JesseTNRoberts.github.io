@@ -58,7 +58,6 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   }
   .countdown-wrap .progress {
     float: left;
-    width: 16%;
     height: 20px;
     background: #FF5D50;
     z-index: 333;
@@ -86,12 +85,12 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 </style>
 
 <div class="countdown-wrap">
-  <div class="goal">Research Goal: 40,000 words</div>
+  <div class="goal">Research Goal: <span class="goal-value"></span> words</div>
   <div class="glass">
-    <div class="progress"></div>
+    <div id="progress1" class="progress" data-goal="" data-progress=""></div>
   </div>
   <div class="goal-stat">
-    <span class="goal-number">35,500</span>
+    <span class="goal-number progress-value"></span>
     <span class="goal-label">Written</span>
   </div>
   <div class="goal-stat">
@@ -101,12 +100,12 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 </div>
 
 <div class="countdown-wrap">
-  <div class="goal">Creative Goal: 10,000 words</div>
+  <div class="goal">Creative Goal: <span class="goal-value"></span> words</div>
   <div class="glass">
-    <div class="progress"></div>
+    <div id="progress2" class="progress" data-goal="" data-progress=""></div>
   </div>
   <div class="goal-stat">
-    <span class="goal-number">3,000</span>
+    <span class="goal-number progress-value"></span>
     <span class="goal-label">Written</span>
   </div>
   <div class="goal-stat">
@@ -116,6 +115,18 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 </div>
 
 <script>
+  function updateProgress(goalId, goal, progress) {
+    const progressElement = document.getElementById(goalId);
+    const percentage = (progress / goal) * 100;
+    progressElement.style.width = percentage + '%';
+    progressElement.dataset.goal = goal;
+    progressElement.dataset.progress = progress;
+
+    const wrapperElement = progressElement.closest('.countdown-wrap');
+    wrapperElement.querySelector('.goal-value').textContent = goal;
+    wrapperElement.querySelector('.progress-value').textContent = progress;
+  }
+
   function getDaysLeftInYear() {
     var today = new Date();
     var endOfYear = new Date(today.getFullYear(), 11, 31);
@@ -123,9 +134,14 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
     var daysLeft = Math.ceil((endOfYear.getTime() - today.getTime()) / oneDay);
     return daysLeft;
   }
+
   document.querySelectorAll('.daysLeft').forEach(function(el) {
     el.textContent = getDaysLeftInYear();
   });
+
+  // Set goals and progress
+  updateProgress('progress1', 50000, 35500); // Research goal
+  updateProgress('progress2', 10000, 3000);  // Creative goal
 </script>
 
 
