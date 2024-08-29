@@ -34,66 +34,77 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 
 <!-- This is the area where writing progress is shown -->
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+
 <style>
   .countdown-wrap {
   width: 100%;
-  min-height: 150px;
-  height: auto;
-  padding: 20px;
-  font-family: 'Nunito', sans-serif;
+  max-width: 650px;
+  padding: 30px;
+  font-family: 'Inter', sans-serif;
   margin: 20px auto;
-  color: #FFF;
-  background-color: #142F4C;
+  color: #333;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.countdown-wrap .goal {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.countdown-wrap .glass {
+  width: 100%;
+  height: 10px;
+  background: #f0f0f0;
+  border-radius: 5px;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
-  .countdown-wrap .goal { font-size: 36px; text-align: right; }
-  .countdown-wrap .glass {
-    width: 100%;
-    height: 20px;
-    background: #c7c7c7;
-    border-radius: 10px;
-    float: left;
-    overflow: hidden;
-  }
-  .countdown-wrap .progress {
-    float: left;
-    height: 20px;
-    background: #FF5D50;
-    z-index: 333;
-  }
-  .countdown-wrap .goal-stat {
-    width: 50%;
-    padding: 10px;
-    float: left;
-    margin: 0;
-  }
-  .countdown-wrap .goal-number,
-  .countdown-wrap .goal-label { display: block; }
-  .countdown-wrap .goal-number { font-weight: bold; }
-
-  @media screen and (min-width: 480px) {
-    .countdown-wrap { max-width: 90%; }
-    .countdown-wrap .goal { font-size: 42px; }
-    .countdown-wrap .goal-stat { width: 25%; }
-  }
-
-  @media screen and (min-width: 768px) {
-    .countdown-wrap { max-width: 650px; }
-    .countdown-wrap .goal { font-size: 48px; }
-	  .countdown-wrap .goal { 
-  font-size: 28px; 
-  text-align: right; 
+.countdown-wrap .progress {
+  height: 10px;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  transition: width 0.5s ease-in-out;
 }
 
-@media screen and (min-width: 480px) {
-  .countdown-wrap .goal { font-size: 32px; }
+.countdown-wrap .goal-stats {
+  display: flex;
+  justify-content: space-between;
 }
 
-@media screen and (min-width: 768px) {
-  .countdown-wrap .goal { font-size: 36px; }
+.countdown-wrap .goal-stat {
+  text-align: center;
 }
+
+.countdown-wrap .goal-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4CAF50;
+}
+
+.countdown-wrap .goal-label {
+  font-size: 14px;
+  color: #666;
+}
+
+@media screen and (max-width: 480px) {
+  .countdown-wrap {
+    padding: 20px;
   }
+  
+  .countdown-wrap .goal {
+    font-size: 20px;
+  }
+  
+  .countdown-wrap .goal-number {
+    font-size: 24px;
+  }
+}
 </style>
 
 <div class="countdown-wrap">
@@ -101,13 +112,15 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   <div class="glass">
     <div id="progress1" class="progress" data-goal="" data-progress=""></div>
   </div>
-  <div class="goal-stat">
-    <span class="goal-number progress-value"></span>
-    <span class="goal-label">Written</span>
-  </div>
-  <div class="goal-stat">
-    <span class="goal-number"><div class="daysLeft"></div></span>
-    <span class="goal-label">Days to Go</span>
+  <div class="goal-stats">
+    <div class="goal-stat">
+      <span class="goal-number progress-value"></span>
+      <span class="goal-label">Written</span>
+    </div>
+    <div class="goal-stat">
+      <span class="goal-number daysLeft"></span>
+      <span class="goal-label"> </span>
+    </div>
   </div>
 </div>
 
@@ -116,17 +129,24 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   <div class="glass">
     <div id="progress2" class="progress" data-goal="" data-progress=""></div>
   </div>
-  <div class="goal-stat">
-    <span class="goal-number progress-value"></span>
-    <span class="goal-label">Written</span>
-  </div>
-  <div class="goal-stat">
-    <span class="goal-number"><div class="daysLeft"></div></span>
-    <span class="goal-label">Days to Go</span>
+  <div class="goal-stats">
+    <div class="goal-stat">
+      <span class="goal-number progress-value"></span>
+      <span class="goal-label">Written</span>
+    </div>
+    <div class="goal-stat">
+      <span class="goal-number daysLeft"></span>
+      <span class="goal-label"> </span>
+    </div>
   </div>
 </div>
 
 <script>
+  const TARGET_DATES = {
+    'progress1': '2025-01-01',
+    'progress2': '2024-12-01'
+  };
+
   function updateProgress(goalId, goal, progress) {
     const progressElement = document.getElementById(goalId);
     const percentage = (progress / goal) * 100;
@@ -137,19 +157,27 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
     const wrapperElement = progressElement.closest('.countdown-wrap');
     wrapperElement.querySelector('.goal-value').textContent = goal;
     wrapperElement.querySelector('.progress-value').textContent = progress;
+
+    const targetDate = TARGET_DATES[goalId];
+    const daysLeft = getDaysLeft(targetDate);
+    const formattedDate = formatDate(targetDate);
+    const daysLeftElement = wrapperElement.querySelector('.daysLeft');
+    daysLeftElement.textContent = `${daysLeft} till ${formattedDate}`;
   }
 
-  function getDaysLeftInYear() {
-    var today = new Date();
-    var endOfYear = new Date(today.getFullYear(), 11, 31);
-    var oneDay = 1000 * 60 * 60 * 24;
-    var daysLeft = Math.ceil((endOfYear.getTime() - today.getTime()) / oneDay);
-    return daysLeft;
+  function getDaysLeft(targetDate) {
+    const today = new Date();
+    const endDate = new Date(targetDate);
+    const oneDay = 1000 * 60 * 60 * 24;
+    const daysLeft = Math.ceil((endDate.getTime() - today.getTime()) / oneDay);
+    return daysLeft > 0 ? daysLeft : 0;
   }
 
-  document.querySelectorAll('.daysLeft').forEach(function(el) {
-    el.textContent = getDaysLeftInYear();
-  });
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { month: 'short', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  }
 
   // Set goals and progress
   updateProgress('progress1', 50000, 35500); // Research goal
