@@ -35,7 +35,7 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 
 
 <style>
-  #countdown-wrap {
+  .countdown-wrap {
     width: 100%;
     height: 150px;
     padding: 20px;
@@ -45,12 +45,8 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
     background-color: #142F4C;
   }
 
-  #countdown-wrap #goal {
-    font-size: 36px;
-    text-align: right;
-  }
-
-  #countdown-wrap #glass {
+  .countdown-wrap .goal { font-size: 36px; text-align: right; }
+  .countdown-wrap .glass {
     width: 100%;
     height: 20px;
     background: #c7c7c7;
@@ -58,64 +54,61 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
     float: left;
     overflow: hidden;
   }
-
-  #countdown-wrap #progress {
+  .countdown-wrap .progress {
     float: left;
     width: 16%;
     height: 20px;
     background: #FF5D50;
     z-index: 333;
   }
-
-  #countdown-wrap .goal-stat {
+  .countdown-wrap .goal-stat {
     width: 50%;
     padding: 10px;
     float: left;
     margin: 0;
   }
-
-  #countdown-wrap .goal-number,
-  #countdown-wrap .goal-label {
-    display: block;
-  }
-
-  #countdown-wrap .goal-number {
-    font-weight: bold;
-  }
+  .countdown-wrap .goal-number,
+  .countdown-wrap .goal-label { display: block; }
+  .countdown-wrap .goal-number { font-weight: bold; }
 
   @media screen and (min-width: 480px) {
-    #countdown-wrap {
-      max-width: 90%;
-    }
-    #countdown-wrap #goal {
-      font-size: 42px;
-    }
-    #countdown-wrap .goal-stat {
-      width: 25%;
-    }
+    .countdown-wrap { max-width: 90%; }
+    .countdown-wrap .goal { font-size: 42px; }
+    .countdown-wrap .goal-stat { width: 25%; }
   }
 
   @media screen and (min-width: 768px) {
-    #countdown-wrap {
-      max-width: 650px;
-    }
-    #countdown-wrap #goal {
-      font-size: 48px;
-    }
+    .countdown-wrap { max-width: 650px; }
+    .countdown-wrap .goal { font-size: 48px; }
   }
 </style>
 
-<div id="countdown-wrap">
-  <div id="goal">Research Goal: 40,000 Words</div>
-  <div id="glass">
-    <div id="progress"></div>
+<div class="countdown-wrap">
+  <div class="goal">Research Goal: 40,000 words</div>
+  <div class="glass">
+    <div class="progress"></div>
   </div>
   <div class="goal-stat">
     <span class="goal-number">35,500</span>
     <span class="goal-label">Written</span>
   </div>
   <div class="goal-stat">
-    <span class="goal-number"><div id="daysLeft"></div></span>
+    <span class="goal-number"><div class="daysLeft"></div></span>
+    <span class="goal-label">Days to Go</span>
+  </div>
+</div>
+
+<div class="countdown-wrap">
+  <div class="goal">Creative Goal: 10,000 words</div>
+  <div class="glass">
+    <div class="progress"></div>
+  </div>
+  <div class="goal-stat">
+    <span class="goal-number">3,000</span>
+    <span class="goal-label">Written</span>
+  </div>
+  <div class="goal-stat">
+    <span class="goal-number"><div class="daysLeft"></div></span>
     <span class="goal-label">Days to Go</span>
   </div>
 </div>
@@ -128,7 +121,9 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
     var daysLeft = Math.ceil((endOfYear.getTime() - today.getTime()) / oneDay);
     return daysLeft;
   }
-  document.getElementById("daysLeft").textContent = getDaysLeftInYear();
+  document.querySelectorAll('.daysLeft').forEach(function(el) {
+    el.textContent = getDaysLeftInYear();
+  });
 </script>
 
 
