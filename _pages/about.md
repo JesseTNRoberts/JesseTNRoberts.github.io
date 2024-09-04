@@ -173,14 +173,14 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
     const options = { month: 'short', day: 'numeric' };
     return date.toLocaleDateString('en-US', options);
   }
-
+  
   // Set goals and progress
-  const TARGET_DATES = {
-    'progress1': '2025-01-01',
-    'progress2': '2024-12-01'
-  };
-  updateProgress('progress1', 50000, 35500); // Research goal
-  updateProgress('progress2', 10000, 3000);  // Creative goal
+  // const TARGET_DATES = {
+  //   'progress1': '2025-01-01',
+  //   'progress2': '2024-12-01'
+  // };
+  updateProgress({{site.research_date}}, {{site.research_goal}}, {{site.research_words}}); // Research goal
+  updateProgress({{site.creative_date}}, {{site.creative_goal}}, {{site.creative_words}});  // Creative goal
 </script>
 
 <!-- This is the end of writing progress -->
