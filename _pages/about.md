@@ -176,8 +176,8 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   
   // Set goals and progress
   const TARGET_DATES = {
-    'progress1': {{ site.research_date }},
-    'progress2': {{ site.creative_date }}
+    'progress1': "{{ site.research_date }}",
+    'progress2': "{{ site.creative_date }}"
   };
   updateProgress('progress1', {{ site.research_goal }}, {{ site.research_words }}); // Research goal
   updateProgress('progress2', {{ site.creative_goal }}, {{ site.creative_words }});  // Creative goal
