@@ -20,7 +20,7 @@ I am currently **accepting applications** for master's and Phd students. If you 
 
 Introduction to LLMs
 ------
-For those interested in learning more about LLMs, I have put together a reading list availabel [here](https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE)!
+For those interested in learning more about LLMs, I have put together a reading list [here](https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE)!
 
 This website
 ------
