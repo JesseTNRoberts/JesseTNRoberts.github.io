@@ -18,6 +18,9 @@ The **specific aims** of my research are to (1) understand LLM cognition, (2) pr
 
 I am currently **accepting applications** for master's and Phd students. If you are a curious person with an interest in solving real problems and exploring untrodden paths through AI then feel free to reach out via email!
 
+Introduction to LLMs
+------
+For those interested in learning more about LLMs, I have put together a reading list availabel [here](https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE)!
 
 This website
 ------
