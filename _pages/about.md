@@ -10,7 +10,7 @@ redirect_from:
 
 
 
-My name is Jesse (Vanderbilt PhD '24). I am an inately curious assistant professor at Tennessee Tech University where I am involved in langauge and artificial intelligence research (LAIR). 
+My name is Jesse (Vanderbilt PhD '24). I am an inately curious assistant professor at Tennessee Tech University where I am involved in language and artificial intelligence research (LAIR). 
 
 I envision a future in which AI is widely accessible to support the goals of individual humans. While there are many ways this might be approached, I focus on developing technology to facilitate natural language collaboration between human and machine. But I'm generally interested in any idea that can **positively impact people**.
 
