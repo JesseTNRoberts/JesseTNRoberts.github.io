@@ -10,11 +10,13 @@ redirect_from:
 
 
 
-My name is Jesse (Vanderbilt PhD '24). I am an inately curious assistant professor at Tennessee Tech University where I research artificial intelligence, language models, and robotics. 
+My name is Jesse (Vanderbilt PhD '24). I am an inately curious assistant professor at Tennessee Tech University where I am involved in langauge and artificial intelligence research (LAIR). 
 
-My research focuses on the development, evaluation, and application of empirical methods for NLP with emphasis on transformer-based LLMs. I prefer applications that contribute to digital humanities, robotics, law, cognitive science, and the preservation of endangered languages - primarily Cherokee (Tsalagi) and Irish (Gaeilge). But I'm also interested in game theory, computational physics, and any idea that can **positively impact people**. 
+I envision a future in which AI is widely accessible to support the goals of individual humans. While there are many ways this might be approached, I focus on developing technology to facilitate natural language collaboration between human and machine. But I'm generally interested in any idea that can **positively impact people**.
 
-The **specific aims** of my research are to (1) understand LLM cognition, (2) preserve endangered languages, (3) improve semantically-complex search, and (4) empower researchers with better tools for the analysis of linguistics and semantics.
+I am also engaged in work applying language model technology to the preservation of the Cherokee language (Tsalagi), drawing inspiration from the work done to preserve Irish (Gaeilge). 
+
+<!--The **specific aims** of my research are to (1) understand LLM cognition, (2) preserve endangered languages, (3) improve semantically-complex search, and (4) empower researchers with better tools for the analysis of linguistics and semantics. -->
 
 I am currently **accepting applications** for master's and Phd students. If you are a curious person with an interest in solving real problems and exploring untrodden paths through AI then feel free to reach out via email!
 
