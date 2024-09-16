@@ -14,7 +14,7 @@ My name is Jesse (Vanderbilt PhD '24). I am an inately curious assistant profess
 
 I envision a future in which AI is widely accessible to support the goals of individual humans. While there are many ways this might be approached, I focus on developing technology to facilitate natural language collaboration between human and machine. But I'm generally interested in any idea that can **positively impact people**.
 
-I am also engaged in work applying language model technology to the preservation of the Cherokee language (Tsalagi), drawing inspiration from the work done to preserve Irish (Gaeilge). 
+I am also working to apply language model technology to the preservation of the Cherokee language (Tsalagi), drawing inspiration from the work done to preserve Irish (Gaeilge). The hope is to create a dynamic reservoir for the support of future generations of speakers. 
 
 <!--The **specific aims** of my research are to (1) understand LLM cognition, (2) preserve endangered languages, (3) improve semantically-complex search, and (4) empower researchers with better tools for the analysis of linguistics and semantics. -->
 
