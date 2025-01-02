@@ -149,12 +149,12 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 <div class="countdown-wrap">
   <div class="goal">Miles Goal: <span class="goal-value"></span> miles</div>
   <div class="glass">
-    <div id="progress2" class="progress" data-goal="" data-progress=""></div>
+    <div id="progress3" class="progress" data-goal="" data-progress=""></div>
   </div>
   <div class="goal-stats">
     <div class="goal-stat">
       <span class="goal-number progress-value"></span>
-      <span class="goal-label">Written</span>
+      <span class="goal-label">Ran</span>
     </div>
     <div class="goal-stat">
       <span class="goal-number daysLeft"></span>
