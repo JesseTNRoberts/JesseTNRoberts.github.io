@@ -146,6 +146,23 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   </div>
 </div>
 
+<div class="countdown-wrap">
+  <div class="goal">Miles Goal: <span class="goal-value"></span> miles</div>
+  <div class="glass">
+    <div id="progress2" class="progress" data-goal="" data-progress=""></div>
+  </div>
+  <div class="goal-stats">
+    <div class="goal-stat">
+      <span class="goal-number progress-value"></span>
+      <span class="goal-label">Written</span>
+    </div>
+    <div class="goal-stat">
+      <span class="goal-number daysLeft"></span>
+      <span class="goal-label"> </span>
+    </div>
+  </div>
+</div>
+
 <script>
   function updateProgress(goalId, goal, progress) {
     const progressElement = document.getElementById(goalId);
@@ -182,10 +199,12 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   // Set goals and progress
   const TARGET_DATES = {
     'progress1': "{{ site.research_date }}",
-    'progress2': "{{ site.creative_date }}"
+    'progress2': "{{ site.creative_date }}",
+    'progress3': "{{ site.miles_date }}"
   };
   updateProgress('progress1', {{ site.research_goal }}, {{ site.research_words }}); // Research goal
   updateProgress('progress2', {{ site.creative_goal }}, {{ site.creative_words }});  // Creative goal
+  updateProgress('progress3', {{ site.miles_goal }}, {{ site.miles_ran }});  // miles goal
 </script>
 
 <!-- This is the end of writing progress -->
