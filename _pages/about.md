@@ -225,7 +225,7 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
   updateProgress('progress1', {{ site.research_goal }}, {{ site.research_words }}); // Research goal
   updateProgress('progress2', {{ site.creative_goal }}, {{ site.creative_words }});  // Creative goal
   updateProgress('progress3', {{ site.miles_goal }}, {{ site.miles_ran }});  // miles goal
-  updateProgress('progress3', {{ site.grants_goal }}, {{ site.grants_submitted }});  // grants goal
+  updateProgress('progress4', {{ site.grants_goal }}, {{ site.grants_submitted }});  // grants goal
 </script>
 
 <!-- This is the end of writing progress -->
