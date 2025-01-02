@@ -7,13 +7,13 @@
 # server process.
 
 # Milestones and Trackers
-creative_words           : 5500
-creative_goal            : 10000
-creative_date            : "2025-01-01"
+creative_words           : 0
+creative_goal            : 15000
+creative_date            : "2026-01-01"
 
-research_words           : 49000
-research_goal            : 50000
-research_date            : "2025-01-01"
+research_words           : 0
+research_goal            : 60000
+research_date            : "2026-01-01"
 
 # Basic Site Settings
 locale                   : "en-US"
