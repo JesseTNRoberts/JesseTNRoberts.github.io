@@ -24,6 +24,8 @@ Introduction to LLMs
 ------
 For those interested in learning more about LLMs, I have put together a reading list [here](https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE)!
 
+[What are LLMs and what research am I doing?](https://docs.google.com/presentation/d/1_Pvp9_k95nxteglsCVeX1XsYURGGrziOQmbJYnbLLoI/edit?usp=share_link)
+
 This Website
 ------
 Here you'll find [papers](/publications/), work in progress, and whatever I'm up to (usually running/climbing, reading, and writing). 
