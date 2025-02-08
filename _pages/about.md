@@ -115,7 +115,7 @@ Additionally, I like to keep an ongoing [research journal](/year-archive/). It's
 </style>
 
 <div class="countdown-wrap">
-  <div class="goal">Research Goal: <span class="goal-value"></span> words</div>
+  <div class="goal">Research Goal: <span class="goal-value"></span> papers</div>
   <div class="glass">
     <div id="progress1" class="progress" data-goal="" data-progress=""></div>
   </div>
