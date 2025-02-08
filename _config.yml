@@ -19,8 +19,8 @@ miles_ran                : 66.4
 miles_goal               : 1000
 miles_date               : "2026-01-01"
 
-research_words           : 0
-research_goal            : 60000
+research_words           : 2
+research_goal            : 10
 research_date            : "2026-01-01"
 
 # Basic Site Settings
