@@ -24,7 +24,11 @@ Introduction to LLMs
 ------
 For those interested in learning more about LLMs, I have put together a reading list [here](https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE)!
 
-[What are LLMs and what research am I doing?](https://docs.google.com/presentation/d/1_Pvp9_k95nxteglsCVeX1XsYURGGrziOQmbJYnbLLoI/edit?usp=share_link)
+Additionally, I have give some lectures on LLMs and research that might be useful:
+
+- [What are LLMs and what research am I doing?](https://docs.google.com/presentation/d/1_Pvp9_k95nxteglsCVeX1XsYURGGrziOQmbJYnbLLoI/edit?usp=share_link)
+
+- [What are LLMs and How Coudl You Use Then for Research?](https://docs.google.com/presentation/d/1w7bZLiH0T-K22qParP4oqnAfYjXGMY7WF950Nc0aQlQ/edit?usp=sharing)
 
 This Website
 ------
