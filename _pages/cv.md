@@ -8,8 +8,8 @@ redirect_from:
 ---
 
 <!--
-<object data="{{ site.url }}/files/CV.pdf" width="1000" height="1000" type='application/pdf'/>
-{% include base_path %} -->
+<object data="{{ site.url }}/files/CV.pdf" width="1000" height="1000" type='application/pdf'/> -->
+{% include base_path %} 
 
 ## Contact Information
 Jesse.TN.Roberts@Gmail.com  
@@ -90,6 +90,10 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
 ---
 
 ## Publications
+
+{% include publications %}
+
+<!--
 (Under Review at IJCAI) Rentschler, Micah, and Jesse Roberts. "RL+ Transformer= A General-Purpose Problem Solver." arXiv preprint arXiv:2501.14176 (2025).
 
 (Under Review at ACL) J. Roberts, Moore, & Fisher, D.(2024). "Do Large Language Models Learn Human-Like Strategic Preferences?".
@@ -127,7 +131,7 @@ J. Roberts and I. Bhattacharya, "Improving Any Arbitrary MPPT Hill Climber with 
 J. Roberts and I. Bhattacharya, "MNFIS and other soft computing based MPPT techniques: A comparative analysis," 2016 IEEE 43rd Photovoltaic Specialists Conference (PVSC), Portland, OR, 2016, pp. 3247-3251.
 
 J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker," Thesis. Tennessee Technological University, 2017.
-
+-->
 ---
 
 ## Professional Memberships
