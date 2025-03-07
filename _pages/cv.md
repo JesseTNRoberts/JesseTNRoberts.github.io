@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Jesse Roberts"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -10,11 +10,6 @@ redirect_from:
 <!--
 <object data="{{ site.url }}/files/CV.pdf" width="1000" height="1000" type='application/pdf'/>
 {% include base_path %} -->
-
-# Jesse Roberts
-**January, 2025**
-
----
 
 ## Contact Information
 Jesse.TN.Roberts@Gmail.com  
