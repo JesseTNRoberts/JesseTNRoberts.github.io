@@ -61,7 +61,7 @@ B.S. Electrical Engineering
   - Complete redevelopment of curriculum to facilitate assessment and sustainability.
 - `F2023 - S2024` ECE 3540 - Physical Electronics 
 
-`2020`
+`2020-2020`
 **Instructor:** Vanderbilt University  
 - `Su2020` CS 1101 - Programming and Problem Solving (Java Based) 
 
@@ -184,7 +184,8 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 - `S2021` Project in Artificial Intelligence 
 - `F2020` Programming and Problem Solving (Java Based) 
 - `S2020` Compiler Construction 
-- `F2019` Database Management Systems (Managing TA) 
+- `F2019` Database Management Systems
+
 ---
 
 ## Research Assistant Experience
@@ -222,6 +223,7 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 
 
 ---
+
 ## Languages
 - English (Native proficiency)
 - Spanish (Elementary proficiency)
