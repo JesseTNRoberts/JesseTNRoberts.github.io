@@ -65,10 +65,12 @@ Computational Linguistics and NLP, Machine Cognition, Robotics, Neural Architect
 ## Industry Experience
 **ATC Automation**, Cookeville, Tennessee  
 *Senior Controls Engineer*  
-`May, 2014 - January, 2021` Designed, oversaw build, and programmed automation equipment to meet customer requirements and exceed expectations while maintaining profitability. Total value of projects oversaw in excess of 20 million dollars.
+`May, 2014 - January, 2021`
+Designed, oversaw build, and programmed automation equipment to meet customer requirements and exceed expectations while maintaining profitability. Total value of projects oversaw in excess of 20 million dollars.
 
 *Co-op Program Manager*  
-`July, 2018 - December, 2020` Developed a co-op program to improve recruitment. Oversaw hiring, training, and management of co-op employees. Acted as the liaison for the building and maintenance of industrial/academic relations. Obtained a $100K industry lab grant.
+`July, 2018 - December, 2020` 
+Developed a co-op program to improve recruitment. Oversaw hiring, training, and management of co-op employees. Acted as the liaison for the building and maintenance of industrial/academic relations. Obtained a $100K industry lab grant.
 
 ---
 
