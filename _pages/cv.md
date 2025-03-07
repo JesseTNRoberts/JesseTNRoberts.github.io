@@ -27,21 +27,18 @@ Computational Linguistics and NLP, Machine Cognition, Robotics, Neural Architect
 ---
 
 ## Education
-`2019-2024`
 **Vanderbilt University**, Nashville, Tennessee  
-Ph.D. Computer Science  
+`2019-2024` Ph.D. Computer Science  
 
 - Dissertation Topic: “A Theoretical & Empirical Analysis of Language Model Behavior”
 - Advisor: Doug Fisher
 
-`2014-2017`
 **Tennessee Technological University**, Cookeville, Tennessee  
-M.S. Electrical Engineering 
+`2014-2017` M.S. Electrical Engineering 
 
 - Thesis Topic: Machine Learning Improvement of Solar MPPT
 
-`2011-2014`
-B.S. Electrical Engineering   
+`2011-2014` B.S. Electrical Engineering   
 
 ---
 
@@ -49,25 +46,19 @@ B.S. Electrical Engineering
 
 
 **Assistant Professor:** Tennessee Technological University  
-`S2025`
-- CSC 4220/5220 - Data Mining and ML 
-`F2024`
-- CSC 7970 - Special Topics (Fall 2024)  
+- `S2025` CSC 4220/5220 - Data Mining and ML 
+- `F2024` CSC 7970 - Special Topics (Fall 2024)  
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
 **Lecturer:** Tennessee Technological University  
-`S2020 - S2024`
-- ECE 3270 - PLC Lecture & Lab   
-  - Developed OER lab manuals for teaching beginner PLC programming, emphasizing good coding practices.
-`F2021 - S2024` 
-- ECE 4961 & 4971 - Capstone Design I and II  
+- `S2020 - S2024` ECE 3270 - PLC Lecture & Lab   
+  - Developed OER lab manuals for teaching beginner PLC programming, emphasizing good coding practices. 
+- `F2021 - S2024` ECE 4961 & 4971 - Capstone Design I and II  
   - Complete redevelopment of curriculum to facilitate assessment and sustainability.
-`F2023 - S2024`
-- ECE 3540 - Physical Electronics 
+- `F2023 - S2024` ECE 3540 - Physical Electronics 
 
 **Instructor:** Vanderbilt University  
-`2020`
-- CS 1101 - Programming and Problem Solving (Java Based) 
+- `Su2020` CS 1101 - Programming and Problem Solving (Java Based) 
 
 ---
 
