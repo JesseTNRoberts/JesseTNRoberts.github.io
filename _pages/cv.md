@@ -50,7 +50,7 @@ Computational Linguistics and NLP, Machine Cognition, Robotics, Neural Architect
 `2024-Current`
 **Assistant Professor**
 - `S2025` CSC 4220/5220 - Data Mining and ML 
-- `F2024` CSC 7970 - Special Topics (Fall 2024)  
+- `F2024` CSC 7970 - Special Topics 
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
 
@@ -87,38 +87,16 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
 
 ## Awards, Honors, and Grants
 ### Vanderbilt University
-`F2021`
-- Received the American Bureau of Shipping merit Scholarship 
-
-`S2021`
-
-- Nominated for the Graduate Leadership Anchor Award 
-
-`S2024`
-
-- Nominated for the CF Chen best paper award 
-
-`Su2024`
-
-- Received the Vanderbilt Award for Doctoral Discovery 
-
-    
+- `F2021` Received the American Bureau of Shipping merit Scholarship 
+- `S2021` Nominated for the Graduate Leadership Anchor Award 
+- `S2024` Nominated for the CF Chen best paper award 
+- `Su2024` Received the Vanderbilt Award for Doctoral Discovery 
+  
 ### Tennessee Technological University
-`F2018`
-- Awarded a Carnegie Fellowship 
-
-`F2023`
-
-- Awarded OER Development Grant 
-
-`S2024`
-
-- Awarded IEEE AESS Grant for the DARPA Triage Challenge 
-
-`S2024`
-
-- Nominated for the KEEN Foundation Rising Star Award 
-
+- `F2018` Awarded a Carnegie Fellowship 
+- `F2023` Awarded OER Development Grant 
+- `S2024` Awarded IEEE AESS Grant for the DARPA Triage Challenge 
+- `S2024` Nominated for the KEEN Foundation Rising Star Award 
 
 ---
 
