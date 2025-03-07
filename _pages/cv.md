@@ -27,14 +27,14 @@ Computational Linguistics and NLP, Machine Cognition, Robotics, Neural Architect
 ---
 
 ## Education
-**Vanderbilt University**, Nashville, Tennessee  
+### Vanderbilt University
 `2019-2024` 
 Ph.D. Computer Science  
 
 - Dissertation Topic: “A Theoretical & Empirical Analysis of Language Model Behavior”
 - Advisor: Doug Fisher
 
-**Tennessee Technological University**, Cookeville, Tennessee  
+### Tennessee Technological University
 `2014-2017` 
 M.S. Electrical Engineering 
 
@@ -47,35 +47,42 @@ B.S. Electrical Engineering
 
 ## Faculty Experience
 
+
+### Assistant Professor
 `2024-Current`
-**Assistant Professor:** Tennessee Technological University  
+**Tennessee Technological University**
 - `S2025` CSC 4220/5220 - Data Mining and ML 
 - `F2024` CSC 7970 - Special Topics (Fall 2024)  
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
+
+### Lecturer
 `2021-2024`
-**Lecturer:** Tennessee Technological University  
+**Tennessee Technological University**  
 - `S2020 - S2024` ECE 3270 - PLC Lecture & Lab   
   - Developed OER lab manuals for teaching beginner PLC programming, emphasizing good coding practices. 
 - `F2021 - S2024` ECE 4961 & 4971 - Capstone Design I and II  
   - Complete redevelopment of curriculum to facilitate assessment and sustainability.
 - `F2023 - S2024` ECE 3540 - Physical Electronics 
 
+
+### Instructor
 `2020-2020`
-**Instructor:** Vanderbilt University  
+**Vanderbilt University** 
 - `Su2020` CS 1101 - Programming and Problem Solving (Java Based) 
 
 ---
 
 ## Industry Experience
 
-`2014 - 2021`
 **ATC Automation**, Cookeville, Tennessee  
-*Senior Controls Engineer*  
+
+`2014 - 2021`
+### Senior Controls Engineer
 Designed, oversaw build, and programmed automation equipment to meet customer requirements and exceed expectations while maintaining profitability. Total value of projects oversaw in excess of 20 million dollars.
 
 `2018 - 2020`
-*Co-op Program Manager*  
+### Co-op Program Manager
 Developed a co-op program to improve recruitment. Oversaw hiring, training, and management of co-op employees. Acted as the liaison for the building and maintenance of industrial/academic relations. Obtained a $100K industry lab grant.
 
 ---
@@ -180,7 +187,7 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 
 ## Teaching Assistant Experience
 
-**Vanderbilt University**
+### Vanderbilt University
 - `S2021` Project in Artificial Intelligence 
 - `F2020` Programming and Problem Solving (Java Based) 
 - `S2020` Compiler Construction 
@@ -190,7 +197,7 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 
 ## Research Assistant Experience
 
-**Vanderbilt University**
+### Vanderbilt University
 - `Su2021` Researched computational sustainability 
   - Funded by NSF Grant No. 1521672
 
@@ -199,7 +206,7 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 
 ## Graduate Courses Taken
 
-**Vanderbilt University**
+### Vanderbilt University
 - `F2020` CS6388 - Model Integrated Computing
 - `F2020` CS8395 - Neurodiversity Inspired Science & Engineering
 - `S2020` CS6360 - Advanced Artificial Intelligence 
@@ -207,7 +214,7 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 - `F2019` CS6362 - Advanced Machine Learning
 - `F2019` CS8395 - Computation & Cognition
 
-**Tennessee Technological University**
+### Tennessee Technological University
 - `F2018` CSC6903 - Learning Theory
 - `S2018` CSC7980 - Stock Market Prediction Models 
 - `S2018` FIN6020 - Financial Management 
