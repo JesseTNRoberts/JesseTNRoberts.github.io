@@ -30,13 +30,14 @@ Additionally, I have given some lectures on LLMs and research that might be usef
 
 - [What are LLMs and How Could You Use Them for Research?](https://docs.google.com/presentation/d/1w7bZLiH0T-K22qParP4oqnAfYjXGMY7WF950Nc0aQlQ/edit?usp=sharing)
 
-This Website
+
+Goals
 ------
 Here you'll find [papers](/publications/), work in progress, and whatever I'm up to (usually running/climbing, reading, and writing). 
 
-I think of goals like completing a thru hike. To reach an objective, you need to minimize _zero days_. To do that I track daily progress and below there a set of widgets that show my progress. 
+I think of goals like completing a thru hike. To reach an objective, you need to minimize _zero days_. To do that I track progress publicly and below there a set of widgets that show my progress. 
 
-Additionally, I like to keep an ongoing [research journal](/year-archive/). It's where ideas take form and I reflect on my own curiousities, questions, and philosophical musings. Some of these go on to be successful research, many don't. 
+<!-- Additionally, I like to keep an ongoing [research journal](/year-archive/). It's where ideas take form and I reflect on my own curiousities, questions, and philosophical musings. Some of these go on to be successful research, many don't.  -->
 
 
 

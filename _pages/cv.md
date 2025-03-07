@@ -13,7 +13,7 @@ redirect_from:
 
 ## Contact Information
 Jesse.TN.Roberts@Gmail.com  
-(865) 719-0163  
+<!--(865) 719-0163 -->
 752 Welch Ave  
 Cookeville, TN 38501    
 
