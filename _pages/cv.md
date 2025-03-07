@@ -77,7 +77,9 @@ ECE 3540 - Physical Electronics
 ### Vanderbilt University
 `2020-2020`
 **Instructor** 
-- `Su2020` CS 1101 - Programming and Problem Solving (Java Based) 
+
+`Su2020` 
+CS 1101 - Programming and Problem Solving (Java Based) 
 
 ---
 
