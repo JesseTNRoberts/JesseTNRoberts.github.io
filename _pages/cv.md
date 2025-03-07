@@ -202,28 +202,40 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 - `F2019` CS8395 - Computation & Cognition
 
 **Tennessee Technological University**
+
 `F2018` 
 - CSC6903 - Learning Theory
+
 `S2018` 
 - CSC7980 - Stock Market Prediction Models 
+
 `S2018` 
 - FIN6020 - Financial Management 
+
 `F2017` 
 - CSC7240 - Intelligent Information Systems
+
 `F2016` 
 - CSC6903 - Advanced Reverse Engineering
+
 `F2016` 
 - ECE6580 - Instrument Transducer Technology
+
 `F2015` 
 - ECE6900 - Intelligent System Design
+
 `S2015` 
 - ECE6040 - Signal Analysis 
+
 `S2015` 
 - ECE6250 - Random Signals & Systems 
+
 `F2014` 
 - ECE6170 - High Performance Embedded System Design
+
 `F2014` 
 - ECE6200 - Linear Systems Analysis
+
 `F2014` 
 - ECE6600 - Computer Methods for Power System Analysis
 
