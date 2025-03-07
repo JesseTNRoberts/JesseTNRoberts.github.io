@@ -28,17 +28,20 @@ Computational Linguistics and NLP, Machine Cognition, Robotics, Neural Architect
 
 ## Education
 **Vanderbilt University**, Nashville, Tennessee  
-`2019-2024` Ph.D. Computer Science  
+`2019-2024` 
+Ph.D. Computer Science  
 
-Dissertation Topic: “A Theoretical & Empirical Analysis of Language Model Behavior”
-Advisor: Doug Fisher
+- Dissertation Topic: “A Theoretical & Empirical Analysis of Language Model Behavior”
+- Advisor: Doug Fisher
 
 **Tennessee Technological University**, Cookeville, Tennessee  
-`2014-2017` M.S. Electrical Engineering 
+`2014-2017` 
+M.S. Electrical Engineering 
 
-Thesis Topic: Machine Learning Improvement of Solar MPPT
+- Thesis Topic: Machine Learning Improvement of Solar MPPT
 
-`2011-2014` B.S. Electrical Engineering   
+`2011-2014` 
+B.S. Electrical Engineering   
 
 ---
 
@@ -46,19 +49,19 @@ Thesis Topic: Machine Learning Improvement of Solar MPPT
 
 
 **Assistant Professor:** Tennessee Technological University  
-`S2025` CSC 4220/5220 - Data Mining and ML 
-`F2024` CSC 7970 - Special Topics (Fall 2024)  
+- `S2025` CSC 4220/5220 - Data Mining and ML 
+- `F2024` CSC 7970 - Special Topics (Fall 2024)  
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
 **Lecturer:** Tennessee Technological University  
-`S2020 - S2024` ECE 3270 - PLC Lecture & Lab   
+- `S2020 - S2024` ECE 3270 - PLC Lecture & Lab   
   - Developed OER lab manuals for teaching beginner PLC programming, emphasizing good coding practices. 
-`F2021 - S2024` ECE 4961 & 4971 - Capstone Design I and II  
+- `F2021 - S2024` ECE 4961 & 4971 - Capstone Design I and II  
   - Complete redevelopment of curriculum to facilitate assessment and sustainability.
-`F2023 - S2024` ECE 3540 - Physical Electronics 
+- `F2023 - S2024` ECE 3540 - Physical Electronics 
 
 **Instructor:** Vanderbilt University  
-`Su2020` CS 1101 - Programming and Problem Solving (Java Based) 
+- `Su2020` CS 1101 - Programming and Problem Solving (Java Based) 
 
 ---
 
@@ -75,16 +78,16 @@ Thesis Topic: Machine Learning Improvement of Solar MPPT
 ## Awards, Honors, and Grants
 ### Vanderbilt University
 
-`F2021` Received the American Bureau of Shipping merit Scholarship 
-`S2021` Nominated for the Graduate Leadership Anchor Award 
-`S2024` Nominated for the CF Chen best paper award 
-`Su2024` Received the Vanderbilt Award for Doctoral Discovery 
+- `F2021` Received the American Bureau of Shipping merit Scholarship 
+- `S2021` Nominated for the Graduate Leadership Anchor Award 
+- `S2024` Nominated for the CF Chen best paper award 
+- `Su2024` Received the Vanderbilt Award for Doctoral Discovery 
     
 ### Tennessee Technological University
-`F2018` Awarded a Carnegie Fellowship 
-`F2023` Awarded OER Development Grant 
-`S2024` Awarded IEEE AESS Grant for the DARPA Triage Challenge 
-`S2024` Nominated for the KEEN Foundation Rising Star Award 
+- `F2018` Awarded a Carnegie Fellowship 
+- `F2023` Awarded OER Development Grant 
+- `S2024` Awarded IEEE AESS Grant for the DARPA Triage Challenge 
+- `S2024` Nominated for the KEEN Foundation Rising Star Award 
 
 ---
 
@@ -135,38 +138,37 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 
 ## Professional Memberships
 
-`2023 - Current` The Association for the Advancement of Artificial Intelligence (AAAI) 
-`2024 - Current` Association of Computational Linguistics (ACL) 
-`2021 - Current` Institute of Electrical and Electronics Engineers (IEEE)
-`2024 - Current` Computational Intelligence Society (IEEE CIS) 
+- `2023 - Current` The Association for the Advancement of Artificial Intelligence (AAAI) 
+- `2024 - Current` Association of Computational Linguistics (ACL) 
+- `2021 - Current` Institute of Electrical and Electronics Engineers (IEEE)
+- `2024 - Current` Computational Intelligence Society (IEEE CIS) 
 
 ---
 
 ## Faculty Service
 ### Tennessee Technological University
-`Fall 2021 - Current`   Undergraduate Program Committee 
-`Spring 2022 - Current` ACME Building Design College Committee 
-`Fall 2021 - Current`   ABET Assessment Departmental Committee 
-`Fall 2022 - Current`   Founding Advisor to the Rock Climbing Club 
-`Fall 2021 - Current`   IEEE Robotics Team Coach 
+- `Fall 2021 - Current`   Undergraduate Program Committee 
+- `Spring 2022 - Current` ACME Building Design College Committee 
+- `Fall 2021 - Current`   ABET Assessment Departmental Committee 
+- `Fall 2022 - Current`   Founding Advisor to the Rock Climbing Club 
+- `Fall 2021 - Current`   IEEE Robotics Team Coach 
 
 ---
 
 ## Research Service
 
 ### Conference Organization
-`2025` Program Committee Member for FLAIRS 
-`2024` Session Chair for World Congress on Computational Intelligence 
+- `2025` Program Committee Member for FLAIRS 
+- `2024` Session Chair for World Congress on Computational Intelligence 
 
 ### Reviewer
-`2025` Association of Computational Linguistics (ACL)
- 
-`2025` Behavioral Sciences Journal 
-`2024` EPJ Data Science Journal 
-`2024-2025` Natural Language Processing for the Digital Humanities 
-`2024` Conference on Computational Natural Language Learning 
-`2022-2025` International Joint Conference on Neural Networks
-`2022-2024` IEEE Conference on Games (AI & Game Theory)
+- `2025` Association of Computational Linguistics (ACL) 
+- `2025` Behavioral Sciences Journal 
+- `2024` EPJ Data Science Journal 
+- `2024-2025` Natural Language Processing for the Digital Humanities 
+- `2024` Conference on Computational Natural Language Learning 
+- `2022-2025` International Joint Conference on Neural Networks
+- `2022-2024` IEEE Conference on Games (AI & Game Theory)
 
 ---
 
@@ -174,16 +176,16 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 ## Teaching Assistant Experience
 
 **Vanderbilt University**
-`S2021` Project in Artificial Intelligence 
-`F2020` Programming and Problem Solving (Java Based) 
-`S2020` Compiler Construction 
-`F2019` Database Management Systems (Managing TA) 
+- `S2021` Project in Artificial Intelligence 
+- `F2020` Programming and Problem Solving (Java Based) 
+- `S2020` Compiler Construction 
+- `F2019` Database Management Systems (Managing TA) 
 ---
 
 ## Research Assistant Experience
 
 **Vanderbilt University**
-`Su2021` Researched computational sustainability 
+- `Su2021` Researched computational sustainability 
   - Funded by NSF Grant No. 1521672
 
 
@@ -192,30 +194,42 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 ## Graduate Courses Taken
 
 **Vanderbilt University**
-`F2020` CS6388 - Model Integrated Computing
-`F2020` CS8395 - Neurodiversity Inspired Science & Engineering
-`S2020` CS6360 - Advanced Artificial Intelligence 
-`S2020` CS5260 - Artificial Intelligence
-`F2019` CS6362 - Advanced Machine Learning
-`F2019` CS8395 - Computation & Cognition
+- `F2020` CS6388 - Model Integrated Computing
+- `F2020` CS8395 - Neurodiversity Inspired Science & Engineering
+- `S2020` CS6360 - Advanced Artificial Intelligence 
+- `S2020` CS5260 - Artificial Intelligence
+- `F2019` CS6362 - Advanced Machine Learning
+- `F2019` CS8395 - Computation & Cognition
 
 **Tennessee Technological University**
-`F2018` CSC6903 - Learning Theory
-`S2018` CSC7980 - Stock Market Prediction Models 
-`S2018` FIN6020 - Financial Management 
-`F2017` CSC7240 - Intelligent Information Systems
-`F2016` CSC6903 - Advanced Reverse Engineering
-`F2016` ECE6580 - Instrument Transducer Technology
-`F2015` ECE6900 - Intelligent System Design
-`S2015` ECE6040 - Signal Analysis 
-`S2015` ECE6250 - Random Signals & Systems 
-`F2014` ECE6170 - High Performance Embedded System Design
-`F2014` ECE6200 - Linear Systems Analysis
-`F2014` ECE6600 - Computer Methods for Power System Analysis
+`F2018` 
+- CSC6903 - Learning Theory
+`S2018` 
+- CSC7980 - Stock Market Prediction Models 
+`S2018` 
+- FIN6020 - Financial Management 
+`F2017` 
+- CSC7240 - Intelligent Information Systems
+`F2016` 
+- CSC6903 - Advanced Reverse Engineering
+`F2016` 
+- ECE6580 - Instrument Transducer Technology
+`F2015` 
+- ECE6900 - Intelligent System Design
+`S2015` 
+- ECE6040 - Signal Analysis 
+`S2015` 
+- ECE6250 - Random Signals & Systems 
+`F2014` 
+- ECE6170 - High Performance Embedded System Design
+`F2014` 
+- ECE6200 - Linear Systems Analysis
+`F2014` 
+- ECE6600 - Computer Methods for Power System Analysis
 
 
 ---
 ## Languages
-English (Native proficiency)
-Spanish (Elementary proficiency)
-Irish (Elementary proficiency)
+- English (Native proficiency)
+- Spanish (Elementary proficiency)
+- Irish (Elementary proficiency)
