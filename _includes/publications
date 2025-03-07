@@ -25,9 +25,8 @@
 {% assign counter = 0 %}
 
 
-<ol>
+<ul>
 {% for citation in pub_list %}
-  -
   {% if include.venue %}
     {% assign publication = citation.Publication | downcase %}
     {% if venues contains publication %}
@@ -184,4 +183,4 @@
     
   {% endif %}
 {% endfor %}
-</ol>
+</ul>
