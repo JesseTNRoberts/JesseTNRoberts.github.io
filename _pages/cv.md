@@ -48,17 +48,17 @@ B.S. Electrical Engineering
 ## Faculty Experience
 
 
-### Assistant Professor
+### Tennessee Technological University 
 `2024-Current`
-**Tennessee Technological University**
+**Assistant Professor**
 - `S2025` CSC 4220/5220 - Data Mining and ML 
 - `F2024` CSC 7970 - Special Topics (Fall 2024)  
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
 
-### Lecturer
+### Tennessee Technological University 
 `2021-2024`
-**Tennessee Technological University**  
+**Lecturer**  
 - `S2020 - S2024` ECE 3270 - PLC Lecture & Lab   
   - Developed OER lab manuals for teaching beginner PLC programming, emphasizing good coding practices. 
 - `F2021 - S2024` ECE 4961 & 4971 - Capstone Design I and II  
@@ -66,9 +66,9 @@ B.S. Electrical Engineering
 - `F2023 - S2024` ECE 3540 - Physical Electronics 
 
 
-### Instructor
+### Vanderbilt University
 `2020-2020`
-**Vanderbilt University** 
+**Instructor** 
 - `Su2020` CS 1101 - Programming and Problem Solving (Java Based) 
 
 ---
