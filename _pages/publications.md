@@ -24,8 +24,3 @@ Jesse Roberts, 2024, Introduction to PLC Automation, [PDF Version](/files/Introd
 
 {% include publications %}
 
-### Venues 
-
-Conferences: AAAI, IAAI, IJCAI, AISTATS, ICML, ICLR, NeurIPS, EMNLP, CoNLL, CogSci, ICCC, AIES, KDD, ICANN, IJCNN, IEEE CoG, FLAIRs, NLLP 
-
-Journals: AI Magazine, IEEE Transactions on Neural Networks, Frontiers in Theory of Neural Networks, PLOS Complex Systems
