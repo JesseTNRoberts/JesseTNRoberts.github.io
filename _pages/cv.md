@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: cv
 title: "Jesse Roberts"
 permalink: /cv/
 author_profile: true

@@ -288,6 +288,8 @@ defaults:
       share: true
 
 
+cvstyle:  kjhealy
+
 # Sass/SCSS
 sass:
   sass_dir: _sass
