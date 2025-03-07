@@ -47,12 +47,13 @@ B.S. Electrical Engineering
 
 ## Faculty Experience
 
-
+`2024-Current`
 **Assistant Professor:** Tennessee Technological University  
 - `S2025` CSC 4220/5220 - Data Mining and ML 
 - `F2024` CSC 7970 - Special Topics (Fall 2024)  
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
+`2021-2024`
 **Lecturer:** Tennessee Technological University  
 - `S2020 - S2024` ECE 3270 - PLC Lecture & Lab   
   - Developed OER lab manuals for teaching beginner PLC programming, emphasizing good coding practices. 
@@ -60,18 +61,22 @@ B.S. Electrical Engineering
   - Complete redevelopment of curriculum to facilitate assessment and sustainability.
 - `F2023 - S2024` ECE 3540 - Physical Electronics 
 
+`2020`
 **Instructor:** Vanderbilt University  
 - `Su2020` CS 1101 - Programming and Problem Solving (Java Based) 
 
 ---
 
 ## Industry Experience
+
+`2014 - 2021`
 **ATC Automation**, Cookeville, Tennessee  
 *Senior Controls Engineer*  
-`2014 - 2021` Designed, oversaw build, and programmed automation equipment to meet customer requirements and exceed expectations while maintaining profitability. Total value of projects oversaw in excess of 20 million dollars.
+Designed, oversaw build, and programmed automation equipment to meet customer requirements and exceed expectations while maintaining profitability. Total value of projects oversaw in excess of 20 million dollars.
 
+`2018 - 2020`
 *Co-op Program Manager*  
-`2018 - 2020` Developed a co-op program to improve recruitment. Oversaw hiring, training, and management of co-op employees. Acted as the liaison for the building and maintenance of industrial/academic relations. Obtained a $100K industry lab grant.
+Developed a co-op program to improve recruitment. Oversaw hiring, training, and management of co-op employees. Acted as the liaison for the building and maintenance of industrial/academic relations. Obtained a $100K industry lab grant.
 
 ---
 
@@ -202,42 +207,18 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 - `F2019` CS8395 - Computation & Cognition
 
 **Tennessee Technological University**
-
-`F2018` 
-- CSC6903 - Learning Theory
-
-`S2018` 
-- CSC7980 - Stock Market Prediction Models 
-
-`S2018` 
-- FIN6020 - Financial Management 
-
-`F2017` 
-- CSC7240 - Intelligent Information Systems
-
-`F2016` 
-- CSC6903 - Advanced Reverse Engineering
-
-`F2016` 
-- ECE6580 - Instrument Transducer Technology
-
-`F2015` 
-- ECE6900 - Intelligent System Design
-
-`S2015` 
-- ECE6040 - Signal Analysis 
-
-`S2015` 
-- ECE6250 - Random Signals & Systems 
-
-`F2014` 
-- ECE6170 - High Performance Embedded System Design
-
-`F2014` 
-- ECE6200 - Linear Systems Analysis
-
-`F2014` 
-- ECE6600 - Computer Methods for Power System Analysis
+- `F2018` CSC6903 - Learning Theory
+- `S2018` CSC7980 - Stock Market Prediction Models 
+- `S2018` FIN6020 - Financial Management 
+- `F2017` CSC7240 - Intelligent Information Systems
+- `F2016` CSC6903 - Advanced Reverse Engineering
+- `F2016` ECE6580 - Instrument Transducer Technology
+- `F2015` ECE6900 - Intelligent System Design
+- `S2015` ECE6040 - Signal Analysis 
+- `S2015` ECE6250 - Random Signals & Systems 
+- `F2014` ECE6170 - High Performance Embedded System Design
+- `F2014` ECE6200 - Linear Systems Analysis
+- `F2014` ECE6600 - Computer Methods for Power System Analysis
 
 
 ---
