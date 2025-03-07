@@ -5,13 +5,10 @@
 <head>
   <meta charset=utf-8 />
   <title> {% if page.title %} {{ page.title }} | {% endif %} CV</title>
-  <link href="assets/css/{{ site.cvstyle }}-screen.css" type="text/css" rel="stylesheet" media="screen">
-  <link href="assets/css/{{ site.cvstyle }}-print.css" type="text/css" rel="stylesheet" media="print">
+  <link href="{{ base_path }}/assets/css/{{ site.cvstyle }}-screen.css" type="text/css" rel="stylesheet" media="screen">
+  <link href="{{ base_path }}/assets/css/{{ site.cvstyle }}-print.css" type="text/css" rel="stylesheet" media="print">
 </head>
 <body>
-  <!-- {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
-    {% include page__hero.html %}
-  {% endif %} -->
 
 {% if page.url != "/" and site.breadcrumbs %}
   {% unless paginator %}
