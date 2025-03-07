@@ -27,6 +27,7 @@
 
 <ol>
 {% for citation in pub_list %}
+  {-}
   {% if include.venue %}
     {% assign publication = citation.Publication | downcase %}
     {% if venues contains publication %}
