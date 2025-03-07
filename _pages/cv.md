@@ -87,22 +87,30 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
 
 ## Awards, Honors, and Grants
 ### Vanderbilt University
+
 `F2021` 
 Received the American Bureau of Shipping merit Scholarship 
+
 `S2021` 
 Nominated for the Graduate Leadership Anchor Award 
+
 `S2024` 
 Nominated for the CF Chen best paper award 
+
 `Su2024`
  Received the Vanderbilt Award for Doctoral Discovery 
   
 ### Tennessee Technological University
+
 `F2018` 
 Awarded a Carnegie Fellowship 
+
 `F2023` 
 Awarded OER Development Grant 
+
 `S2024` 
 Awarded IEEE AESS Grant for the DARPA Triage Challenge 
+
 `S2024` 
 Nominated for the KEEN Foundation Rising Star Award 
 
