@@ -11,81 +11,98 @@ redirect_from:
 <object data="{{ site.url }}/files/CV.pdf" width="1000" height="1000" type='application/pdf'/> -->
 {% include base_path %} 
 
-## Contact Information
-Jesse.TN.Roberts@Gmail.com  
-<!--(865) 719-0163 -->
-752 Welch Ave  
-Cookeville, TN 38501    
+# Jesse Roberts
 
----
+Academic and AI Strategy Consultant
 
-## Research Interests
+<div id="webaddress">
+<a href="Jesse.TN.Roberts@gmail.com">Jesse.TN.Roberts@gmail.com</a>
+| <a href="https://JesseTNRoberts.com">My Webpage</a>
+</div>
+
+
+## Interests
 Computational Linguistics and NLP, Machine Cognition, Robotics, Neural Architectures, Theory of Deep Learning, Game Theory
 
 ---
 
 ## Education
+`2019-2024`
 **Vanderbilt University**, Nashville, Tennessee  
 Ph.D. Computer Science  
-*August 2024*  
 
 - Dissertation Topic: “A Theoretical & Empirical Analysis of Language Model Behavior”
 - Advisor: Doug Fisher
 
+`2014-2017`
 **Tennessee Technological University**, Cookeville, Tennessee  
-M.S. Electrical Engineering  
-*Spring 2017*  
+M.S. Electrical Engineering 
 
 - Thesis Topic: Machine Learning Improvement of Solar MPPT
 
+`2011-2014`
 B.S. Electrical Engineering   
-*Spring 2014*  
 
 ---
 
 ## Faculty Experience
 
+
 **Assistant Professor:** Tennessee Technological University  
-- CSC 4220/5220 - Data Mining and ML (Spring 2025)
+`S2025`
+- CSC 4220/5220 - Data Mining and ML 
+`F2024`
 - CSC 7970 - Special Topics (Fall 2024)  
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
 **Lecturer:** Tennessee Technological University  
-- ECE 3270 - PLC Lecture & Lab (Spring 2020 - Spring 2024)  
+`S2020 - S2024`
+- ECE 3270 - PLC Lecture & Lab   
   - Developed OER lab manuals for teaching beginner PLC programming, emphasizing good coding practices.
-- ECE 4961 & 4971 - Capstone Design I and II (Fall 2021 - Spring 2024)  
+`F2021 - S2024` 
+- ECE 4961 & 4971 - Capstone Design I and II  
   - Complete redevelopment of curriculum to facilitate assessment and sustainability.
-- ECE 3540 - Physical Electronics (Fall 2023 - Spring 2024)
+`F2023 - S2024`
+- ECE 3540 - Physical Electronics 
 
 **Instructor:** Vanderbilt University  
-- CS 1101 - Programming and Problem Solving (Java Based) (Summer 2020)
+`2020`
+- CS 1101 - Programming and Problem Solving (Java Based) 
 
 ---
 
 ## Industry Experience
 **ATC Automation**, Cookeville, Tennessee  
 *Senior Controls Engineer*  
-*May, 2014 - January, 2021*  
+`May, 2014 - January, 2021`  
 Designed, oversaw build, and programmed automation equipment to meet customer requirements and exceed expectations while maintaining profitability. Total value of projects oversaw in excess of 20 million dollars.
 
 *Co-op Program Manager*  
-*July, 2018 - December, 2020*  
+`July, 2018 - December, 2020`  
 Developed a co-op program to improve recruitment. Oversaw hiring, training, and management of co-op employees. Acted as the liaison for the building and maintenance of industrial/academic relations. Obtained a $100K industry lab grant.
 
 ---
 
 ## Awards, Honors, and Grants
 ### Vanderbilt University
-- Received the American Bureau of Shipping merit Scholarship (Fall 2021)
-- Nominated for the Graduate Leadership Anchor Award (Spring 2021)
-- Nominated for the CF Chen best paper award (Spring 2024)
-- Received the Vanderbilt Award for Doctoral Discovery (Summer 2024)
+`F2021`
+- Received the American Bureau of Shipping merit Scholarship 
+`S2021`
+- Nominated for the Graduate Leadership Anchor Award 
+`S2024`
+- Nominated for the CF Chen best paper award 
+`Su2024`
+- Received the Vanderbilt Award for Doctoral Discovery 
     
 ### Tennessee Technological University
-- Awarded a Carnegie Fellowship (Fall 2018)
-- Awarded OER Development Grant (Fall 2023)
-- Awarded IEEE AESS Grant for the DARPA Triage Challenge (Spring 2024)
-- Nominated for the KEEN Foundation Rising Star Award (Spring 2024)
+`F2018`
+- Awarded a Carnegie Fellowship 
+`F2023`
+- Awarded OER Development Grant 
+`S2024`
+- Awarded IEEE AESS Grant for the DARPA Triage Challenge 
+`S2024`
+- Nominated for the KEEN Foundation Rising Star Award 
 
 ---
 
@@ -136,37 +153,55 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 
 ## Professional Memberships
 
-- The Association for the Advancement of Artificial Intelligence (AAAI) (2023 - Current)
-- Association of Computational Linguistics (ACL) (2024 - Current)
-- Institute of Electrical and Electronics Engineers (IEEE) (2021 - Current)
-- Computational Intelligence Society (IEEE CIS) (2024 - Current)
+`2023 - Current`
+- The Association for the Advancement of Artificial Intelligence (AAAI) 
+`2024 - Current`
+- Association of Computational Linguistics (ACL) 
+`2021 - Current`
+- Institute of Electrical and Electronics Engineers (IEEE)
+`2024 - Current`
+- Computational Intelligence Society (IEEE CIS) 
 
 ---
 
 ## Faculty Service
 ### Tennessee Technological University
-- Undergraduate Program Committee (Fall 2021 - Current)
-- ACME Building Design College Committee (Spring 2022 - Current)
-- ABET Assessment Departmental Committee (Fall 2021 - Current)
-- Founding Advisor to the Rock Climbing Club (Fall 2022 - Current)
-- IEEE Robotics Team Coach (Fall 2021 - Current)
+`Fall 2021 - Current`
+- Undergraduate Program Committee 
+`Spring 2022 - Current`
+- ACME Building Design College Committee 
+`Fall 2021 - Current`
+- ABET Assessment Departmental Committee 
+`Fall 2022 - Current`
+- Founding Advisor to the Rock Climbing Club 
+`Fall 2021 - Current`
+- IEEE Robotics Team Coach 
 
 ---
 
 ## Research Service
 
 ### Conference Organization
-- Program Committee Member for FLAIRS (2025)
-- Session Chair for World Congress on Computational Intelligence (2024)
+`2025`
+- Program Committee Member for FLAIRS 
+`2024`
+- Session Chair for World Congress on Computational Intelligence 
 
 ### Reviewer
-- Association of Computational Linguistics (ACL) (2025)
-- Behavioral Sciences Journal (2025)
-- EPJ Data Science Journal (2024)
-- Natural Language Processing for the Digital Humanities (2024-2025)
-- Conference on Computational Natural Language Learning (2024)
-- International Joint Conference on Neural Networks (2022-2025)
-- IEEE Conference on Games (AI & Game Theory) (2022-2024)
+`2025`
+- Association of Computational Linguistics (ACL) 
+`2025`
+- Behavioral Sciences Journal 
+`2024`
+- EPJ Data Science Journal 
+`2024-2025`
+- Natural Language Processing for the Digital Humanities 
+`2024`
+- Conference on Computational Natural Language Learning 
+`2022-2025`
+- International Joint Conference on Neural Networks
+`2022-2024`
+- IEEE Conference on Games (AI & Game Theory)
 
 ---
 
@@ -174,16 +209,21 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 ## Teaching Assistant Experience
 
 **Vanderbilt University**
-- Project in Artificial Intelligence (Spring 2021)
-- Programming and Problem Solving (Java Based) (Fall 2020)
-- Compiler Construction (Spring 2020)
-- Database Management Systems (Managing TA) (Fall 2019)
+`S2021`
+- Project in Artificial Intelligence 
+`F2020`
+- Programming and Problem Solving (Java Based) 
+`S2020`
+- Compiler Construction 
+`F2019`
+- Database Management Systems (Managing TA) 
 ---
 
 ## Research Assistant Experience
 
 **Vanderbilt University**
-- Researched computational sustainability (Summer 2021) 
+`Su2021`
+- Researched computational sustainability 
   - Funded by NSF Grant No. 1521672
 
 
@@ -192,26 +232,45 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 ## Graduate Courses Taken
 
 **Vanderbilt University**
-- CS6388 - Model Integrated Computing (Fall 2020)
-- CS8395 - Neurodiversity Inspired Science & Engineering (Fall 2020)
-- CS6360 - Advanced Artificial Intelligence (Spring 2020)
-- CS5260 - Artificial Intelligence (Fall 2019)
-- CS6362 - Advanced Machine Learning (Fall 2019)
-- CS8395 - Computation & Cognition (Fall 2019)
+`F2020`
+- CS6388 - Model Integrated Computing
+`F2020`
+- CS8395 - Neurodiversity Inspired Science & Engineering
+`S2020`
+- CS6360 - Advanced Artificial Intelligence 
+`S2020`
+- CS5260 - Artificial Intelligence
+`F2019`
+- CS6362 - Advanced Machine Learning
+`F2019`
+- CS8395 - Computation & Cognition
+`F2019`
 
 **Tennessee Technological University**
-- CSC6903 - Learning Theory (Fall 2018)
-- CSC7980 - Stock Market Prediction Models (Spring 2018)
-- FIN6020 - Financial Management (Spring 2018)
-- CSC7240 - Intelligent Information Systems (Fall 2017)
-- CSC6903 - Advanced Reverse Engineering (Fall 2016)
-- ECE6580 - Instrument Transducer Technology (Fall 2016)
-- ECE6900 - Intelligent System Design (Fall 2015)
-- ECE6040 - Signal Analysis (Spring 2015)
-- ECE6250 - Random Signals & Systems (Spring 2015)
-- ECE6170 - High Performance Embedded System Design (Fall 2014)
-- ECE6200 - Linear Systems Analysis (Fall 2014)
-- ECE6600 - Computer Methods for Power System Analysis (Fall 2014)
+`F2018`
+- CSC6903 - Learning Theory
+`S2018`
+- CSC7980 - Stock Market Prediction Models 
+`S2018`
+- FIN6020 - Financial Management 
+`F2017`
+- CSC7240 - Intelligent Information Systems
+`F2016`
+- CSC6903 - Advanced Reverse Engineering
+`F2016`
+- ECE6580 - Instrument Transducer Technology
+`F2015`
+- ECE6900 - Intelligent System Design
+`S2015`
+- ECE6040 - Signal Analysis 
+`S2015`
+- ECE6250 - Random Signals & Systems 
+`F2014`
+- ECE6170 - High Performance Embedded System Design
+`F2014`
+- ECE6200 - Linear Systems Analysis
+`F2014`
+- ECE6600 - Computer Methods for Power System Analysis
 
 
 ---
