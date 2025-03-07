@@ -155,21 +155,25 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 - Conference on Computational Natural Language Learning (2024)
 - International Joint Conference on Neural Networks (2022-2025)
 - IEEE Conference on Games (AI & Game Theory) (2022-2024)
-- ---
 
-## Computer Skills
+---
 
-**Academic Programming Languages:**  
-- R, Matlab, C, C++, Python, Java, VB, Pascal
 
-**Professional Programming Languages:**  
-- Fanuc TP robotics language, Wincaps 3 robotics language, Siemens PLC all languages, Allen Bradley PLC all languages
+## Teaching Assistant Experience
 
-**Academic Applications:**  
-- TensorFlow, LaTeX, Matlab Machine Learning Toolbox, Altium PCB Designer, common Windows & Mac database, spreadsheet, and presentation software
+**Vanderbilt University**
+- Project in Artificial Intelligence (Spring 2021)
+- Programming and Problem Solving (Java Based) (Fall 2020)
+- Compiler Construction (Spring 2020)
+- Database Management Systems (Managing TA) (Fall 2019)
+---
 
-**Professional Applications:**  
-- Cognex Machine Vision, AutoCad, Siemens TIA Portal, Allen Bradley Logix 5000
+## Research Assistant Experience
+
+**Vanderbilt University**
+- Researched computational sustainability (Summer 2021) 
+  - Funded by NSF Grant No. 1521672
+
 
 ---
 
@@ -197,19 +201,9 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 - ECE6200 - Linear Systems Analysis (Fall 2014)
 - ECE6600 - Computer Methods for Power System Analysis (Fall 2014)
 
+
 ---
-
-## Teaching Assistant Experience
-
-**Vanderbilt University**
-- Project in Artificial Intelligence (Spring 2021)
-- Programming and Problem Solving (Java Based) (Fall 2020)
-- Compiler Construction (Spring 2020)
-- Database Management Systems (Managing TA) (Fall 2019)
----
-
-## Research Assistant Experience
-
-**Vanderbilt University**
-- Researched computational sustainability (Summer 2021) 
-  - Funded by NSF Grant No. 1521672
+## Languages
+- English (Native proficiency)
+- Spanish (Elementary proficiency)
+- Irish (Elementary proficiency)
