@@ -29,19 +29,17 @@ Computational Linguistics and NLP, Machine Cognition, Robotics, Neural Architect
 ## Education
 ### Vanderbilt University
 `2019-2024` 
-Ph.D. Computer Science  
-
+**Ph.D. Computer Science**  
 - Dissertation Topic: “A Theoretical & Empirical Analysis of Language Model Behavior”
 - Advisor: Doug Fisher
 
 ### Tennessee Technological University
 `2014-2017` 
-M.S. Electrical Engineering 
-
+**M.S. Electrical Engineering** 
 - Thesis Topic: Machine Learning Improvement of Solar MPPT
 
 `2011-2014` 
-B.S. Electrical Engineering   
+**B.S. Electrical Engineering**  
 
 ---
 
