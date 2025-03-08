@@ -25,7 +25,6 @@ Professor and AI Strategy Consultant
 Computational Linguistics and NLP, Machine Cognition, Robotics, Neural Architectures, Theory of Deep Learning, Game Theory
 
 ---
-
 ## Education
 ### Vanderbilt University
 `2019-2024` 
