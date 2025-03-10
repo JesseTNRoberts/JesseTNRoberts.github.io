@@ -127,6 +127,16 @@ Nominated for the KEEN Foundation Rising Star Award
 
 ---
 
+## Media Appearances
+
+`F2021` 
+Interviewed on the radio about capstone project that leveraged ML to monitor parking lots.
+
+`S2025` 
+Newspaper article regarding work to use large language models to preserve the Cherokee language: [Article](https://www.herald-citizen.com/news/education/linguistic-preservation/article_992ad803-2471-5401-b31e-3cf02fd2ccc1.html)
+
+---
+
 ## Publications
 
 {% include publications %}
