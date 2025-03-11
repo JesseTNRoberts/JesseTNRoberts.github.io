@@ -135,6 +135,12 @@ Interviewed on the radio about capstone project that leveraged ML to monitor par
 `S2025` 
 Newspaper article regarding work to use large language models to preserve the Cherokee language: [Article](https://www.herald-citizen.com/news/education/linguistic-preservation/article_992ad803-2471-5401-b31e-3cf02fd2ccc1.html)
 
+104.7 radio interview regarding Cherokee preservation with AI
+
+WBIR channel 10 interview: [Article](https://www.wbir.com/article/news/education/tennessee-tech-cookeville-ai-cherokee/51-ceb2f79f-1f99-4076-8f9a-cb1d1b2f827d)
+
+
+
 ---
 
 ## Publications
