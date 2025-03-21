@@ -147,8 +147,8 @@ WBIR channel 10 Interview regarding Cherokee preservation with AI: [Article](htt
 `S2025` 
 News channel 5 Nashville Interview with Forest Sanders regarding Cherokee preservation with AI
 
-<!-- `S2025` 
-Axios Interview regarding Cherokee preservation with AI -->
+`S2025` 
+Axios Interview regarding Cherokee preservation with AI
 
 
 
