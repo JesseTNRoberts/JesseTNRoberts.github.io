@@ -25,7 +25,7 @@ Professor and AI Strategy Consultant
 
 
 ## Interests
-Computational Linguistics and NLP, Machine Cognition, Robotics, Neural Architectures, Theory of Deep Learning, Game Theory
+Computational Linguistics and NLP, Robotics, Infrastructure Security, Machine Cognition, Neural Architectures, Theory of Deep Learning, Game Theory
 
 ---
 ## Education
