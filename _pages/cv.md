@@ -254,11 +254,14 @@ Association of Computational Linguistics (ACL)
 `2025` 
 Behavioral Sciences Journal 
 
-`2024` 
-EPJ Data Science Journal 
+`2025` 
+Research on Agent Language Models (REALM) at ACL
 
 `2024-2025` 
 Natural Language Processing for the Digital Humanities 
+
+`2024` 
+EPJ Data Science Journal 
 
 `2024` 
 Conference on Computational Natural Language Learning 
