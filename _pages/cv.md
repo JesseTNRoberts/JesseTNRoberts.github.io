@@ -151,6 +151,16 @@ News channel 5 Nashville Interview with Forest Sanders regarding Cherokee preser
 Axios Interview regarding Cherokee preservation with AI
 
 
+---
+## Workshop Organization and Teaching
+
+
+`S2025` 
+Classes without quizzes at TnTech CS - How do Language models work?
+
+`S2025` 
+TnTech College of Engineering CAFE Workshop - Using LLMs in Research
+
 
 ---
 

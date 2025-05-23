@@ -6,8 +6,8 @@ main:
   # - title: "Talks"
   #   url: /talks/    
 
-  # - title: "Teaching"
-  #   url: /teaching/    
+  - title: "Teaching"
+    url: /teaching/    
         
   # - title: "Research Journal"
   #  url: /year-archive/
@@ -17,9 +17,6 @@ main:
     
   - title: "CV"
     url: /cv/
-
-  - title: "CSC4220/5220"
-    url: /SP25-CSC4220
 
   # - title: "CV"
   #   url: /cv/
