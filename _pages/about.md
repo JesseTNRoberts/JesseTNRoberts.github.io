@@ -30,7 +30,6 @@ Additionally, I have given some lectures on LLMs and research that might be usef
 
 - [What are LLMs and How Could You Use Them for Research?](https://docs.google.com/presentation/d/1w7bZLiH0T-K22qParP4oqnAfYjXGMY7WF950Nc0aQlQ/edit?usp=sharing)
 
-https://docs.google.com/presentation/d/1_WAPiyVPQE6Z6fh-7RbHP-9hmR7ab1vNxGmobvOfFuo/edit?slide=id.g3600dc20eb8_0_39#slide=id.g3600dc20eb8_0_39
 
 Goals
 ------
