@@ -83,6 +83,17 @@ ECE 3540 - Physical Electronics
 `Su2020` 
 CS 1101 - Programming and Problem Solving (Java Based) 
 
+
+---
+
+## Consulting
+
+**Gradient Consulting**, Cookeville, Tennessee  
+
+### Wilson Sports
+`2025 - 2026`
+Conducted full survey of the production process and analyzed it for automation and artificial intelligence opportunities. Developed a plan for retooling for the inclusion of automation and AI.  
+
 ---
 
 ## Industry Experience
