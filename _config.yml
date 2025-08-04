@@ -23,14 +23,20 @@ miles_ran                : 460
 miles_goal               : 1000
 miles_date               : "2026-01-01"
 
-research_words           : 6 
-# LLM uncertainty, 
-# RL + transformer, Smart contract, 
-# Poster: A Few-Shot Learning Method for SMS Phishing Detection and Explanation Using SLMs
-# Basic categories in vision models
-# Eric LLM paper
-# Smart contracts
-# 
+research_words           : 9
+# LLM uncertainty, (submitted)
+# RL + transformer, Smart contract, (published)
+# Poster: A Few-Shot Learning Method for SMS Phishing Detection and Explanation Using SLMs (published)
+# Eric LLM paper (published)
+# Smart contracts (published)
+# LLM uncertainty 2 (submitted)
+# Micah paper 2 (submitted)
+# Basic category usage in VLMs (revising)
+# Uno LLM (submitted)
+
+# Travis paper (not counted yet)
+# Mike Soare paper (not counted yet)
+
 
 research_goal            : 10
 research_date            : "2026-01-01"
