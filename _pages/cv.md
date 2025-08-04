@@ -259,15 +259,17 @@ IEEE Robotics Team Coach
 
 ## Research Service
 
-### Conference Organization
+`2025` 
+Conference on Computational Natural Language Learning 
 
 `2025` 
-Program Committee Member for FLAIRS 
+Natural Language Processing for the Digital Humanities 
 
-`2024` 
-Session Chair for World Congress on Computational Intelligence 
+`2025`
+Association for the Advancement of Artificial Intelligence (AAAI)
 
-### Reviewer
+`2025` 
+Florida Artificial Intelligence Research Symposium (FLAIRS)
 
 `2025` 
 Association of Computational Linguistics (ACL) 
@@ -278,7 +280,10 @@ Behavioral Sciences Journal
 `2025` 
 Research on Agent Language Models (REALM) at ACL
 
-`2024-2025` 
+`2024` 
+Session Chair for World Congress on Computational Intelligence 
+
+`2024` 
 Natural Language Processing for the Digital Humanities 
 
 `2024` 
