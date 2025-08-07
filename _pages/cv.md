@@ -117,8 +117,11 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
 
 `2025`
 Collaborative Research: Conference: NAIRR Pilot Expansion: FA1: Mid-South Conferences on CyberInfrastructure Advances to Enable Interdisciplinary AI Research in Health
+
 $125,133
+
 PI: Anthony Skjellum
+
 Co-PI: Jesse Roberts, Amr Hilal
 
 `S2024` 
@@ -237,6 +240,7 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 ## Presentations
 `May 2025`
 Poster: A Few-Shot Learning Method for SMS Phishing Detection and Explanation Using SLMs
+
 Seyed Mohammad Sanjari, Jesse Roberts, Mir Mehedi A. Pritom
 
 ---
