@@ -111,33 +111,45 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
 ---
 
 ## Awards, Honors, and Grants
-### Vanderbilt University
 
-`F2021` 
-Received the American Bureau of Shipping merit Scholarship 
-
-`S2021` 
-Nominated for the Graduate Leadership Anchor Award 
-
-`S2024` 
-Nominated for the CF Chen best paper award 
-
-`Su2024`
- Received the Vanderbilt Award for Doctoral Discovery 
-  
+ 
 ### Tennessee Technological University
 
-`F2018` 
-Awarded a Carnegie Fellowship 
+`2025`
+Collaborative Research: Conference: NAIRR Pilot Expansion: FA1: Mid-South Conferences on CyberInfrastructure Advances to Enable Interdisciplinary AI Research in Health
+$125,133
+PI: Anthony Skjellum
+Co-PI: Jesse Roberts, Amr Hilal
 
-`F2023` 
-Awarded OER Development Grant 
+`S2024` 
+Nominated for the KEEN Foundation Rising Star Award 
 
 `S2024` 
 Awarded IEEE AESS Grant for the DARPA Triage Challenge 
 
+`F2023` 
+Awarded OER Development Grant 
+
+`F2018` 
+Awarded a Carnegie Fellowship 
+
+
+
+### Vanderbilt University
+
+`Su2024`
+ Received the Vanderbilt Award for Doctoral Discovery 
+
 `S2024` 
-Nominated for the KEEN Foundation Rising Star Award 
+Nominated for the CF Chen best paper award 
+
+`S2021` 
+Nominated for the Graduate Leadership Anchor Award 
+
+`F2021` 
+Received the American Bureau of Shipping merit Scholarship 
+
+ 
 
 ---
 
@@ -218,6 +230,15 @@ J. Roberts and I. Bhattacharya, "MNFIS and other soft computing based MPPT techn
 
 J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker," Thesis. Tennessee Technological University, 2017.
 -->
+
+
+---
+
+## Presentations
+`May 2025`
+Poster: A Few-Shot Learning Method for SMS Phishing Detection and Explanation Using SLMs
+Seyed Mohammad Sanjari, Jesse Roberts, Mir Mehedi A. Pritom
+
 ---
 
 ## Professional Memberships
