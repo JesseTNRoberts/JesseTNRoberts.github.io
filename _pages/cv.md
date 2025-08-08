@@ -118,20 +118,16 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
 `2025`
 Collaborative Research: Conference: NAIRR Pilot Expansion: FA1: Mid-South Conferences on CyberInfrastructure Advances to Enable Interdisciplinary AI Research in Health
 
-$125,133
-
-PI: Anthony Skjellum
-
-Co-PI: Jesse Roberts, Amr Hilal
-
-`S2024` 
-Nominated for the KEEN Foundation Rising Star Award 
+National Science Foundation Award - Award# 2526362 - $125,133 - PI: Anthony Skjellum - Co-PI: Jesse Roberts, Amr Hilal
 
 `S2024` 
 Awarded IEEE AESS Grant for the DARPA Triage Challenge 
 
 `F2023` 
 Awarded OER Development Grant 
+
+`S2024` 
+Nominated for the KEEN Foundation Rising Star Award 
 
 `F2018` 
 Awarded a Carnegie Fellowship 
