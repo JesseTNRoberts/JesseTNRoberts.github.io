@@ -52,6 +52,12 @@ Computational Linguistics and NLP, Robotics, Infrastructure Security, Machine Co
 `2024-Current`
 **Assistant Professor**
 
+`F2025`
+CSC 4320 - Computer Architecture
+CSC 2220 - Artificial Intelligence for Everyone
+CSC 7970 - LLM Seminar
+
+
 `S2025` 
 CSC 4220/5220 - Data Mining and ML 
 
@@ -119,6 +125,13 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
 Collaborative Research: Conference: NAIRR Pilot Expansion: FA1: Mid-South Conferences on CyberInfrastructure Advances to Enable Interdisciplinary AI Research in Health
 
 National Science Foundation Award - Award# 2526362 - $125,133 - PI: Anthony Skjellum - Co-PI: Jesse Roberts, Amr Hilal
+
+
+`2025`
+ERI: Data-Driven Expansion of Electrified Transportation Network
+
+National Science Foundation Award - Award# 2347337 - $195,769 - PI: Jesse Roberts
+
 
 `S2024` 
 Awarded IEEE AESS Grant for the DARPA Triage Challenge 
