@@ -134,16 +134,16 @@ National Science Foundation Award - Award# 2347337 - $195,769 - PI: Jesse Robert
 
 
 `S2024` 
-Awarded IEEE AESS Grant for the DARPA Triage Challenge 
+IEEE AESS Grant for the DARPA Triage Challenge 
 
 `F2023` 
-Awarded OER Development Grant 
+TnTech OER Development Grant 
 
 `S2024` 
 Nominated for the KEEN Foundation Rising Star Award 
 
 `F2018` 
-Awarded a Carnegie Fellowship 
+Vanderbilt Carnegie Fellowship 
 
 
 
