@@ -293,6 +293,9 @@ IEEE Robotics Team Coach
 
 ## Research Service
 
+`2025`
+12th Annual Conference on Advances in Cognitive Systems
+
 `2025` 
 Conference on Computational Natural Language Learning 
 
