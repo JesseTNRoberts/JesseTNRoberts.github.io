@@ -16,7 +16,7 @@ redirect_from:
 
 # Jesse Roberts
 
-Assistant Professor and AI Strategy Consultant
+Assistant Professor 
 
 <div id="webaddress">
 <a href="Jesse.TN.Roberts@gmail.com">Jesse.TN.Roberts@gmail.com</a>

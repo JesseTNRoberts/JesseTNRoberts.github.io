@@ -1,7 +1,10 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+/* Add page-break-inside property to specific elements */
+
+p, ul, ol, h1, h2, h3, h4 {
+    page-break-inside: avoid;
+}
+
+/* The rest of your CSS remains unchanged */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -49,8 +52,6 @@ table {
 
 /* end of reset */
 
-
-
 body {
 	font: normal normal 400;
 	font-size: 11pt;
@@ -83,7 +84,6 @@ p code {
 	right: -20%;
 }
 
-
 ul {
 	position: relative;
 	left: 25%;
@@ -92,18 +92,9 @@ ul {
 	/*margin-top: -0.5em;*/
 }
 
-/*uncomment to get dashes in the list*/
-/*li:before {
-	content: "-";
-	position: relative;
-	left: -0.25em;
-}*/
-
 li {
-	/*second line indent*/
 	padding-left: 1.25em;
 	text-indent: -1.25em;
-	/*color: #777;*/
 }
 
 li ul {
@@ -113,7 +104,7 @@ li ul {
 	margin-top: 0.25em;
 }
 
-h1,h2,h3,h4 {
+h1, h2, h3, h4 {
 	font-weight: 400;
 	font-family: Avenir,Cousine,Verdana,sans-serif;
 	width: 80%;
@@ -128,7 +119,6 @@ h1 {
 }
 
 h1+p {
-	/*subtitle*/
 	font-style: italic;
 	font-size: 110%;
 }
@@ -143,7 +133,6 @@ h2 {
 	width: 20%;
 }
 
-
 h3 {
 	font-size: 1em;
 	line-height: 2em;
@@ -156,11 +145,11 @@ h3 {
 
 a {
 	color: inherit;
-	text-decoration:none
+	text-decoration: none;
 }
 
 a:hover {
-	color:#39f
+	color: #39f;
 }
 
 #webaddress {
@@ -178,7 +167,7 @@ a:hover {
 
 em {
 	font-style: normal;
-	color: #2d4e5e
+	color: #2d4e5e;
 }
 
 strong {
@@ -189,6 +178,3 @@ strong {
 	display: none;
 	visibility: hidden;
 }
-
-
-
