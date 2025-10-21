@@ -186,7 +186,7 @@ News channel 5 Nashville Interview with Forest Sanders regarding Cherokee preser
 Axios Interview regarding Cherokee preservation with AI
 
 `F2025` 
-Interviewed by the Knoxville ledger regarding Cherokee preservation with AI
+Interviewed by the Knoxville ledger regarding Cherokee preservation with AI: [Article](https://www.tnledger.com/Knoxville/editorial/Article.aspx?id=195168)
 
 ---
 ## Workshop Organization and Teaching
