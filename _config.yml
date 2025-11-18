@@ -20,11 +20,11 @@ grants_submitted         : 5
 grants_goal              : 4
 grants_date              : "2026-01-01"
 
-miles_ran                : 642
+miles_ran                : 935
 miles_goal               : 1000
 miles_date               : "2026-01-01"
 
-research_words           : 9
+research_words           : 10
 # LLM uncertainty, (submitted)
 # RL + transformer, Smart contract, (published)
 # Poster: A Few-Shot Learning Method for SMS Phishing Detection and Explanation Using SLMs (published)
