@@ -53,8 +53,11 @@ Computational Linguistics and NLP, Robotics, Infrastructure Security, Machine Co
 **Assistant Professor**
 
 CSC 4320 (F2025) - Computer Architecture
+
 CSC 2220 (F2025) - Artificial Intelligence for Everyone
+
 CSC 4220/5220 (S2025) - Data Mining and ML 
+
 CSC 7970 (F2024 - F2025) - LLM Seminar
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
