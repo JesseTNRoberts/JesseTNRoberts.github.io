@@ -116,13 +116,13 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
 `2025`
 Collaborative Research: Conference: NAIRR Pilot Expansion: FA1: Mid-South Conferences on CyberInfrastructure Advances to Enable Interdisciplinary AI Research in Health
 
-`National Science Foundation Award - Award# 2526362 - $125,133 - PI: Anthony Skjellum - Co-PI: Jesse Roberts, Amr Hilal`
+  - National Science Foundation Award - Award# 2526362 - $125,133 - PI: Anthony Skjellum - Co-PI: Jesse Roberts, Amr Hilal
 
 
 `2025`
 ERI: Data-Driven Expansion of Electrified Transportation Network
 
-`National Science Foundation Award - Award# 2347337 - $195,769 - PI: Jesse Roberts`
+  - National Science Foundation Award - Award# 2347337 - $195,769 - PI: Jesse Roberts
 
 
 `S2024` 
