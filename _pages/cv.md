@@ -52,42 +52,31 @@ Computational Linguistics and NLP, Robotics, Infrastructure Security, Machine Co
 `2024-Current`
 **Assistant Professor**
 
-`F2025`
-CSC 4320 - Computer Architecture
-CSC 2220 - Artificial Intelligence for Everyone
-CSC 7970 - LLM Seminar
-
-
-`S2025` 
-CSC 4220/5220 - Data Mining and ML 
-
-`F2024` 
-CSC 7970 - Special Topics 
+CSC 4320 (F2025) - Computer Architecture
+CSC 2220 (F2025) - Artificial Intelligence for Everyone
+CSC 4220/5220 (S2025) - Data Mining and ML 
+CSC 7970 (F2024 - F2025) - LLM Seminar
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
 
 ### Tennessee Technological University 
 `2021-2024`
 **Lecturer**  
-
-`S2020 - S2024` 
-ECE 3270 - PLC Lecture & Lab   
+ 
+ECE 3270 (S2020 - S2024) - PLC Lecture & Lab   
   - Developed OER lab manuals for teaching beginner PLC programming, emphasizing good coding practices. 
-
-`F2021 - S2024` 
-ECE 4961 & 4971 - Capstone Design I and II  
+ 
+ECE 4961 & 4971 (F2021 - S2024) - Capstone Design I and II  
   - Complete redevelopment of curriculum to facilitate assessment and sustainability.
-
-`F2023 - S2024` 
-ECE 3540 - Physical Electronics 
+ 
+ECE 3540 (F2023 - S2024) - Physical Electronics 
 
 
 ### Vanderbilt University
 `2020-2020`
 **Instructor** 
-
-`Su2020` 
-CS 1101 - Programming and Problem Solving (Java Based) 
+ 
+CS 1101 (Su2020) - Programming and Problem Solving (Java Based) 
 
 
 ---
