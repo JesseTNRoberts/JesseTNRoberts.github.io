@@ -172,10 +172,7 @@ Herold Citizen article regarding work to use large language models to preserve t
 WBIR channel 10 Interview regarding Cherokee preservation with AI: [Article](https://www.wbir.com/article/news/education/tennessee-tech-cookeville-ai-cherokee/51-ceb2f79f-1f99-4076-8f9a-cb1d1b2f827d)
 
 `S2025` 
-News channel 5 Nashville Interview with Forest Sanders regarding Cherokee preservation with AI
-
-`S2025` 
-Axios Interview regarding Cherokee preservation with AI
+News channel 5 Nashville Interview with Forest Sanders regarding Cherokee preservation with AI [Article](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.newschannel5.com/news/this-tennessee-tech-professor-is-working-to-help-preserve-the-cherokee-language-using-ai&ved=2ahUKEwjM2YqT1sqRAxVMw8kDHeGtErIQFnoECB4QAQ&usg=AOvVaw3CBZih6boeiBmTmBAXTYSk)
 
 `F2025` 
 Interviewed by the Knoxville ledger regarding Cherokee preservation with AI: [Article](https://www.tnledger.com/Knoxville/editorial/Article.aspx?id=195168)
