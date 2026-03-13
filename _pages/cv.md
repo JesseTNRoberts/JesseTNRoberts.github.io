@@ -284,6 +284,12 @@ IEEE Robotics Team Coach
 
 ## Research Service
 
+`2026` 
+International Conference on Machine Learning (ICML)
+
+`2026` 
+Florida Artificial Intelligence Research Symposium (FLAIRS)
+
 `2025`
 International Conference on Learning Representations (ICLR)
 
