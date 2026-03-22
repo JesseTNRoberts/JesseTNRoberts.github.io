@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3-Input Neuron Explorer — 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #080a0f;
+  --surface: #0f1219;
+  --surface2: #161b26;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #dde1eb;
+  --text-muted: #5a6174;
+  --text-dim: #8b93a8;
+  --accent: #6c5ce7;
+  --accent-hi: #a29bfe;
+  --green: #4ade80;
+  --red: #f87171;
+  --mono: 'Space Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+}
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  display: flex;
+  flex-direction: column;
+}
+
+/* grid bg */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(108,92,231,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,92,231,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  flex-shrink: 0;
+  padding: 0.9rem 1.5rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.header-left { display: flex; flex-direction: column; gap: 2px; }
+
+.header-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-hi);
+}
+
+h1 {
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+h1 span { color: var(--accent-hi); }
+
+.eq-display {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+.eq-display .val { color: var(--accent-hi); }
+.eq-display .fn  { color: #f472b6; }
+
+/* main area */
+.main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+/* 3D canvas */
+#three-container {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+#three-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.drag-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  background: rgba(8,10,15,0.7);
+  padding: 4px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* sidebar */
+.sidebar {
+  flex-shrink: 0;
+  width: 240px;
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+.side-section {
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.side-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+}
+
+/* sliders */
+.slider-row { margin-bottom: 0.9rem; }
+.slider-row:last-child { margin-bottom: 0; }
+
+.slider-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+.slider-name {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.slider-val {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-hi);
+  min-width: 38px;
+  text-align: right;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 3px;
+  background: var(--surface2);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--accent-hi);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+  transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:active { transform: scale(1.3); }
+input[type=range]::-moz-range-thumb {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--accent-hi);
+  border: 2px solid var(--bg);
+}
+
+/* truth table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+th {
+  color: var(--text-muted);
+  font-weight: 400;
+  text-align: center;
+  padding: 3px 4px;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.06em;
+}
+
+td {
+  text-align: center;
+  padding: 4px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--text-dim);
+}
+
+td.hi { color: var(--green); font-weight: 700; }
+td.lo { color: var(--red);   font-weight: 700; }
+
+.acc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.acc-val { color: var(--accent-hi); font-weight: 700; }
+
+.acc-track {
+  height: 3px;
+  background: var(--surface2);
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.acc-fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 2px;
+  transition: width 0.25s;
+}
+
+/* display options */
+.opt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.opt-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.toggle {
+  position: relative;
+  width: 32px; height: 17px;
+  cursor: pointer;
+}
+
+.toggle input { opacity: 0; width: 0; height: 0; }
+
+.toggle-track {
+  position: absolute;
+  inset: 0;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 9px;
+  transition: background 0.2s;
+}
+
+.toggle input:checked + .toggle-track { background: var(--accent); border-color: var(--accent); }
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 11px; height: 11px;
+  background: var(--text-dim);
+  border-radius: 50%;
+  transition: left 0.2s, background 0.2s;
+}
+
+.toggle input:checked ~ .toggle-thumb {
+  left: 17px;
+  background: white;
+}
+
+footer {
+  flex-shrink: 0;
+  padding: 0.5rem 1.5rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.07em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <div class="header-left">
+      <div class="header-tag">Neural Network Explorer · 3D</div>
+      <h1>3-Input Neuron — <span>Decision Hyperplane</span></h1>
+    </div>
+    <div class="eq-display">
+      <span id="eq-z">ŷ = ...</span> &nbsp;·&nbsp; P̂ = <span class="fn">σ</span>(ŷ)
+    </div>
+  </header>
+
+  <div class="main">
+    <div id="three-container">
+      <div class="drag-hint">drag to rotate · scroll to zoom</div>
+    </div>
+
+    <div class="sidebar">
+
+      <div class="side-section">
+        <div class="side-title">Weights &amp; Bias</div>
+
+        <div class="slider-row">
+          <div class="slider-head">
+            <span class="slider-name">w<sub style="font-size:8px">a</sub> (A axis)</span>
+            <span class="slider-val" id="wa-out">+4.0</span>
+          </div>
+          <input type="range" id="wa" min="-8" max="8" step="0.1" value="4">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-head">
+            <span class="slider-name">w<sub style="font-size:8px">b</sub> (B axis)</span>
+            <span class="slider-val" id="wb-out">+4.0</span>
+          </div>
+          <input type="range" id="wb" min="-8" max="8" step="0.1" value="4">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-head">
+            <span class="slider-name">w<sub style="font-size:8px">c</sub> (C axis)</span>
+            <span class="slider-val" id="wc-out">+4.0</span>
+          </div>
+          <input type="range" id="wc" min="-8" max="8" step="0.1" value="4">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-head">
+            <span class="slider-name">bias</span>
+            <span class="slider-val" id="bias-out">−6.0</span>
+          </div>
+          <input type="range" id="bias" min="-12" max="12" step="0.1" value="-6">
+        </div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">Display</div>
+
+        <div class="opt-row">
+          <span class="opt-label">Decision plane</span>
+          <label class="toggle">
+            <input type="checkbox" id="tog-plane" checked>
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+
+        <div class="opt-row">
+          <span class="opt-label">Plane opacity</span>
+          <span class="slider-val" id="opacity-out">40%</span>
+        </div>
+        <input type="range" id="plane-opacity" min="5" max="90" step="5" value="40" style="margin-bottom: 0.6rem;">
+
+        <div class="opt-row">
+          <span class="opt-label">Activation spheres</span>
+          <label class="toggle">
+            <input type="checkbox" id="tog-spheres" checked>
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+
+        <div class="opt-row">
+          <span class="opt-label">Axis labels</span>
+          <label class="toggle">
+            <input type="checkbox" id="tog-labels" checked>
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+
+        <div class="opt-row">
+          <span class="opt-label">Grid</span>
+          <label class="toggle">
+            <input type="checkbox" id="tog-grid" checked>
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">Truth Table (AND-3)</div>
+        <table>
+          <thead>
+            <tr><th>A</th><th>B</th><th>C</th><th>P̂</th><th>✓?</th></tr>
+          </thead>
+          <tbody id="truth-body"></tbody>
+        </table>
+        <div class="acc-row">
+          <span>Accuracy</span>
+          <span class="acc-val" id="acc-text">— / 8</span>
+        </div>
+        <div class="acc-track">
+          <div class="acc-fill" id="acc-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>3-Input Neuron Explorer · 3D Decision Plane</span>
+    <span>P̂ = σ(w<sub>a</sub>·a + w<sub>b</sub>·b + w<sub>c</sub>·c + bias)</span>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const sigmoid = z => 1 / (1 + Math.exp(-z));
+
+const ALL8 = [];
+for (let a = 0; a <= 1; a++)
+  for (let b = 0; b <= 1; b++)
+    for (let c = 0; c <= 1; c++)
+      ALL8.push([a, b, c, a & b & c]);
+
+// ── Three.js setup ──────────────────────────────────────────────────────
+const container = document.getElementById('three-container');
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x080a0f, 1);
+container.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 100);
+camera.position.set(2.4, 1.8, 2.4);
+camera.lookAt(0.5, 0.5, 0.5);
+
+// Lighting
+scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+const dirLight = new THREE.DirectionalLight(0xa29bfe, 1.2);
+dirLight.position.set(3, 4, 3);
+scene.add(dirLight);
+const fillLight = new THREE.DirectionalLight(0x4ade80, 0.3);
+fillLight.position.set(-2, -1, -2);
+scene.add(fillLight);
+
+// ── Orbit controls (manual lightweight impl) ───────────────────────────
+let isDragging = false, prevX = 0, prevY = 0;
+let theta = Math.PI / 4, phi = Math.PI / 4, radius = 3.6;
+const target = new THREE.Vector3(0.5, 0.5, 0.5);
+
+function updateCamera() {
+  camera.position.set(
+    target.x + radius * Math.sin(phi) * Math.sin(theta),
+    target.y + radius * Math.cos(phi),
+    target.z + radius * Math.sin(phi) * Math.cos(theta)
+  );
+  camera.lookAt(target);
+}
+
+updateCamera();
+
+renderer.domElement.addEventListener('mousedown', e => { isDragging = true; prevX = e.clientX; prevY = e.clientY; });
+window.addEventListener('mouseup', () => { isDragging = false; });
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const dx = e.clientX - prevX, dy = e.clientY - prevY;
+  theta -= dx * 0.008;
+  phi = Math.max(0.08, Math.min(Math.PI - 0.08, phi - dy * 0.008));
+  prevX = e.clientX; prevY = e.clientY;
+  updateCamera();
+});
+
+renderer.domElement.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) { isDragging = true; prevX = e.touches[0].clientX; prevY = e.touches[0].clientY; }
+}, { passive: true });
+window.addEventListener('touchend', () => { isDragging = false; });
+window.addEventListener('touchmove', e => {
+  if (!isDragging || e.touches.length !== 1) return;
+  const dx = e.touches[0].clientX - prevX, dy = e.touches[0].clientY - prevY;
+  theta -= dx * 0.008;
+  phi = Math.max(0.08, Math.min(Math.PI - 0.08, phi - dy * 0.008));
+  prevX = e.touches[0].clientX; prevY = e.touches[0].clientY;
+  updateCamera();
+}, { passive: true });
+
+renderer.domElement.addEventListener('wheel', e => {
+  radius = Math.max(1, Math.min(8, radius + e.deltaY * 0.003));
+  updateCamera();
+}, { passive: true });
+
+// ── Scene objects ────────────────────────────────────────────────────────
+
+// Unit cube wireframe
+const cubeGeo = new THREE.BoxGeometry(1, 1, 1);
+const cubeEdges = new THREE.EdgesGeometry(cubeGeo);
+const cubeMat = new THREE.LineBasicMaterial({ color: 0x2a2f44, linewidth: 1 });
+const cubeWire = new THREE.LineSegments(cubeEdges, cubeMat);
+cubeWire.position.set(0.5, 0.5, 0.5);
+scene.add(cubeWire);
+
+// Grid floor (A-B plane at C=0)
+const gridGroup = new THREE.Group();
+const gridMat = new THREE.LineBasicMaterial({ color: 0x1e2235, linewidth: 1 });
+for (let i = 0; i <= 4; i++) {
+  const t = i / 4;
+  const hGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,t), new THREE.Vector3(1,0,t)]);
+  const vGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(t,0,0), new THREE.Vector3(t,0,1)]);
+  gridGroup.add(new THREE.Line(hGeo, gridMat));
+  gridGroup.add(new THREE.Line(vGeo, gridMat));
+}
+scene.add(gridGroup);
+
+// Axes
+function makeAxis(from, to, color) {
+  const geo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(...from), new THREE.Vector3(...to)
+  ]);
+  return new THREE.Line(geo, new THREE.LineBasicMaterial({ color, linewidth: 2 }));
+}
+scene.add(makeAxis([-0.05,0,0],[1.25,0,0], 0x6c5ce7));
+scene.add(makeAxis([0,-0.05,0],[0,1.25,0], 0x00cec9));
+scene.add(makeAxis([0,0,-0.05],[0,0,1.25], 0xfd79a8));
+
+// Axis label sprites
+function makeLabel(text, position, color) {
+  const canvas2 = document.createElement('canvas');
+  canvas2.width = 128; canvas2.height = 64;
+  const c = canvas2.getContext('2d');
+  c.fillStyle = color;
+  c.font = 'bold 36px "Space Mono", monospace';
+  c.textAlign = 'center';
+  c.textBaseline = 'middle';
+  c.fillText(text, 64, 32);
+  const tex = new THREE.CanvasTexture(canvas2);
+  const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false });
+  const sprite = new THREE.Sprite(mat);
+  sprite.position.set(...position);
+  sprite.scale.set(0.22, 0.11, 1);
+  return sprite;
+}
+
+const labelGroup = new THREE.Group();
+labelGroup.add(makeLabel('A', [1.38, 0, 0], '#a29bfe'));
+labelGroup.add(makeLabel('B', [0, 1.38, 0], '#55efc4'));
+labelGroup.add(makeLabel('C', [0, 0, 1.38], '#fd79a8'));
+scene.add(labelGroup);
+
+// ── Data point spheres ────────────────────────────────────────────────
+const sphereGroup = new THREE.Group();
+scene.add(sphereGroup);
+
+function makeSphereLabel(text, color) {
+  const c2 = document.createElement('canvas');
+  c2.width = 64; c2.height = 64;
+  const ct = c2.getContext('2d');
+  ct.fillStyle = color;
+  ct.font = 'bold 28px "Space Mono"';
+  ct.textAlign = 'center'; ct.textBaseline = 'middle';
+  ct.fillText(text, 32, 32);
+  const tex = new THREE.CanvasTexture(c2);
+  const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false });
+  const s = new THREE.Sprite(mat);
+  s.scale.set(0.14, 0.14, 1);
+  return s;
+}
+
+// ── Decision plane ─────────────────────────────────────────────────────
+let planeMesh = null;
+let planeWire = null;
+
+function buildPlane(wa, wb, wc, bias) {
+  if (planeMesh) { scene.remove(planeMesh); planeMesh.geometry.dispose(); planeMesh.material.dispose(); }
+  if (planeWire) { scene.remove(planeWire); planeWire.geometry.dispose(); planeWire.material.dispose(); }
+
+  // Decision plane: wa*a + wb*b + wc*c + bias = 0
+  // We sample a grid over two free axes and solve for the third
+  const RES = 30;
+  const positions = [];
+  const indices = [];
+
+  // Choose which axis to solve for (largest |w| for numerical stability)
+  const absW = [Math.abs(wa), Math.abs(wb), Math.abs(wc)];
+  const solveAxis = absW.indexOf(Math.max(...absW));
+
+  // Two free axes
+  const freeAxes = [0,1,2].filter(i => i !== solveAxis);
+
+  function getPoint(u, v) {
+    const vals = [0,0,0];
+    vals[freeAxes[0]] = u;
+    vals[freeAxes[1]] = v;
+    const ws = [wa, wb, wc];
+    const solved = -(ws[freeAxes[0]] * u + ws[freeAxes[1]] * v + bias) / ws[solveAxis];
+    vals[solveAxis] = solved;
+    return vals; // [a, b, c]
+  }
+
+  const RANGE = 1.5;
+  const step = (RANGE * 2) / RES;
+
+  for (let i = 0; i <= RES; i++) {
+    for (let j = 0; j <= RES; j++) {
+      const u = -0.25 + i * (1.5 / RES);
+      const v = -0.25 + j * (1.5 / RES);
+      const [a, b, c] = getPoint(u, v);
+      positions.push(a, b, c);
+    }
+  }
+
+  for (let i = 0; i < RES; i++) {
+    for (let j = 0; j < RES; j++) {
+      const tl = i * (RES+1) + j;
+      const tr = tl + 1;
+      const bl = tl + (RES+1);
+      const br = bl + 1;
+      indices.push(tl, bl, tr, tr, bl, br);
+    }
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.setIndex(indices);
+  geo.computeVertexNormals();
+
+  const opacityVal = parseInt(document.getElementById('plane-opacity').value) / 100;
+  const showPlane = document.getElementById('tog-plane').checked;
+
+  const mat = new THREE.MeshPhongMaterial({
+    color: 0x6c5ce7,
+    transparent: true,
+    opacity: opacityVal,
+    side: THREE.DoubleSide,
+    shininess: 60,
+    specular: 0xa29bfe,
+    depthWrite: false
+  });
+  planeMesh = new THREE.Mesh(geo, mat);
+  planeMesh.visible = showPlane;
+  scene.add(planeMesh);
+
+  // Wireframe on top
+  const wGeo = new THREE.WireframeGeometry(geo);
+  const wMat = new THREE.LineBasicMaterial({ color: 0xa29bfe, transparent: true, opacity: 0.18 });
+  planeWire = new THREE.LineSegments(wGeo, wMat);
+  planeWire.visible = showPlane;
+  scene.add(planeWire);
+}
+
+function buildSpheres(wa, wb, wc, bias) {
+  while (sphereGroup.children.length) {
+    const c = sphereGroup.children[0];
+    if (c.geometry) c.geometry.dispose();
+    if (c.material) c.material.dispose();
+    sphereGroup.remove(c);
+  }
+
+  const showSpheres = document.getElementById('tog-spheres').checked;
+  if (!showSpheres) return;
+
+  ALL8.forEach(([a, b, c, label]) => {
+    const p = sigmoid(wa * a + wb * b + wc * c + bias);
+    const correct = (p >= 0.5) === (label === 1);
+
+    // Color by activation value
+    const t = p;
+    const r = Math.round((1-t)*220 + t*30);
+    const g = Math.round((1-t)*60  + t*200);
+    const bv= Math.round((1-t)*60  + t*80);
+    const sphereColor = (r << 16) | (g << 8) | bv;
+
+    const geo = new THREE.SphereGeometry(0.055, 24, 16);
+    const mat = new THREE.MeshPhongMaterial({
+      color: sphereColor,
+      emissive: sphereColor,
+      emissiveIntensity: 0.35,
+      shininess: 80
+    });
+    const sphere = new THREE.Mesh(geo, mat);
+    sphere.position.set(a, b, c);
+    sphereGroup.add(sphere);
+
+    // Ring: green correct, red wrong
+    const ringGeo = new THREE.TorusGeometry(0.085, 0.012, 8, 32);
+    const ringMat = new THREE.MeshBasicMaterial({
+      color: correct ? 0x4ade80 : 0xf87171,
+      transparent: true,
+      opacity: 0.85
+    });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.position.set(a, b, c);
+    sphereGroup.add(ring);
+  });
+}
+
+// ── Controls ──────────────────────────────────────────────────────────
+const sliders = ['wa','wb','wc','bias'];
+
+function getParams() {
+  return {
+    wa:   parseFloat(document.getElementById('wa').value),
+    wb:   parseFloat(document.getElementById('wb').value),
+    wc:   parseFloat(document.getElementById('wc').value),
+    bias: parseFloat(document.getElementById('bias').value)
+  };
+}
+
+function fmt(v) { return (v >= 0 ? '+' : '') + v.toFixed(1); }
+
+function updateUI() {
+  const { wa, wb, wc, bias } = getParams();
+  document.getElementById('wa-out').textContent   = fmt(wa);
+  document.getElementById('wb-out').textContent   = fmt(wb);
+  document.getElementById('wc-out').textContent   = fmt(wc);
+  document.getElementById('bias-out').textContent = fmt(bias);
+
+  document.getElementById('eq-z').innerHTML =
+    `ŷ = <span class="val">${wa.toFixed(1)}</span>·a` +
+    ` + <span class="val">${wb.toFixed(1)}</span>·b` +
+    ` + <span class="val">${wc.toFixed(1)}</span>·c` +
+    ` + <span class="val">${bias.toFixed(1)}</span>`;
+
+  const opPct = document.getElementById('plane-opacity').value;
+  document.getElementById('opacity-out').textContent = opPct + '%';
+}
+
+function updateTruthTable() {
+  const { wa, wb, wc, bias } = getParams();
+  const tbody = document.getElementById('truth-body');
+  tbody.innerHTML = '';
+  let correct = 0;
+  ALL8.forEach(([a, b, c, label]) => {
+    const p = sigmoid(wa*a + wb*b + wc*c + bias);
+    const pred = p >= 0.5 ? 1 : 0;
+    const ok = pred === label;
+    if (ok) correct++;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${a}</td><td>${b}</td><td>${c}</td>` +
+      `<td class="${p>=0.5?'hi':'lo'}">${p.toFixed(3)}</td>` +
+      `<td style="color:${ok?'#4ade80':'#f87171'}">${ok?'✓':'✗'}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('acc-text').textContent = `${correct} / 8`;
+  document.getElementById('acc-fill').style.width = `${(correct/8)*100}%`;
+}
+
+function rebuild() {
+  const { wa, wb, wc, bias } = getParams();
+  updateUI();
+  buildPlane(wa, wb, wc, bias);
+  buildSpheres(wa, wb, wc, bias);
+  updateTruthTable();
+}
+
+sliders.forEach(id => document.getElementById(id).addEventListener('input', rebuild));
+document.getElementById('plane-opacity').addEventListener('input', () => {
+  const opPct = parseInt(document.getElementById('plane-opacity').value) / 100;
+  document.getElementById('opacity-out').textContent = Math.round(opPct*100) + '%';
+  if (planeMesh) planeMesh.material.opacity = opPct;
+});
+
+['tog-plane','tog-spheres','tog-labels','tog-grid'].forEach(id => {
+  document.getElementById(id).addEventListener('change', () => {
+    const showPlane   = document.getElementById('tog-plane').checked;
+    const showSpheres = document.getElementById('tog-spheres').checked;
+    const showLabels  = document.getElementById('tog-labels').checked;
+    const showGrid    = document.getElementById('tog-grid').checked;
+    if (planeMesh) planeMesh.visible = showPlane;
+    if (planeWire) planeWire.visible = showPlane;
+    labelGroup.visible = showLabels;
+    gridGroup.visible  = showGrid;
+    const { wa, wb, wc, bias } = getParams();
+    buildSpheres(wa, wb, wc, bias);
+  });
+});
+
+// ── Resize ──────────────────────────────────────────────────────────
+function onResize() {
+  const w = container.clientWidth;
+  const h = container.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+
+window.addEventListener('resize', onResize);
+onResize();
+
+// ── Animate rings to face camera ─────────────────────────────────────
+function animate() {
+  requestAnimationFrame(animate);
+
+  sphereGroup.children.forEach(obj => {
+    if (obj.geometry && obj.geometry.type === 'TorusGeometry') {
+      obj.lookAt(camera.position);
+    }
+  });
+
+  renderer.render(scene, camera);
+}
+
+rebuild();
+animate();
+</script>
+</body>
+</html>
