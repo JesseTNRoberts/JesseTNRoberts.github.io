@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single Neuron Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0c10;
+    --surface: #12151c;
+    --surface2: #1a1e28;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e8eaf0;
+    --text-muted: #6b7280;
+    --text-dim: #9ca3af;
+    --accent: #7c6af7;
+    --accent2: #4ade80;
+    --mono: 'Space Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* grid bg */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,106,247,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,106,247,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 960px;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.5rem;
+  }
+
+  .header-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-family: var(--mono);
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  h1 span {
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  @media (max-width: 680px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  /* ── Panels ── */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+
+  .panel-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem;
+  }
+
+  /* ── Sliders ── */
+  .slider-row {
+    margin-bottom: 1.1rem;
+  }
+
+  .slider-row:last-child { margin-bottom: 0; }
+
+  .slider-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .slider-name {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .slider-val {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 42px;
+    text-align: right;
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--surface2);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent);
+    transition: transform 0.1s;
+  }
+
+  input[type=range]::-webkit-slider-thumb:active {
+    transform: scale(1.25);
+  }
+
+  input[type=range]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    cursor: pointer;
+  }
+
+  /* ── Equation display ── */
+  .equation {
+    margin-top: 1.25rem;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    word-break: break-all;
+  }
+
+  .eq-label { color: var(--text-muted); font-size: 10px; margin-bottom: 4px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .eq-line { color: var(--text); }
+  .eq-line .val { color: var(--accent); }
+  .eq-line .fn { color: #f472b6; }
+
+  /* ── Output cards ── */
+  .output-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 1.25rem;
+  }
+
+  .out-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: border-color 0.2s;
+  }
+
+  .out-card.correct { border-color: rgba(74,222,128,0.35); }
+  .out-card.wrong   { border-color: rgba(248,113,113,0.35); }
+
+  .out-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .out-val {
+    font-family: var(--mono);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .out-val.hi { color: #4ade80; }
+  .out-val.lo { color: #f87171; }
+
+  .out-badge {
+    font-size: 9px;
+    font-family: var(--mono);
+    letter-spacing: 0.08em;
+    margin-top: 3px;
+  }
+
+  .out-badge.correct { color: #4ade80; }
+  .out-badge.wrong   { color: #f87171; }
+
+  /* ── Canvas panel ── */
+  .canvas-wrap {
+    position: relative;
+  }
+
+  canvas {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    flex-shrink: 0;
+  }
+
+  .legend-sq {
+    width: 11px;
+    height: 11px;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    flex-shrink: 0;
+  }
+
+  .legend-dash {
+    width: 22px;
+    height: 2px;
+    background: white;
+    opacity: 0.7;
+    flex-shrink: 0;
+    border-top: 2px dashed white;
+    background: none;
+  }
+
+  /* ── Info note ── */
+  .note {
+    margin-top: 1.25rem;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--surface2);
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.6;
+  }
+
+  .note strong { color: var(--text-dim); font-weight: 500; }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    max-width: 960px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="header-tag">Neural Network Explorer</div>
+    <h1>Single Neuron — <span>Activation Surface</span></h1>
+    <p class="subtitle">Adjust weights and bias to see how a single sigmoid neuron draws a linear decision boundary through the XOR input space.</p>
+  </header>
+
+  <div class="layout">
+
+    <!-- Left: controls -->
+    <div>
+      <div class="panel">
+        <div class="panel-title">Parameters</div>
+
+        <div class="slider-row">
+          <div class="slider-label-row">
+            <span class="slider-name">Weight A &nbsp;(w<sub style="font-size:9px">a</sub>)</span>
+            <span class="slider-val" id="wa-out">4.0</span>
+          </div>
+          <input type="range" id="wa" min="-8" max="8" step="0.1" value="4">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-label-row">
+            <span class="slider-name">Weight B &nbsp;(w<sub style="font-size:9px">b</sub>)</span>
+            <span class="slider-val" id="wb-out">4.0</span>
+          </div>
+          <input type="range" id="wb" min="-8" max="8" step="0.1" value="4">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-label-row">
+            <span class="slider-name">Bias &nbsp;(b)</span>
+            <span class="slider-val" id="bias-out">−2.0</span>
+          </div>
+          <input type="range" id="bias" min="-8" max="8" step="0.1" value="-2">
+        </div>
+
+        <div class="equation">
+          <div class="eq-label">Forward pass</div>
+          <div class="eq-line" id="eq-z">ŷ = ...</div>
+          <div class="eq-line" id="eq-s">P̂ = <span class="fn">σ</span>(ŷ)</div>
+        </div>
+
+        <div class="output-grid">
+          <div class="out-card" id="card-00">
+            <div class="out-label">(a=0, b=0) · true: 0</div>
+            <div class="out-val" id="p00">—</div>
+            <div class="out-badge" id="b00">—</div>
+          </div>
+          <div class="out-card" id="card-01">
+            <div class="out-label">(a=0, b=1) · true: 1</div>
+            <div class="out-val" id="p01">—</div>
+            <div class="out-badge" id="b01">—</div>
+          </div>
+          <div class="out-card" id="card-10">
+            <div class="out-label">(a=1, b=0) · true: 1</div>
+            <div class="out-val" id="p10">—</div>
+            <div class="out-badge" id="b10">—</div>
+          </div>
+          <div class="out-card" id="card-11">
+            <div class="out-label">(a=1, b=1) · true: 0</div>
+            <div class="out-val" id="p11">—</div>
+            <div class="out-badge" id="b11">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 1rem;">
+        <strong>Why can't one neuron solve XOR?</strong><br>
+        A single neuron draws one straight line. XOR requires two — no single linear boundary separates the classes correctly. Red border = misclassified point.
+      </div>
+    </div>
+
+    <!-- Right: canvas -->
+    <div>
+      <div class="panel canvas-wrap">
+        <div class="panel-title">Activation surface &amp; decision boundary</div>
+        <canvas id="heatmap" width="600" height="520"></canvas>
+        <div class="legend" style="margin-top: 0.75rem;">
+          <div class="legend-item"><div class="legend-dot" style="background:#4B0082;"></div>label = 0 (circle)</div>
+          <div class="legend-item"><div class="legend-sq" style="background:#FFC107;"></div>label = 1 (square)</div>
+          <div class="legend-item"><div class="legend-dash"></div>0.5 boundary</div>
+          <div class="legend-item"><div style="width:12px;height:12px;border-radius:50%;border:2.5px solid #f87171;"></div>misclassified</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span>Single Neuron Explorer</span>
+  <span>P̂ = σ(ŷ) &nbsp;·&nbsp; ŷ = w<sub>a</sub>·a + w<sub>b</sub>·b + bias</span>
+</footer>
+
+<script>
+const sigmoid = z => 1 / (1 + Math.exp(-z));
+
+const POINTS = [[0,0,0],[0,1,1],[1,0,1],[1,1,0]];
+
+const waSlider   = document.getElementById('wa');
+const wbSlider   = document.getElementById('wb');
+const biasSlider = document.getElementById('bias');
+const waOut      = document.getElementById('wa-out');
+const wbOut      = document.getElementById('wb-out');
+const biasOut    = document.getElementById('bias-out');
+const canvas     = document.getElementById('heatmap');
+const ctx        = canvas.getContext('2d');
+
+const W = 600, H = 520;
+const PAD = 56, CBPAD = 36;
+const PLOT = W - PAD - CBPAD - 24;
+
+function worldToCanvas(a, b) {
+  const x = PAD + (a + 0.5) / 2 * PLOT;
+  const y = H - PAD - (b + 0.5) / 2 * PLOT;
+  return [x, y];
+}
+
+let offCanvas = null;
+let lastWa = null, lastWb = null, lastBias = null;
+
+function buildHeatmap(wa, wb, bias) {
+  if (wa === lastWa && wb === lastWb && bias === lastBias) return;
+  lastWa = wa; lastWb = wb; lastBias = bias;
+
+  const RES = 220;
+  const imgData = ctx.createImageData(RES, RES);
+  const step = 2.0 / RES;
+
+  for (let iy = 0; iy < RES; iy++) {
+    for (let ix = 0; ix < RES; ix++) {
+      const a = -0.5 + ix * step;
+      const b =  1.5 - iy * step;
+      const act = sigmoid(wa * a + wb * b + bias);
+
+      let r, g, bl;
+      if (act < 0.5) {
+        const t = act / 0.5;
+        r  = Math.round(180 + t * (250 - 180));
+        g  = Math.round(40  + t * (200 - 40));
+        bl = Math.round(40  + t * (40 - 40));
+      } else {
+        const t = (act - 0.5) / 0.5;
+        r  = Math.round(250 - t * (250 - 20));
+        g  = Math.round(200 - t * (200 - 140));
+        bl = Math.round(40  + t * (200 - 40));
+      }
+
+      const idx = (iy * RES + ix) * 4;
+      imgData.data[idx]   = r;
+      imgData.data[idx+1] = g;
+      imgData.data[idx+2] = bl;
+      imgData.data[idx+3] = 255;
+    }
+  }
+
+  offCanvas = document.createElement('canvas');
+  offCanvas.width = RES; offCanvas.height = RES;
+  offCanvas.getContext('2d').putImageData(imgData, 0, 0);
+}
+
+function draw() {
+  const wa   = parseFloat(waSlider.value);
+  const wb   = parseFloat(wbSlider.value);
+  const bias = parseFloat(biasSlider.value);
+
+  const fmtNum = v => (v >= 0 ? '+' : '') + v.toFixed(1);
+  waOut.textContent   = fmtNum(wa);
+  wbOut.textContent   = fmtNum(wb);
+  biasOut.textContent = fmtNum(bias);
+
+  const eqZ = document.getElementById('eq-z');
+  eqZ.innerHTML = `ŷ = <span class="val">${wa.toFixed(1)}</span>·a + <span class="val">${wb.toFixed(1)}</span>·b + <span class="val">${bias.toFixed(1)}</span>`;
+
+  buildHeatmap(wa, wb, bias);
+
+  ctx.clearRect(0, 0, W, H);
+
+  // heatmap
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(PAD, PAD, PLOT, PLOT);
+  ctx.clip();
+  ctx.drawImage(offCanvas, PAD, PAD, PLOT, PLOT);
+  ctx.restore();
+
+  // border around plot
+  ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(PAD, PAD, PLOT, PLOT);
+
+  // grid lines
+  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+  ctx.lineWidth = 0.5;
+  for (const v of [0.0, 0.5, 1.0]) {
+    const [gx] = worldToCanvas(v, 0);
+    ctx.beginPath(); ctx.moveTo(gx, PAD); ctx.lineTo(gx, PAD + PLOT); ctx.stroke();
+    const [, gy] = worldToCanvas(0, v);
+    ctx.beginPath(); ctx.moveTo(PAD, gy); ctx.lineTo(PAD + PLOT, gy); ctx.stroke();
+  }
+
+  // decision boundary
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(PAD, PAD, PLOT, PLOT);
+  ctx.clip();
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([7, 5]);
+
+  if (Math.abs(wb) > 0.001) {
+    const a0 = -0.5, a1 = 1.5;
+    const b0 = -(wa * a0 + bias) / wb;
+    const b1 = -(wa * a1 + bias) / wb;
+    const [x0, y0] = worldToCanvas(a0, b0);
+    const [x1, y1] = worldToCanvas(a1, b1);
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+  } else if (Math.abs(wa) > 0.001) {
+    const aB = -bias / wa;
+    const [xb] = worldToCanvas(aB, 0);
+    ctx.beginPath(); ctx.moveTo(xb, PAD); ctx.lineTo(xb, PAD + PLOT); ctx.stroke();
+  }
+
+  ctx.setLineDash([]);
+  ctx.restore();
+
+  // axes labels
+  ctx.fillStyle = 'rgba(160,165,180,0.9)';
+  ctx.font = '12px "Space Mono", monospace';
+  ctx.textAlign = 'center';
+  for (const v of [0.0, 0.5, 1.0]) {
+    const [gx] = worldToCanvas(v, 0);
+    ctx.fillText(v.toFixed(1), gx, PAD + PLOT + 20);
+    const [, gy] = worldToCanvas(0, v);
+    ctx.textAlign = 'right';
+    ctx.fillText(v.toFixed(1), PAD - 8, gy + 4);
+    ctx.textAlign = 'center';
+  }
+
+  // axis titles
+  ctx.fillStyle = 'rgba(160,165,180,0.7)';
+  ctx.font = '11px "DM Sans", sans-serif';
+  ctx.fillText('Input A', PAD + PLOT / 2, H - 6);
+  ctx.save();
+  ctx.translate(13, PAD + PLOT / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Input B', 0, 0);
+  ctx.restore();
+
+  // data points
+  const outputs = POINTS.map(([a, b]) => sigmoid(wa * a + wb * b + bias));
+
+  POINTS.forEach(([a, b, label], i) => {
+    const [cx, cy] = worldToCanvas(a, b);
+    const act = outputs[i];
+    const correct = (act >= 0.5) === (label === 1);
+    const fillColor = label === 0 ? '#4B0082' : '#FFC107';
+
+    ctx.save();
+    ctx.beginPath();
+    if (label === 0) {
+      ctx.arc(cx, cy, 13, 0, 2 * Math.PI);
+    } else {
+      ctx.rect(cx - 12, cy - 12, 24, 24);
+    }
+    ctx.fillStyle = fillColor;
+    ctx.fill();
+
+    // outer ring: green if correct, red if wrong
+    ctx.strokeStyle = correct ? '#4ade80' : '#f87171';
+    ctx.lineWidth = correct ? 1.5 : 2.5;
+    if (label === 0) {
+      ctx.beginPath(); ctx.arc(cx, cy, 16, 0, 2 * Math.PI); ctx.stroke();
+    } else {
+      ctx.beginPath(); ctx.rect(cx - 16, cy - 16, 32, 32); ctx.stroke();
+    }
+    ctx.restore();
+  });
+
+  // colorbar
+  const cbX = PAD + PLOT + 16;
+  const cbW = 14;
+  const grad = ctx.createLinearGradient(0, PAD, 0, PAD + PLOT);
+  grad.addColorStop(0,   'rgb(20,140,200)');
+  grad.addColorStop(0.5, 'rgb(250,200,50)');
+  grad.addColorStop(1,   'rgb(180,40,40)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(cbX, PAD, cbW, PLOT);
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+  ctx.lineWidth = 0.5;
+  ctx.strokeRect(cbX, PAD, cbW, PLOT);
+
+  ctx.fillStyle = 'rgba(160,165,180,0.8)';
+  ctx.font = '10px "Space Mono", monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('1.0', cbX + cbW + 4, PAD + 10);
+  ctx.fillText('0.5', cbX + cbW + 4, PAD + PLOT / 2 + 4);
+  ctx.fillText('0.0', cbX + cbW + 4, PAD + PLOT);
+
+  // update output cards
+  const cardIds = ['00','01','10','11'];
+  POINTS.forEach(([a, b, label], i) => {
+    const p = outputs[i];
+    const correct = (p >= 0.5) === (label === 1);
+    const el = document.getElementById('p' + cardIds[i]);
+    const badge = document.getElementById('b' + cardIds[i]);
+    const card = document.getElementById('card-' + cardIds[i]);
+
+    el.textContent = p.toFixed(3);
+    el.className = 'out-val ' + (p >= 0.5 ? 'hi' : 'lo');
+    badge.textContent = correct ? '✓ correct' : '✗ wrong';
+    badge.className = 'out-badge ' + (correct ? 'correct' : 'wrong');
+    card.className = 'out-card ' + (correct ? 'correct' : 'wrong');
+  });
+}
+
+[waSlider, wbSlider, biasSlider].forEach(s => s.addEventListener('input', draw));
+draw();
+</script>
+</body>
+</html>
