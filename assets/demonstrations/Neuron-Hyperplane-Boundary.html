@@ -413,7 +413,7 @@
     <div>
       <div class="panel canvas-wrap">
         <div class="panel-title">Activation surface &amp; decision boundary</div>
-        <canvas id="heatmap" width="600" height="520"></canvas>
+        <canvas id="heatmap" width="600" height="600"></canvas>
         <div class="legend" style="margin-top: 0.75rem;">
           <div class="legend-item"><div class="legend-dot" style="background:#4B0082;"></div>label = 0 (circle)</div>
           <div class="legend-item"><div class="legend-sq" style="background:#FFC107;"></div>label = 1 (square)</div>
@@ -434,6 +434,24 @@
 <script>
 const sigmoid = z => 1 / (1 + Math.exp(-z));
 
+// Single source of truth for activation → RGB
+// act=0 → #c0392b (red), act=0.5 → #f1c40f (yellow), act=1 → #27ae60 (green)
+function actToRGB(act) {
+  const stops = [
+    [0.0,  [192,  57,  43]],
+    [0.5,  [241, 196,  15]],
+    [1.0,  [ 39, 174,  96]],
+  ];
+  let lo = stops[0], hi = stops[stops.length - 1];
+  for (let i = 0; i < stops.length - 1; i++) {
+    if (act >= stops[i][0] && act <= stops[i+1][0]) {
+      lo = stops[i]; hi = stops[i+1]; break;
+    }
+  }
+  const t = (act - lo[0]) / (hi[0] - lo[0]);
+  return [0,1,2].map(i => Math.round(lo[1][i] + t * (hi[1][i] - lo[1][i])));
+}
+
 const POINTS = [[0,0,0],[0,1,1],[1,0,1],[1,1,0]];
 
 const waSlider   = document.getElementById('wa');
@@ -445,57 +463,35 @@ const biasOut    = document.getElementById('bias-out');
 const canvas     = document.getElementById('heatmap');
 const ctx        = canvas.getContext('2d');
 
-const W = 600, H = 520;
+const W = 600, H = 600;
 const PAD = 56, CBPAD = 36;
 const PLOT = W - PAD - CBPAD - 24;
 
 function worldToCanvas(a, b) {
-  const x = PAD + (a + 0.5) / 2 * PLOT;
-  const y = H - PAD - (b + 0.5) / 2 * PLOT;
+  // Offset by 0.5 to align with pixel-centre heatmap sampling
+  const x = PAD + (a + 0.5) / 2 * PLOT - 0.5;
+  const y = H - PAD - (b + 0.5) / 2 * PLOT + 0.5;
   return [x, y];
 }
 
-let offCanvas = null;
-let lastWa = null, lastWb = null, lastBias = null;
-
 function buildHeatmap(wa, wb, bias) {
-  if (wa === lastWa && wb === lastWb && bias === lastBias) return;
-  lastWa = wa; lastWb = wb; lastBias = bias;
-
-  const RES = 220;
-  const imgData = ctx.createImageData(RES, RES);
-  const step = 2.0 / RES;
-
-  for (let iy = 0; iy < RES; iy++) {
-    for (let ix = 0; ix < RES; ix++) {
-      const a = -0.5 + ix * step;
-      const b =  1.5 - iy * step;
+  // Draw at exact PLOT resolution directly onto main canvas — no scaling offset
+  const imgData = ctx.createImageData(PLOT, PLOT);
+  for (let iy = 0; iy < PLOT; iy++) {
+    for (let ix = 0; ix < PLOT; ix++) {
+      // pixel centre maps to world coordinate
+      const a = -0.5 + (ix + 0.5) / PLOT * 2.0;
+      const b =  1.5 - (iy + 0.5) / PLOT * 2.0;
       const act = sigmoid(wa * a + wb * b + bias);
-
-      let r, g, bl;
-      if (act < 0.5) {
-        const t = act / 0.5;
-        r  = Math.round(180 + t * (250 - 180));
-        g  = Math.round(40  + t * (200 - 40));
-        bl = Math.round(40  + t * (40 - 40));
-      } else {
-        const t = (act - 0.5) / 0.5;
-        r  = Math.round(250 - t * (250 - 20));
-        g  = Math.round(200 - t * (200 - 140));
-        bl = Math.round(40  + t * (200 - 40));
-      }
-
-      const idx = (iy * RES + ix) * 4;
+      const [r, g, bl] = actToRGB(act);
+      const idx = (iy * PLOT + ix) * 4;
       imgData.data[idx]   = r;
       imgData.data[idx+1] = g;
       imgData.data[idx+2] = bl;
       imgData.data[idx+3] = 255;
     }
   }
-
-  offCanvas = document.createElement('canvas');
-  offCanvas.width = RES; offCanvas.height = RES;
-  offCanvas.getContext('2d').putImageData(imgData, 0, 0);
+  ctx.putImageData(imgData, PAD, PAD);
 }
 
 function draw() {
@@ -511,17 +507,9 @@ function draw() {
   const eqZ = document.getElementById('eq-z');
   eqZ.innerHTML = `ŷ = <span class="val">${wa.toFixed(1)}</span>·a + <span class="val">${wb.toFixed(1)}</span>·b + <span class="val">${bias.toFixed(1)}</span>`;
 
-  buildHeatmap(wa, wb, bias);
-
   ctx.clearRect(0, 0, W, H);
 
-  // heatmap
-  ctx.save();
-  ctx.beginPath();
-  ctx.rect(PAD, PAD, PLOT, PLOT);
-  ctx.clip();
-  ctx.drawImage(offCanvas, PAD, PAD, PLOT, PLOT);
-  ctx.restore();
+  buildHeatmap(wa, wb, bias);
 
   // border around plot
   ctx.strokeStyle = 'rgba(255,255,255,0.1)';
@@ -617,15 +605,16 @@ function draw() {
     ctx.restore();
   });
 
-  // colorbar
+  // colorbar — built pixel-by-pixel from the same actToRGB function
   const cbX = PAD + PLOT + 16;
   const cbW = 14;
-  const grad = ctx.createLinearGradient(0, PAD, 0, PAD + PLOT);
-  grad.addColorStop(0,   'rgb(20,140,200)');
-  grad.addColorStop(0.5, 'rgb(250,200,50)');
-  grad.addColorStop(1,   'rgb(180,40,40)');
-  ctx.fillStyle = grad;
-  ctx.fillRect(cbX, PAD, cbW, PLOT);
+  const cbSteps = PLOT;
+  for (let i = 0; i < cbSteps; i++) {
+    const act = 1 - i / (cbSteps - 1); // top=1.0, bottom=0.0
+    const [r, g, b] = actToRGB(act);
+    ctx.fillStyle = `rgb(${r},${g},${b})`;
+    ctx.fillRect(cbX, PAD + i, cbW, 1);
+  }
   ctx.strokeStyle = 'rgba(255,255,255,0.12)';
   ctx.lineWidth = 0.5;
   ctx.strokeRect(cbX, PAD, cbW, PLOT);
@@ -636,6 +625,14 @@ function draw() {
   ctx.fillText('1.0', cbX + cbW + 4, PAD + 10);
   ctx.fillText('0.5', cbX + cbW + 4, PAD + PLOT / 2 + 4);
   ctx.fillText('0.0', cbX + cbW + 4, PAD + PLOT);
+
+  // tick marks on colorbar
+  ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+  ctx.lineWidth = 1.5;
+  for (const frac of [0, 0.5, 1]) {
+    const ty = PAD + frac * PLOT;
+    ctx.beginPath(); ctx.moveTo(cbX - 3, ty); ctx.lineTo(cbX + cbW + 3, ty); ctx.stroke();
+  }
 
   // update output cards
   const cardIds = ['00','01','10','11'];
