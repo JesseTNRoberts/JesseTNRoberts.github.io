@@ -1,0 +1,241 @@
+
+<div style="padding: 1rem 0; font-family: var(--font-sans);">
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+  <div>
+    <label style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary);">Model quality</label>
+    <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+      <span style="font-size: 12px; color: var(--color-text-tertiary);">Poor</span>
+      <input type="range" id="quality" min="0" max="100" value="50" step="1" style="flex:1;" />
+      <span style="font-size: 12px; color: var(--color-text-tertiary);">Good</span>
+    </div>
+  </div>
+  <div>
+    <label style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary);">Threshold</label>
+    <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+      <input type="range" id="threshold" min="0" max="100" value="50" step="1" style="flex:1;" />
+      <span id="thresh-val" style="font-size: 15px; font-weight: 500; min-width: 36px; color: var(--color-text-primary);">0.50</span>
+    </div>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px;">
+  <div>
+    <p style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 8px;">ROC curve</p>
+    <div style="position: relative; height: 220px;">
+      <canvas id="rocChart"></canvas>
+    </div>
+  </div>
+  <div>
+    <p style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 8px;">Metrics vs threshold</p>
+    <div id="metrics-legend" style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;"></div>
+    <div style="position: relative; height: 200px;">
+      <canvas id="metricsChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
+  <div>
+    <p style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 10px;">Confusion matrix</p>
+    <div style="display: grid; grid-template-columns: auto 1fr 1fr; gap: 0;">
+      <div></div>
+      <div style="text-align:center; font-size:12px; color:var(--color-text-secondary); padding:4px 0; font-weight:500;">Predicted positive</div>
+      <div style="text-align:center; font-size:12px; color:var(--color-text-secondary); padding:4px 0; font-weight:500;">Predicted negative</div>
+      <div style="display:flex;align-items:center;justify-content:flex-end;padding-right:10px;">
+        <span style="font-size:12px;color:var(--color-text-secondary);font-weight:500;">Actual positive</span>
+      </div>
+      <div style="background:var(--color-background-info);border-radius:var(--border-radius-md);padding:14px;text-align:center;margin:3px;">
+        <p style="font-size:11px;color:var(--color-text-info);margin:0 0 4px;">True positive</p>
+        <p id="tp-val" style="font-size:22px;font-weight:500;margin:0;color:var(--color-text-info);">—</p>
+      </div>
+      <div style="background:var(--color-background-warning);border-radius:var(--border-radius-md);padding:14px;text-align:center;margin:3px;">
+        <p style="font-size:11px;color:var(--color-text-warning);margin:0 0 4px;">False negative</p>
+        <p id="fn-val" style="font-size:22px;font-weight:500;margin:0;color:var(--color-text-warning);">—</p>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:flex-end;padding-right:10px;">
+        <span style="font-size:12px;color:var(--color-text-secondary);font-weight:500;">Actual negative</span>
+      </div>
+      <div style="background:var(--color-background-danger);border-radius:var(--border-radius-md);padding:14px;text-align:center;margin:3px;">
+        <p style="font-size:11px;color:var(--color-text-danger);margin:0 0 4px;">False positive</p>
+        <p id="fp-val" style="font-size:22px;font-weight:500;margin:0;color:var(--color-text-danger);">—</p>
+      </div>
+      <div style="background:var(--color-background-success);border-radius:var(--border-radius-md);padding:14px;text-align:center;margin:3px;">
+        <p style="font-size:11px;color:var(--color-text-success);margin:0 0 4px;">True negative</p>
+        <p id="tn-val" style="font-size:22px;font-weight:500;margin:0;color:var(--color-text-success);">—</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 10px;">Summary metrics</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;text-align:center;">
+        <p style="font-size:12px;color:var(--color-text-secondary);margin:0 0 2px;">Accuracy</p>
+        <p id="acc-val" style="font-size:22px;font-weight:500;margin:0;color:var(--color-text-primary);">—</p>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;text-align:center;">
+        <p style="font-size:12px;color:var(--color-text-secondary);margin:0 0 2px;">Recall (TPR)</p>
+        <p id="rec-val" style="font-size:22px;font-weight:500;margin:0;color:#378ADD;">—</p>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;text-align:center;">
+        <p style="font-size:12px;color:var(--color-text-secondary);margin:0 0 2px;">Precision</p>
+        <p id="prec-val" style="font-size:22px;font-weight:500;margin:0;color:#7F77DD;">—</p>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;text-align:center;">
+        <p style="font-size:12px;color:var(--color-text-secondary);margin:0 0 2px;">F1 score</p>
+        <p id="f1-val" style="font-size:22px;font-weight:500;margin:0;color:#1D9E75;">—</p>
+      </div>
+    </div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;text-align:center;">
+      <p style="font-size:12px;color:var(--color-text-secondary);margin:0 0 2px;">AUC</p>
+      <p id="auc-val" style="font-size:22px;font-weight:500;margin:0;color:var(--color-text-primary);">—</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+function erf(x) {
+  const t = 1 / (1 + 0.3275911 * Math.abs(x));
+  const p = t * (0.254829592 + t * (-0.284496736 + t * (1.421413741 + t * (-1.453152027 + t * 1.061405429))));
+  const v = 1 - p * Math.exp(-x * x);
+  return x >= 0 ? v : -v;
+}
+function gaussianCDF(x, mu, sigma) {
+  return 0.5 * (1 + erf((x - mu) / (sigma * Math.sqrt(2))));
+}
+
+const Npos = 500, Nneg = 500;
+const centerMu = 0.5;
+
+function getSigma(quality) {
+  return 0.28 - quality * 0.22;
+}
+function getMus(quality) {
+  const sep = quality * 0.35;
+  return { negMu: centerMu - sep, posMu: centerMu + sep };
+}
+
+function getMetrics(t, quality) {
+  const sigma = getSigma(quality);
+  const { negMu, posMu } = getMus(quality);
+  const tpr = 1 - gaussianCDF(t, posMu, sigma);
+  const fpr = 1 - gaussianCDF(t, negMu, sigma);
+  const tp = Math.round(tpr * Npos);
+  const fn = Npos - tp;
+  const fp = Math.round(fpr * Nneg);
+  const tn = Nneg - fp;
+  const acc = (tp + tn) / (Npos + Nneg);
+  const prec = tp + fp > 0 ? tp / (tp + fp) : 1;
+  const rec = tpr;
+  const f1 = prec + rec > 0 ? 2 * prec * rec / (prec + rec) : 0;
+  return { tpr, fpr, tp, fn, fp, tn, acc, prec, rec, f1 };
+}
+
+function getROCPoints(quality) {
+  return Array.from({ length: 101 }, (_, i) => {
+    const { fpr, tpr } = getMetrics(i / 100, quality);
+    return { x: fpr, y: tpr };
+  });
+}
+
+function computeAUC(quality) {
+  const pts = getROCPoints(quality);
+  let auc = 0;
+  for (let i = 1; i < pts.length; i++) {
+    auc += (pts[i-1].x - pts[i].x) * (pts[i-1].y + pts[i].y) / 2;
+  }
+  return Math.abs(auc);
+}
+
+function getMetricsOverThresh(quality) {
+  return Array.from({ length: 101 }, (_, i) => getMetrics(i / 100, quality));
+}
+
+const threshLabels = Array.from({ length: 101 }, (_, i) => (i / 100).toFixed(2));
+
+document.getElementById('metrics-legend').innerHTML = [
+  ['#888780','Accuracy'],['#378ADD','Recall'],['#7F77DD','Precision'],['#1D9E75','F1']
+].map(([c,l]) => `<span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:${c};display:inline-block;"></span>${l}</span>`).join('');
+
+const rocCtx = document.getElementById('rocChart').getContext('2d');
+const rocChart = new Chart(rocCtx, {
+  type: 'scatter',
+  data: {
+    datasets: [
+      { data:[{x:0,y:0},{x:1,y:1}], type:'line', borderColor:'rgba(136,135,128,0.35)', borderDash:[4,3], borderWidth:1, pointRadius:0, fill:false },
+      { data: getROCPoints(0.5), type:'line', borderColor:'#7F77DD', borderWidth:2, pointRadius:0, fill:false, tension:0.3 },
+      { data:[], backgroundColor:'#888780', pointRadius:7, showLine:false }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false, animation:false,
+    plugins:{ legend:{display:false}, tooltip:{enabled:false} },
+    scales:{
+      x:{ min:0, max:1, title:{display:true,text:'False positive rate',font:{size:11},color:'#888780'}, ticks:{maxTicksLimit:5,font:{size:10},color:'#888780'}, grid:{color:'rgba(136,135,128,0.15)'} },
+      y:{ min:0, max:1, title:{display:true,text:'True positive rate',font:{size:11},color:'#888780'}, ticks:{maxTicksLimit:5,font:{size:10},color:'#888780'}, grid:{color:'rgba(136,135,128,0.15)'} }
+    }
+  }
+});
+
+const metricsCtx = document.getElementById('metricsChart').getContext('2d');
+const metricsChart = new Chart(metricsCtx, {
+  type: 'line',
+  data: {
+    labels: threshLabels,
+    datasets: [
+      { data: getMetricsOverThresh(0.5).map(m => m.acc),  borderColor:'#888780', borderWidth:1.5, pointRadius:0, tension:0.3, fill:false },
+      { data: getMetricsOverThresh(0.5).map(m => m.rec),  borderColor:'#378ADD', borderWidth:1.5, pointRadius:0, tension:0.3, fill:false },
+      { data: getMetricsOverThresh(0.5).map(m => m.prec), borderColor:'#7F77DD', borderWidth:1.5, pointRadius:0, tension:0.3, fill:false },
+      { data: getMetricsOverThresh(0.5).map(m => m.f1),   borderColor:'#1D9E75', borderWidth:1.5, pointRadius:0, tension:0.3, fill:false },
+      { data:[], borderColor:'rgba(136,135,128,0.5)', borderDash:[4,3], borderWidth:1.5, pointRadius:0, fill:false, type:'line' }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false, animation:false,
+    plugins:{ legend:{display:false}, tooltip:{enabled:false} },
+    scales:{
+      x:{ title:{display:true,text:'Threshold',font:{size:11},color:'#888780'}, ticks:{maxTicksLimit:5,font:{size:10},color:'#888780'}, grid:{color:'rgba(136,135,128,0.15)'} },
+      y:{ min:0, max:1, ticks:{maxTicksLimit:5,font:{size:10},color:'#888780'}, grid:{color:'rgba(136,135,128,0.15)'} }
+    }
+  }
+});
+
+function updateAll() {
+  const t = document.getElementById('threshold').value / 100;
+  const q = document.getElementById('quality').value / 100;
+  document.getElementById('thresh-val').textContent = t.toFixed(2);
+
+  const { tpr, fpr, tp, fn, fp, tn, acc, prec, rec, f1 } = getMetrics(t, q);
+  document.getElementById('acc-val').textContent  = acc.toFixed(2);
+  document.getElementById('rec-val').textContent  = rec.toFixed(2);
+  document.getElementById('prec-val').textContent = prec.toFixed(2);
+  document.getElementById('f1-val').textContent   = f1.toFixed(2);
+  document.getElementById('tp-val').textContent   = tp;
+  document.getElementById('fp-val').textContent   = fp;
+  document.getElementById('tn-val').textContent   = tn;
+  document.getElementById('fn-val').textContent   = fn;
+  document.getElementById('auc-val').textContent  = computeAUC(q).toFixed(2);
+
+  rocChart.data.datasets[1].data = getROCPoints(q);
+  rocChart.data.datasets[2].data = [{ x: fpr, y: tpr }];
+  rocChart.update('none');
+
+  const allM = getMetricsOverThresh(q);
+  metricsChart.data.datasets[0].data = allM.map(m => m.acc);
+  metricsChart.data.datasets[1].data = allM.map(m => m.rec);
+  metricsChart.data.datasets[2].data = allM.map(m => m.prec);
+  metricsChart.data.datasets[3].data = allM.map(m => m.f1);
+  const idx = Math.round(t * 100);
+  metricsChart.data.datasets[4].data = threshLabels.map((_, i) => i === idx ? 1 : null);
+  metricsChart.update('none');
+}
+
+document.getElementById('threshold').addEventListener('input', updateAll);
+document.getElementById('quality').addEventListener('input', updateAll);
+
+updateAll();
+</script>
