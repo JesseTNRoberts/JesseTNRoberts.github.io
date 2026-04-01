@@ -13,7 +13,7 @@
   <div>
     <label style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary);">Threshold</label>
     <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
-      <input type="range" id="threshold" min="5" max="95" value="50" step="1" style="flex:1;" />
+      <input type="range" id="threshold" min="0" max="100" value="50" step="1" style="flex:1;" />
       <span id="thresh-val" style="font-size: 15px; font-weight: 500; min-width: 36px; color: var(--color-text-primary);">0.50</span>
     </div>
   </div>
@@ -124,17 +124,18 @@ const N=120, rng=seededRand(42);
 const base_neg=Array.from({length:N},()=>({bx:boxMuller(rng),by:boxMuller(rng)}));
 const base_pos=Array.from({length:N},()=>({bx:boxMuller(rng),by:boxMuller(rng)}));
 
-const XMIN=-0.2, XMAX=1.2, Npos=500, Nneg=500;
 const W1=1/Math.sqrt(2), W2=1/Math.sqrt(2);
+const XMIN=-0.7, XMAX=0.7;
+
+function getBias(threshold){
+  const tc=Math.max(0.0001, Math.min(0.9999, threshold));
+  return Math.log(tc/(1-tc))/6;
+}
 
 function getParams(q){
   const spread=0.55-q*0.42;
-  const sep=q*1.1;
-  return {
-    spread,
-    negCx:0.5-sep*0.5, negCy:0.5-sep*0.5,
-    posCx:0.5+sep*0.5, posCy:0.5+sep*0.5
-  };
+  const sep=q*0.55;
+  return { spread, negCx:-sep*W1, negCy:-sep*W2, posCx:sep*W1, posCy:sep*W2 };
 }
 
 function getScatterPoints(q){
@@ -145,49 +146,44 @@ function getScatterPoints(q){
 }
 
 function getBoundaryLine(threshold){
-  const logit=Math.log(Math.max(threshold,0.001)/Math.max(1-threshold,0.001));
-  const bias=logit/6;
-  const yAtXmin=(bias-W1*XMIN)/W2;
-  const yAtXmax=(bias-W1*XMAX)/W2;
-  return [{x:XMIN,y:yAtXmin},{x:XMAX,y:yAtXmax}];
+  const bias=getBias(threshold);
+  const EXT=5;
+  return [
+    {x:XMIN-EXT, y:(bias-W1*(XMIN-EXT))/W2},
+    {x:XMAX+EXT, y:(bias-W1*(XMAX+EXT))/W2}
+  ];
 }
 
 function classify(x,y,threshold){
-  const logit=Math.log(Math.max(threshold,0.001)/Math.max(1-threshold,0.001));
-  const bias=logit/6;
-  return W1*x+W2*y>bias;
+  return W1*x+W2*y > getBias(threshold);
 }
 
 function getMetricsFromPoints(neg,pos,threshold){
   let tp=0,fn=0,fp=0,tn=0;
   pos.forEach(({x,y})=>{ if(classify(x,y,threshold)) tp++; else fn++; });
   neg.forEach(({x,y})=>{ if(classify(x,y,threshold)) fp++; else tn++; });
-  const total=pos.length+neg.length;
   const tpr=tp/(tp+fn+1e-9);
   const fpr=fp/(fp+tn+1e-9);
-  const acc=(tp+tn)/total;
+  const acc=(tp+tn)/(pos.length+neg.length);
   const prec=tp/(tp+fp+1e-9);
   const f1=2*prec*tpr/(prec+tpr+1e-9);
-  const sc=Npos/pos.length;
-  return {tpr,fpr,tp:Math.round(tp*sc),fn:Math.round(fn*sc),
-          fp:Math.round(fp*sc),tn:Math.round(tn*sc),acc,prec,rec:tpr,f1};
+  return {tpr,fpr,tp,fn,fp,tn,acc,prec,rec:tpr,f1};
 }
 
 const THRESH_STEPS=200;
 function getROCPoints(neg,pos){
-  const pts=Array.from({length:THRESH_STEPS+1},(_,i)=>{
-    const t=i/THRESH_STEPS;
-    const {fpr,tpr}=getMetricsFromPoints(neg,pos,t);
-    return {x:fpr,y:tpr};
-  });
-  pts.unshift({x:1,y:1});
+  const pts=[{x:1,y:1}];
+  for(let i=0;i<=THRESH_STEPS;i++){
+    const {fpr,tpr}=getMetricsFromPoints(neg,pos,i/THRESH_STEPS);
+    pts.push({x:fpr,y:tpr});
+  }
   pts.push({x:0,y:0});
   return pts;
 }
 
 function computeAUC(rocPts){
-  let auc=0;
   const sorted=[...rocPts].sort((a,b)=>a.x-b.x);
+  let auc=0;
   for(let i=1;i<sorted.length;i++)
     auc+=(sorted[i].x-sorted[i-1].x)*(sorted[i-1].y+sorted[i].y)/2;
   return Math.abs(auc);
@@ -224,7 +220,7 @@ const inputChart=new Chart(inputCtx,{
          title:{display:true,text:'Feature 1',font:{size:11},color:'#888780'},
          ticks:{maxTicksLimit:5,font:{size:10},color:'#888780'},
          grid:{color:'rgba(136,135,128,0.15)'}},
-      y:{min:XMIN,max:XMAX,
+      y:{min:-0.8,max:0.8,
          title:{display:true,text:'Feature 2',font:{size:11},color:'#888780'},
          ticks:{maxTicksLimit:5,font:{size:10},color:'#888780'},
          grid:{color:'rgba(136,135,128,0.15)'}}
