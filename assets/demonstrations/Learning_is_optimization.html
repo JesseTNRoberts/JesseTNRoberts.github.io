@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSC 4220 — The Optimization Lens: Group Handouts</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&family=Source+Code+Pro:wght@400;500&display=swap');
+
+:root {
+  --ink: #1c1a17;
+  --ink-mid: #4a4640;
+  --ink-soft: #7a756e;
+  --ink-faint: #b0aa9f;
+  --page: #fdfbf7;
+  --warm: #f5f0e8;
+  --rule: #e2dbd0;
+  --accent: #c0392b;
+  --accent-pale: #fdf0ee;
+  --code-bg: #f0ece4;
+  --q-border: #2c5f8a;
+  --q-bg: #eef4fa;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: #e8e4dc;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ── Cover page ── */
+.cover {
+  width: 210mm;
+  min-height: 80mm;
+  margin: 24px auto 0;
+  background: var(--ink);
+  color: #fdfbf7;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cover-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+}
+
+.cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #fdfbf7;
+  margin-bottom: 12px;
+}
+
+.cover h1 em {
+  font-style: italic;
+  color: #e8c4a0;
+}
+
+.cover-sub {
+  font-size: 13px;
+  color: #a09890;
+  max-width: 480px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.cover-instructions {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #3a3630;
+}
+
+.cover-instructions p {
+  font-size: 13px;
+  color: #c8c0b4;
+  margin-bottom: 8px;
+}
+
+.cover-instructions strong {
+  color: #fdfbf7;
+}
+
+/* ── Handout pages ── */
+.handout {
+  width: 210mm;
+  margin: 16px auto;
+  background: var(--page);
+  padding: 0;
+  page-break-after: always;
+  break-after: page;
+}
+
+.handout-header {
+  background: var(--warm);
+  border-bottom: 2px solid var(--rule);
+  padding: 28px 40px 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+}
+
+.handout-meta {
+  flex: 1;
+}
+
+.group-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+
+.handout-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.handout-tagline {
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.algo-illustration {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.handout-body {
+  padding: 28px 40px 32px;
+}
+
+/* Sections within handout */
+.section-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+  margin-top: 20px;
+}
+
+.section-label:first-child {
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: 10px;
+  font-size: 13.5px;
+  color: var(--ink-mid);
+}
+
+/* Code blocks */
+pre {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11.5px;
+  background: var(--code-bg);
+  border-left: 3px solid var(--ink-faint);
+  padding: 14px 16px;
+  margin: 10px 0 14px;
+  line-height: 1.65;
+  color: var(--ink);
+  white-space: pre-wrap;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Questions box */
+.questions {
+  background: var(--q-bg);
+  border-left: 4px solid var(--q-border);
+  border-radius: 0 6px 6px 0;
+  padding: 18px 20px;
+  margin-top: 22px;
+}
+
+.questions-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--q-border);
+  margin-bottom: 12px;
+}
+
+.question {
+  margin-bottom: 14px;
+}
+
+.question:last-child {
+  margin-bottom: 0;
+}
+
+.question-num {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: var(--q-border);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.question p {
+  display: inline;
+  font-size: 13px;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* divider */
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 18px 0;
+}
+
+/* ── Worked example variant ── */
+.worked .handout-header {
+  background: #1c2a1a;
+  border-bottom: 2px solid #2e4a2a;
+}
+
+.worked .handout-header h2 {
+  color: #e8f0e4;
+}
+
+.worked .handout-tagline {
+  color: #8aaa80;
+}
+
+.worked-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #7ac870;
+  border: 1px solid #4a8a44;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+
+/* Reasoning steps */
+.reasoning {
+  margin: 16px 0;
+}
+
+.reasoning-step {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: start;
+}
+
+.reasoning-step:last-child {
+  margin-bottom: 0;
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2a5a26;
+  color: #b8e0b0;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.step-body {}
+
+.step-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6aaa60;
+  margin-bottom: 4px;
+}
+
+.step-body p {
+  font-size: 13px;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+/* Answer box */
+.answer-box {
+  background: #f0f7ee;
+  border-left: 4px solid #3a8a34;
+  border-radius: 0 6px 6px 0;
+  padding: 16px 20px;
+  margin-top: 8px;
+}
+
+.answer-box .answer-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #3a8a34;
+  margin-bottom: 8px;
+}
+
+.answer-box p {
+  font-size: 13px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.answer-box p:last-child { margin-bottom: 0; }
+
+/* Open question box (for KNN) */
+.open-question {
+  background: #fef9ec;
+  border-left: 4px solid #b08030;
+  border-radius: 0 6px 6px 0;
+  padding: 16px 20px;
+  margin-top: 16px;
+}
+
+.open-question .oq-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #b08030;
+  margin-bottom: 8px;
+}
+
+.open-question p {
+  font-size: 13px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.open-question p:last-child { margin-bottom: 0; }
+
+/* print */
+@media print {
+  body { background: white; }
+  .cover, .handout { margin: 0; box-shadow: none; width: 100%; }
+  .handout { page-break-after: always; }
+}
+
+@media screen {
+  .cover, .handout {
+    box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+  }
+  .handout:last-child { margin-bottom: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <p class="cover-eyebrow">CSC 4220 · Machine Learning</p>
+  <h1>The <em>Optimization</em> Lens</h1>
+  <p class="cover-sub">Most algorithms in machine learning can be largely understood by asking two questions. Your job today is to apply that lens to an algorithm we never covered — and find out how far it reaches.</p>
+
+  <div class="cover-instructions">
+    <p><strong>Question 1:</strong> What is being minimized or maximized? Is there an explicit loss function, or is the objective implicit in the procedure?</p>
+    <p><strong>Question 2:</strong> How does the algorithm move toward that objective? Note that optimization does not have to be iterative, and it does not have to be global. A single-pass closed-form solution is optimization. A greedy local choice repeated at each step is optimization. Gradient descent is just one optimizer among many.</p>
+    <!-- <p style="margin-top:14px"><strong>On using an LLM:</strong> Yes — but lead with a hypothesis, not a question. Form a guess first, then ask the LLM whether you're right and where it shows up in the algorithm. Use it to stress-test your answer, not to generate it.</p> -->
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ WORKED EXAMPLE: COBWEB -->
+<div class="handout worked">
+  <div class="handout-header">
+    <div class="handout-meta">
+      <span class="worked-badge">Worked Example · Read This First</span>
+      <h2>Cobweb</h2>
+      <p class="handout-tagline">Unsupervised Learning · Incremental Concept Formation</p>
+    </div>
+    <div class="algo-illustration">
+      <svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" width="160" height="140">
+        <!-- Cobweb tree structure: root splits into categories -->
+        <!-- Root node -->
+        <rect x="60" y="8" width="40" height="24" rx="4" fill="#2a5a26" stroke="#4a9a44" stroke-width="1.2"/>
+        <text x="80" y="24" text-anchor="middle" font-size="8" fill="#b8e0b0" font-family="Source Sans 3,sans-serif" font-weight="600">Root</text>
+        <!-- Level 1 branches -->
+        <line x1="70" y1="32" x2="42" y2="58" stroke="#4a9a44" stroke-width="1.2"/>
+        <line x1="90" y1="32" x2="118" y2="58" stroke="#4a9a44" stroke-width="1.2"/>
+        <!-- Level 1 nodes -->
+        <rect x="18" y="58" width="48" height="24" rx="4" fill="#1e3e1c" stroke="#4a9a44" stroke-width="1"/>
+        <text x="42" y="71" text-anchor="middle" font-size="7.5" fill="#8acc80" font-family="Source Sans 3,sans-serif">Category A</text>
+        <text x="42" y="80" text-anchor="middle" font-size="6.5" fill="#5a8a55" font-family="Source Sans 3,sans-serif">birds</text>
+        <rect x="94" y="58" width="48" height="24" rx="4" fill="#1e3e1c" stroke="#4a9a44" stroke-width="1"/>
+        <text x="118" y="71" text-anchor="middle" font-size="7.5" fill="#8acc80" font-family="Source Sans 3,sans-serif">Category B</text>
+        <text x="118" y="80" text-anchor="middle" font-size="6.5" fill="#5a8a55" font-family="Source Sans 3,sans-serif">mammals</text>
+        <!-- Level 2 branches from A -->
+        <line x1="32" y1="82" x2="22" y2="106" stroke="#4a9a44" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="52" y1="82" x2="62" y2="106" stroke="#4a9a44" stroke-width="1" stroke-dasharray="2,2"/>
+        <rect x="8" y="106" width="28" height="22" rx="3" fill="#162e14" stroke="#3a7a34" stroke-width="0.8"/>
+        <text x="22" y="121" text-anchor="middle" font-size="6.5" fill="#6aaa60" font-family="Source Sans 3,sans-serif">robins</text>
+        <rect x="48" y="106" width="28" height="22" rx="3" fill="#162e14" stroke="#3a7a34" stroke-width="0.8"/>
+        <text x="62" y="121" text-anchor="middle" font-size="6.5" fill="#6aaa60" font-family="Source Sans 3,sans-serif">eagles</text>
+        <!-- new example arrow -->
+        <circle cx="130" cy="112" r="7" fill="#e8c060" stroke="#b08030" stroke-width="1.5"/>
+        <text x="130" y="116" text-anchor="middle" font-size="8" fill="#7a5010" font-family="Source Sans 3,sans-serif" font-weight="600">?</text>
+        <line x1="118" y1="82" x2="124" y2="104" stroke="#b08030" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#cw-arr)"/>
+        <text x="80" y="138" text-anchor="middle" font-size="7.5" fill="#5a8a55" font-family="Source Sans 3,sans-serif">place new example, maximize CU</text>
+        <defs>
+          <marker id="cw-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M2 2L8 5L2 8" fill="none" stroke="#b08030" stroke-width="1.5" stroke-linecap="round"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="handout-body">
+    <p class="section-label">What is Cobweb?</p>
+    <p>Cobweb is an incremental concept formation algorithm. It takes unlabeled examples one at a time and organizes them into a hierarchy of categories — a tree where each node represents a concept defined by the probability distributions of feature values in that group. It requires no predefined number of clusters and builds its structure as it sees data.</p>
+
+    <p class="section-label">The Algorithm</p>
+<pre>Given: a stream of unlabeled examples, each with categorical features
+
+Initialize: empty root node
+
+For each new example x:
+
+    Starting at the root, evaluate four operators:
+        1. Place x into the best existing category
+        2. Create a new category containing only x
+        3. Merge the two best categories into one
+        4. Split the best category into its children
+
+    For each operator, compute the Category Utility (CU)
+    of the resulting tree
+
+    Choose the operator that produces the highest CU
+    Recurse down the chosen category until x is placed
+
+Category Utility (CU):
+    A score that measures how much knowing an example's category
+    improves your ability to predict its feature values,
+    compared to not knowing the category at all.
+    Higher CU = more useful category structure.</pre>
+
+    <p class="section-label">Plain English</p>
+    <p>Each time a new example arrives, Cobweb tries four possible ways to fit it into the existing tree and picks whichever one produces the most useful category structure. "Useful" means: knowing which category an example belongs to gives you the most additional information about its feature values.</p>
+
+    <hr>
+
+    <p class="section-label">Worked Answer — How to Apply the Optimization Lens</p>
+
+    <div class="reasoning">
+
+      <div class="reasoning-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <p class="step-label">Find what the algorithm is trying to improve</p>
+          <p>Look at the pseudocode for the thing being evaluated at every decision point. Before placing each example, Cobweb computes the Category Utility of four possible outcomes and picks the highest. That computation happens every single step — which means CU is what the algorithm is optimizing. Start there.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <p class="step-label">Understand what the objective is measuring</p>
+          <p>CU measures the predictive usefulness of a category structure — how much knowing which category an example belongs to improves your ability to predict its feature values. Good categories are ones where feature values cluster predictably within them. The exact formula isn't important here; what matters is that CU is a well-defined, computable score, and Cobweb is explicitly maximizing it at every step.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <p class="step-label">Name the objective</p>
+          <p>CU is a measure of predictability — how well the category structure explains the feature distributions. Maximizing it means finding categories where features are as predictable as possible given membership. This is sometimes called <em>predictive accuracy</em> of the partition.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <p class="step-label">Find the optimizer</p>
+          <p>There is no gradient here. Cobweb never computes a derivative. Instead, at each step it evaluates a small fixed set of candidate moves (the four operators), computes CU for each outcome, and picks the best one. That is <em>greedy local search</em> — also called hill climbing. It makes the locally optimal choice at each step without backtracking or considering the global effect of that choice.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <p class="step-label">Notice what this shares with the course</p>
+          <p>Greedy local search is the same family of optimizer as the splitting criterion in Decision Trees — at each node, pick the split with the highest information gain and move on. Neither algorithm reconsiders earlier decisions. Neither uses a gradient. Both embed the objective directly in a greedy selection procedure. This is a pattern you will see repeatedly in classical algorithms.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="answer-box">
+      <p class="answer-label">Answer</p>
+      <p><strong>What is being maximized?</strong> Category Utility — a measure of how much knowing an example's category improves your ability to predict its feature values, compared to not knowing the category at all.</p>
+      <p><strong>How?</strong> Greedy local search. At each step, evaluate four candidate placements and pick the one with the highest CU. No gradient. No backtracking. The objective is implicit in the selection procedure — it is not written as a loss function to be minimized globally, but it is present and precise.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ HANDOUT 1: RANDOM FOREST -->
+<div class="handout">
+  <div class="handout-header">
+    <div class="handout-meta">
+      <span class="group-badge">Handout 1</span>
+      <h2>Random Forest</h2>
+      <p class="handout-tagline">Classification &amp; Regression · Ensemble of Decision Trees</p>
+    </div>
+    <div class="algo-illustration">
+      <svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" width="160" height="140">
+        <!-- Three trees, slightly overlapping -->
+        <!-- Tree 1 (left, muted) -->
+        <g opacity="0.55">
+          <line x1="28" y1="130" x2="28" y2="95" stroke="#7a756e" stroke-width="2.5" stroke-linecap="round"/>
+          <polygon points="28,58 10,95 46,95" fill="#a8c89a" stroke="#6a9e5e" stroke-width="1"/>
+          <polygon points="28,36 14,68 42,68" fill="#8db87e" stroke="#5a8e4e" stroke-width="1"/>
+          <polygon points="28,18 17,45 39,45" fill="#72a864" stroke="#4a7e3e" stroke-width="1"/>
+        </g>
+        <!-- Tree 2 (center, prominent) -->
+        <g>
+          <line x1="80" y1="130" x2="80" y2="92" stroke="#5a5248" stroke-width="2.5" stroke-linecap="round"/>
+          <polygon points="80,52 58,92 102,92" fill="#c5deb8" stroke="#7ab068" stroke-width="1.2"/>
+          <polygon points="80,28 62,62 98,62" fill="#a8c89a" stroke="#6a9e5e" stroke-width="1.2"/>
+          <polygon points="80,10 65,36 95,36" fill="#8db87e" stroke="#5a8e4e" stroke-width="1.2"/>
+        </g>
+        <!-- Tree 3 (right, muted) -->
+        <g opacity="0.55">
+          <line x1="132" y1="130" x2="132" y2="95" stroke="#7a756e" stroke-width="2.5" stroke-linecap="round"/>
+          <polygon points="132,58 114,95 150,95" fill="#a8c89a" stroke="#6a9e5e" stroke-width="1"/>
+          <polygon points="132,36 118,68 146,68" fill="#8db87e" stroke="#5a8e4e" stroke-width="1"/>
+          <polygon points="132,18 121,45 143,45" fill="#72a864" stroke="#4a7e3e" stroke-width="1"/>
+        </g>
+        <!-- vote arrow -->
+        <text x="80" y="138" text-anchor="middle" font-size="8" fill="#7a756e" font-family="Source Sans 3, sans-serif">majority vote</text>
+        <!-- small dots representing data -->
+        <circle cx="22" cy="108" r="2.5" fill="#c0392b" opacity="0.6"/>
+        <circle cx="35" cy="112" r="2.5" fill="#2c5f8a" opacity="0.6"/>
+        <circle cx="74" cy="108" r="2.5" fill="#c0392b" opacity="0.6"/>
+        <circle cx="88" cy="113" r="2.5" fill="#2c5f8a" opacity="0.6"/>
+        <circle cx="126" cy="110" r="2.5" fill="#c0392b" opacity="0.6"/>
+        <circle cx="139" cy="106" r="2.5" fill="#2c5f8a" opacity="0.6"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="handout-body">
+    <p class="section-label">What problem does this solve?</p>
+    <p>Random Forest is a classification and regression algorithm. Given a set of labeled examples, it learns to predict the label of examples it has never seen.</p>
+
+    <p class="section-label">Background: Decision Trees</p>
+    <p>A Decision Tree makes predictions by asking a sequence of yes/no questions about the input features. At each step it picks the question that best splits the data into pure groups — groups where most examples share the same label. It keeps splitting until the groups are pure enough or the tree hits a size limit. A single Decision Tree tends to overfit — it learns the noise in training data and performs poorly on unseen data.</p>
+
+    <p class="section-label">The Algorithm</p>
+<pre>Given: dataset of N examples, each with F features and a label
+Choose: number of trees T, features per split m (typically √F)
+
+For t = 1 to T:
+    1. Draw a bootstrap sample of N examples
+       (random with replacement — some appear twice, some not at all)
+
+    2. Grow a Decision Tree on the bootstrap sample:
+          At each node:
+              Select m features randomly from the F available
+              Find the feature and split point among those m
+              that best separates the labels
+              Split the node into two child nodes
+          Stop when nodes are pure or too small
+
+    3. Store the trained tree
+
+Prediction on new example x:
+    Pass x through all T trees → majority vote (or average for regression)</pre>
+
+    <p class="section-label">Plain English</p>
+    <p>Random Forest builds many Decision Trees, each on a slightly different random sample of the data using a random subset of features at each split. When predicting, every tree votes and the majority wins. The randomness ensures trees make different mistakes, so averaging them out produces more reliable predictions than any single tree.</p>
+
+    <div class="questions">
+      <p class="questions-label">Your Questions</p>
+      <div class="question">
+        <span class="question-num">1</span>
+        <p>What is being minimized or maximized?</p>
+      </div>
+      <div class="question">
+        <span class="question-num">2</span>
+        <p>How does the algorithm move toward that objective?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ HANDOUT 2: ADABOOST -->
+<div class="handout">
+  <div class="handout-header">
+    <div class="handout-meta">
+      <span class="group-badge">Handout 2</span>
+      <h2>AdaBoost</h2>
+      <p class="handout-tagline">Classification · Adaptive Boosting</p>
+    </div>
+    <div class="algo-illustration">
+      <svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" width="160" height="140">
+        <!-- Three sequential weak classifiers, growing -->
+        <!-- Round 1: small, light -->
+        <rect x="8" y="68" width="34" height="52" rx="4" fill="#fdf0ee" stroke="#e0a090" stroke-width="1.2"/>
+        <text x="25" y="88" text-anchor="middle" font-size="7.5" fill="#c0392b" font-family="Source Sans 3,sans-serif" font-weight="600">h₁</text>
+        <text x="25" y="102" text-anchor="middle" font-size="7" fill="#c0392b" opacity="0.7" font-family="Source Sans 3,sans-serif">weak</text>
+        <text x="25" y="113" text-anchor="middle" font-size="7" fill="#7a756e" font-family="Source Sans 3,sans-serif">α₁=0.3</text>
+        <!-- Round 2: medium -->
+        <rect x="56" y="50" width="42" height="70" rx="4" fill="#fdf0ee" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="77" y="74" text-anchor="middle" font-size="8" fill="#c0392b" font-family="Source Sans 3,sans-serif" font-weight="600">h₂</text>
+        <text x="77" y="88" text-anchor="middle" font-size="7" fill="#c0392b" opacity="0.7" font-family="Source Sans 3,sans-serif">better</text>
+        <text x="77" y="101" text-anchor="middle" font-size="7" fill="#7a756e" font-family="Source Sans 3,sans-serif">α₂=0.6</text>
+        <!-- Round 3: largest -->
+        <rect x="112" y="28" width="44" height="92" rx="4" fill="#fae8e6" stroke="#a0291e" stroke-width="2"/>
+        <text x="134" y="62" text-anchor="middle" font-size="9" fill="#a0291e" font-family="Source Sans 3,sans-serif" font-weight="600">h₃</text>
+        <text x="134" y="78" text-anchor="middle" font-size="7.5" fill="#a0291e" opacity="0.8" font-family="Source Sans 3,sans-serif">stronger</text>
+        <text x="134" y="92" text-anchor="middle" font-size="7" fill="#7a756e" font-family="Source Sans 3,sans-serif">α₃=1.1</text>
+        <!-- arrows between -->
+        <line x1="43" y1="94" x2="54" y2="88" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#ah)"/>
+        <line x1="99" y1="82" x2="110" y2="74" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#ah)"/>
+        <!-- data point weights label -->
+        <text x="80" y="138" text-anchor="middle" font-size="8" fill="#7a756e" font-family="Source Sans 3,sans-serif">reweight errors each round</text>
+        <!-- dot showing misclassified gets bigger weight -->
+        <circle cx="25" cy="52" r="3" fill="#c0392b" opacity="0.4"/>
+        <circle cx="25" cy="40" r="4.5" fill="#c0392b" opacity="0.6"/>
+        <circle cx="25" cy="26" r="6" fill="#c0392b" opacity="0.85"/>
+        <text x="38" y="54" font-size="7" fill="#7a756e" font-family="Source Sans 3,sans-serif">w↑</text>
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M2 2L8 5L2 8" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="handout-body">
+    <p class="section-label">What problem does this solve?</p>
+    <p>AdaBoost (Adaptive Boosting) is a classification algorithm. It combines many simple, weak classifiers into a single strong classifier that performs well on examples the weak classifiers struggle with.</p>
+
+    <p class="section-label">Background: Weak Classifiers</p>
+    <p>A weak classifier performs only slightly better than random guessing — for example, a Decision Tree with only one split (a decision stump). Alone, it is not useful. AdaBoost's insight is that many weak classifiers, combined carefully, can produce a powerful one.</p>
+
+    <p class="section-label">The Algorithm</p>
+<pre>Given: dataset of N examples with labels y_i ∈ {-1, +1}
+Choose: number of rounds T
+
+Initialize: weights w_i = 1/N for all examples
+
+For t = 1 to T:
+    1. Train weak classifier h_t using current weights w
+       (examples with higher weight matter more to get right)
+
+    2. Compute weighted error:
+       error_t = sum of w_i for examples where h_t(x_i) ≠ y_i
+
+    3. Compute classifier importance:
+       alpha_t = 0.5 * ln( (1 - error_t) / error_t )
+       (lower error → higher alpha → louder vote)
+
+    4. Update example weights:
+       if h_t got example i right:  w_i = w_i * exp(-alpha_t)
+       if h_t got example i wrong:  w_i = w_i * exp(+alpha_t)
+       Normalize all w_i so they sum to 1
+
+Final classifier: H(x) = sign( Σ alpha_t * h_t(x) )</pre>
+
+    <p class="section-label">Plain English</p>
+    <p>AdaBoost runs in rounds. Each round it trains a simple classifier, then increases the weight of examples it got wrong, so the next classifier pays more attention to them. Classifiers that perform better earn a louder vote in the final answer. The result is a sequence of classifiers that progressively correct each other's mistakes.</p>
+
+    <div class="questions">
+      <p class="questions-label">Your Questions</p>
+      <div class="question">
+        <span class="question-num">1</span>
+        <p>What is being minimized or maximized?</p>
+      </div>
+      <div class="question">
+        <span class="question-num">2</span>
+        <p>How does the algorithm move toward that objective?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ HANDOUT 3: SVM -->
+<div class="handout">
+  <div class="handout-header">
+    <div class="handout-meta">
+      <span class="group-badge">Handout 3</span>
+      <h2>Support Vector Machine</h2>
+      <p class="handout-tagline">Classification · Maximum Margin Classifier</p>
+    </div>
+    <div class="algo-illustration">
+      <svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" width="160" height="140">
+        <!-- data points class 1 (circles) -->
+        <circle cx="25" cy="105" r="5" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+        <circle cx="38" cy="90" r="5" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+        <circle cx="20" cy="75" r="5" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+        <circle cx="45" cy="115" r="5" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+        <circle cx="15" cy="58" r="5" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+        <!-- data points class 2 (crosses) -->
+        <line x1="100" y1="22" x2="110" y2="32" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="110" y1="22" x2="100" y2="32" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="118" y1="42" x2="128" y2="52" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="128" y1="42" x2="118" y2="52" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="130" y1="22" x2="140" y2="32" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="140" y1="22" x2="130" y2="32" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="140" y1="55" x2="150" y2="65" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="150" y1="55" x2="140" y2="65" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <!-- decision boundary (diagonal line) -->
+        <line x1="55" y1="10" x2="105" y2="130" stroke="#4a4640" stroke-width="2" stroke-linecap="round"/>
+        <!-- margin lines (dashed) -->
+        <line x1="38" y1="10" x2="88" y2="130" stroke="#4a4640" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="72" y1="10" x2="122" y2="130" stroke="#4a4640" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <!-- margin bracket -->
+        <line x1="46" y1="65" x2="64" y2="61" stroke="#b08030" stroke-width="1.5"/>
+        <line x1="46" y1="65" x2="46" y2="58" stroke="#b08030" stroke-width="1"/>
+        <line x1="64" y1="61" x2="64" y2="54" stroke="#b08030" stroke-width="1"/>
+        <text x="50" y="52" font-size="8" fill="#b08030" font-family="Source Sans 3,sans-serif" font-weight="600">margin</text>
+        <!-- support vectors (circled) -->
+        <circle cx="38" cy="90" r="9" fill="none" stroke="#b08030" stroke-width="1.5" stroke-dasharray="2,2"/>
+        <circle cx="118" cy="47" r="9" fill="none" stroke="#b08030" stroke-width="1.5" stroke-dasharray="2,2"/>
+        <text x="80" y="138" text-anchor="middle" font-size="8" fill="#7a756e" font-family="Source Sans 3,sans-serif">maximize margin width</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="handout-body">
+    <p class="section-label">What problem does this solve?</p>
+    <p>A Support Vector Machine (SVM) is a classification algorithm. Given labeled examples, it finds a decision boundary that separates the classes — and specifically tries to find the boundary that is as far as possible from the nearest examples on either side.</p>
+
+    <p class="section-label">Background: Decision Boundaries</p>
+    <p>A logistic regression model finds a hyperplane that separates two classes. There are infinitely many valid boundaries for a linearly separable dataset. Logistic regression picks one based on maximum likelihood. SVM picks one based on a different criterion: <em>maximum margin</em> — the widest possible gap between the two classes.</p>
+
+    <p class="section-label">The Algorithm</p>
+<pre>Given: labeled examples (x_i, y_i) where y_i ∈ {-1, +1}
+Find: weights w and bias b defining a hyperplane
+
+The margin = 2 / ||w||
+Maximizing the margin = minimizing ||w||
+
+Hard margin (perfectly separable data):
+    Minimize:   (1/2) * ||w||²
+    Subject to: y_i * (w · x_i + b) ≥ 1   for all i
+
+Soft margin (data with noise / overlap):
+    Introduce slack variables ξ_i ≥ 0 (allow some violations)
+
+    Minimize:   (1/2) * ||w||²  +  C * Σ ξ_i
+    Subject to: y_i * (w · x_i + b) ≥ 1 - ξ_i   for all i
+
+    C is a hyperparameter:
+        large C = penalize violations heavily (tight, may overfit)
+        small C = allow violations (wider margin, more robust)
+
+Support vectors: the examples that sit exactly on the margin.
+    They are the ONLY examples that determine the boundary.
+    All other examples could be removed without changing it.
+
+Prediction:
+    sign( w · x + b )   →   +1 or -1</pre>
+
+    <p class="section-label">Plain English</p>
+    <p>SVM finds the decision boundary with the widest possible gap between the two classes. The examples nearest that boundary — the support vectors — are the only ones that matter. The soft margin version allows a small number of violations, trading some accuracy for robustness.</p>
+
+    <div class="questions">
+      <p class="questions-label">Your Questions</p>
+      <div class="question">
+        <span class="question-num">1</span>
+        <p>What is being minimized or maximized?</p>
+      </div>
+      <div class="question">
+        <span class="question-num">2</span>
+        <p>How does the algorithm move toward that objective?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ HANDOUT 4: K-MEANS -->
+<div class="handout">
+  <div class="handout-header">
+    <div class="handout-meta">
+      <span class="group-badge">Handout 4</span>
+      <h2>K-Means Clustering</h2>
+      <p class="handout-tagline">Unsupervised Learning · Partition into K Groups</p>
+    </div>
+    <div class="algo-illustration">
+      <svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" width="160" height="140">
+        <!-- cluster 1 points (red) -->
+        <circle cx="32" cy="42" r="4" fill="#e8a090" stroke="#c0392b" stroke-width="1"/>
+        <circle cx="22" cy="58" r="4" fill="#e8a090" stroke="#c0392b" stroke-width="1"/>
+        <circle cx="42" cy="55" r="4" fill="#e8a090" stroke="#c0392b" stroke-width="1"/>
+        <circle cx="28" cy="70" r="4" fill="#e8a090" stroke="#c0392b" stroke-width="1"/>
+        <circle cx="48" cy="38" r="4" fill="#e8a090" stroke="#c0392b" stroke-width="1"/>
+        <!-- centroid 1 -->
+        <circle cx="34" cy="54" r="8" fill="none" stroke="#c0392b" stroke-width="2"/>
+        <line x1="30" y1="54" x2="38" y2="54" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <line x1="34" y1="50" x2="34" y2="58" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+        <!-- cluster 2 points (blue) -->
+        <circle cx="105" cy="38" r="4" fill="#90b8d8" stroke="#2c5f8a" stroke-width="1"/>
+        <circle cx="118" cy="52" r="4" fill="#90b8d8" stroke="#2c5f8a" stroke-width="1"/>
+        <circle cx="132" cy="38" r="4" fill="#90b8d8" stroke="#2c5f8a" stroke-width="1"/>
+        <circle cx="140" cy="55" r="4" fill="#90b8d8" stroke="#2c5f8a" stroke-width="1"/>
+        <circle cx="122" cy="28" r="4" fill="#90b8d8" stroke="#2c5f8a" stroke-width="1"/>
+        <!-- centroid 2 -->
+        <circle cx="123" cy="44" r="8" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+        <line x1="119" y1="44" x2="127" y2="44" stroke="#2c5f8a" stroke-width="2" stroke-linecap="round"/>
+        <line x1="123" y1="40" x2="123" y2="48" stroke="#2c5f8a" stroke-width="2" stroke-linecap="round"/>
+        <!-- cluster 3 points (green) -->
+        <circle cx="68" cy="105" r="4" fill="#a8d8a0" stroke="#3a8a3a" stroke-width="1"/>
+        <circle cx="82" cy="118" r="4" fill="#a8d8a0" stroke="#3a8a3a" stroke-width="1"/>
+        <circle cx="96" cy="105" r="4" fill="#a8d8a0" stroke="#3a8a3a" stroke-width="1"/>
+        <circle cx="75" cy="92" r="4" fill="#a8d8a0" stroke="#3a8a3a" stroke-width="1"/>
+        <circle cx="90" cy="128" r="4" fill="#a8d8a0" stroke="#3a8a3a" stroke-width="1"/>
+        <!-- centroid 3 -->
+        <circle cx="82" cy="109" r="8" fill="none" stroke="#3a8a3a" stroke-width="2"/>
+        <line x1="78" y1="109" x2="86" y2="109" stroke="#3a8a3a" stroke-width="2" stroke-linecap="round"/>
+        <line x1="82" y1="105" x2="82" y2="113" stroke="#3a8a3a" stroke-width="2" stroke-linecap="round"/>
+        <!-- distance lines from centroid to one point -->
+        <line x1="34" y1="54" x2="22" y2="58" stroke="#c0392b" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.6"/>
+        <line x1="123" y1="44" x2="140" y2="55" stroke="#2c5f8a" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.6"/>
+        <line x1="82" y1="109" x2="68" y2="105" stroke="#3a8a3a" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.6"/>
+        <text x="80" y="140" text-anchor="middle" font-size="8" fill="#7a756e" font-family="Source Sans 3,sans-serif">+ = centroids</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="handout-body">
+    <p class="section-label">What problem does this solve?</p>
+    <p>K-Means is a clustering algorithm. Given a set of <em>unlabeled</em> examples, it groups them into K clusters such that examples within the same cluster are similar to each other. There are no labels — the algorithm finds structure in the data on its own.</p>
+
+    <p class="section-label">Background: Centroids</p>
+    <p>A centroid is the center point of a cluster — the average position of all examples assigned to it. K-Means represents each cluster by its centroid and assigns each example to whichever centroid it is closest to.</p>
+
+    <p class="section-label">The Algorithm</p>
+<pre>Given: dataset of N examples with F features (no labels)
+Choose: number of clusters K
+
+1. Initialize: randomly place K centroids in feature space
+
+Repeat until centroids stop moving:
+
+    2. Assignment step:
+       For each example x_i:
+           Assign x_i to the nearest centroid
+           nearest_k = argmin over k of  ||x_i - centroid_k||²
+
+    3. Update step:
+       For each cluster k:
+           centroid_k = mean of all examples assigned to cluster k
+
+Return: K centroids and cluster assignment for every example
+
+Prediction on new example x:
+    nearest_k = argmin over k of  ||x - centroid_k||²</pre>
+
+    <p class="section-label">Plain English</p>
+    <p>K-Means alternates between two steps: assign every example to its nearest centroid, then recompute each centroid as the average of its assigned examples. These two steps repeat until assignments stop changing. The result is K clusters where every example is closer to its own cluster center than to any other.</p>
+
+    <div class="questions">
+      <p class="questions-label">Your Questions</p>
+      <div class="question">
+        <span class="question-num">1</span>
+        <p>What is being minimized or maximized?</p>
+      </div>
+      <div class="question">
+        <span class="question-num">2</span>
+        <p>How does the algorithm move toward that objective?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ HANDOUT 5: NAIVE BAYES -->
+<div class="handout">
+  <div class="handout-header">
+    <div class="handout-meta">
+      <span class="group-badge">Handout 5</span>
+      <h2>Naïve Bayes</h2>
+      <p class="handout-tagline">Classification · Probabilistic Model</p>
+    </div>
+    <div class="algo-illustration">
+      <svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" width="160" height="140">
+        <!-- Email envelope -->
+        <rect x="18" y="30" width="124" height="82" rx="5" fill="#fdf8f0" stroke="#b0aa9f" stroke-width="1.5"/>
+        <!-- envelope flap -->
+        <polyline points="18,30 80,78 142,30" fill="none" stroke="#b0aa9f" stroke-width="1.5"/>
+        <!-- text lines in email -->
+        <line x1="36" y1="88" x2="90" y2="88" stroke="#d8d0c4" stroke-width="2" stroke-linecap="round"/>
+        <line x1="36" y1="97" x2="110" y2="97" stroke="#d8d0c4" stroke-width="2" stroke-linecap="round"/>
+        <!-- "SPAM" badge -->
+        <rect x="92" y="82" width="38" height="20" rx="3" fill="#fae0dc" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="111" y="96" text-anchor="middle" font-size="9" fill="#c0392b" font-weight="600" font-family="Source Sans 3,sans-serif">SPAM</text>
+        <!-- probability bars -->
+        <text x="18" y="128" font-size="7.5" fill="#7a756e" font-family="Source Sans 3,sans-serif">P(spam|words)</text>
+        <rect x="18" y="130" width="80" height="6" rx="2" fill="#e8e0d4"/>
+        <rect x="18" y="130" width="68" height="6" rx="2" fill="#c0392b" opacity="0.7"/>
+        <text x="102" y="137" font-size="7.5" fill="#c0392b" font-family="Source Sans 3,sans-serif">0.85</text>
+        <!-- Bayes formula hint -->
+        <text x="80" y="20" text-anchor="middle" font-size="8.5" fill="#4a4640" font-family="Source Sans 3,sans-serif" font-style="italic">P(class|features) ∝ P(features|class)·P(class)</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="handout-body">
+    <p class="section-label">What problem does this solve?</p>
+    <p>Naïve Bayes is a classification algorithm. Given labeled examples, it learns to predict the probability that a new example belongs to each class. It is particularly common in text classification — for example, deciding whether an email is spam.</p>
+
+    <p class="section-label">Background: Bayes' Theorem</p>
+    <p>Bayes' theorem gives a way to compute the probability of a class given observed features: <strong>P(class | features) = P(features | class) × P(class) / P(features)</strong>. The "naïve" assumption is that all features are independent of each other given the class. This is rarely true in practice but makes the math tractable and the algorithm fast.</p>
+
+    <p class="section-label">The Algorithm</p>
+<pre>Given: dataset of N examples, each with F features and a class label
+
+Training — one pass through the data:
+
+    For each class c:
+        1. Compute the prior:
+           P(c) = (examples with class c) / N
+
+        2. For each feature f:
+           P(feature_f = value | class = c) =
+               (examples in class c where feature f = value)
+               / (examples in class c)
+               + smoothing to avoid zero probabilities
+
+Return: all priors P(c) and likelihoods P(feature_f | c)
+
+Prediction on new example x with features x_1 ... x_F:
+
+    For each class c:
+        score(c) = log P(c) + Σ log P(x_f | c)
+        (log turns products of small numbers into sums)
+
+    Return: class c with the highest score</pre>
+
+    <p class="section-label">Plain English</p>
+    <p>Naïve Bayes learns two things: how common each class is, and how often each feature value appears within each class. At prediction time it scores each class by combining these and picks the most probable one. Taking the log turns a product of probabilities into a sum, which is more numerically stable.</p>
+
+    <div class="questions">
+      <p class="questions-label">Your Questions</p>
+      <div class="question">
+        <span class="question-num">1</span>
+        <p>What is being minimized or maximized?</p>
+      </div>
+      <div class="question">
+        <span class="question-num">2</span>
+        <p>How does the algorithm move toward that objective?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ HANDOUT 6: VAE -->
+<div class="handout">
+  <div class="handout-header">
+    <div class="handout-meta">
+      <span class="group-badge">Handout 6</span>
+      <h2>Variational Autoencoder</h2>
+      <p class="handout-tagline">Unsupervised Learning · Generative Model</p>
+    </div>
+    <div class="algo-illustration">
+      <svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" width="160" height="140">
+        <!-- Input image (MNIST digit) -->
+        <rect x="4" y="44" width="32" height="52" rx="3" fill="#f0ece4" stroke="#b0aa9f" stroke-width="1.2"/>
+        <text x="20" y="62" text-anchor="middle" font-size="18" fill="#4a4640" font-family="Source Sans 3,sans-serif" font-weight="300">7</text>
+        <text x="20" y="88" text-anchor="middle" font-size="7" fill="#b0aa9f" font-family="Source Sans 3,sans-serif">input x</text>
+        <!-- Encoder arrow -->
+        <line x1="36" y1="70" x2="54" y2="70" stroke="#7a756e" stroke-width="1.5" marker-end="url(#vae-arr)"/>
+        <!-- Encoder box -->
+        <rect x="54" y="55" width="28" height="30" rx="3" fill="#eef4fa" stroke="#2c5f8a" stroke-width="1.2"/>
+        <text x="68" y="73" text-anchor="middle" font-size="7.5" fill="#2c5f8a" font-family="Source Sans 3,sans-serif" font-weight="600">Enc</text>
+        <!-- μ and σ outputs -->
+        <line x1="82" y1="63" x2="96" y2="52" stroke="#7a756e" stroke-width="1" marker-end="url(#vae-arr)"/>
+        <line x1="82" y1="77" x2="96" y2="88" stroke="#7a756e" stroke-width="1" marker-end="url(#vae-arr)"/>
+        <rect x="96" y="42" width="22" height="18" rx="2" fill="#fdf0ee" stroke="#c0392b" stroke-width="1"/>
+        <text x="107" y="55" text-anchor="middle" font-size="8" fill="#c0392b" font-family="Source Sans 3,sans-serif" font-style="italic">μ</text>
+        <rect x="96" y="80" width="22" height="18" rx="2" fill="#fdf0ee" stroke="#c0392b" stroke-width="1"/>
+        <text x="107" y="93" text-anchor="middle" font-size="8" fill="#c0392b" font-family="Source Sans 3,sans-serif" font-style="italic">σ²</text>
+        <!-- sample z -->
+        <line x1="118" y1="51" x2="128" y2="63" stroke="#7a756e" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="118" y1="89" x2="128" y2="77" stroke="#7a756e" stroke-width="1" stroke-dasharray="2,2"/>
+        <circle cx="132" cy="70" r="9" fill="#e8f4e8" stroke="#3a8a3a" stroke-width="1.5"/>
+        <text x="132" y="73" text-anchor="middle" font-size="8" fill="#3a8a3a" font-family="Source Sans 3,sans-serif" font-style="italic">z</text>
+        <!-- Decoder arrow -->
+        <line x1="141" y1="70" x2="152" y2="70" stroke="#7a756e" stroke-width="1.5" marker-end="url(#vae-arr)"/>
+        <!-- Reconstructed -->
+        <rect x="152" y="44" width="5" height="52" rx="2" fill="#f0ece4" stroke="#b0aa9f" stroke-width="1"/>
+        <!-- KL label below -->
+        <text x="80" y="118" text-anchor="middle" font-size="7.5" fill="#7a756e" font-family="Source Sans 3,sans-serif">Loss = recon + KL divergence</text>
+        <!-- N(0,1) target distribution hint -->
+        <path d="M96,108 Q107,98 118,108" fill="none" stroke="#3a8a3a" stroke-width="1.2" stroke-dasharray="2,2"/>
+        <text x="107" y="130" text-anchor="middle" font-size="7" fill="#3a8a3a" font-family="Source Sans 3,sans-serif">push z → N(0,1)</text>
+        <defs>
+          <marker id="vae-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M2 2L8 5L2 8" fill="none" stroke="#7a756e" stroke-width="1.5" stroke-linecap="round"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="handout-body">
+    <p class="section-label">What problem does this solve?</p>
+    <p>A Variational Autoencoder (VAE) is an unsupervised learning algorithm. Like the autoencoder built in this course, it learns a compressed representation of data. But it goes further: it learns a structured latent space that allows new data to be <em>generated</em> by sampling from it.</p>
+
+    <p class="section-label">Background: The Autoencoder You Built</p>
+    <p>In this course you built an autoencoder that compressed MNIST images into a small latent vector and reconstructed them. The loss was reconstruction error. The limitation: the latent space has no guaranteed structure — points sampled randomly from it may decode into nonsense, because the encoder was never required to organize the space in any particular way.</p>
+
+    <p class="section-label">The Algorithm</p>
+<pre>Given: dataset of N unlabeled examples x_i
+
+Key difference from standard autoencoder:
+    Standard AE: encoder maps x → latent vector z
+    VAE:         encoder maps x → mean vector μ and variance σ²
+                 z is then sampled: z ~ N(μ, σ²)
+
+For each example x_i during training:
+
+    1. Encode:
+       Run x_i through encoder → output μ_i and σ²_i
+
+    2. Sample (reparameterization trick):
+       z_i = μ_i + σ_i * ε    where ε ~ N(0, 1)
+       (keeps the sampling step differentiable for backprop)
+
+    3. Decode:
+       Run z_i through decoder → reconstructed x̂_i
+
+    4. Compute loss (two terms):
+
+       Term 1 — Reconstruction loss:
+           How different is x̂_i from x_i?
+           (same MSE as the course autoencoder)
+
+       Term 2 — KL divergence:
+           How different is N(μ_i, σ²_i) from N(0, 1)?
+           KL = -0.5 * Σ( 1 + log(σ²) - μ² - σ² )
+           (penalizes encoder for straying from standard normal)
+
+       Total loss = Reconstruction loss + KL divergence
+
+    5. Backpropagate and update weights with gradient descent
+
+Generation (not possible with standard autoencoder):
+    Sample z ~ N(0,1) → run through decoder → new example</pre>
+
+    <p class="section-label">Plain English</p>
+    <p>The VAE adds one idea to the autoencoder: instead of compressing each input to a fixed point in latent space, it compresses it to a probability distribution. The KL divergence term pushes all those distributions toward a standard normal, organizing the latent space into a coherent structure you can sample from to generate new data.</p>
+
+    <div class="questions">
+      <p class="questions-label">Your Questions</p>
+      <div class="question">
+        <span class="question-num">1</span>
+        <p>What is being minimized or maximized?</p>
+      </div>
+      <div class="question">
+        <span class="question-num">2</span>
+        <p>How does the algorithm move toward that objective?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ WORKED EXAMPLE: DBSCAN -->
+<div class="handout worked">
+  <div class="handout-header">
+    <div class="handout-meta">
+      <span class="worked-badge">Worked Example · Hard Case</span>
+      <h2>DBSCAN</h2>
+      <p class="handout-tagline">Unsupervised Learning · Density-Based Spatial Clustering</p>
+    </div>
+    <div class="algo-illustration">
+      <svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" width="160" height="140">
+        <!-- Cluster 1: dense group top-left -->
+        <circle cx="28" cy="32" r="3.5" fill="#8acc80" stroke="#3a8a34" stroke-width="1"/>
+        <circle cx="40" cy="26" r="3.5" fill="#8acc80" stroke="#3a8a34" stroke-width="1"/>
+        <circle cx="36" cy="42" r="3.5" fill="#8acc80" stroke="#3a8a34" stroke-width="1"/>
+        <circle cx="22" cy="46" r="3.5" fill="#8acc80" stroke="#3a8a34" stroke-width="1"/>
+        <circle cx="48" cy="38" r="3.5" fill="#8acc80" stroke="#3a8a34" stroke-width="1"/>
+        <circle cx="30" cy="56" r="3.5" fill="#8acc80" stroke="#3a8a34" stroke-width="1"/>
+        <!-- epsilon circle around one core point -->
+        <circle cx="36" cy="42" r="16" fill="none" stroke="#3a8a34" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+        <text x="36" y="46" text-anchor="middle" font-size="6" fill="#3a8a34" font-family="Source Sans 3,sans-serif">ε</text>
+        <!-- Cluster 2: dense group right -->
+        <circle cx="108" cy="55" r="3.5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1"/>
+        <circle cx="120" cy="48" r="3.5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1"/>
+        <circle cx="132" cy="56" r="3.5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1"/>
+        <circle cx="116" cy="64" r="3.5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1"/>
+        <circle cx="128" cy="68" r="3.5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1"/>
+        <circle cx="140" cy="48" r="3.5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1"/>
+        <!-- Cluster 3: non-convex arc shape -->
+        <circle cx="50" cy="95" r="3.5" fill="#e8a860" stroke="#b06820" stroke-width="1"/>
+        <circle cx="64" cy="88" r="3.5" fill="#e8a860" stroke="#b06820" stroke-width="1"/>
+        <circle cx="78" cy="84" r="3.5" fill="#e8a860" stroke="#b06820" stroke-width="1"/>
+        <circle cx="92" cy="88" r="3.5" fill="#e8a860" stroke="#b06820" stroke-width="1"/>
+        <circle cx="100" cy="98" r="3.5" fill="#e8a860" stroke="#b06820" stroke-width="1"/>
+        <!-- noise points -->
+        <circle cx="72" cy="22" r="3" fill="#b0aa9f" stroke="#7a756e" stroke-width="1"/>
+        <circle cx="88" cy="30" r="3" fill="#b0aa9f" stroke="#7a756e" stroke-width="1"/>
+        <circle cx="60" cy="115" r="3" fill="#b0aa9f" stroke="#7a756e" stroke-width="1"/>
+        <!-- noise label -->
+        <text x="88" y="28" font-size="6.5" fill="#7a756e" font-family="Source Sans 3,sans-serif">noise</text>
+        <text x="80" y="135" text-anchor="middle" font-size="7.5" fill="#5a8a55" font-family="Source Sans 3,sans-serif">dense regions = clusters · sparse = noise</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="handout-body">
+    <p class="section-label">What is DBSCAN?</p>
+    <p>DBSCAN (Density-Based Spatial Clustering of Applications with Noise) groups points that are closely packed together and marks points in low-density regions as noise. Unlike K-Means it requires no predefined number of clusters and can find clusters of arbitrary shape.</p>
+
+    <p class="section-label">The Algorithm</p>
+<pre>Given: dataset of N points, two hyperparameters: ε (radius), minPts (minimum neighbors)
+
+Label each point as one of:
+    Core point:    has at least minPts neighbors within distance ε
+    Border point:  within ε of a core point but has fewer than minPts neighbors
+    Noise:         not within ε of any core point
+
+For each unvisited core point p:
+    Create a new cluster C
+    Add p to C
+    Collect all points within ε of p into seed set S
+    For each point q in S:
+        If q is unvisited:
+            Mark q as visited
+            If q is a core point:
+                Add q's neighbors to S   ← expand the frontier
+        If q is not yet in any cluster:
+            Add q to C
+
+Return: cluster assignments and noise labels
+
+Key definitions:
+    Directly density-reachable: q is within ε of core point p
+    Density-reachable:          chain of directly density-reachable steps from p to q
+    Density-connected:          both p and q are density-reachable from some core point
+    Cluster:                    maximal set of density-connected points</pre>
+
+    <p class="section-label">Plain English</p>
+    <p>DBSCAN starts at a core point, expands outward along density-reachable paths, and stops when it hits low-density space. Everything reachable in one connected dense region becomes one cluster. Isolated points with no dense neighbors are labeled noise.</p>
+
+    <hr>
+
+    <p class="section-label">Worked Answer — How to Apply the Optimization Lens</p>
+
+    <div class="reasoning">
+
+      <div class="reasoning-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <p class="step-label">Look for an explicit loss function</p>
+          <p>There isn't one. Unlike the six group handouts — and unlike Cobweb — DBSCAN has no formula being evaluated at each step. No score is computed. No quantity is compared before and after each decision. This is the first thing to notice: the objective is not written down anywhere in the algorithm.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <p class="step-label">Look at what the algorithm produces instead</p>
+          <p>Focus on the definition of a cluster: a <em>maximal</em> set of density-connected points. "Maximal" is doing important work here — it means the algorithm never stops expanding a cluster while there are more density-reachable points to include. Every cluster is as large as it can possibly be under the density constraints. That is not arbitrary — it reflects a specific preference baked into the procedure.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <p class="step-label">Reconstruct the implicit objective from the maximality rule</p>
+          <p>Because every cluster is maximally expanded, DBSCAN implicitly produces the clustering with the <em>fewest possible clusters</em> consistent with the density constraints — it refuses to split a dense region into two clusters when one will do. Simultaneously, the density thresholds (ε and minPts) enforce a minimum intra-cluster density. Together, the algorithm implicitly maximizes density-reachability within clusters while minimizing the total number of clusters. Neither of these objectives is written in the pseudocode — they emerge from the definition of density-connectivity and the maximality expansion rule.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <p class="step-label">Find the optimizer</p>
+          <p>The seed set expansion loop is the optimizer. Starting from each core point, it greedily absorbs every reachable point into the cluster in a single deterministic pass. There is no iteration, no score comparison, no backtracking. The algorithm does not try multiple configurations and pick the best — it constructs the only valid solution under the density definition directly. This is closer to a constraint-satisfaction procedure than an optimization loop, but it is pursuing a well-defined implicit objective.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <p class="step-label">Compare to the other algorithms</p>
+          <p>Cobweb's objective (CU) was implicit in its selection procedure but still computed explicitly at each step. DBSCAN's objective is implicit in its <em>definitions</em> — it never computes anything like CU. The objective has to be reconstructed by reading what the algorithm's constraints force it to produce. This is a harder case than Cobweb, but the framework still applies — it just requires more work to find where the objective is hiding.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="answer-box">
+      <p class="answer-label">Answer</p>
+      <p><strong>What is being maximized?</strong> Implicitly: cluster density-reachability (all density-connected points end up together) while minimizing the number of clusters (maximality prevents arbitrary splitting of dense regions). No explicit loss function exists — the objective is embedded in the definitions of density-connectivity and maximal expansion.</p>
+      <p><strong>How?</strong> Greedy deterministic expansion. From each core point, absorb all reachable points in a single pass. No gradient, no score comparison, no iteration. The procedure directly constructs the unique valid solution under the density constraints rather than searching for it.</p>
+      <p><strong>Key lesson:</strong> The optimization framework still applies, but the objective must be reconstructed from the algorithm's behavior rather than read off a formula. This is common in classical algorithms — the objective is baked into the procedure rather than separated out as a swappable component.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ WORKED EXAMPLE: KNN -->
+<div class="handout worked">
+  <div class="handout-header">
+    <div class="handout-meta">
+      <span class="worked-badge">Worked Example · The Hard Question</span>
+      <h2>K-Nearest Neighbors</h2>
+      <p class="handout-tagline">Classification &amp; Regression · Instance-Based Learning</p>
+    </div>
+    <div class="algo-illustration">
+      <svg viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" width="160" height="140">
+        <!-- stored training points -->
+        <circle cx="30" cy="40" r="5" fill="#e8a090" stroke="#c0392b" stroke-width="1.5"/>
+        <circle cx="55" cy="28" r="5" fill="#e8a090" stroke="#c0392b" stroke-width="1.5"/>
+        <circle cx="22" cy="65" r="5" fill="#e8a090" stroke="#c0392b" stroke-width="1.5"/>
+        <circle cx="48" cy="55" r="5" fill="#e8a090" stroke="#c0392b" stroke-width="1.5"/>
+        <circle cx="100" cy="38" r="5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1.5"/>
+        <circle cx="118" cy="52" r="5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1.5"/>
+        <circle cx="132" cy="35" r="5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1.5"/>
+        <circle cx="110" cy="68" r="5" fill="#6ab0d8" stroke="#2c5f8a" stroke-width="1.5"/>
+        <!-- query point -->
+        <circle cx="75" cy="55" r="7" fill="#f0e060" stroke="#b08030" stroke-width="2"/>
+        <text x="75" y="59" text-anchor="middle" font-size="9" fill="#7a5010" font-family="Source Sans 3,sans-serif" font-weight="600">?</text>
+        <!-- k=3 circle -->
+        <circle cx="75" cy="55" r="38" fill="none" stroke="#b08030" stroke-width="1" stroke-dasharray="3,2" opacity="0.7"/>
+        <text x="108" y="26" font-size="7" fill="#b08030" font-family="Source Sans 3,sans-serif">k=3 neighbors</text>
+        <!-- distance lines to 3 nearest -->
+        <line x1="75" y1="55" x2="48" y2="55" stroke="#b08030" stroke-width="1.2" stroke-dasharray="2,2"/>
+        <line x1="75" y1="55" x2="100" y2="38" stroke="#b08030" stroke-width="1.2" stroke-dasharray="2,2"/>
+        <line x1="75" y1="55" x2="55" y2="28" stroke="#b08030" stroke-width="1.2" stroke-dasharray="2,2"/>
+        <!-- database icon at bottom -->
+        <ellipse cx="80" cy="112" rx="28" ry="7" fill="#2a4a26" stroke="#4a8a44" stroke-width="1"/>
+        <rect x="52" y="112" width="56" height="14" fill="#2a4a26" stroke="none"/>
+        <ellipse cx="80" cy="126" rx="28" ry="7" fill="#2a4a26" stroke="#4a8a44" stroke-width="1"/>
+        <text x="80" y="122" text-anchor="middle" font-size="7" fill="#8acc80" font-family="Source Sans 3,sans-serif">training data stored</text>
+        <text x="80" y="138" text-anchor="middle" font-size="7" fill="#5a8a55" font-family="Source Sans 3,sans-serif">no parameters learned</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="handout-body">
+    <p class="section-label">What is KNN?</p>
+    <p>K-Nearest Neighbors is a classification and regression algorithm. To predict the label of a new example, it finds the k most similar examples in the training set and returns their majority label (classification) or average value (regression). The entire training dataset is stored and used directly at prediction time.</p>
+
+    <p class="section-label">The Algorithm</p>
+<pre>Training:
+    Store all N training examples. That's it.
+    No parameters are learned. No optimization is performed.
+
+Prediction on new example x:
+    1. Compute distance from x to every stored training example
+       (usually Euclidean: d(x, x_i) = ||x - x_i||)
+
+    2. Find the k examples with the smallest distance to x
+
+    3. Classification: return majority label among the k neighbors
+       Regression:     return average value among the k neighbors
+
+Hyperparameters:
+    k:        number of neighbors to consult
+    distance: Euclidean, Manhattan, cosine, etc.</pre>
+
+    <p class="section-label">Plain English</p>
+    <p>KNN stores every training example and makes predictions by looking up the most similar ones. There is no training phase in any meaningful sense. All computation happens at prediction time.</p>
+
+    <hr>
+
+    <p class="section-label">Worked Answer — Applying the Optimization Lens</p>
+
+    <div class="reasoning">
+
+      <div class="reasoning-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <p class="step-label">Look for an optimization loop</p>
+          <p>There is none. Read the training procedure again: store all examples. That is the entirety of training. No loss function is evaluated. No parameters are updated. No gradient is computed. No score is compared before and after. The algorithm does not get better at anything during training — because nothing happens during training.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <p class="step-label">Look for parameters</p>
+          <p>Every algorithm in this course had parameters — values that were adjusted during training to minimize a loss. Linear regression learned m and b. The neural network learned weights W and biases b. KNN has no such parameters. The distance metric and k are hyperparameters chosen before training, not learned from data. The training examples themselves are stored, not learned — they are the data, not a compressed representation of it.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <p class="step-label">Apply the framework honestly</p>
+          <p>The course framework requires: a model (parameterized function), a loss (scalar measure of badness), and an optimizer (mechanism to reduce the loss). KNN satisfies none of these in the standard sense. There is no parameterized function — the prediction rule is fixed. There is no loss being minimized during training. There is no optimizer because there is nothing to optimize. The framework does not fit.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <p class="step-label">But KNN still generalizes — so what is it doing?</p>
+          <p>KNN can predict on examples it has never seen. It achieves the practical goal of machine learning — generalization — without the mechanism the course described. It generalizes by proximity: the assumption that nearby examples share labels. This is an inductive bias (a built-in assumption about the world), not a learned one. Every algorithm has inductive bias, but most algorithms adjust their parameters to fit data within that bias. KNN does not adjust anything. The bias is the entire model.</p>
+        </div>
+      </div>
+
+      <div class="reasoning-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <p class="step-label">Recognize what KNN actually is</p>
+          <p>KNN belongs to a category formally called <em>lazy learners</em>. The name is precise: the algorithm does no work during training and defers everything to inference time. The model <em>is</em> the data — not a representation derived from the data, not parameters adjusted to fit the data, but the raw data itself stored verbatim. At prediction time it performs retrieval: find the nearest stored examples, return their labels. There is no learned function. There is no optimization. By the definition this course has used all semester — learning is optimization — KNN technically does not learn anything.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="answer-box">
+      <p class="answer-label">Answer — As Far As the Framework Reaches</p>
+      <p><strong>What is being minimized?</strong> Nothing. KNN has no loss function and no training objective. Nothing is evaluated, compared, or improved during training.</p>
+      <p><strong>How does it optimize?</strong> It doesn't. Training is storage. The optimization framework does not apply because there is no optimization. The model is the data.</p>
+    </div>
+
+    <div class="open-question">
+      <p class="oq-label">The Takeaway</p>
+      <p><strong>KNN doesn't learn anything.</strong> It stores the training data and performs retrieval at inference time. This has a formal name: <em>lazy learning</em>. The word lazy is precise — no work is done during training, all work is deferred to prediction.</p>
+      <p>Learning, in the sense this course has used all semester, involves building a representation that is optimized for some criterion. A linear model learns weights. A neural network learns features. Both produce something smaller and more structured than the raw data — a representation adjusted through optimization to capture what matters for the task. KNN produces no such representation. The data goes in unchanged and comes back out at query time. There is no optimization, no criterion, no learned structure. That is why it sits outside the framework — not as an edge case, but as a fundamentally different kind of algorithm.</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
