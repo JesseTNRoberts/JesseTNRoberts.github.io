@@ -113,6 +113,11 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
  
 ### Tennessee Technological University
 
+`2026`
+Research Contract with Wilson Sports
+
+ICML Silver Award for Excellence in Reviewing
+
 `2025`
 Collaborative Research: Conference: NAIRR Pilot Expansion: FA1: Mid-South Conferences on CyberInfrastructure Advances to Enable Interdisciplinary AI Research in Health
 
@@ -238,6 +243,10 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 ---
 
 ## Presentations
+
+`April 2026`
+Foundation Models and Responsible AI at TN-THRIVE-AI 
+
 `May 2025`
 Poster: A Few-Shot Learning Method for SMS Phishing Detection and Explanation Using SLMs
 
@@ -265,6 +274,9 @@ Computational Intelligence Society (IEEE CIS)
 ## Faculty Service
 ### Tennessee Technological University
 
+`2026`
+AI Faculty Search Committee
+
 `Fall 2021 - Current`   
 Undergraduate Program Committee 
 
@@ -284,20 +296,26 @@ IEEE Robotics Team Coach
 
 ## Research Service
 
+`April 2026`
+Organizer for the TN-THRIVE-AI Workshop 
+
+`2026`
+Empirical Methods in Natural Language Processing (EMNLP)
+
+`2024-2026` 
+Conference on Computational Natural Language Learning (CoNLL)
+
 `2026` 
 International Conference on Machine Learning (ICML)
 
 `2026` 
-Florida Artificial Intelligence Research Symposium (FLAIRS)
+Track Chair for Florida Artificial Intelligence Research Symposium (FLAIRS)
 
 `2025`
 International Conference on Learning Representations (ICLR)
 
 `2025`
-12th Annual Conference on Advances in Cognitive Systems
-
-`2025` 
-Conference on Computational Natural Language Learning 
+12th Annual Conference on Advances in Cognitive Systems (ACS)
 
 `2025` 
 Natural Language Processing for the Digital Humanities 
@@ -325,9 +343,6 @@ Natural Language Processing for the Digital Humanities
 
 `2024` 
 EPJ Data Science Journal 
-
-`2024` 
-Conference on Computational Natural Language Learning 
 
 `2022-2025` 
 International Joint Conference on Neural Networks
