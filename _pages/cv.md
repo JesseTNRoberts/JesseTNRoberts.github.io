@@ -118,6 +118,8 @@ Research Contract with Wilson Sports
 
 ICML Silver Award for Excellence in Reviewing
 
+Nominated for best paper at IJCNN
+
 `2025`
 Collaborative Research: Conference: NAIRR Pilot Expansion: FA1: Mid-South Conferences on CyberInfrastructure Advances to Enable Interdisciplinary AI Research in Health
 
