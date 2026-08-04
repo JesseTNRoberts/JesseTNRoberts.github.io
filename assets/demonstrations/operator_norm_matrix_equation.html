@@ -1,0 +1,224 @@
+<h2 class="sr-only">Interactive visualization of a matrix equation: an adjustable 2 by 2 matrix multiplying a labeled x-y input grid with a unit circle to produce a warped x-y output grid, with the input unit vector achieving maximum stretch shown geometrically and as an explicit numeric matrix multiplication equation, illustrating the operator norm</h2>
+<div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:20px;">
+
+  <div style="display:flex; align-items:stretch; border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0; padding:10px 14px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px 16px; align-items:center;">
+      <div style="text-align:center;">
+        <div style="font-size:15px; font-weight:500;" id="a-val">1.6</div>
+        <input type="range" min="-2" max="2" step="0.1" value="1.6" id="a" style="width:70px;">
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:15px; font-weight:500;" id="b-val">0.6</div>
+        <input type="range" min="-2" max="2" step="0.1" value="0.6" id="b" style="width:70px;">
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:15px; font-weight:500;" id="c-val">0.3</div>
+        <input type="range" min="-2" max="2" step="0.1" value="0.3" id="c" style="width:70px;">
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:15px; font-weight:500;" id="d-val">0.9</div>
+        <input type="range" min="-2" max="2" step="0.1" value="0.9" id="d" style="width:70px;">
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:22px; color:var(--text-secondary);">&times;</div>
+
+  <div style="flex:1; min-width:180px;">
+    <div style="font-size:12px; color:var(--text-secondary); text-align:center; margin-bottom:4px;">input space</div>
+    <svg id="svg-orig" viewBox="-260 -260 520 520" style="width:100%; height:auto; background:var(--surface-1); border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0;">
+      <g id="grid-orig"></g>
+      <g id="axes-orig"></g>
+      <path id="circle-orig" fill="none" stroke="#378ADD" stroke-width="2.5"/>
+      <line id="maxvec-in" x1="0" y1="0" x2="0" y2="0" stroke="#D85A30" stroke-width="2.5"/>
+      <circle id="maxdot-in" r="4" fill="#D85A30"/>
+    </svg>
+  </div>
+
+  <div style="font-size:22px; color:var(--text-secondary);">=</div>
+
+  <div style="flex:1; min-width:180px;">
+    <div style="font-size:12px; color:var(--text-secondary); text-align:center; margin-bottom:4px;">output space</div>
+    <svg id="svg-warp" viewBox="-260 -260 520 520" style="width:100%; height:auto; background:var(--surface-1); border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0;">
+      <g id="grid-warp"></g>
+      <g id="axes-warp"></g>
+      <path id="circle-warp" fill="none" stroke="#378ADD" stroke-width="2.5"/>
+      <line id="maxvec-out" x1="0" y1="0" x2="0" y2="0" stroke="#D85A30" stroke-width="2.5"/>
+      <circle id="maxdot-out" r="4" fill="#D85A30"/>
+    </svg>
+  </div>
+</div>
+
+<div style="background:var(--surface-1); border-radius:var(--radius); padding:16px; margin-bottom:16px;">
+  <div style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">the multiplication that achieves the operator norm</div>
+  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:15px; font-weight:500;">
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 12px; border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0; padding:6px 10px;">
+      <span id="eq-a">1.60</span><span id="eq-b">0.60</span>
+      <span id="eq-c">0.30</span><span id="eq-d">0.90</span>
+    </div>
+
+    <span style="color:var(--text-secondary); font-size:18px;">&times;</span>
+
+    <div style="display:grid; grid-template-rows:1fr 1fr; gap:4px; border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0; padding:6px 10px; text-align:center;">
+      <span id="eq-vx" style="color:#D85A30;">0.00</span>
+      <span id="eq-vy" style="color:#D85A30;">0.00</span>
+    </div>
+
+    <span style="color:var(--text-secondary); font-size:18px;">=</span>
+
+    <div style="display:grid; grid-template-rows:1fr 1fr; gap:4px; border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0; padding:6px 10px; text-align:center;">
+      <span id="eq-wx" style="color:#D85A30;">0.00</span>
+      <span id="eq-wy" style="color:#D85A30;">0.00</span>
+    </div>
+
+    <span style="color:var(--text-secondary); font-size:14px; font-weight:400; margin-left:6px;">&nbsp;so &#8741;Av&#8741; = &#8741;A&#8741; =</span>
+    <span id="eq-norm" style="color:#D85A30;">0.00</span>
+  </div>
+</div>
+
+<div style="display:flex; gap:12px;">
+  <div style="background:var(--surface-1); border-radius:var(--radius); padding:12px; flex:1;">
+    <div style="font-size:13px; color:var(--text-secondary);">Operator norm ||A||</div>
+    <div style="font-size:22px; font-weight:500;" id="norm-out">--</div>
+  </div>
+  <div style="background:var(--surface-1); border-radius:var(--radius); padding:12px; flex:1; display:flex; align-items:center; gap:8px;">
+    <span style="width:10px; height:10px; border-radius:50%; background:#D85A30; display:inline-block;"></span>
+    <span style="font-size:12px; color:var(--text-secondary);">the maximizing unit vector v and its image Av</span>
+  </div>
+</div>
+
+<script>
+const S = 60;
+const RANGE = 4;
+const STEP = 0.5;
+const svgNS = 'http://www.w3.org/2000/svg';
+
+function tf(A, x, y){
+  return [ (A[0][0]*x + A[0][1]*y)*S, -(A[1][0]*x + A[1][1]*y)*S ];
+}
+function identityTf(x,y){ return [x*S, -y*S]; }
+
+function drawGrid(gEl, mapFn){
+  gEl.innerHTML = '';
+  for(let k=-RANGE; k<=RANGE; k+=STEP){
+    const isAxis = Math.abs(k) < 1e-6;
+    const stroke = isAxis ? 'var(--text-secondary)' : 'var(--border)';
+    const sw = isAxis ? 1.5 : 1;
+    const [x1,y1] = mapFn(k, -RANGE);
+    const [x2,y2] = mapFn(k, RANGE);
+    const l1 = document.createElementNS(svgNS,'line');
+    l1.setAttribute('x1',x1); l1.setAttribute('y1',y1);
+    l1.setAttribute('x2',x2); l1.setAttribute('y2',y2);
+    l1.setAttribute('stroke', stroke); l1.setAttribute('stroke-width', sw);
+    gEl.appendChild(l1);
+    const [x3,y3] = mapFn(-RANGE, k);
+    const [x4,y4] = mapFn(RANGE, k);
+    const l2 = document.createElementNS(svgNS,'line');
+    l2.setAttribute('x1',x3); l2.setAttribute('y1',y3);
+    l2.setAttribute('x2',x4); l2.setAttribute('y2',y4);
+    l2.setAttribute('stroke', stroke); l2.setAttribute('stroke-width', sw);
+    gEl.appendChild(l2);
+  }
+}
+
+function label(gEl, x, y, text){
+  const t = document.createElementNS(svgNS,'text');
+  t.setAttribute('x', x); t.setAttribute('y', y);
+  t.setAttribute('font-size', '13'); t.setAttribute('font-weight', '500');
+  t.setAttribute('fill', 'var(--text-secondary)');
+  t.setAttribute('text-anchor', 'middle');
+  t.textContent = text;
+  gEl.appendChild(t);
+}
+
+function drawAxisLabels(gEl, mapFn){
+  gEl.innerHTML = '';
+  const [px,py] = mapFn(RANGE+0.35, 0);
+  const [nx,ny] = mapFn(-RANGE-0.35, 0);
+  const [qx,qy] = mapFn(0, RANGE+0.35);
+  const [mx,my] = mapFn(0, -RANGE-0.35);
+  label(gEl, px, py+4, '+x');
+  label(gEl, nx, ny+4, '\u2212x');
+  label(gEl, qx, qy, '+y');
+  label(gEl, mx, my, '\u2212y');
+}
+
+function circlePath(mapFn){
+  let p=[];
+  const N=100;
+  for(let i=0;i<=N;i++){
+    const t = 2*Math.PI*i/N;
+    const x=Math.cos(t), y=Math.sin(t);
+    const [px,py] = mapFn(x,y);
+    p.push([px,py]);
+  }
+  return "M " + p.map(pt=>pt[0].toFixed(1)+","+pt[1].toFixed(1)).join(" L ");
+}
+
+function update(){
+  const a=+document.getElementById('a').value;
+  const b=+document.getElementById('b').value;
+  const c=+document.getElementById('c').value;
+  const d=+document.getElementById('d').value;
+  document.getElementById('a-val').textContent = a.toFixed(1);
+  document.getElementById('b-val').textContent = b.toFixed(1);
+  document.getElementById('c-val').textContent = c.toFixed(1);
+  document.getElementById('d-val').textContent = d.toFixed(1);
+  document.getElementById('eq-a').textContent = a.toFixed(2);
+  document.getElementById('eq-b').textContent = b.toFixed(2);
+  document.getElementById('eq-c').textContent = c.toFixed(2);
+  document.getElementById('eq-d').textContent = d.toFixed(2);
+
+  const A=[[a,b],[c,d]];
+  const warpFn = (x,y) => tf(A,x,y);
+
+  drawGrid(document.getElementById('grid-orig'), identityTf);
+  drawGrid(document.getElementById('grid-warp'), warpFn);
+  drawAxisLabels(document.getElementById('axes-orig'), identityTf);
+  drawAxisLabels(document.getElementById('axes-warp'), warpFn);
+
+  document.getElementById('circle-orig').setAttribute('d', circlePath(identityTf));
+  document.getElementById('circle-warp').setAttribute('d', circlePath(warpFn));
+
+  const m11 = a*a+c*c, m12=a*b+c*d, m22=b*b+d*d;
+  const tr = m11+m22, det = m11*m22-m12*m12;
+  const disc = Math.sqrt(Math.max(tr*tr/4-det,0));
+  const l1 = tr/2+disc, l2 = tr/2-disc;
+  const sMax = Math.sqrt(Math.max(l1,0));
+
+  document.getElementById('norm-out').textContent = sMax.toFixed(2);
+  document.getElementById('eq-norm').textContent = sMax.toFixed(2);
+
+  let vx, vy;
+  if(Math.abs(m12) > 1e-9){
+    vx = l1-m22; vy = m12;
+  } else {
+    vx = 1; vy = 0;
+  }
+  const vnorm = Math.hypot(vx,vy) || 1;
+  vx/=vnorm; vy/=vnorm;
+
+  document.getElementById('eq-vx').textContent = vx.toFixed(2);
+  document.getElementById('eq-vy').textContent = vy.toFixed(2);
+
+  const [inx, iny] = identityTf(vx, vy);
+  document.getElementById('maxvec-in').setAttribute('x2', inx.toFixed(1));
+  document.getElementById('maxvec-in').setAttribute('y2', iny.toFixed(1));
+  document.getElementById('maxdot-in').setAttribute('cx', inx.toFixed(1));
+  document.getElementById('maxdot-in').setAttribute('cy', iny.toFixed(1));
+
+  const wx = a*vx + b*vy;
+  const wy = c*vx + d*vy;
+  document.getElementById('eq-wx').textContent = wx.toFixed(2);
+  document.getElementById('eq-wy').textContent = wy.toFixed(2);
+
+  const [outx, outy] = warpFn(vx, vy);
+  document.getElementById('maxvec-out').setAttribute('x2', outx.toFixed(1));
+  document.getElementById('maxvec-out').setAttribute('y2', outy.toFixed(1));
+  document.getElementById('maxdot-out').setAttribute('cx', outx.toFixed(1));
+  document.getElementById('maxdot-out').setAttribute('cy', outy.toFixed(1));
+}
+['a','b','c','d'].forEach(id=>document.getElementById(id).addEventListener('input', update));
+update();
+</script>

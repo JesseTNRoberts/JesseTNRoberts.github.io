@@ -1,0 +1,231 @@
+<h2 class="sr-only">3D visualization of a unit sphere warped by a 3 by 3 matrix into an ellipsoid, with a power iteration search animating a vector converging to the direction of maximum stretch, shown alongside the live numeric matrix multiplication, whose result's length equals the operator norm</h2>
+<div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px;">
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px 10px; border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0; padding:8px 12px;">
+    <input type="range" min="-1.5" max="1.5" step="0.1" value="1.5" id="m00" style="width:56px;">
+    <input type="range" min="-1.5" max="1.5" step="0.1" value="0.4" id="m01" style="width:56px;">
+    <input type="range" min="-1.5" max="1.5" step="0.1" value="0.1" id="m02" style="width:56px;">
+    <input type="range" min="-1.5" max="1.5" step="0.1" value="0.2" id="m10" style="width:56px;">
+    <input type="range" min="-1.5" max="1.5" step="0.1" value="0.5" id="m11" style="width:56px;">
+    <input type="range" min="-1.5" max="1.5" step="0.1" value="0.3" id="m12" style="width:56px;">
+    <input type="range" min="-1.5" max="1.5" step="0.1" value="0.1" id="m20" style="width:56px;">
+    <input type="range" min="-1.5" max="1.5" step="0.1" value="0.2" id="m21" style="width:56px;">
+    <input type="range" min="-1.5" max="1.5" step="0.1" value="1.0" id="m22" style="width:56px;">
+  </div>
+  <div style="display:flex; flex-direction:column; gap:8px; justify-content:center;">
+    <button id="step-btn">Step iteration</button>
+    <button id="run-btn">Run to convergence</button>
+    <button id="reset-btn">New random start</button>
+  </div>
+  <div style="display:flex; gap:12px; flex:1; min-width:160px;">
+    <div style="background:var(--surface-1); border-radius:var(--radius); padding:10px 14px; flex:1;">
+      <div style="font-size:12px; color:var(--text-secondary);">iteration</div>
+      <div style="font-size:20px; font-weight:500;" id="iter-out">0</div>
+    </div>
+    <div style="background:var(--surface-1); border-radius:var(--radius); padding:10px 14px; flex:1;">
+      <div style="font-size:12px; color:var(--text-secondary);">current stretch</div>
+      <div style="font-size:20px; font-weight:500;" id="stretch-out">--</div>
+    </div>
+    <div style="background:var(--surface-1); border-radius:var(--radius); padding:10px 14px; flex:1;">
+      <div style="font-size:12px; color:var(--text-secondary);">||A||</div>
+      <div style="font-size:20px; font-weight:500;" id="norm-out">--</div>
+    </div>
+  </div>
+</div>
+<div id="canvas-wrap" style="width:100%; height:400px; cursor:grab;"></div>
+<div style="font-size:12px; color:var(--text-secondary); margin:4px 0 16px;">drag to rotate. orange = current search vector x, teal = its image Ax</div>
+
+<div style="background:var(--surface-1); border-radius:var(--radius); padding:16px;">
+  <div style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">A times the current search vector</div>
+  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:14px; font-weight:500;">
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:3px 10px; border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0; padding:6px 10px; text-align:right;">
+      <span id="eq00">1.50</span><span id="eq01">0.40</span><span id="eq02">0.10</span>
+      <span id="eq10">0.20</span><span id="eq11">0.50</span><span id="eq12">0.30</span>
+      <span id="eq20">0.10</span><span id="eq21">0.20</span><span id="eq22">1.00</span>
+    </div>
+    <span style="color:var(--text-secondary); font-size:18px;">&times;</span>
+    <div style="display:grid; grid-template-rows:repeat(3,1fr); gap:3px; border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0; padding:6px 10px; text-align:center;">
+      <span id="eqvx" style="color:#D85A30;">0.00</span>
+      <span id="eqvy" style="color:#D85A30;">0.00</span>
+      <span id="eqvz" style="color:#D85A30;">0.00</span>
+    </div>
+    <span style="color:var(--text-secondary); font-size:18px;">=</span>
+    <div style="display:grid; grid-template-rows:repeat(3,1fr); gap:3px; border-left:2px solid var(--border-strong); border-right:2px solid var(--border-strong); border-radius:0; padding:6px 10px; text-align:center;">
+      <span id="eqwx" style="color:#1D9E75;">0.00</span>
+      <span id="eqwy" style="color:#1D9E75;">0.00</span>
+      <span id="eqwz" style="color:#1D9E75;">0.00</span>
+    </div>
+    <span style="color:var(--text-secondary); font-size:13px; font-weight:400; margin-left:4px;">&#8741;Ax&#8741; =</span>
+    <span id="eqlen" style="color:#1D9E75;">0.00</span>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+var wrap = document.getElementById('canvas-wrap');
+var W = wrap.clientWidth || 640, H = 400;
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(45, W/H, 0.1, 100);
+var renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+renderer.setSize(W,H);
+renderer.setPixelRatio(window.devicePixelRatio||1);
+wrap.appendChild(renderer.domElement);
+
+var baseGeo = new THREE.SphereGeometry(1, 40, 28);
+var sphereWire = new THREE.Mesh(baseGeo.clone(), new THREE.MeshBasicMaterial({color:0x888780, wireframe:true, transparent:true, opacity:0.35}));
+scene.add(sphereWire);
+
+var ellipMat = new THREE.MeshBasicMaterial({color:0x378ADD, transparent:true, opacity:0.22, side:THREE.DoubleSide});
+var ellipWireMat = new THREE.MeshBasicMaterial({color:0x185FA5, wireframe:true, transparent:true, opacity:0.5});
+var ellipMesh = new THREE.Mesh(baseGeo.clone(), ellipMat);
+var ellipWire = new THREE.Mesh(baseGeo.clone(), ellipWireMat);
+scene.add(ellipMesh); scene.add(ellipWire);
+
+var axMat = new THREE.LineBasicMaterial({color:0xB4B2A9, transparent:true, opacity:0.5});
+[[1.7,0,0],[0,1.7,0],[0,0,1.7]].forEach(function(p){
+  var g = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-p[0],-p[1],-p[2]), new THREE.Vector3(p[0],p[1],p[2])]);
+  scene.add(new THREE.Line(g, axMat));
+});
+
+var arrowX = new THREE.ArrowHelper(new THREE.Vector3(1,0,0), new THREE.Vector3(0,0,0), 1, 0xD85A30, 0.15, 0.09);
+var arrowAx = new THREE.ArrowHelper(new THREE.Vector3(1,0,0), new THREE.Vector3(0,0,0), 1, 0x1D9E75, 0.15, 0.09);
+scene.add(arrowX); scene.add(arrowAx);
+
+var azimuth = 0.8, polar = 1.1, radius = 4.2;
+function updateCamera(){
+  camera.position.set(
+    radius*Math.sin(polar)*Math.sin(azimuth),
+    radius*Math.cos(polar),
+    radius*Math.sin(polar)*Math.cos(azimuth)
+  );
+  camera.lookAt(0,0,0);
+}
+updateCamera();
+
+var dragging=false, lastX=0, lastY=0;
+renderer.domElement.addEventListener('pointerdown', function(e){dragging=true; lastX=e.clientX; lastY=e.clientY; wrap.style.cursor='grabbing';});
+window.addEventListener('pointerup', function(){dragging=false; wrap.style.cursor='grab';});
+window.addEventListener('pointermove', function(e){
+  if(!dragging) return;
+  var dx = e.clientX-lastX, dy = e.clientY-lastY;
+  lastX=e.clientX; lastY=e.clientY;
+  azimuth -= dx*0.008;
+  polar = Math.max(0.15, Math.min(Math.PI-0.15, polar - dy*0.008));
+});
+
+function getA(){
+  return [
+    [+document.getElementById('m00').value, +document.getElementById('m01').value, +document.getElementById('m02').value],
+    [+document.getElementById('m10').value, +document.getElementById('m11').value, +document.getElementById('m12').value],
+    [+document.getElementById('m20').value, +document.getElementById('m21').value, +document.getElementById('m22').value]
+  ];
+}
+function matVec(A,v){ return [A[0][0]*v[0]+A[0][1]*v[1]+A[0][2]*v[2], A[1][0]*v[0]+A[1][1]*v[1]+A[1][2]*v[2], A[2][0]*v[0]+A[2][1]*v[1]+A[2][2]*v[2]]; }
+function matTVec(A,v){ return [A[0][0]*v[0]+A[1][0]*v[1]+A[2][0]*v[2], A[0][1]*v[0]+A[1][1]*v[1]+A[2][1]*v[2], A[0][2]*v[0]+A[1][2]*v[1]+A[2][2]*v[2]]; }
+function norm(v){ return Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]); }
+function normalize(v){ var n=norm(v)||1; return [v[0]/n,v[1]/n,v[2]/n]; }
+function randUnit(){ var v=[Math.random()-0.5,Math.random()-0.5,Math.random()-0.5]; return normalize(v); }
+function slerp(a,b,t){
+  var dot = Math.max(-1,Math.min(1, a[0]*b[0]+a[1]*b[1]+a[2]*b[2]));
+  var theta = Math.acos(dot);
+  if(theta < 1e-4) return normalize([a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t]);
+  var s = Math.sin(theta);
+  var wa = Math.sin((1-t)*theta)/s, wb = Math.sin(t*theta)/s;
+  return normalize([a[0]*wa+b[0]*wb, a[1]*wa+b[1]*wb, a[2]*wa+b[2]*wb]);
+}
+
+var xk = randUnit();
+var iterCount = 0;
+var animating = false;
+
+function rebuildEllipsoid(A){
+  var m = new THREE.Matrix4();
+  m.set(A[0][0],A[0][1],A[0][2],0, A[1][0],A[1][1],A[1][2],0, A[2][0],A[2][1],A[2][2],0, 0,0,0,1);
+  var g1 = baseGeo.clone(); g1.applyMatrix4(m);
+  var g2 = baseGeo.clone(); g2.applyMatrix4(m);
+  ellipMesh.geometry.dispose(); ellipMesh.geometry = g1;
+  ellipWire.geometry.dispose(); ellipWire.geometry = g2;
+}
+
+function refNorm(A){
+  var v = [0.6,0.5,0.7];
+  for(var i=0;i<60;i++){ v = normalize(matTVec(A, matVec(A,v))); }
+  return norm(matVec(A,v));
+}
+
+function updateEquation(A){
+  document.getElementById('eq00').textContent = A[0][0].toFixed(2);
+  document.getElementById('eq01').textContent = A[0][1].toFixed(2);
+  document.getElementById('eq02').textContent = A[0][2].toFixed(2);
+  document.getElementById('eq10').textContent = A[1][0].toFixed(2);
+  document.getElementById('eq11').textContent = A[1][1].toFixed(2);
+  document.getElementById('eq12').textContent = A[1][2].toFixed(2);
+  document.getElementById('eq20').textContent = A[2][0].toFixed(2);
+  document.getElementById('eq21').textContent = A[2][1].toFixed(2);
+  document.getElementById('eq22').textContent = A[2][2].toFixed(2);
+}
+
+function setArrows(v){
+  var A = getA();
+  var Av = matVec(A, v);
+  arrowX.setDirection(new THREE.Vector3(v[0],v[1],v[2]));
+  arrowX.setLength(1, 0.15, 0.09);
+  var l = norm(Av)||0.001;
+  arrowAx.setDirection(new THREE.Vector3(Av[0]/l,Av[1]/l,Av[2]/l));
+  arrowAx.setLength(l, 0.15, 0.09);
+  document.getElementById('stretch-out').textContent = l.toFixed(2);
+
+  document.getElementById('eqvx').textContent = v[0].toFixed(2);
+  document.getElementById('eqvy').textContent = v[1].toFixed(2);
+  document.getElementById('eqvz').textContent = v[2].toFixed(2);
+  document.getElementById('eqwx').textContent = Av[0].toFixed(2);
+  document.getElementById('eqwy').textContent = Av[1].toFixed(2);
+  document.getElementById('eqwz').textContent = Av[2].toFixed(2);
+  document.getElementById('eqlen').textContent = l.toFixed(2);
+}
+
+function fullUpdate(){
+  var A = getA();
+  rebuildEllipsoid(A);
+  updateEquation(A);
+  document.getElementById('norm-out').textContent = refNorm(A).toFixed(2);
+  setArrows(xk);
+  document.getElementById('iter-out').textContent = iterCount;
+}
+
+function stepOnce(cb){
+  if(animating) return;
+  var A = getA();
+  var target = normalize(matTVec(A, matVec(A, xk)));
+  var from = xk.slice();
+  var t0 = performance.now();
+  var dur = 550;
+  animating = true;
+  function frame(now){
+    var t = Math.min(1, (now-t0)/dur);
+    var ease = t<0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2;
+    var cur = slerp(from, target, ease);
+    setArrows(cur);
+    if(t<1){ requestAnimationFrame(frame); }
+    else { xk = target; iterCount++; document.getElementById('iter-out').textContent = iterCount; animating=false; if(cb) cb(); }
+  }
+  requestAnimationFrame(frame);
+}
+
+document.getElementById('step-btn').addEventListener('click', function(){ stepOnce(); });
+document.getElementById('run-btn').addEventListener('click', function(){
+  var n=0;
+  function go(){ if(animating) return; if(n>=10) return; n++; stepOnce(go); }
+  go();
+});
+document.getElementById('reset-btn').addEventListener('click', function(){
+  xk = randUnit(); iterCount = 0; setArrows(xk); document.getElementById('iter-out').textContent = 0;
+});
+['m00','m01','m02','m10','m11','m12','m20','m21','m22'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', fullUpdate);
+});
+
+fullUpdate();
+(function animate(){ requestAnimationFrame(animate); if(!dragging){ azimuth += 0.0015; } updateCamera(); renderer.render(scene,camera); })();
+})();
+</script>
