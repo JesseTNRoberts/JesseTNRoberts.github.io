@@ -86,11 +86,19 @@ CS 1101 (Su2020) - Programming and Problem Solving (Java Based)
 
 ## Consulting
 
-**Gradient Consulting**, Cookeville, Tennessee  
+**Gradient Consulting**, Cookeville, Tennessee   
+
+### Phoenix Rural Health
+`2024 - Present`
+AI strategy consulting.
 
 ### Wilson Sports
 `2025 - 2026`
-Conducted full survey of the production process and analyzed it for automation and artificial intelligence opportunities. Developed a plan for retooling for the inclusion of automation and AI.  
+Conducted full survey of the production process and analyzed it for automation and artificial intelligence opportunities. Developed a plan for retooling for the inclusion of automation and AI. 
+
+### ATC Automation
+`2024`
+Software development guidance and consulting for automation in the Siemens PLC platform.
 
 ---
 
