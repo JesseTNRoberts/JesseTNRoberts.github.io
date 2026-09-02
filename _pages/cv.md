@@ -324,7 +324,7 @@ Track Chair for Florida Artificial Intelligence Research Symposium (FLAIRS)
 `2025`
 International Conference on Learning Representations (ICLR)
 
-`2025`
+`2025 - 2026`
 12th Annual Conference on Advances in Cognitive Systems (ACS)
 
 `2025` 
