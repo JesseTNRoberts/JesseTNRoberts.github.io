@@ -8,25 +8,35 @@
 "Roberts, Jesse; ",Finding an Equilibrium in the Traveler's Dilemma with Fuzzy Weak Domination,2021 IEEE Conference on Games (CoG),,,1-5,2021,IEEE
 "Roberts, Jesse; ",How Powerful are Decoder-Only Transformer Neural Models?,2024 International Joint Conference on Neural Networks (IJCNN),,,1--8,2023,
 "Roberts, Jesse; Moore, Kyle; Wilenzick, Drew; Fisher, Douglas; ",Using artificial populations to study psychological phenomena in neural models,Proceedings of the aaai conference on artificial intelligence,38,17,18906-18914,2024,
-"Roberts, Jesse; ",Rock Climbing Route Generation and Grading as Computational Creativity,arXiv preprint arXiv:2311.02211,,,,2023,
 "Roberts, Jesse; ",Do Large Language Models Learn to Human-Like Learn?,Proceedings of the AAAI 2024 Spring Symposium Series,3,1,588-591,2024,
 "Roberts, Jesse; Moore, Kyle; Fisher, Doug; ",Do Large Language Models Learn Human-Like Strategic Preferences?,Proceedings of the 1st Workshop for Research on Agent Language Models (REALM 2025),,,97–108,2025,Association for Computational Linguistics
 "Roberts, Jesse; ",Introduction to PLC Automation,,,,,2024,https://www.jessetnroberts.com/files/Introduction_to_PLC_Automation.pdf
 "Moore, Kyle; Roberts, Jesse; Pham, Thao; Ewaleifoh, Oseremhen; Fisher, Doug; ",The base-rate effect on llm benchmark performance: Disambiguating test-taking strategies from benchmark performance,Findings of the Association for Computational Linguistics: EMNLP 2024,,,2283–2288,2024,
 "Roberts, Jesse; Moore, Kyle; Pham, Thao; Ewaleifoh, Oseremhen; Fisher, Doug; ",Large language model recall uncertainty is modulated by the fan effect,28th Conference on Computational Natural Language Learning,,,303–313,2024,
-"Roberts, Jesse; Roberts, Lindsey; Reed, Alice; ",Supporting the digital autonomy of elders through LLM assistance,Proceedings of the AAAI Symposium Series,4,1,182-186,2024,
+"Roberts, Jesse; Roberts, Lindsey; Reed, Alice; ",Supporting the digital autonomy of elders through llm assistance,Proceedings of the AAAI Symposium Series,4,1,182-186,2024,
 "Roberts, Jesse Taylor Noah; ",A Theoretical & Empirical Analysis of Transformer Language Model Behavior,,,,,2024,
 "Umphrey, Ray; Roberts, Jesse; Roberts, Lindsey; ",Investigating Expert-in-the-Loop LLM Discourse Patterns for Ancient Intertextual Analysis,4th International Conference on Natural Language Processing for Digital Humanities,,,31–40,2024,
 "Hossain, SM Mostaq; Altarawneh, Amani; Roberts, Jesse; ",Leveraging large language models and machine learning for smart contract vulnerability detection,2025 IEEE 15th Annual Computing and Communication Workshop and Conference (CCWC),,,00577-00583,2025,IEEE
 "Rentschler, Micah; Roberts, Jesse; ",RL+ Transformer= A General-Purpose Problem Solver,Proceedings of the 1st Workshop for Research on Agent Language Models (REALM 2025),,,401–410,2025,Association for Computational Linguistics
 "Sawyer, Hunter; Roberts, Jesse; Moore, Kyle; ",Basic Categories in Vision Language Models: Expert Prompting Doesn’t Grant Expertise,Advances in Cognitive Systems 2025,,,177,2025,
-"Moore, Kyle; Roberts, Jesse; Watson, Daryl; Wisniewski, Pamela; ",Investigating Human-Aligned Large Language Model Uncertainty,arXiv preprint arXiv:2503.12528,,,,2025,
+"Moore, Kyle; Roberts, Jesse; Watson, Daryl; Wisniewski, Pamela; ",Investigating Human-Aligned Large Language Model Uncertainty,The International FLAIRS Conference Proceedings,39,1,,2026,https://doi.org/10.32473/flairs.39.1.141835
 "Moore, Kyle; Roberts, Jesse; Pham, Thao; Fisher, Douglas; ",Chain of thought still thinks fast: Apricot helps with thinking slow,Proceedings of the Annual Meeting of the Cognitive Science Society,47,,,2024,https://escholarship.org/uc/item/18x411vv
 "Eberle, William; Hilal, Amr; MacKenzie, Allen; Roberts, Jesse; Skjellum, Anthony; Talbert, Douglas; ","Tennessee Tech University: Action Plan for Artificial Intelligence Education, Workforce Development, Research, and Infrastructure Needs",,,,,2025,
-"Rentschler, Micah; Roberts, Jesse; ",Exploitation Is All You Need... for Exploration,arXiv preprint arXiv:2508.01287,,,,2025,
-"Moore, Kyle; Roberts, Jesse; Watson, Daryl; ",Human-Alignment and Calibration of Inference-Time Uncertainty in Large Language Models,arXiv preprint arXiv:2508.08204,,,,2025,
+"Rentschler, Micah; Roberts, Jesse; ",Exploitation is all you need... for exploration,arXiv preprint arXiv:2508.01287,,,,2025,
 "Brown, Eric; Roberts, Jesse; Talbert, Doug; ",Toward the Use of LLMs to Support Curriculum Mapping to Established Frameworks,American Society of Engineering Education,,,,2025,
 "Matinez, Yago Romano; Roberts, Jesse; ",LLMs as Agentic Cooperative Players in Multiplayer UNO,International Conference on Machine Learning Applications 2025,,,,2025,
 "Hadlock, Samuel; Roberts, Jesse; Lee, Joohun; ",Enhancing Post Earnings Announcement Drift Measurement with Large Language Models,Proceedings of The 10th Workshop on Financial Technology and Natural Language Processing,,,197-209,2025,
 "Rentschler, Micah; Roberts, Jesse; ",When Does Reward Drive Exploration?,,,,,,
 "Rentschler, Micah; Roberts, Jesse; ",Reinforcement learning from meta-evaluation: Aligning language models without ground-truth labels,arXiv preprint arXiv:2601.21268,,,,2026,
+"Lee, Travis; Ismail, Muhammad; Roberts, Jesse; ",Generation and Validation of Configuration Management Code for Cyber Range Environments Using Large Language Models,The International FLAIRS Conference Proceedings,39,1,,2026,
+"Brooks, James; Roberts, Jesse; McCloud, Patrick; ",SAGE 0.2: LLMs for DOM Informed Internet Guidance,The International FLAIRS Conference Proceedings,39,1,,2026,
+"Scott, Jared; Roberts, Jesse; ",Reward-Guided Fine-Tuning of Language Models with Social Feedback,The International FLAIRS Conference Proceedings,39,1,,2026,https://doi.org/10.32473/flairs.39.1.141777
+"Ndayegamiye, Daniel; Roberts, Jesse; Frey, Benjamin; ",Systematic Analysis of Tokenization Properties in Low-Resource Polysynthetic NMT,The International FLAIRS Conference Proceedings,39,1,,2026,https://doi.org/10.32473/flairs.39.1.141784
+"Scott, Jared; Roberts, Jesse; ",KARMA: Karma-Aligned Reward Model Adaptation,arXiv preprint arXiv:2605.26738,,,,2026,
+"Moore, Kyle; Roberts, Jesse; Watson, Daryl; Ward, William; Heyboer, Grayson; ","Human-Alignment, Calibration, and Activation Patterns in Large Language Model Uncertainty",arXiv preprint arXiv:2605.30675,,,,2026,
+"Rainey, Kelsey; Roberts, Jesse; ",Leveraging BART to Assess CS1 C++ Programming Assignments using Rubric-based Criteria,arXiv preprint arXiv:2606.03814,,,,2026,
+"Sawyer, Hunter; Roberts, Jesse; Matei, Simon; ",Calibrating Urban Traffic Simulation from Sparse Road Observations via Genetic Optimization,arXiv preprint arXiv:2606.03823,,,,2026,
+"Roberts, Jesse; ",Elucidation of Structural Proteins Used in Construction of Mud Dauber Nests and Caddisfly Cases,2023 AIChE Annual Meeting,,,,2023,AIChE
+"Werth, Aaron; Hahn, Gary; Borges Hink, Raymond; Piesciorovsky, Emilio; Prowell, Stacy J; Torkelson, Lauren; Oesch, T; Searle, Justin; Roberts, Jesse; ",Augmenting LLM-Based Agents for Improved Performance in Pentesting and Commissioning Operational Technology in Critical Infrastructure,,,,,2026,"Oak Ridge National Laboratory (ORNL), Oak Ridge, TN (United States)"
+"Harvey, Clare; Buckley, Clare; Meyer, A; Searle, J; Roberts, J; Thompson, S; Forrest, R; ",The juxtaposition of nursing autonomy and health care policy in nursing care delivery,,,,,2015,CQUniversity
+"Roberts, Lindsey; Roberts, Jesse; ",Harnessing the Power of AI in Honors: Equipping Students to Leverage Tools Effectively,Journal of the National Collegiate Honors Council,26,1,51-59,2025,
