@@ -25,7 +25,7 @@ Assistant Professor
 
 
 ## Interests
-Computational Linguistics and NLP, Robotics, Infrastructure Security, Machine Cognition, Neural Architectures, Theory of Deep Learning, Game Theory
+Computational Linguistics and NLP, Transformer models, LLMs, Deep Learning, Spiking Neural Networks, Robotics, Machine Cognition
 
 ---
 ## Education
