@@ -61,6 +61,8 @@ CSC 4220/5220 (S2025) - Data Mining and ML
 CSC 7970 (F2024 - F2025) - LLM Seminar
   - Developed a course on LLMs. Surveys the important breakthroughs which have led to the emergence of large language models, their capabilities, and critical improvements.
 
+AI 4200/5200 (S2025) - Deep Learning
+  - Developed the deep learning theory and practical course, the first AI prefix course at TnTech for the BS in AI program.  
 
 ### Tennessee Technological University 
 `2021-2024`
