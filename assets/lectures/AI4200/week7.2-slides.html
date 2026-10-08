@@ -865,6 +865,11 @@ scheduler = lr_scheduler.StepLR(optimizer, step_size=<span class="n">10</span>, 
 <script>
 try {
   renderMathInElement(document.body, { delimiters: [{ left: '\\(', right: '\\)', display: false }, { left: '\\[', right: '\\]', display: true }], throwOnError: false });
+  // KaTeX draws stretchy pieces (hats, roots, big brackets) as inline SVG inside its visual layer,
+  // which is already aria-hidden; mark each SVG decorative too so per-element scanners don't flag it.
+  document.querySelectorAll('.katex svg').forEach(function (el) {
+    el.setAttribute('aria-hidden', 'true'); el.setAttribute('focusable', 'false'); el.setAttribute('role', 'presentation');
+  });
 } catch (e) { console.warn('KaTeX not loaded', e); }
 Reveal.initialize({
   width: 1280, height: 720, margin: 0.03, center: false, hash: true,
