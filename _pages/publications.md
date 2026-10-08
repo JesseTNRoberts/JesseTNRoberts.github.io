@@ -13,12 +13,6 @@ author_profile: true
 
 Jesse Roberts, 2024, Introduction to PLC Automation, [PDF Version](/files/Introduction_to_PLC_Automation.pdf)
 
-## Selected Publication 
-
-{% include base_path %}
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
-{% endfor %}
 
 ## All Publications
 
