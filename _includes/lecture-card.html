@@ -1,0 +1,49 @@
+{% comment %}
+  One lecture row. Params: lecture (entry from a course's `lectures:`), course (the course page),
+  show_course (optional, true on the /teaching/ library).
+{% endcomment %}
+{% assign l = include.lecture %}
+{% assign c = include.course %}
+{% assign tc = site.data.torch_canvas %}
+{% capture num %}{{ l.week }}{% if l.session %}.{{ l.session }}{% endif %}{% endcapture %}
+{% capture anchor %}{{ c.course_id | downcase }}-w{{ l.week }}{% if l.session %}-{{ l.session }}{% endif %}{% endcapture %}
+<article class="lecture" id="{{ anchor }}"
+  data-course="{{ c.course_id }}"
+  data-search="{{ c.code }} {{ c.title }} {{ l.title }} {{ l.topics | join: ' ' }} {{ l.note }} week {{ l.week }}{% for r in l.readings %} {{ r.title }} {{ r.authors }}{% endfor %}">
+  <div class="lecture__num" aria-hidden="true">{{ num }}</div>
+  <div class="lecture__body">
+    {% if include.show_course %}
+    <p class="lecture__course"><a href="{{ c.url | relative_url }}">{{ c.code }} · {{ c.title }}</a> <span>· {{ c.term }} · Week {{ num }}</span></p>
+    {% endif %}
+    <h4 class="lecture__title">
+      {% if l.slides %}<a href="{{ l.slides | relative_url }}">{{ l.title }}</a>{% else %}{{ l.title }}{% endif %}
+    </h4>
+    {% if l.date %}<p class="lecture__date">{% if c.dates_are_weeks %}Week of {{ l.date | date: "%b %-d" }}{% else %}{{ l.date | date: "%a, %b %-d" }}{% endif %}</p>{% endif %}
+    {% if l.topics and l.topics.size > 0 %}
+    <p class="lecture__topics">{% for t in l.topics %}<span class="learn-tag">{{ t }}</span>{% endfor %}</p>
+    {% endif %}
+    {% if l.readings and l.readings.size > 0 %}
+    <ul class="lecture__readings">
+      {% for r in l.readings %}
+      <li>
+        <i class="fas fa-file-alt" aria-hidden="true"></i>
+        {% if r.url %}<a href="{{ r.url }}">{{ r.title }}</a>{% else %}{{ r.title }}{% endif %}
+        <span class="lecture__cite">{{ r.authors }}{% if r.year %}, {{ r.year }}{% endif %}{% if r.venue %} · {{ r.venue }}{% endif %}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% if l.note and l.note != "" %}<p class="lecture__note">{{ l.note }}</p>{% endif %}
+  </div>
+  <div class="lecture__links">
+    {% if l.slides %}<a class="lecture__link lecture__link--primary" href="{{ l.slides | relative_url }}"><i class="fas fa-desktop" aria-hidden="true"></i> Slides</a>{% endif %}
+    {% if l.pdf %}<a class="lecture__link" href="{{ l.pdf | relative_url }}"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a>{% endif %}
+    {% if l.video %}<a class="lecture__link" href="{{ l.video }}"><i class="fas fa-play" aria-hidden="true"></i> Video</a>{% endif %}
+    {% for id in l.demos %}{% assign d = site.data.demos | where: "id", id | first %}{% if d %}
+      <a class="lecture__link" href="{{ d.url | relative_url }}" title="{{ d.title }}"><i class="fas fa-sliders-h" aria-hidden="true"></i> Demo</a>
+    {% endif %}{% endfor %}
+    {% assign tcl = site.data.torch_canvas_library %}{% assign tc_all = tcl.networks | concat: tcl.blocks %}{% for id in l.models %}{% assign m = tc_all | where: "id", id | first %}
+      <a class="lecture__link" href="{{ tc.tool.url }}?open={{ id | url_encode }}" title="Open {{ m.title | default: id }} in Torch Canvas"><i class="fas fa-project-diagram" aria-hidden="true"></i> Model</a>
+    {% endfor %}
+  </div>
+</article>

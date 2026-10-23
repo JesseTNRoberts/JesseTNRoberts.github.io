@@ -1,0 +1,78 @@
+# How publications from Google Scholar are classified (applied at build time by
+# _plugins/publications.rb, so editing this file never needs a new Scholar fetch).
+#
+# Order of prestige, following the ICORE conference rankings (https://portal.core.edu.au):
+#   tier 1  ICORE A* conferences
+#   tier 2  journals
+#   tier 3  ICORE A conferences
+#   tier 4  ICORE B conferences
+#   tier 5  ICORE C conferences
+#   tier 6  unranked conferences, symposia and workshops
+#   tier 7  preprints, reports, theses
+# Tiers are never shown on the site. They set the order when the Publications page is sorted
+# by Venue.
+#
+# Each rule: `match` is a case-insensitive substring of Scholar's venue line; the first matching
+# rule wins, so specific rules go first (e.g. ICMLA before ICML, AAAI symposia before AAAI).
+# `label` is the short venue name shown as a badge; `icore` records the rank the tier came from.
+# Ranks checked on the ICORE portal / ICORE-derived listings, October 2026.
+# To change one paper, use _data/publication_overrides.yml.
+
+default_tier: 6          # a venue no rule matches
+empty_venue_tier: 7      # no venue at all on Scholar
+
+rules:
+  # ---- specific venues that would otherwise match a broader rule below ----
+  - { match: "Machine Learning and Applications", tier: 5, label: ICMLA, icore: C }
+  - { match: "Machine Learning Applications", tier: 5, label: ICMLA, icore: C }
+  - { match: "AAAI Spring Symposium", tier: 6, label: AAAI Symposium }
+  - { match: "AAAI Symposium Series", tier: 6, label: AAAI Symposium }
+  - { match: "AAAI 2024 Spring Symposium", tier: 6, label: AAAI Symposium }
+  - { match: "Research on Agent Language Models", tier: 6, label: REALM Workshop }
+  - { match: "Workshop on Financial Technology and Natural", tier: 6, label: FinNLP Workshop }
+  - { match: "Computing and Communication Workshop and Conference", tier: 6, label: IEEE CCWC }
+  - { match: "Workshop", tier: 6, label: Workshop }
+
+  # ---- ICORE A* ----
+  - { match: "AAAI Conference on Artificial Intelligence", tier: 1, label: AAAI, icore: "A*" }
+  - { match: "International Joint Conference on Artificial Intelligence", tier: 1, label: IJCAI, icore: "A*" }
+  # Findings papers are published by the A* venue; ranked with it here.
+  - { match: "Findings of the Association for Computational Linguistics: EMNLP", tier: 1, label: EMNLP Findings, icore: "A*" }
+  - { match: "Findings of the Association for Computational Linguistics: ACL", tier: 1, label: ACL Findings, icore: "A*" }
+  - { match: "Empirical Methods in Natural Language Processing", tier: 1, label: EMNLP, icore: "A*" }
+  - { match: "EMNLP", tier: 1, label: EMNLP, icore: "A*" }
+  - { match: "Annual Meeting of the Association for Computational Linguistics", tier: 1, label: ACL, icore: "A*" }
+  - { match: "Neural Information Processing Systems", tier: 1, label: NeurIPS, icore: "A*" }
+  - { match: "International Conference on Machine Learning", tier: 1, label: ICML, icore: "A*" }
+  - { match: "International Conference on Learning Representations", tier: 1, label: ICLR, icore: "A*" }
+
+  # ---- journals ----
+  - { match: "Transactions", tier: 2, label: Journal }
+  - { match: "Journal", tier: 2, label: Journal }
+
+  # ---- ICORE A ----
+  - { match: "Findings of the Association for Computational Linguistics: NAACL", tier: 3, label: NAACL Findings, icore: A }
+  - { match: "North American Chapter of the Association for Computational Linguistics", tier: 3, label: NAACL, icore: A }
+
+  # ---- ICORE B ----
+  - { match: "Conference on Computational Natural Language Learning", tier: 4, label: CoNLL, icore: B }
+  - { match: "International Joint Conference on Neural Networks", tier: 4, label: IJCNN, icore: B }
+  - { match: "Cognitive Science Society", tier: 4, label: CogSci, icore: B }
+
+  # ---- ICORE C ----
+  - { match: "Conference on Games", tier: 5, label: IEEE CoG, icore: C }
+  - { match: "ICCC", tier: 5, label: ICCC, icore: C }
+  - { match: "Computational Creativity", tier: 5, label: ICCC, icore: C }
+
+  # ---- unranked conferences ----
+  - { match: "FLAIRS", tier: 6, label: FLAIRS }
+  - { match: "Advances in Cognitive Systems", tier: 6, label: ACS }
+  - { match: "Natural Language Processing for Digital", tier: 6, label: NLP4DH }
+  - { match: "Photovoltaic Specialist", tier: 6, label: IEEE PVSC }
+  - { match: "American Society of Engineering Education", tier: 6, label: ASEE }
+
+  # ---- preprints, reports, theses ----
+  - { match: "arXiv", tier: 7, label: Preprint }
+  - { match: "Laboratory", tier: 7, label: Report }
+  - { match: "University", tier: 7 }
+  - { match: "http", tier: 7 }

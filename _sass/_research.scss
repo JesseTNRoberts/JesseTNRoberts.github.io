@@ -1,0 +1,227 @@
+/* ==========================================================================
+   Research page (_pages/research.html) and the homepage summary (_includes/research-summary.html)
+   ========================================================================== */
+
+$rs-accent: #1d5b79;
+$rs-line: #e3e7eb;
+$rs-soft: #f6f8fa;
+
+.page__content {
+  .research-lede {
+    font-size: 1.12em;
+    line-height: 1.55;
+  }
+
+  .research-group {
+    color: $gray;
+  }
+
+  .research-areas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (min-width: 900px) { grid-template-columns: repeat(5, 1fr); }
+
+    gap: 0.75em;
+    margin: 1.25em 0 1em;
+  }
+
+  .research-area-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    padding: 0.9em 1em;
+    font-size: $type-size-6;
+    color: $text-color;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid $rs-line;
+    border-top: 3px solid $rs-accent;
+    border-radius: 10px;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      color: $text-color;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+      transform: translateY(-1px);
+    }
+
+    i { font-size: 1.3em; color: $rs-accent; }
+
+    &__title { font-weight: bold; line-height: 1.3; }
+
+    .research-badge { align-self: flex-start; }
+  }
+
+  .research-badge {
+    display: inline-block;
+    padding: 0.05em 0.6em;
+    font-size: $type-size-7;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
+    color: #8a5300;
+    background: #fff4e0;
+    border-radius: 999px;
+
+    &--role { color: #fff; background: $rs-accent; }
+  }
+
+  .research-area {
+    margin-top: 2.5em;
+    scroll-margin-top: 4em;
+
+    h2 i { margin-right: 0.3em; color: $rs-accent; }
+
+    h3 { margin-top: 1.2em; font-size: 1em; }
+  }
+
+  .research-callout {
+    display: flex;
+    gap: 0.8em;
+    align-items: flex-start;
+    margin: 1em 0;
+    padding: 0.9em 1.1em;
+    background: #fffaf0;
+    border: 1px solid #f3dfb8;
+    border-radius: 10px;
+
+    i { margin-top: 0.15em; font-size: 1.3em; color: #b7791f; }
+
+    strong { display: block; }
+
+    p { margin: 0.4em 0 0; font-size: $type-size-6; }
+
+    span { font-size: $type-size-6; color: $gray; }
+  }
+
+  .research-papers,
+  .research-press {
+    margin: 0.5em 0;
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      margin-bottom: 0.6em;
+      line-height: 1.4;
+
+      a { font-weight: bold; text-decoration: none; }
+
+      span { display: block; font-size: $type-size-6; color: $gray; }
+    }
+  }
+
+  .research-more {
+    font-size: $type-size-6;
+    color: $gray;
+  }
+
+  .research-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    margin-top: 0.8em;
+
+    .chip { text-decoration: none; }
+  }
+
+  .funding-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1em;
+  }
+
+  .funding-card {
+    padding: 1em 1.15em;
+    background: $rs-soft;
+    border: 1px solid $rs-line;
+    border-radius: 10px;
+
+    p { margin: 0 0 0.4em; }
+
+    &__agency {
+      font-size: $type-size-7;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $gray;
+    }
+
+    &__title {
+      margin: 0 0 0.4em;
+      font-size: 1em;
+      line-height: 1.35;
+
+      a { text-decoration: none; }
+    }
+
+    &__full,
+    &__note {
+      font-size: $type-size-6;
+      color: $gray;
+    }
+
+    &__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6em;
+      align-items: center;
+      font-size: $type-size-6;
+    }
+
+    &__site { font-size: $type-size-6; font-weight: bold; }
+  }
+
+  .research-join {
+    padding: 1.2em 1.4em;
+    background: $rs-soft;
+    border-radius: 12px;
+
+    h2 { margin-top: 0; }
+  }
+
+  // ---- homepage summary ----
+  .home-areas {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: $type-size-5;
+
+    @media (min-width: 600px) { grid-template-columns: repeat(2, 1fr); }
+
+    gap: 0.6em;
+    margin: 1em 0;
+    padding: 0;
+    list-style: none;
+
+    li { margin: 0; }
+
+    a {
+      display: flex;
+      gap: 0.6em;
+      align-items: center;
+      height: 100%;
+      padding: 0.7em 0.9em;
+      color: $text-color;
+      text-decoration: none;
+      background: $rs-soft;
+      border: 1px solid $rs-line;
+      border-radius: 8px;
+
+      &:hover { border-color: $rs-accent; }
+    }
+
+    i { color: $rs-accent; }
+
+    .research-badge { margin-left: auto; }
+  }
+
+  .home-honors {
+    margin: 0.5em 0 1em;
+    padding-left: 0;
+    list-style: none;
+
+    li { margin-bottom: 0.35em; }
+
+    i { margin-right: 0.35em; color: #b7791f; }
+  }
+}

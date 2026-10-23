@@ -1,42 +1,69 @@
+# jessetnroberts.com
 
-# Academic Pages
+Personal and academic site for Jesse Roberts (Tennessee Tech, LAIR group). It's built with
+Jekyll on a customized fork of the [AcademicPages](https://github.com/academicpages/academicpages.github.io)
+theme and is deployed to GitHub Pages by GitHub Actions.
 
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
+## Where things live
 
-Academic Pages is a Github Pages template for academic websites.
+| What | Where |
+| --- | --- |
+| Homepage text | `_pages/about.md` |
+| Top navigation | `_data/navigation.yml` |
+| Goal trackers (homepage) | targets in `_data/goals.yml`; live numbers in `_data/stats.yml` (auto, daily) |
+| Strava / Goodreads widgets | `_includes/widgets/` |
+| Publications list | `_data/publications.yml`, mirrored from Google Scholar daily (`_data/citations.csv` is the fallback) |
+| Venue order (Publications sort) | `_data/venues.yml` (ICORE A* → journals → A/B/C → unranked → preprints; tiers never shown) and per-paper tweaks in `_data/publication_overrides.yml`, applied at build by `_plugins/publications.rb` |
+| CV publications | same Scholar list, chronological (`_includes/cv-publications.html`) |
+| Courses | `_teaching/` |
+| Interactive demos | files in `assets/demonstrations/`, listed in `_data/demos.yml` (shown on `/learn/`) |
+| Torch Canvas page | `/tools/torch-canvas/` (`_pages/torch-canvas.html`); text and features in `_data/torch_canvas.yml` |
+| Torch Canvas models | synced from the torch-canvas repo into `_data/torch_canvas_library.json` + `assets/torch-canvas/thumbs/` (daily, when it changes). Link: `/torch-canvas/?open=<id>`; button: `{% include torch-canvas-link.html model="<id>" %}` |
+| Lecture slides | `assets/lectures/<COURSE>/` |
+| CV | `_pages/cv.md` (plain Markdown; layout `_layouts/cv.html`, styles `_sass/_cv.scss`). Each deploy renders it to `/files/Jesse-Roberts-CV.pdf` (US Letter) with `scripts/cv_pdf.js`, which the page's Download PDF button serves |
+| Downloadable files (PDFs) | `files/` |
+| Journal and meeting notes (unpublished) | `_posts/` (`published: false`) |
+| Site settings, author profile, social links | `_config.yml` |
 
+## Other sites under this domain
 
-# Getting Started
+GitHub serves Pages from Jesse's other repos under this domain, for example
+`https://www.jessetnroberts.com/torch-canvas/` and `/SP25-CSC4220/`.
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and add your content.
-1. Upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+- **Don't** create files, folders, permalinks or redirects in this repo with those names.
+- **Don't** remove the custom domain from this repo's Pages settings, because every project site's URL depends on it.
 
-See more info at https://academicpages.github.io/
+## Local preview
 
-## Running Locally
+```bash
+bundle install
+bundle exec jekyll serve --livereload   # http://localhost:4000
+```
 
-When you are initially working your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
+## Automatic updates (Google Scholar, Strava)
 
-1. Clone the repository and made updates as detailed above.
-1. Make sure you have ruby-dev, bundler, and nodejs installed: `sudo apt install ruby-dev ruby-bundler nodejs`
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+The workflow runs every day at about 5:23am Central and on every push. It runs
+`scripts/update_stats.rb`, which:
 
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essentials gcc make`
+- reads your Google Scholar profile (the URL in `_config.yml`), rewrites the Publications page
+  list, and counts this year's papers. Scholar blocks GitHub's servers, so this goes through
+  [SerpApi](https://serpapi.com) (free plan; add its key as the `SERPAPI_KEY` repo secret).
+  If Scholar can't be reached, the last good numbers and list are kept (the page shows
+  `_data/citations.csv` until the first successful mirror);
+- reads this year's running miles from Strava's year-to-date totals. It uses only the basic
+  `read` permission, never individual activities, and counts activities visible to Everyone.
+  This needs the three `STRAVA_*` repo secrets; run `ruby scripts/strava_auth.rb` once to get them.
 
-# Maintenance 
+It also checks the torch-canvas repo, and when it has a new commit, rebuilds the list of example
+models and blocks shown on `/tools/torch-canvas/`, with a diagram thumbnail and parameter count for
+each (`scripts/sync_torch_canvas.js`, which opens every example in the real app in a headless browser).
+To add a model to the page, add it to torch-canvas's `examples/`.
 
-Bug reports and feature requests to the template  should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+If a source fails, its last numbers are kept. You can also start it by hand under
+**Actions → Build and deploy site → Run workflow**.
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
+## Deploying
 
-## Bugfixes and enhancements
-
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
-
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch.
+Every push to `master` runs `.github/workflows/pages.yml`, which builds the site and publishes it.
+In **Settings → Pages**, the source must be set to **GitHub Actions**. Pull requests get a build
+check but aren't deployed.

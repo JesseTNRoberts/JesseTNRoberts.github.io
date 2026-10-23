@@ -1,4 +1,5 @@
 ---
+published: false  # private journal entry; flip to true to publish
 title: 'Meeting Notes Fisher Colab and Phd Work'
 date: 2024-05-22
 permalink: /posts/2024/05/09/MeetingNotesFisher

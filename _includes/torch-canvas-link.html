@@ -1,0 +1,13 @@
+{% comment %}
+  Button that opens a Torch Canvas model preset.
+  Usage: {% include torch-canvas-link.html model="llama2_7b" %}
+         {% include torch-canvas-link.html model="llama2_7b" label="Explore it yourself" %}
+  The model's title comes from the synced library (_data/torch_canvas_library.json) when no label is given.
+{% endcomment %}
+{% assign tc = site.data.torch_canvas %}
+{% assign tcl = site.data.torch_canvas_library %}{% assign tc_all = tcl.networks | concat: tcl.blocks %}
+{% assign m = tc_all | where: "id", include.model | first %}
+<a class="btn btn--primary torch-canvas-link" href="{{ tc.tool.url }}?open={{ include.model | url_encode }}">
+  <i class="fas fa-project-diagram" aria-hidden="true"></i>
+  {{ include.label | default: m.title | default: include.model }} in Torch Canvas
+</a>

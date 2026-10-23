@@ -1,0 +1,22 @@
+{% comment %}
+  CV publication list: the same Google Scholar mirror as the Publications page
+  (_data/publications.yml, annotated by _plugins/publications.rb), in chronological order,
+  newest first. Falls back to the hand-exported list until the first Scholar mirror exists.
+{% endcomment %}
+{% assign pubs = site.data.publications %}
+{% if pubs and pubs.papers and pubs.papers.size > 0 %}
+{% assign last_year = "none" %}
+{% for p in pubs.papers %}
+{% capture this_year %}{% if p.year %}{{ p.year }}{% else %}Undated{% endif %}{% endcapture %}
+{% if this_year != last_year %}{% unless forloop.first %}</ul>{% endunless %}
+<h3 class="cv-pub-year">{{ this_year }}</h3>
+<ul class="cv-pubs">{% assign last_year = this_year %}{% endif %}
+  {% assign authors = p.authors | replace: "J Roberts", "<strong>J Roberts</strong>" | replace: "JT Roberts", "<strong>JT Roberts</strong>" | replace: "JTN Roberts", "<strong>JTN Roberts</strong>" %}
+  {% assign a_last = p.authors | strip | slice: -1 %}
+  <li>{% if p.authors != "" %}{{ authors | strip }}{% unless a_last == "." or a_last == "…" %}.{% endunless %} {% endif %}{% assign t_last = p.title | strip | slice: -1 %}“{% if p.url %}<a href="{{ p.url }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}{% unless t_last == "." or t_last == "?" or t_last == "!" %}.{% endunless %}”{% if p.venue != "" %} <em>{{ p.venue }}</em>{% if p.year %},{% endif %}{% endif %}{% if p.year %} {{ p.year }}{% endif %}.{% if p.cited_by > 0 %} Cited by {{ p.cited_by }}.{% endif %}{% if p.note %} <strong>{{ p.note }}.</strong>{% endif %}</li>
+{% if forloop.last %}</ul>{% endif %}
+{% endfor %}
+<p class="cv-pub-source">From <a href="{{ pubs.profile }}">Google Scholar</a>, {{ pubs.updated | date: "%B %-d, %Y" }}.</p>
+{% else %}
+{% include publications %}
+{% endif %}

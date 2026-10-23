@@ -1,0 +1,27 @@
+# Progress trackers shown on the homepage (rendered by _includes/goals.html).
+#
+# Trackers count from Jan 1 to Dec 31 of `year`. Each January, bump `year` and
+# set new targets; the automatic counts restart on their own.
+#
+#   source: scholar  count of papers dated `year` on Google Scholar (updated daily)
+#   source: strava   year-to-date running miles from Strava totals; public activities only (daily)
+#   source: manual   uses a `current:` value you set by hand
+#
+# Live numbers are written to _data/stats.yml by scripts/update_stats.rb.
+
+year: 2026
+
+trackers:
+  - id: publications
+    label: Publications
+    unit: papers
+    verb: Published
+    source: scholar
+    target: 10
+
+  - id: miles
+    label: Miles
+    unit: miles
+    verb: Ran
+    source: strava
+    target: 1000

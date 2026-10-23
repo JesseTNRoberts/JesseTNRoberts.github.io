@@ -1,4 +1,5 @@
 ---
+published: false  # private journal entry; flip to true to publish
 title: 'How to Research'
 date: 2024-05-09
 permalink: /posts/2024/05/09/ResearchJournal/

@@ -1,31 +1,27 @@
 ---
 layout: cv
-title: "Jesse Roberts"
+title: "CV"
 permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
 ---
 
-<!--
-<object data="{{ site.url }}/files/CV.pdf" width="1000" height="1000" type='application/pdf'/> -->
-{% include base_path %} 
- 
- <br/><br/>
-
-
 # Jesse Roberts
 
-Assistant Professor 
+Assistant Professor, Tennessee Tech University
 
 <div id="webaddress">
-<a href="Jesse.TN.Roberts@gmail.com">Jesse.TN.Roberts@gmail.com</a>
-| <a href="https://JesseTNRoberts.com">My Webpage</a>
+Cookeville, TN
+· <a href="mailto:Jesse.TN.Roberts@gmail.com">Jesse.TN.Roberts@gmail.com</a>
+· <a href="https://www.jessetnroberts.com">jessetnroberts.com</a>
+· <a href="{{ site.author.googlescholar }}">Google Scholar</a>
+· <a href="https://github.com/{{ site.author.github }}">GitHub</a>
 </div>
 
 
 ## Interests
-Computational Linguistics and NLP, Transformer models, LLMs, Deep Learning, Spiking Neural Networks, Robotics, Machine Cognition
+Deep learning fundamentals · Large language models · Cherokee language revitalization · Spiking neural networks · Tornado detection · Also: computational linguistics, machine cognition, robotics
 
 ---
 ## Education
@@ -118,35 +114,39 @@ Developed a co-op program to improve recruitment. Oversaw hiring, training, and 
 
 ---
 
-## Awards, Honors, and Grants
+## Grants
+{% for f in site.data.research.funding %}
+`{{ f.term | default: f.year }}`
+{{ f.title }}{% if f.short %} ({{ f.short | split: ":" | first }}){% endif %}
+{% if f.award or f.amount or f.people %}
+  - {{ f.agency }}{% if f.award %} · Award #{{ f.award }}{% endif %}{% if f.amount %} · ${{ f.amount | number_with_delimiter }}{% endif %}{% if f.people %} · {{ f.people }}{% endif %}{% if f.website %} · [{{ f.website | remove: "https://" | remove: "/" }}]({{ f.website }}){% endif %}
+{% else %}
+  - {{ f.agency }}
+{% endif %}
+{% endfor %}
 
- 
+---
+
+## Awards and Honors
+
+### Fellowships
+{% for h in site.data.research.honors %}
+`{{ h.years | default: h.year }}`
+{{ h.title }}
+
+  - {{ h.org }}
+{% endfor %}
+
 ### Tennessee Technological University
 
 `2026`
+Wings Up 100 Award
+
 Research Contract with Wilson Sports
 
 ICML Silver Award for Excellence in Reviewing
 
 Nominated for best paper at IJCNN
-
-`2025`
-Collaborative Research: Conference: NAIRR Pilot Expansion: FA1: Mid-South Conferences on CyberInfrastructure Advances to Enable Interdisciplinary AI Research in Health
-
-  - National Science Foundation Award - Award# 2526362 - $125,133 - PI: Anthony Skjellum - Co-PI: Jesse Roberts, Amr Hilal
-
-
-`2025`
-ERI: Data-Driven Expansion of Electrified Transportation Network
-
-  - National Science Foundation Award - Award# 2347337 - $195,769 - PI: Jesse Roberts
-
-
-`S2024` 
-IEEE AESS Grant for the DARPA Triage Challenge 
-
-`F2023` 
-TnTech OER Development Grant 
 
 `S2024` 
 Nominated for the KEEN Foundation Rising Star Award 
@@ -209,7 +209,9 @@ TnTech College of Engineering CAFE Workshop - Using LLMs in Research
 
 ## Publications
 
-{% include publications %}
+<div class="cv-publications" markdown="0">
+{% include cv-publications.html %}
+</div>
 
 <!--
 (Under Review at IJCAI) Rentschler, Micah, and Jesse Roberts. "RL+ Transformer= A General-Purpose Problem Solver." arXiv preprint arXiv:2501.14176 (2025).

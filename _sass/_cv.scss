@@ -1,0 +1,245 @@
+/* ==========================================================================
+   CV (_layouts/cv.html + _pages/cv.md)
+   Screen: a letter-sized "sheet" on a soft background. Print / PDF: US Letter, 10pt.
+   The Markdown in cv.md is styled as is: an entry is a paragraph that starts with a `date`.
+   ========================================================================== */
+
+$cv-ink: #1f2328;
+$cv-muted: #5b636b;
+$cv-rule: #d8dee4;
+$cv-accent: #1d5b79;
+
+.cv-page {
+  padding: 1.5em 1em 3em;
+  background: #f3f4f6;
+}
+
+.cv-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  align-items: center;
+  max-width: 8.5in;
+  margin: 0 auto 1em;
+  font-family: $sans-serif;
+
+  &__pdf,
+  &__print {
+    display: inline-flex;
+    gap: 0.45em;
+    align-items: center;
+    padding: 0.55em 1em;
+    font-family: inherit;
+    font-size: $type-size-6;
+    font-weight: bold;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+
+  &__pdf {
+    color: #fff;
+    background: $cv-accent;
+    border: 1px solid $cv-accent;
+
+    span { font-weight: normal; opacity: 0.8; }
+
+    &:hover { color: #fff; background: mix(#000, $cv-accent, 20%); }
+  }
+
+  &__print {
+    color: $cv-ink;
+    background: #fff;
+    border: 1px solid $cv-rule;
+
+    &:hover { border-color: $cv-accent; }
+  }
+
+  &__updated {
+    margin-left: auto;
+    font-size: $type-size-7;
+    color: $cv-muted;
+  }
+}
+
+.cv {
+  max-width: 8.5in;
+  margin: 0 auto;
+  padding: 0.7in 0.75in;
+  font-family: "Inter", $sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: $cv-ink;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  a { color: $cv-accent; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  // ---- header: # Name, title line, contact row ----
+  h1 {
+    margin: 0;
+    font-size: 26pt;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  h1 + p {
+    margin: 0.15em 0 0.35em;
+    font-size: 12pt;
+    color: $cv-muted;
+  }
+
+  #webaddress {
+    margin-bottom: 1.2em;
+    font-size: 9.5pt;
+    color: $cv-muted;
+  }
+
+  hr { display: none; }   // section rules come from the h2 underline
+
+  // ---- sections ----
+  h2 {
+    margin: 1.5em 0 0.6em;
+    padding-bottom: 0.2em;
+    font-size: 10.5pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $cv-accent;
+    border-bottom: 1.5px solid $cv-accent;
+  }
+
+  h3 {
+    margin: 0.9em 0 0.25em;
+    font-size: 10.5pt;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 0.35em;
+  }
+
+  // An entry: a paragraph starting with a `date`. The date sits at the right edge.
+  p > code:first-child {
+    float: right;
+    margin: 0 0 0 1em;
+    padding: 0;
+    font-family: inherit;
+    font-size: 9pt;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+    color: $cv-muted;
+    white-space: nowrap;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+
+    // the theme pads inline code with non-breaking spaces
+    &::before, &::after { content: none; }
+  }
+
+  p:has(> code:first-child) {
+    margin-top: 0.45em;
+  }
+
+  ul {
+    margin: 0.1em 0 0.5em;
+    padding-left: 1.2em;
+  }
+
+  li {
+    margin: 0 0 0.15em;
+  }
+
+  strong { font-weight: 650; }
+
+  // ---- publications (from _includes/cv-publications.html) ----
+  .cv-publications {
+    h3.cv-pub-year {
+      margin: 0.8em 0 0.3em;
+      font-size: 9.5pt;
+      color: $cv-muted;
+    }
+
+    ul.cv-pubs {
+      padding-left: 1.2em;
+    }
+
+    li {
+      margin-bottom: 0.35em;
+      font-size: 9.5pt;
+      line-height: 1.4;
+    }
+
+    a { color: $cv-ink; }
+    em { color: $cv-muted; }
+  }
+
+  .cv-pub-source,
+  .cv-printed-note {
+    font-size: 8.5pt;
+    color: $cv-muted;
+  }
+
+  .cv-printed-note { display: none; }
+
+  @media screen and (max-width: 700px) {
+    padding: 1.4em 1.2em;
+    font-size: 10pt;
+
+    h1 { font-size: 22pt; }
+
+    p > code:first-child {
+      display: block;
+      float: none;
+      margin: 0 0 0.1em;
+    }
+  }
+}
+
+// ---- print / PDF: US Letter ----
+@media print {
+  @page {
+    size: letter;
+    margin: 0.6in 0.7in 0.7in;
+  }
+
+  .masthead,
+  .page__footer,
+  .cv-toolbar {
+    display: none !important;
+  }
+
+  body { padding: 0 !important; }
+
+  .cv-page {
+    margin: 0 !important;
+    padding: 0;
+    background: none;
+    animation: none;
+  }
+
+  .cv {
+    max-width: none;
+    padding: 0;
+    font-size: 10pt;
+    border-radius: 0;
+    box-shadow: none;
+
+    h2, h3 { break-after: avoid; page-break-after: avoid; }
+    p, li { break-inside: avoid; page-break-inside: avoid; }
+    p:has(> code:first-child) { break-after: avoid; }
+
+    a { color: inherit; }
+
+    .cv-printed-note {
+      display: block;
+      margin-top: 2em;
+    }
+  }
+}

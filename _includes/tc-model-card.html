@@ -1,0 +1,18 @@
+{% comment %}
+  One Torch Canvas example as a card. Params: model (an entry from _data/torch_canvas_library.json),
+  compact (optional: no description).
+{% endcomment %}
+{% assign tc = site.data.torch_canvas %}
+{% assign m = include.model %}
+<a class="tc-card{% if m.kind == 'block' %} tc-card--block{% endif %}" href="{{ tc.tool.url }}?open={{ m.id | url_encode }}" title="Open {{ m.title }} in Torch Canvas">
+  {% if m.thumb %}<span class="tc-card__thumb"><img src="{{ m.thumb | relative_url }}" alt="Diagram of {{ m.title }}" loading="lazy" width="1084" height="720"></span>{% endif %}
+  <span class="tc-card__body">
+    <span class="tc-card__head">
+      <span class="tc-card__title">{{ m.title | escape | replace: "_", "_<wbr>" }}</span>
+      {% if m.params %}<span class="tc-card__params">{{ m.params }}</span>{% endif %}
+    </span>
+    {% unless include.compact %}{% if m.description != "" %}<span class="tc-card__desc">{{ m.description | truncate: 170 }}</span>{% endif %}{% endunless %}
+    {% if m.blocks and m.blocks.size > 0 %}<span class="tc-card__blocks">Uses {{ m.blocks | join: ", " }}</span>{% endif %}
+    <span class="tc-card__open">Open in Torch Canvas →</span>
+  </span>
+</a>

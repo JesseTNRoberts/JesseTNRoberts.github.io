@@ -1,0 +1,44 @@
+# Interactive demos and handouts shown on /learn/.
+# Self-contained HTML files live in assets/demonstrations/.
+#
+#   id (used to attach a demo to a lecture), title, url (site path), description, courses, topics
+
+- id: neuron-2d
+  title: Single Neuron Explorer
+  url: /assets/demonstrations/Neuron-Hyperplane-Boundary.html
+  description: A neuron with two inputs draws a line (hyperplane) through input space. Drag the weights and watch the decision boundary move.
+  courses: [CSC4220]
+  topics: [perceptron, decision boundary]
+
+- id: neuron-3d
+  title: 3-Input Neuron Explorer (3D)
+  url: /assets/demonstrations/neuron3d.html
+  description: The same idea in three dimensions, where the boundary becomes a plane.
+  courses: [CSC4220]
+  topics: [perceptron, decision boundary]
+
+- id: roc-separability
+  title: ROC Curves and Data Separability
+  url: /assets/demonstrations/roc_threshold_model_quality.html
+  description: Move the threshold and the class overlap to see how the ROC curve and model quality respond.
+  courses: [CSC4220]
+  topics: [evaluation, ROC]
+
+- id: optimization-lens
+  title: "The Optimization Lens: Group Handouts"
+  url: /assets/demonstrations/Learning_is_optimization.html
+  description: In-class exercise framing different learning algorithms as optimization problems.
+  courses: [CSC4220]
+  topics: [optimization]
+
+- id: operator-norm-2d
+  title: Operator Norm as a Matrix Equation
+  url: /assets/demonstrations/operator_norm_matrix_equation.html
+  description: A 2×2 matrix warps the unit circle; find the input direction it stretches most.
+  topics: [linear algebra, operator norm]
+
+- id: operator-norm-3d
+  title: Operator Norm via Power Iteration (3D)
+  url: /assets/demonstrations/operator_norm_3d_power_iteration.html
+  description: A 3×3 matrix turns a sphere into an ellipsoid while power iteration homes in on the maximum stretch.
+  topics: [linear algebra, operator norm]

@@ -1,0 +1,154 @@
+# Builds the site with Jekyll and publishes it to GitHub Pages.
+#
+# One-time setup: repo Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+# The custom domain (www.jessetnroberts.com) stays configured in Settings -> Pages, so
+# project sites such as /torch-canvas/ keep being served under it.
+#
+# A daily scheduled run refreshes the homepage trackers and the Publications page from
+# Google Scholar and Strava (scripts/update_stats.rb) and redeploys. Optional repo secrets:
+#   SERPAPI_KEY            mirrors Google Scholar (Scholar blocks GitHub's servers directly)
+#   STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET, STRAVA_REFRESH_TOKEN  (see scripts/strava_auth.rb)
+# Without them, those sources are skipped and everything else still works.
+# It also syncs the Torch Canvas example library when that repo changes (scripts/sync_torch_canvas.js).
+name: Build and deploy site
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 10 * * *" # daily, ~5:23am Central
+
+permissions:
+  contents: write # lets the scheduled run save refreshed stats back to the repo
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      # Refresh live numbers (Scholar publications, Strava miles) on the daily and manual runs only;
+      # pushes build with the last saved data, which keeps SerpApi use to about one call a day per
+      # repo. Failures never block the deploy: the last good numbers are kept.
+      - name: Refresh stats from Google Scholar and Strava
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: ruby scripts/update_stats.rb
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+
+      # Torch Canvas example library (scheduled/manual runs only, and only when the torch-canvas
+      # repo has a new commit): list of models and blocks, diagram thumbnails, parameter counts.
+      - name: Check Torch Canvas for changes
+        id: tc
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: |
+          git clone --depth 1 https://github.com/JesseTNRoberts/torch-canvas "$RUNNER_TEMP/torch-canvas"
+          new=$(git -C "$RUNNER_TEMP/torch-canvas" rev-parse HEAD)
+          old=$(ruby -rjson -e 'puts JSON.parse(File.read("_data/torch_canvas_library.json"))["commit"] rescue puts ""')
+          if [ "$new" != "$old" ]; then echo "changed=true" >> "$GITHUB_OUTPUT"; echo "::notice title=torch-canvas::New commit ${new:0:7}; syncing examples"
+          else echo "::notice title=torch-canvas::Examples up to date (${new:0:7})"; fi
+
+      # Headless Chromium: renders the CV PDF on every build, and Torch Canvas thumbnails when needed.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-1.56.1-${{ runner.os }}
+
+      - name: Set up Playwright
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pw" playwright@1.56.1
+          "$RUNNER_TEMP/pw/node_modules/.bin/playwright" install --with-deps chromium
+
+      - name: Sync Torch Canvas examples
+        if: steps.tc.outputs.changed == 'true'
+        continue-on-error: true
+        run: |
+          (cd "$RUNNER_TEMP/torch-canvas" && npm run build)   # bake the current examples into index.html
+          NODE_PATH="$RUNNER_TEMP/pw/node_modules" node scripts/sync_torch_canvas.js "$RUNNER_TEMP/torch-canvas"
+
+      # On scheduled/manual runs, commit refreshed data so the repo keeps the latest numbers (and a
+      # fallback if a source is down tomorrow). Timestamp-only stats changes aren't committed.
+      - name: Save refreshed data
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          what=""
+          files=""
+          for f in _data/stats.yml _data/publications.yml; do [ -f "$f" ] && files="$files $f"; done
+          [ -n "$files" ] && git add -N $files
+          if [ -n "$files" ] && git diff -U0 -- $files | grep -E '^[+-][^+-]' | grep -vqE '^[+-]\s*updated:'; then
+            git add $files; what="stats"
+          fi
+          if [ "${{ steps.tc.outputs.changed }}" = "true" ]; then
+            git add -A _data/torch_canvas_library.json assets/torch-canvas
+            git diff --cached --quiet -- _data/torch_canvas_library.json assets/torch-canvas || what="$what torch-canvas"
+          fi
+          if [ -n "$what" ]; then
+            git commit -m "Update site data:$what"
+            if git push; then echo "::notice title=stats::Committed refreshed data:$what"
+            else echo "::warning title=stats::Push of refreshed data failed; will retry next run"; fi
+          else
+            echo "::notice title=stats::No data changes to commit"
+          fi
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      # Build for wherever this repo is published (the real domain, or a preview copy
+      # such as https://www.jessetnroberts.com/site-preview/), so CSS and links stay on that copy.
+      - name: Build with Jekyll
+        run: |
+          # Always https: GitHub reports http:// when "Enforce HTTPS" is off, and browsers block
+          # http:// stylesheets on https:// pages (the site then loads unstyled).
+          origin="${{ steps.pages.outputs.origin }}"
+          echo "url: \"https://${origin#*://}\"" > _config.deploy.yml
+          bundle exec jekyll build --config _config.yml,_config.deploy.yml --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      # The CV's "Download PDF" button: render /cv/ from this build as a US Letter PDF.
+      - name: Render CV PDF
+        continue-on-error: true
+        run: |
+          origin="${{ steps.pages.outputs.origin }}"
+          NODE_PATH="$RUNNER_TEMP/pw/node_modules" node scripts/cv_pdf.js _site \
+            "https://${origin#*://}${{ steps.pages.outputs.base_path }}" _site/files/Jesse-Roberts-CV.pdf
+          echo "::notice title=cv::CV PDF rendered ($(du -k _site/files/Jesse-Roberts-CV.pdf | cut -f1) KB)"
+
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    # Pull requests only build (as a check); pushes, the daily schedule, and manual runs deploy.
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

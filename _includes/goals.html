@@ -1,0 +1,69 @@
+{% comment %}
+  Year-to-date goal trackers. Targets: _data/goals.yml. Live numbers: _data/stats.yml
+  (refreshed daily by scripts/update_stats.rb). Include with {% include goals.html %}
+{% endcomment %}
+{% assign goals = site.data.goals %}
+{% assign stats = site.data.stats %}
+<div class="goals">
+{% for g in goals.trackers %}
+  {% assign current = nil %}
+  {% assign updated = nil %}
+  {% assign source_name = nil %}
+  {% if g.source == "scholar" and stats.year == goals.year and stats.publications.source == "Google Scholar" %}
+    {% assign current = stats.publications.papers_this_year %}
+    {% assign updated = stats.publications.updated %}
+    {% assign source_name = stats.publications.source %}
+  {% elsif g.source == "strava" and stats.year == goals.year and stats.strava %}
+    {% assign current = stats.strava.miles_this_year %}
+    {% assign updated = stats.strava.updated %}
+    {% assign source_name = "Strava" %}
+  {% elsif g.source == "manual" %}
+    {% assign current = g.current %}
+  {% endif %}
+  {% if current == nil %}{% continue %}{% endif %}{% comment %} no data yet: hide the card rather than show 0 {% endcomment %}
+
+  {% assign pct = current | times: 100.0 | divided_by: g.target %}
+  {% if pct > 100 %}{% assign pct = 100 %}{% endif %}
+  <div class="goal-card" data-due="{{ goals.year | plus: 1 }}-01-01" data-met="{% if current >= g.target %}true{% else %}false{% endif %}">
+    <div class="goal-card__title">{{ g.label }} goal: {{ g.target }} {{ g.unit }}</div>
+    <div class="goal-card__bar" role="progressbar" aria-valuemin="0" aria-valuemax="{{ g.target }}" aria-valuenow="{{ current }}" aria-label="{{ g.label }} progress">
+      <div class="goal-card__fill" style="width: {{ pct | round: 1 }}%"></div>
+    </div>
+    <div class="goal-card__stats">
+      <div class="goal-card__stat">
+        <span class="goal-card__number">{{ current }}</span>
+        <span class="goal-card__label">{{ g.verb }} in {{ goals.year }}</span>
+      </div>
+      <div class="goal-card__stat">
+        <span class="goal-card__number goal-card__when">Dec 31</span>
+        <span class="goal-card__label goal-card__when-label">{{ goals.year }}</span>
+      </div>
+    </div>
+    {% if updated %}
+    <div class="goal-card__source">From {{ source_name }} · updated <time datetime="{{ updated }}">{{ updated | date: "%b %-d" }}</time></div>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
+
+<script>
+  (function () {
+    var DAY = 24 * 60 * 60 * 1000;
+    document.querySelectorAll('.goal-card').forEach(function (card) {
+      var parts = card.dataset.due.split('-').map(Number);
+      var due = new Date(parts[0], parts[1] - 1, parts[2]);
+      var daysLeft = Math.ceil((due - new Date()) / DAY);
+      var when = card.querySelector('.goal-card__when');
+      var whenLabel = card.querySelector('.goal-card__when-label');
+      if (daysLeft > 0) {
+        when.textContent = daysLeft;
+        whenLabel.textContent = daysLeft === 1 ? 'day left' : 'days left';
+      } else {
+        var met = card.dataset.met === 'true';
+        if (!met) card.classList.add('goal-card--missed');
+        when.textContent = met ? 'Reached' : 'Closed';
+        whenLabel.textContent = 'Final, ' + (parts[0] - 1);
+      }
+    });
+  })();
+</script>

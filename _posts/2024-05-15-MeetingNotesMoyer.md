@@ -1,4 +1,5 @@
 ---
+published: false  # private journal entry; flip to true to publish
 title: 'Meeting Notes Moyer, Cohen, and Talbert Colab'
 date: 2024-05-15
 permalink: /posts/2024/05/15/MeetingNotes/

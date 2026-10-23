@@ -1,3 +1,4 @@
+{% unless page.layout == "course" %}
 {% include base_path %}
 
 {% if page.previous or page.next %}
@@ -14,3 +15,4 @@
     {% endif %}
   </nav>
 {% endif %}
+{% endunless %}

@@ -1,0 +1,105 @@
+---
+layout: single
+title: "Research"
+permalink: /research/
+author_profile: true
+excerpt: "Jesse Roberts's research at Tennessee Tech: deep learning fundamentals, language models and Cherokee language revitalization, spiking neural networks, and tornado detection."
+---
+{% comment %}
+  Built from _data/research.yml (areas, funding, honors). Papers per area come from the Scholar
+  mirror, tagged by _plugins/publications.rb.
+{% endcomment %}
+{% assign r = site.data.research %}
+{% assign major_funding = r.funding | where_exp: "f", "f.minor != true" %}
+
+<p class="research-lede">{{ r.tagline }}</p>
+<p class="research-group">I lead the <strong>{{ r.group.name }}</strong> at {{ r.group.institution }}.</p>
+
+<nav class="research-areas" aria-label="Research areas">
+  {% for a in r.areas %}
+  <a class="research-area-card" href="#{{ a.id }}">
+    <i class="{{ a.icon }}" aria-hidden="true"></i>
+    <span class="research-area-card__title">{{ a.title }}</span>
+    {% if a.emerging %}<span class="research-badge">Emerging</span>{% endif %}
+  </a>
+  {% endfor %}
+</nav>
+
+{% for a in r.areas %}
+<section class="research-area" id="{{ a.id }}">
+  <h2><i class="{{ a.icon }}" aria-hidden="true"></i> {{ a.title }}{% if a.emerging %} <span class="research-badge">Emerging</span>{% endif %}</h2>
+  <p>{{ a.summary }}</p>
+
+  {% if a.highlight %}{% assign h = r.honors | where: "id", a.highlight | first %}{% if h %}
+  <div class="research-callout">
+    <i class="fas fa-award" aria-hidden="true"></i>
+    <div>
+      <strong>{% if h.url %}<a href="{{ h.url }}">{{ h.title }}</a>{% else %}{{ h.title }}{% endif %}</strong>
+      <span>{{ h.org }} · {{ h.years }}</span>
+      {% if h.blurb %}<p>{{ h.blurb }}</p>{% endif %}
+    </div>
+  </div>
+  {% endif %}{% endif %}
+
+  {% if a.selected_papers and a.selected_papers.size > 0 %}
+  <h3>{% if a.emerging %}Early work{% else %}Selected papers{% endif %}</h3>
+  <ul class="research-papers">
+    {% for p in a.selected_papers %}
+    <li>
+      {% if p.url %}<a href="{{ p.url }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}
+      <span>{% if p.label %}{{ p.label }}{% else %}{{ p.venue | truncate: 60 }}{% endif %}{% if p.year %} {{ p.year }}{% endif %}{% if p.cited_by > 0 %} · cited by {{ p.cited_by }}{% endif %}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  {% if a.paper_count > a.selected_papers.size %}
+  <p class="research-more"><a href="{{ '/publications/' | relative_url }}">All {{ a.paper_count }} papers in this area are on the Publications page →</a></p>
+  {% endif %}
+  {% elsif a.emerging %}
+  <p class="research-more">New work in progress; papers will appear here as they're published.</p>
+  {% endif %}
+
+  {% if a.links and a.links.size > 0 %}
+  <p class="research-links">
+    {% for l in a.links %}<a class="chip" href="{% if l.url contains '://' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.title }}</a>{% endfor %}
+  </p>
+  {% endif %}
+
+  {% if a.press and a.press.size > 0 %}
+  <h3>In the news</h3>
+  <ul class="research-press">
+    {% for n in a.press %}<li><a href="{{ n.url }}">{{ n.title }}</a> <span>{{ n.outlet }}</span></li>{% endfor %}
+  </ul>
+  {% endif %}
+</section>
+{% endfor %}
+
+{% if major_funding.size > 0 %}
+<section class="research-area" id="funding">
+  <h2><i class="fas fa-landmark" aria-hidden="true"></i> Funding</h2>
+  <div class="funding-grid">
+    {% for f in major_funding %}
+    <article class="funding-card">
+      <p class="funding-card__agency">{{ f.agency }}{% if f.award %} · Award {{ f.award }}{% endif %}</p>
+      <h3 class="funding-card__title">{% if f.url %}<a href="{{ f.url }}">{{ f.short | default: f.title }}</a>{% else %}{{ f.short | default: f.title }}{% endif %}</h3>
+      {% if f.short %}<p class="funding-card__full">{{ f.title }}</p>{% endif %}
+      <p class="funding-card__meta">
+        {% if f.role %}<span class="research-badge research-badge--role">{{ f.role }}</span>{% endif %}
+        {% if f.amount %}<span>${{ f.amount | divided_by: 1000 }}K</span>{% endif %}
+        {% if f.year %}<span>{{ f.year }}</span>{% endif %}
+      </p>
+      {% if f.note %}<p class="funding-card__note">{{ f.note }}</p>{% endif %}
+      {% if f.website %}<p class="funding-card__site"><a href="{{ f.website }}">{{ f.website | remove: "https://" | remove: "http://" | remove: "/" }} →</a></p>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="research-area research-join" id="join">
+  <h2><i class="fas fa-user-graduate" aria-hidden="true"></i> Join the group</h2>
+  <p>
+    I'm accepting <strong>master's and Ph.D. students</strong>. If you're curious and want to work on real
+    problems with AI, <a href="mailto:{{ site.author.email }}">email me</a> or
+    <a href="{{ '/meeting/' | relative_url }}">book a meeting</a>.
+  </p>
+</section>

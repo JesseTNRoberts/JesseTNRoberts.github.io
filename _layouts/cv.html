@@ -1,34 +1,43 @@
 ---
 layout: default
 ---
-
-{% include base_path %}
-
-<!doctype html>
-<html>
-<head>
-  <meta charset=utf-8 />
-  <title> {% if page.title %} {{ page.title }} | {% endif %} CV</title>
-  <link href="{{ base_path }}/assets/css/{{ site.cvstyle }}-screen.css" type="text/css" rel="stylesheet" media="screen">
-  <link href="{{ base_path }}/assets/css/{{ site.cvstyle }}-print.css" type="text/css" rel="stylesheet" media="print">
-</head>
-<body>
-
-<!-- {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
-  {% include page__hero.html %}
-{% endif %} -->
-
-{% if page.url != "/" and site.breadcrumbs %}
-  {% unless paginator %}
-    {% include breadcrumbs.html %}
-  {% endunless %}
-{% endif %}
-
-  <div id="main">
-    <div id="content">
-    {{ content }}
-    </div>
+{% comment %}
+  CV page. Content is _pages/cv.md (plain Markdown: ## sections, ### organizations, and entries that
+  start with a `date`). Styled by _sass/_cv.scss for screen and for US Letter print.
+  The "Download PDF" button links to a PDF of this page that the deploy workflow renders
+  (scripts/cv_pdf.js → /files/Jesse-Roberts-CV.pdf), so it always matches what's here.
+{% endcomment %}
+{% assign pdf = site.cv_pdf | default: "/files/Jesse-Roberts-CV.pdf" %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<div id="main" role="main" class="cv-page">
+  <div class="cv-toolbar">
+    <a class="cv-toolbar__pdf" href="{{ pdf | relative_url }}" download data-fallback-print>
+      <i class="fas fa-file-pdf" aria-hidden="true"></i> Download PDF <span>8.5 × 11</span>
+    </a>
+    <button type="button" class="cv-toolbar__print" onclick="window.print()">
+      <i class="fas fa-print" aria-hidden="true"></i> Print
+    </button>
+    <span class="cv-toolbar__updated">Updated {{ site.time | date: "%B %-d, %Y" }}</span>
   </div>
-</body>
-</html>
 
+  <article class="cv">
+    {{ content }}
+    <p class="cv-printed-note">Updated {{ site.time | date: "%B %Y" }} · {{ site.url | remove: "https://" | remove: "http://" | remove: "www." }}{{ page.url | relative_url }}</p>
+  </article>
+</div>
+
+<script>
+  /* If the PDF hasn't been generated (e.g. a local preview), fall back to the print dialog. */
+  (function () {
+    var a = document.querySelector('[data-fallback-print]');
+    if (!a || !window.fetch) return;
+    fetch(a.href, { method: 'HEAD' }).then(function (r) {
+      if (!r.ok) throw 0;
+    }).catch(function () {
+      a.removeAttribute('download');
+      a.addEventListener('click', function (e) { e.preventDefault(); window.print(); });
+    });
+  })();
+</script>

@@ -1,0 +1,259 @@
+# Generated from Google Scholar by scripts/update_stats.rb (daily via GitHub Actions).
+# Don't edit by hand. To fix a paper, edit it on your Scholar profile.
+profile: https://scholar.google.com/citations?user=Bj9GEfkAAAAJ
+updated: '2026-10-22T23:42:04Z'
+papers:
+- title: Augmenting LLM-Based Agents for Improved Performance in Pentesting and Commissioning
+    Operational Technology in Critical Infrastructure
+  authors: A Werth, G Hahn, R Borges Hink, E Piesciorovsky, SJ Prowell, ...
+  venue: Oak Ridge National Laboratory (ORNL), Oak Ridge, TN (United States)
+  year: 2026
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:isC4tDSrTZIC
+- title: Calibrating Urban Traffic Simulation from Sparse Road Observations via Genetic
+    Optimization
+  authors: H Sawyer, J Roberts, S Matei
+  venue: arXiv preprint arXiv:2606.03823
+  year: 2026
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:bEWYMUwI8FkC
+- title: Generation and Validation of Configuration Management Code for Cyber Range
+    Environments Using Large Language Models
+  authors: T Lee, M Ismail, J Roberts
+  venue: The International FLAIRS Conference Proceedings 39 (1)
+  year: 2026
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:e5wmG9Sq2KIC
+- title: Human-Alignment, Calibration, and Activation Patterns in Large Language Model
+    Uncertainty
+  authors: K Moore, J Roberts, D Watson, W Ward, G Heyboer
+  venue: arXiv preprint arXiv:2605.30675
+  year: 2026
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:r0BpntZqJG4C
+- title: Investigating Human-Aligned Large Language Model Uncertainty
+  authors: K Moore, J Roberts, D Watson, P Wisniewski
+  venue: The International FLAIRS Conference Proceedings 39 (1)
+  year: 2026
+  cited_by: 3
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:3fE2CSJIrl8C
+- title: 'KARMA: Karma-Aligned Reward Model Adaptation'
+  authors: J Scott, J Roberts
+  venue: arXiv preprint arXiv:2605.26738
+  year: 2026
+  cited_by: 1
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:j3f4tGmQtD8C
+- title: Leveraging BART to Assess CS1 C++ Programming Assignments using Rubric-based
+    Criteria
+  authors: K Rainey, J Roberts
+  venue: arXiv preprint arXiv:2606.03814
+  year: 2026
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:iH-uZ7U-co4C
+- title: Multimodal Language Model Vision Analysis for Leader Drone Identification
+    in Adversarial Swarms
+  authors: M Soare, A Elshazly, J Roberts, M Ismail
+  venue: IEEE Internet of Things Journal
+  year: 2026
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:M3NEmzRMIkIC
+- title: 'Reinforcement learning from meta-evaluation: Aligning language models without
+    ground-truth labels'
+  authors: M Rentschler, J Roberts
+  venue: arXiv preprint arXiv:2601.21268
+  year: 2026
+  cited_by: 5
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:hFOr9nPyWt4C
+- title: Reward-Guided Fine-Tuning of Language Models with Social Feedback
+  authors: J Scott, J Roberts
+  venue: The International FLAIRS Conference Proceedings 39 (1)
+  year: 2026
+  cited_by: 1
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:RHpTSmoSYBkC
+- title: 'SAGE 0.2: LLMs for DOM Informed Internet Guidance'
+  authors: J Brooks, J Roberts, P McCloud
+  venue: The International FLAIRS Conference Proceedings 39 (1)
+  year: 2026
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:_Qo2XoVZTnwC
+- title: Systematic Analysis of Tokenization Properties in Low-Resource Polysynthetic
+    NMT
+  authors: D Ndayegamiye, J Roberts, B Frey
+  venue: The International FLAIRS Conference Proceedings 39 (1)
+  year: 2026
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:4JMBOYKVnBMC
+- title: 'Basic Categories in Vision Language Models: Expert Prompting Doesn’t Grant
+    Expertise'
+  authors: H Sawyer, J Roberts, K Moore
+  venue: Advances in Cognitive Systems 2025, 177
+  year: 2025
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:MXK_kJrjxJIC
+- title: Do Large Language Models Learn Human-Like Strategic Preferences?
+  authors: J Roberts, K Moore, D Fisher
+  venue: Proceedings of the 1st Workshop for Research on Agent Language Models (REALM
+    …
+  year: 2025
+  cited_by: 10
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:WF5omc3nYNoC
+- title: Enhancing Post Earnings Announcement Drift Measurement with Large Language
+    Models
+  authors: S Hadlock, J Roberts, J Lee
+  venue: Proceedings of The 10th Workshop on Financial Technology and Natural …
+  year: 2025
+  cited_by: 1
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:qUcmZB5y_30C
+- title: Exploitation is all you need... for exploration
+  authors: M Rentschler, J Roberts
+  venue: arXiv preprint arXiv:2508.01287
+  year: 2025
+  cited_by: 5
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:7PzlFSSx8tAC
+- title: 'Harnessing the Power of AI in Honors: Equipping Students to Leverage Tools
+    Effectively'
+  authors: L Roberts, J Roberts
+  venue: Journal of the National Collegiate Honors Council 26 (1), 51-59
+  year: 2025
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:maZDTaKrznsC
+- title: Leveraging large language models and machine learning for smart contract
+    vulnerability detection
+  authors: SMM Hossain, A Altarawneh, J Roberts
+  venue: 2025 IEEE 15th Annual Computing and Communication Workshop and Conference
+    …
+  year: 2025
+  cited_by: 22
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:0EnyYjriUFMC
+- title: LLMs as Agentic Cooperative Players in Multiplayer UNO
+  authors: YR Matinez, J Roberts
+  venue: International Conference on Machine Learning Applications 2025
+  year: 2025
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:IWHjjKOFINEC
+- title: RL+ Transformer= A General-Purpose Problem Solver
+  authors: M Rentschler, J Roberts
+  venue: Proceedings of the 1st Workshop for Research on Agent Language Models (REALM
+    …
+  year: 2025
+  cited_by: 3
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:8k81kl-MbHgC
+- title: 'Tennessee Tech University: Action Plan for Artificial Intelligence Education,
+    Workforce Development, Research, and Infrastructure Needs'
+  authors: W Eberle, A Hilal, A MacKenzie, J Roberts, A Skjellum, D Talbert
+  venue: ''
+  year: 2025
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:Wp0gIr-vW9MC
+- title: Toward the Use of LLMs to Support Curriculum Mapping to Established Frameworks
+  authors: E Brown, J Roberts, D Talbert
+  venue: American Society of Engineering Education
+  year: 2025
+  cited_by: 3
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:ZeXyd9-uunAC
+- title: A Theoretical & Empirical Analysis of Transformer Language Model Behavior
+  authors: JTN Roberts
+  venue: ''
+  year: 2024
+  cited_by: 1
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:Se3iqnhoufwC
+- title: 'Chain of thought still thinks fast: Apricot helps with thinking slow'
+  authors: K Moore, J Roberts, T Pham, D Fisher
+  venue: Proceedings of the Annual Meeting of the Cognitive Science Society 47
+  year: 2024
+  cited_by: 13
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:kNdYIx-mwKoC
+- title: Do Large Language Models Learn to Human-Like Learn?
+  authors: J Roberts
+  venue: Proceedings of the AAAI 2024 Spring Symposium Series 3 (1), 588-591
+  year: 2024
+  cited_by: 2
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:eQOLeE2rZwMC
+- title: Introduction to PLC Automation
+  authors: J Roberts
+  venue: https://www.jessetnroberts.com/files/Introduction_to_PLC_Automation.pdf
+  year: 2024
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:ufrVoPGSRksC
+- title: Investigating Expert-in-the-Loop LLM Discourse Patterns for Ancient Intertextual
+    Analysis
+  authors: R Umphrey, J Roberts, L Roberts
+  venue: 4th International Conference on Natural Language Processing for Digital …
+  year: 2024
+  cited_by: 14
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:hqOjcs7Dif8C
+- title: Large language model recall uncertainty is modulated by the fan effect
+  authors: J Roberts, K Moore, T Pham, O Ewaleifoh, D Fisher
+  venue: 28th Conference on Computational Natural Language Learning, 303–313
+  year: 2024
+  cited_by: 9
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:LkGwnXOMwfcC
+- title: Supporting the digital autonomy of elders through llm assistance
+  authors: J Roberts, L Roberts, A Reed
+  venue: Proceedings of the AAAI Symposium Series 4 (1), 182-186
+  year: 2024
+  cited_by: 6
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:roLk4NBRz8UC
+- title: 'The base-rate effect on llm benchmark performance: Disambiguating test-taking
+    strategies from benchmark performance'
+  authors: K Moore, J Roberts, T Pham, O Ewaleifoh, D Fisher
+  venue: 'Findings of the Association for Computational Linguistics: EMNLP 2024, 2283–2288'
+  year: 2024
+  cited_by: 10
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:_FxGoFyzp5QC
+- title: Using artificial populations to study psychological phenomena in neural models
+  authors: J Roberts, K Moore, D Wilenzick, D Fisher
+  venue: Proceedings of the aaai conference on artificial intelligence 38 (17), 18906
+    …
+  year: 2024
+  cited_by: 10
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:Y0pCki6q_DkC
+- title: How Powerful are Decoder-Only Transformer Neural Models?
+  authors: J Roberts
+  venue: 2024 International Joint Conference on Neural Networks (IJCNN), 1--8
+  year: 2023
+  cited_by: 66
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:Tyk-4Ss8FVUC
+- title: Finding an Equilibrium in the Traveler's Dilemma with Fuzzy Weak Domination
+  authors: J Roberts
+  venue: 2021 IEEE Conference on Games (CoG), 1-5
+  year: 2021
+  cited_by: 1
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:UeHWp8X0CEIC
+- title: Extending the Philosophy of Computational Criticism.
+  authors: J Roberts, DH Fisher
+  venue: ICCC, 358-361
+  year: 2020
+  cited_by: 1
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:2osOgNQ5qMEC
+- title: 'pReview: The artificially intelligent conference reviewer'
+  authors: J Roberts, D Fisher
+  venue: 2020 19th IEEE International Conference on Machine Learning and Applications
+    …
+  year: 2020
+  cited_by: 7
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:qjMakFHDy7sC
+- title: Biologically Extending the Gen 2 ANN Model.
+  authors: J Roberts, DA Talbert
+  venue: FLAIRS, 132-135
+  year: 2019
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:9yKSN-GCB0IC
+- title: Improving any arbitrary MPPT hill climber with ANN estimations
+  authors: J Roberts, I Bhattacharya
+  venue: 2017 IEEE 44th Photovoltaic Specialist Conference (PVSC), 3083-3087
+  year: 2017
+  cited_by: 2
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:d1gkVwhDpl0C
+- title: MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker
+  authors: JT Roberts
+  venue: Tennessee Technological University
+  year: 2017
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:u5HHmVD_uO8C
+- title: 'MNFIS and other soft computing based MPPT techniques: A comparative analysis'
+  authors: J Roberts, I Bhattacharya
+  venue: 2016 IEEE 43rd Photovoltaic Specialists Conference (PVSC), 3247-3251
+  year: 2016
+  cited_by: 4
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:u-x6o8ySG0sC

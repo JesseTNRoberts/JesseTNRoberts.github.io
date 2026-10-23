@@ -1,0 +1,208 @@
+/* ==========================================================================
+   /learn/ page: Torch Canvas feature, model and demo cards
+   ========================================================================== */
+
+.learn-feature {
+  margin: 1.5em 0 2.5em;
+  padding: 1.5em 1.75em;
+  background: #f6f8fa;
+  border: 1px solid #e3e7eb;
+  border-radius: 12px;
+
+  &__eyebrow {
+    margin: 0 0 0.25em;
+    font-size: $type-size-6;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $gray;
+  }
+
+  &__title {
+    margin: 0 0 0.5em;
+    padding: 0;
+    border: 0;
+
+    a { text-decoration: none; }
+  }
+
+  &__subtitle {
+    margin-top: 1.5em;
+  }
+}
+
+.learn-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1em;
+  margin: 1em 0 2em;
+  padding: 0;
+  list-style: none;
+}
+
+.learn-card {
+  margin: 0;
+  padding: 1em 1.1em;
+  background: #fff;
+  border: 1px solid #e3e7eb;
+  border-radius: 10px;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    border-color: #c9d1d9;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  &__title {
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  &__desc {
+    margin: 0.4em 0 0.6em;
+    font-size: $type-size-6;
+    line-height: 1.5;
+  }
+
+  &__tags {
+    margin: 0;
+  }
+}
+
+.learn-tag {
+  display: inline-block;
+  margin: 0 0.3em 0.3em 0;
+  padding: 0.1em 0.55em;
+  font-size: $type-size-7;
+  color: $gray;
+  background: #eef1f4;
+  border-radius: 999px;
+
+  &--course {
+    color: #fff;
+    background: mix(#000, $primary-color, 35%);
+  }
+}
+
+.torch-canvas-link {
+  margin: 0.25em 0;
+}
+
+/* ==========================================================================
+   Publications page (_includes/scholar-publications.html)
+   ========================================================================== */
+
+.pub-year {
+  margin-top: 1.5em;
+}
+
+.pub-list {
+  margin: 0.5em 0 1em;
+  padding-left: 0;
+  list-style: none;
+}
+
+.pub {
+  margin-bottom: 0.9em;
+  line-height: 1.45;
+
+  &__title {
+    display: block;
+    font-weight: bold;
+
+    a { text-decoration: none; }
+  }
+
+  &__authors,
+  &__venue {
+    display: block;
+    font-size: $type-size-6;
+  }
+
+  &__venue {
+    font-style: italic;
+    color: $gray;
+  }
+
+  &__cites {
+    display: inline-block;
+    margin-top: 0.2em;
+    padding: 0 0.5em;
+    font-size: $type-size-7;
+    color: $gray;
+    background: #eef1f4;
+    border-radius: 999px;
+  }
+}
+
+.pub-updated {
+  margin-top: 2em;
+  font-size: $type-size-6;
+  color: $gray;
+}
+
+/* The theme sizes every `.page__content p` at 1em; keep card text small. */
+.page__content {
+  .learn-card__desc,
+  .learn-card__tags {
+    font-size: $type-size-6;
+  }
+
+  .learn-card__title,
+  .learn-feature__title a {
+    text-decoration: none;
+  }
+}
+
+/* ---- Publications: selected list, sort control, venue badges ---- */
+.page__content {
+
+  .pub-sort {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    align-items: center;
+    margin: 0.5em 0 1em;
+
+    &__label {
+      margin-right: 0.2em;
+      font-size: $type-size-6;
+      color: $gray;
+    }
+  }
+
+  .pub-list .pub-yearsep {
+    margin: 0;
+
+    .pub-year { margin: 1.4em 0 0.6em; }
+  }
+
+  .pub__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35em;
+    align-items: center;
+    margin-top: 0.3em;
+
+    &:empty { display: none; }
+  }
+
+  .pub__label {
+    padding: 0 0.55em;
+    font-size: $type-size-7;
+    font-weight: bold;
+    color: #fff;
+    background: mix(#000, $primary-color, 35%);
+    border-radius: 999px;
+  }
+
+  .pub__cites { margin-top: 0; }
+
+  .pub__note {
+    font-size: $type-size-7;
+    font-weight: bold;
+    color: #9a6700;
+
+    i { margin-right: 0.15em; }
+  }
+}

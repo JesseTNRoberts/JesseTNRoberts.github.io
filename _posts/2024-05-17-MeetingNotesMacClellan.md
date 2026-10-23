@@ -1,4 +1,5 @@
 ---
+published: false  # private journal entry; flip to true to publish
 title: 'Meeting Notes MacClellan, Langley, and Fisher Colab'
 date: 2024-05-17
 permalink: /posts/2024/05/17/MeetingNotes/

@@ -1,0 +1,92 @@
+# Publishes this preview repo (New-site-test) to the live site repo once a day.
+#
+# Edit and check the site at https://www.jessetnroberts.com/New-site-test/; every morning this copies
+# the preview's files onto the live repo as one new commit ("Promote New-site-test <sha>"), which
+# triggers the live site's own build and deploy. Run it by hand under Actions -> "Promote to live
+# site" -> Run workflow to publish right away.
+#
+# Safety:
+#  - It only promotes if the preview's latest build of `main` succeeded on the current commit.
+#  - It adds a commit on top of the live repo (never a force push), so the live history is kept and
+#    any change can be reverted there.
+#  - The live repo's CNAME is never touched.
+#  - In the live repo this workflow is a no-op (the `if:` below), since it gets copied there too.
+#
+# Setup: a fine-grained GitHub token limited to the live repo, with "Contents: Read and write" and
+# "Workflows: Read and write", saved in THIS repo as the secret LIVE_SITE_TOKEN. Until it exists,
+# runs just note that they skipped.
+name: Promote to live site
+
+on:
+  schedule:
+    - cron: "37 9 * * *" # daily, ~4:37am Central (before the live site's 5:23 data refresh)
+  workflow_dispatch:
+
+concurrency:
+  group: promote
+  cancel-in-progress: false
+
+env:
+  LIVE_REPO: JesseTNRoberts/JesseTNRoberts.github.io
+  LIVE_BRANCH: master
+
+jobs:
+  promote:
+    if: github.repository == 'JesseTNRoberts/New-site-test'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - name: Check setup and the preview's latest build
+        id: check
+        env:
+          TOKEN: ${{ secrets.LIVE_SITE_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::notice title=promote::LIVE_SITE_TOKEN isn't set, so nothing was published."
+            echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          head=$(gh api "repos/$GITHUB_REPOSITORY/commits/main" -q .sha)
+          read -r concl sha < <(gh run list -R "$GITHUB_REPOSITORY" --workflow pages.yml --branch main \
+            --status completed -L 1 --json conclusion,headSha -q '.[0] | "\(.conclusion) \(.headSha)"')
+          if [ "$concl" != "success" ] || [ "$sha" != "$head" ]; then
+            echo "::warning title=promote::Not published: the preview's latest build of ${head:0:7} hasn't succeeded (last: $concl on ${sha:0:7}). Fix the preview, then run this again."
+            echo "go=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          echo "go=true" >> "$GITHUB_OUTPUT"
+          echo "sha=$head" >> "$GITHUB_OUTPUT"
+
+      - name: Check out the preview
+        if: steps.check.outputs.go == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.check.outputs.sha }}
+          path: preview
+
+      - name: Copy the preview onto the live repo
+        if: steps.check.outputs.go == 'true'
+        env:
+          TOKEN: ${{ secrets.LIVE_SITE_TOKEN }}
+          SHA: ${{ steps.check.outputs.sha }}
+        run: |
+          git clone --depth 1 --branch "$LIVE_BRANCH" "https://x-access-token:${TOKEN}@github.com/${LIVE_REPO}.git" live
+          cd live
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # The live repo may get its own data commit while this runs; retry on a fresh copy.
+          for attempt in 1 2 3; do
+            rsync -a --delete --exclude .git --exclude CNAME ../preview/ ./
+            git add -A
+            if git diff --cached --quiet; then
+              echo "::notice title=promote::The live site already matches the preview (${SHA:0:7})."; exit 0
+            fi
+            changed=$(git diff --cached --name-only | wc -l)
+            git commit -q -m "Promote New-site-test ${SHA:0:7}" -m "https://github.com/${GITHUB_REPOSITORY}/commit/${SHA}"
+            if git push -q origin "HEAD:$LIVE_BRANCH"; then
+              echo "::notice title=promote::Published ${SHA:0:7} to the live site ($changed files changed)."; exit 0
+            fi
+            git fetch -q --depth 1 origin "$LIVE_BRANCH" && git reset -q --hard FETCH_HEAD
+          done
+          echo "::error title=promote::Couldn't push to the live repo after 3 tries."; exit 1

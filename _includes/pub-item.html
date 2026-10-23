@@ -1,0 +1,17 @@
+{% comment %}
+  One paper from the Scholar mirror. Params: paper, order (position in date order).
+{% endcomment %}
+{% assign p = include.paper %}
+{% assign authors = p.authors | replace: "J Roberts", "<strong>J Roberts</strong>" | replace: "JT Roberts", "<strong>JT Roberts</strong>" | replace: "JTN Roberts", "<strong>JTN Roberts</strong>" %}
+<li class="pub" id="{{ p.key }}"
+  data-order="{{ include.order }}" data-year="{{ p.sort_year }}" data-year-label="{% if p.year %}{{ p.year }}{% else %}Undated{% endif %}"
+  data-cites="{{ p.cited_by }}" data-tier="{{ p.tier }}">
+  <span class="pub__title">{% if p.url %}<a href="{{ p.url }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span>
+  {% if p.authors != "" %}<span class="pub__authors">{{ authors }}</span>{% endif %}
+  {% if p.venue != "" or p.year %}<span class="pub__venue">{{ p.venue }}{% if p.year %}{% if p.venue != "" %}, {% endif %}{{ p.year }}{% endif %}</span>{% endif %}
+  <span class="pub__meta">
+    {% if p.label %}<span class="pub__label">{{ p.label }}</span>{% endif %}
+    {% if p.cited_by > 0 %}<span class="pub__cites">Cited by {{ p.cited_by }}</span>{% endif %}
+    {% if p.note %}<span class="pub__note"><i class="fas fa-award" aria-hidden="true"></i> {{ p.note }}</span>{% endif %}
+  </span>
+</li>

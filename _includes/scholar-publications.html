@@ -1,0 +1,81 @@
+{% comment %}
+  Publications mirrored from Google Scholar (_data/publications.yml, refreshed daily by
+  scripts/update_stats.rb; tiers, labels and notes added by _plugins/publications.rb from
+  _data/venues.yml and _data/publication_overrides.yml).
+
+  Sortable by date (grouped by year), citations, or venue. Venue sorting orders by tier
+  (ICORE A*, journals, A/B/C, unranked, preprints), then newest first; tiers are never shown.
+  Until the first successful Scholar fetch, falls back to the hand-exported _data/citations.csv.
+{% endcomment %}
+{% assign pubs = site.data.publications %}
+{% if pubs and pubs.papers and pubs.papers.size > 0 %}
+
+<h2 id="papers">Papers <span class="count">{{ pubs.papers.size }}</span></h2>
+<div class="pub-sort" role="group" aria-label="Sort papers by">
+  <span class="pub-sort__label">Sort by</span>
+  <button type="button" class="chip is-active" data-sort="date" aria-pressed="true">Date</button>
+  <button type="button" class="chip" data-sort="cites" aria-pressed="false">Citations</button>
+  <button type="button" class="chip" data-sort="venue" aria-pressed="false">Venue</button>
+</div>
+<ol class="pub-list" id="pub-list">
+  {% assign last_year = "none" %}
+  {% for p in pubs.papers %}
+    {% capture this_year %}{% if p.year %}{{ p.year }}{% else %}Undated{% endif %}{% endcapture %}
+    {% if this_year != last_year %}<li class="pub-yearsep" data-year="{{ this_year }}"><h3 class="pub-year">{{ this_year }}</h3></li>{% assign last_year = this_year %}{% endif %}
+    {% include pub-item.html paper=p order=forloop.index0 %}
+  {% endfor %}
+</ol>
+<p class="pub-updated">Mirrored from <a href="{{ pubs.profile }}">Google Scholar</a>, last updated {{ pubs.updated | date: "%B %-d, %Y" }}.</p>
+
+<script>
+  (function () {
+    var list = document.getElementById('pub-list');
+    if (!list) return;
+    var buttons = document.querySelectorAll('.pub-sort .chip');
+    var items = Array.prototype.slice.call(list.querySelectorAll('.pub'));
+    var seps = Array.prototype.slice.call(list.querySelectorAll('.pub-yearsep'));
+    function num(el, k) { return parseFloat(el.dataset[k]) || 0; }
+    var compare = {
+      date: function (a, b) { return num(a, 'order') - num(b, 'order'); },
+      cites: function (a, b) { return num(b, 'cites') - num(a, 'cites') || num(b, 'year') - num(a, 'year') || num(a, 'order') - num(b, 'order'); },
+      venue: function (a, b) { return num(a, 'tier') - num(b, 'tier') || num(b, 'year') - num(a, 'year') || num(b, 'cites') - num(a, 'cites'); }
+    };
+    function sortBy(mode) {
+      if (!compare[mode]) mode = 'date';
+      var sorted = items.slice().sort(compare[mode]);
+      var frag = document.createDocumentFragment();
+      var lastYear = null;
+      sorted.forEach(function (el) {
+        if (mode === 'date') {
+          var y = el.dataset.yearLabel;
+          if (y !== lastYear) {
+            var sep = seps.filter(function (s) { return s.dataset.year === y; })[0];
+            if (sep) frag.appendChild(sep);
+            lastYear = y;
+          }
+        }
+        frag.appendChild(el);
+      });
+      if (mode !== 'date') seps.forEach(function (s) { s.remove(); });
+      list.appendChild(frag);
+      list.dataset.sort = mode;
+      buttons.forEach(function (b) {
+        var on = b.dataset.sort === mode;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        sortBy(b.dataset.sort);
+        try { history.replaceState(null, '', '#sort=' + b.dataset.sort); } catch (e) {}
+      });
+    });
+    var m = /sort=(\w+)/.exec(location.hash);
+    if (m) sortBy(m[1]);
+  })();
+</script>
+
+{% else %}
+  {% include publications %}
+{% endif %}

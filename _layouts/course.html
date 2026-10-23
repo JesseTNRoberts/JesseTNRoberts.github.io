@@ -1,0 +1,85 @@
+---
+layout: single
+---
+{% comment %}
+  Course page. All content comes from the course file's front matter (see _teaching/_TEMPLATE.md):
+  header, optional notes (the file's Markdown body), the week-by-week lecture schedule, and
+  any demos / Torch Canvas models tagged with this course.
+{% endcomment %}
+{% assign c = page %}
+{% assign tc = site.data.torch_canvas %}
+{% assign lectures = c.lectures | default: empty %}
+{% assign course_demos = site.data.demos | where_exp: "d", "d.courses contains c.course_id" %}
+{% assign tcl = site.data.torch_canvas_library %}{% assign tc_all = tcl.networks | concat: tcl.blocks %}
+{% assign course_models = "" | split: "" %}
+{% for pair in tc.courses %}{% if pair[1] contains c.course_id %}{% assign hit = tc_all | where: "id", pair[0] %}{% assign course_models = course_models | concat: hit %}{% endif %}{% endfor %}
+
+<div class="course-head">
+  <p class="course-head__meta">
+    <span class="course-code">{{ c.code }}</span>
+    <span>{{ c.term }}</span>
+    {% if c.level %}<span>{{ c.level }}</span>{% endif %}
+    {% if c.status == "current" %}<span class="course-status course-status--current">Current</span>{% endif %}
+  </p>
+  {% if c.summary and c.summary != "" %}<p class="course-head__summary">{{ c.summary }}</p>{% endif %}
+  {% if c.website or c.syllabus or c.reading_list %}
+  <p class="course-head__actions">
+    {% if c.website %}<a class="btn btn--inverse" href="{{ c.website }}">Course website</a>{% endif %}
+    {% if c.syllabus %}<a class="btn btn--inverse" href="{{ c.syllabus | relative_url }}">Syllabus</a>{% endif %}
+    {% if c.reading_list %}<a class="btn btn--inverse" href="{{ c.reading_list }}">Reading list</a>{% endif %}
+  </p>
+  {% endif %}
+</div>
+
+{% capture lect_block %}
+
+{% if lectures.size > 0 %}
+<h2 id="lectures">{% if c.schedule_label %}{{ c.schedule_label }}{% else %}Schedule{% endif %} <span class="count">{{ lectures.size }}</span></h2>
+{% assign weeks = lectures | group_by: "week" %}
+{% for w in weeks %}
+<section class="week">
+  <h3 class="week__title">{% if w.name != "" %}Week {{ w.name }}{% else %}Other{% endif %}</h3>
+  {% for l in w.items %}
+    {% include lecture-card.html lecture=l course=c %}
+  {% endfor %}
+</section>
+{% endfor %}
+{% else %}
+  {% if c.status == "current" and c.website == nil %}<p class="course-empty">Lecture materials for this course will appear here.</p>{% endif %}
+{% endif %}
+
+{% endcapture %}
+{% capture course_notes %}{{ content | strip }}{% endcapture %}
+{% comment %} Current courses lead with the lectures (what students come for); past courses lead with the description. {% endcomment %}
+{% capture extras_block %}{% if course_demos.size > 0 %}
+<h2 id="demos">Interactive demos</h2>
+<ul class="learn-list">
+  {% for d in course_demos %}
+  <li class="learn-card">
+    <a class="learn-card__title" href="{{ d.url | relative_url }}">{{ d.title }}</a>
+    {% if d.description %}<p class="learn-card__desc">{{ d.description }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if course_models.size > 0 %}
+<h2 id="models">Models to explore in Torch Canvas</h2>
+<div class="tc-grid">
+  {% for m in course_models %}{% include tc-model-card.html model=m %}{% endfor %}
+</div>
+{% endif %}
+
+{% endcapture %}
+{% if c.status == "current" %}
+{{ lect_block }}
+{{ extras_block }}
+{% if course_notes != "" %}<h2 id="about">About this course</h2>
+{{ content }}{% endif %}
+{% else %}
+{{ content }}
+{{ lect_block }}
+{{ extras_block }}
+{% endif %}
+
+<p class="course-back"><a href="{{ '/teaching/' | relative_url }}">← All courses and lectures</a></p>

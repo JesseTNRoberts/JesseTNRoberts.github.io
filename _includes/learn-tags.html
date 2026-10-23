@@ -1,0 +1,7 @@
+{% assign it = include.item %}
+{% if it.courses or it.topics %}
+<p class="learn-card__tags">
+  {% for c in it.courses %}<span class="learn-tag learn-tag--course">{{ c }}</span>{% endfor %}
+  {% for t in it.topics %}<span class="learn-tag">{{ t }}</span>{% endfor %}
+</p>
+{% endif %}

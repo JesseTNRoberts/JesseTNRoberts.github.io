@@ -1,19 +1,22 @@
-# main links links
+# Top navigation links
 main:
+  - title: "Research"
+    url: /research/
+
   - title: "Publications"
     url: /publications/
 
-  # - title: "Talks"
-  #   url: /talks/    
-        
-  # - title: "Research Journal"
-  #  url: /year-archive/
-    
+  - title: "Teaching"
+    url: /teaching/
+
+  - title: "Learn"
+    url: /learn/
+
+  - title: "Torch Canvas"
+    url: /tools/torch-canvas/
+
   - title: "Meeting Request"
     url: /meeting/
-    
+
   - title: "CV"
     url: /cv/
-
-  # - title: "Teaching"
-  #   url: /teaching/    

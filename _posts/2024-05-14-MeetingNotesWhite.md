@@ -1,4 +1,5 @@
 ---
+published: false  # private journal entry; flip to true to publish
 title: 'Meeting Notes White Colab'
 date: 2024-05-14
 permalink: /posts/2024/05/14/MeetingNotes/

@@ -1,0 +1,144 @@
+# Research areas, funding and fellowships. One source for the Research page (/research/), the
+# homepage summary, and the CV's Grants section.
+#
+# Papers are attached to an area automatically: a Scholar paper whose title contains any of the
+# area's `keywords` (case-insensitive) counts toward it. The Research page showcases the area's
+# `selected` papers (title fragments), or its most-cited ones if none are listed. To fix one
+# paper's areas, set `areas:` for it in _data/publication_overrides.yml.
+
+group:
+  name: Language and Artificial Intelligence Research (LAIR) group
+  short: LAIR
+  institution: Tennessee Tech University
+
+# One line that frames all of the work (shown on the homepage and the Research page).
+tagline: >-
+  I work on understanding how neural networks, and language models in particular, learn and
+  reason, and on putting that understanding to work where it matters: keeping endangered
+  languages alive, and detecting tornadoes.
+
+areas:
+  - id: fundamentals
+    title: Deep learning fundamentals
+    icon: fas fa-project-diagram
+    summary: >-
+      What can neural networks compute, why do they train, and how can we tell what they've
+      actually learned? This work ranges from proofs about the computational power of decoder-only
+      transformers to tools like Torch Canvas that make architectures, initialization and signal
+      propagation visible.
+    keywords: [decoder-only transformer, turing complete, universal function approximator, "rl+ transformer"]
+    selected: ["How Powerful are Decoder-Only", "RL+ Transformer"]
+    links:
+      - { title: Torch Canvas, url: /tools/torch-canvas/ }
+      - { title: Interactive demos, url: /learn/ }
+      - { title: "Course: Deep Learning (AI 4200/5200)", url: /teaching/F2026-AI4200 }
+
+  - id: llms
+    title: Large language models
+    icon: fas fa-comments
+    summary: >-
+      How large language models represent uncertainty, reason, and learn, and how their behavior
+      compares with human cognition: calibration and human-aligned uncertainty, memory effects,
+      test-taking strategies, and alignment from feedback.
+    keywords: [language model, llm, llms, chain of thought, artificial populations, base-rate effect, reward model, bart, uncertainty]
+    # Papers to showcase (title fragments, in order). Leave empty to show the most cited.
+    selected:
+      - "base-rate effect on llm benchmark"
+      - "artificial populations to study psychological"
+      - "recall uncertainty is modulated by the fan effect"
+      - "Chain of thought still thinks fast"
+      - "Investigating Human-Aligned Large Language Model Uncertainty"
+    links:
+      - { title: "Seminar: Special Topics on LLMs (CSC 7970)", url: /teaching/S2026-CSC7970 }
+      - { title: LLM foundations reading list, url: "https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE" }
+
+  - id: cherokee
+    title: Cherokee language revitalization
+    icon: fas fa-language
+    summary: >-
+      Language technology in support of Cherokee (Tsalagi) revitalization, built with and for the
+      community. Drawing on what worked for Irish (Gaeilge), the goal is a living resource that
+      supports future generations of Cherokee speakers, along with the methods low-resource,
+      polysynthetic languages need, such as better tokenization.
+    highlight: fellowship-core          # id from `honors` below, shown as a callout
+    keywords: [cherokee, tsalagi, polysynthetic, indigenous, endangered language]
+    selected:
+      - "Tokenization Properties in Low-Resource Polysynthetic"
+    press:
+      - { title: "Tennessee Tech professor uses AI to help preserve Cherokee language", outlet: Tennessee Tech News, url: "https://www.tntech.edu/news/releases/24-25/tech-professor-uses-ai-to-help-preserve-cherokee-language.php" }
+      - { title: "This Tennessee Tech professor is working to help preserve the Cherokee language using AI", outlet: NewsChannel 5 Nashville, url: "https://www.newschannel5.com/news/this-tennessee-tech-professor-is-working-to-help-preserve-the-cherokee-language-using-ai" }
+      - { title: "Tennessee Tech uses AI to help preserve the Cherokee language", outlet: WBIR 10 Knoxville, url: "https://www.wbir.com/article/news/education/tennessee-tech-cookeville-ai-cherokee/51-ceb2f79f-1f99-4076-8f9a-cb1d1b2f827d" }
+      - { title: "Linguistic preservation", outlet: Herald-Citizen, url: "https://www.herald-citizen.com/news/education/linguistic-preservation/article_992ad803-2471-5401-b31e-3cf02fd2ccc1.html" }
+      - { title: "Cherokee preservation with AI", outlet: The Ledger (Knoxville), url: "https://www.tnledger.com/Knoxville/editorial/Article.aspx?id=195168" }
+
+  - id: snn
+    title: Spiking neural networks
+    icon: fas fa-bolt
+    emerging: true
+    # DRAFT: please review
+    summary: >-
+      Brain-inspired networks that compute with discrete spikes over time. This newer line of work
+      builds on earlier research into biologically extending artificial neural networks, and asks
+      how spiking models can be trained and analyzed with the same rigor as conventional deep networks.
+    keywords: [spiking, gen 2 ann]
+
+  - id: tornado
+    title: Tornado detection
+    icon: fas fa-wind
+    emerging: true
+    # DRAFT: please review
+    summary: >-
+      Applying deep learning to severe-weather data to detect tornadoes more reliably and earlier,
+      where better detection can directly save lives.
+    keywords: [tornado, severe weather, radar]
+
+# Grants: shown on the Research page (Funding) and generated into the CV's Grants section.
+funding:
+  - id: nsf-2347337
+    title: "ERI: Data-Driven Expansion of Electrified Transportation Network"
+    agency: National Science Foundation
+    award: "2347337"
+    amount: 195769
+    role: PI
+    people: "PI: Jesse Roberts"
+    year: 2025
+    url: "https://www.nsf.gov/awardsearch/showAward?AWD_ID=2347337"
+
+  - id: nsf-2526362
+    title: "Collaborative Research: Conference: NAIRR Pilot Expansion: FA1: Mid-South Conferences on CyberInfrastructure Advances to Enable Interdisciplinary AI Research in Health"
+    short: "TN-THRIVE: Tennessee Health Research and Innovation using Verified AI Ecosystems"
+    agency: National Science Foundation
+    award: "2526362"
+    amount: 125133
+    role: Co-PI
+    people: "PI: Anthony Skjellum · Co-PIs: Jesse Roberts, Amr Hilal"
+    year: 2025
+    url: "https://www.nsf.gov/awardsearch/showAward?AWD_ID=2526362"
+    website: "https://tnthrive.ai/"
+    note: "Collaborative award with the University of Tennessee, Knoxville, Meharry Medical College and Vanderbilt University."
+
+  - id: ieee-aess
+    title: IEEE AESS Grant for the DARPA Triage Challenge
+    agency: IEEE Aerospace and Electronic Systems Society
+    year: 2024
+    term: S2024          # date as shown on the CV
+    minor: true          # listed on the CV, not on the Research page
+
+  - id: tntech-oer
+    title: TnTech OER Development Grant
+    agency: Tennessee Tech University
+    year: 2023
+    term: F2023
+    minor: true
+
+# Fellowships and similar honors highlighted on the Research page and listed on the CV.
+honors:
+  - id: fellowship-core
+    title: "CORE Institute Fellow: Indigenous Language Revitalization"
+    org: "CORE Institute"
+    years: "2027"            # fellowship year (selected in 2026)
+    year: 2027
+    blurb: >-
+      Selected for a small cohort that will shape what responsible, community-centered AI looks
+      like in Indigenous language revitalization, collaborating on concrete projects over the
+      2027 fellowship year.

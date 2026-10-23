@@ -1,4 +1,5 @@
 ---
+published: false  # private journal entry; flip to true to publish
 title: 'Does Rhetoric Transcend Language?'
 date: 2024-05-11
 permalink: /posts/2024/05/11/ResearchJournal/

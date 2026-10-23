@@ -1,12 +1,112 @@
 ---
-layout: archive
+layout: single
 title: "Teaching"
 permalink: /teaching/
 author_profile: true
+excerpt: "Courses, lecture slides, and interactive demos by Jesse Roberts at Tennessee Tech."
 ---
+{% comment %}
+  Built entirely from the course files in _teaching/ (see _teaching/_TEMPLATE.md).
+{% endcomment %}
+{% assign courses = site.teaching | sort: "date" | reverse %}
+{% assign current = courses | where: "status", "current" %}
+{% assign past = courses | where_exp: "c", "c.status != 'current'" %}
+{% comment %} The library lists only published lectures (sessions with slides, a PDF or a video).
+   Planned sessions, readings-only days and exams stay on their course pages. {% endcomment %}
+{% assign lecture_total = 0 %}
+{% for c in courses %}{% for l in c.lectures %}{% if l.slides or l.pdf or l.video %}{% assign lecture_total = lecture_total | plus: 1 %}{% endif %}{% endfor %}{% endfor %}
+{% assign library_initial = 8 %}
+{% assign library_courses = 0 %}
+{% for c in courses %}{% assign has = false %}{% for l in c.lectures %}{% if l.slides or l.pdf or l.video %}{% assign has = true %}{% endif %}{% endfor %}{% if has %}{% assign library_courses = library_courses | plus: 1 %}{% endif %}{% endfor %}
 
-{% include base_path %}
+<p class="teaching-intro">
+  I teach machine learning and deep learning at Tennessee Tech. Slides open in the browser; interactive
+  demos and <a href="/torch-canvas/">Torch Canvas</a> models are on the <a href="{{ '/learn/' | relative_url }}">Learn</a> page.
+</p>
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+{% if current.size > 0 %}
+<h2>This semester</h2>
+<div class="course-grid">
+  {% for c in current %}{% include course-card.html course=c featured=true %}{% endfor %}
+</div>
+{% endif %}
+
+{% if lecture_total > 0 %}
+<h2 id="lectures">Lecture library <span class="count">{{ lecture_total }}</span></h2>
+{% if lecture_total > library_initial or library_courses > 1 %}
+<div class="library-tools">
+  <label class="sr-only" for="lecture-search">Search lectures</label>
+  <input id="lecture-search" class="library-search" type="search" placeholder="Search lectures by title or topic…" autocomplete="off">
+  <div class="library-filters" role="group" aria-label="Filter by course">
+    <button type="button" class="chip is-active" data-course="">All</button>
+    {% for c in courses %}{% assign has = false %}{% for l in c.lectures %}{% if l.slides or l.pdf or l.video %}{% assign has = true %}{% endif %}{% endfor %}{% if has %}
+    <button type="button" class="chip" data-course="{{ c.course_id }}">{{ c.code }}</button>
+    {% endif %}{% endfor %}
+  </div>
+</div>
+{% endif %}
+<div class="library" id="library">
+  {% assign shown = 0 %}
+  {% for c in courses %}
+    {% assign ordered = c.lectures | reverse %}
+    {% for l in ordered %}{% if l.slides or l.pdf or l.video %}
+      {% assign shown = shown | plus: 1 %}
+      {% if shown > library_initial %}<div class="library-extra" hidden>{% endif %}
+      {% include lecture-card.html lecture=l course=c show_course=true %}
+      {% if shown > library_initial %}</div>{% endif %}
+    {% endif %}{% endfor %}
+  {% endfor %}
+  <p class="library-empty" hidden>No lectures match that search.</p>
+  {% if lecture_total > library_initial %}
+  <button type="button" class="library-more" id="library-more">Show all {{ lecture_total }} lectures</button>
+  {% endif %}
+</div>
+{% endif %}
+
+{% if past.size > 0 %}
+<h2>Past courses</h2>
+<div class="course-grid">
+  {% for c in past %}{% include course-card.html course=c %}{% endfor %}
+</div>
+{% endif %}
+
+<script>
+  (function () {
+    var lib = document.getElementById('library');
+    if (!lib || !document.getElementById('lecture-search')) return;
+    var search = document.getElementById('lecture-search');
+    var chips = document.querySelectorAll('.library-filters .chip');
+    var items = lib.querySelectorAll('.lecture');
+    var extras = lib.querySelectorAll('.library-extra');
+    var more = document.getElementById('library-more');
+    var empty = lib.querySelector('.library-empty');
+    var course = '';
+    var expanded = false;
+    function apply() {
+      var words = search.value.toLowerCase().split(/\s+/).filter(Boolean);
+      var filtering = words.length > 0 || course !== '';
+      /* Searching or filtering looks at everything; otherwise show the most recent few. */
+      extras.forEach(function (el) { el.hidden = !(filtering || expanded); });
+      if (more) more.hidden = filtering || expanded;
+      var shown = 0;
+      items.forEach(function (el) {
+        var text = el.dataset.search.toLowerCase();
+        var ok = (!course || el.dataset.course === course) &&
+                 words.every(function (w) { return text.indexOf(w) !== -1; });
+        el.hidden = !ok;
+        if (ok) shown++;
+      });
+      empty.hidden = shown !== 0;
+    }
+    search.addEventListener('input', apply);
+    if (more) more.addEventListener('click', function () { expanded = true; apply(); });
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        chips.forEach(function (c) { c.classList.remove('is-active'); });
+        chip.classList.add('is-active');
+        course = chip.dataset.course;
+        apply();
+      });
+    });
+  })();
+</script>

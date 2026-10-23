@@ -1,0 +1,402 @@
+/* ==========================================================================
+   Teaching: /teaching/ index, course pages (_layouts/course.html), lecture rows
+   ========================================================================== */
+
+$teach-accent: $link-color;
+$teach-line: #e3e7eb;
+$teach-soft: #f6f8fa;
+
+// Scoped under .page__content so the theme's generic `a` / `p` rules don't override these.
+.page__content {
+  .course-card,
+  .course-card:hover,
+  .lecture a,
+  .chip {
+    text-decoration: none;
+  }
+
+  .count {
+    display: inline-block;
+    margin-left: 0.35em;
+    padding: 0 0.5em;
+    font-size: 0.6em;
+    font-weight: normal;
+    vertical-align: middle;
+    color: $gray;
+    background: #eef1f4;
+    border-radius: 999px;
+  }
+
+  .teaching-intro {
+    font-size: 1.05em;
+  }
+
+  /* ---- Course cards (index) ---- */
+
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1em;
+    margin: 1em 0 2.5em;
+  }
+
+  .course-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+    padding: 1.1em 1.2em;
+    color: inherit;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid $teach-line;
+    border-radius: 12px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      color: inherit;
+      border-color: #c9d1d9;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+      transform: translateY(-1px);
+    }
+
+    &--featured {
+      background: $teach-soft;
+      border-left: 4px solid $teach-accent;
+    }
+
+    &__code {
+      font-size: $type-size-7;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $gray;
+    }
+
+    &__title {
+      font-size: 1.15em;
+      font-weight: bold;
+      line-height: 1.3;
+      color: $text-color;
+    }
+
+    &__summary {
+      font-size: $type-size-6;
+      line-height: 1.5;
+    }
+
+    &__foot {
+      margin-top: auto;
+      padding-top: 0.4em;
+      font-size: $type-size-7;
+      color: $gray;
+    }
+  }
+
+  /* ---- Lecture library tools ---- */
+
+  .library-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75em;
+    align-items: center;
+    margin: 1em 0;
+  }
+
+  .library-search {
+    flex: 1 1 260px;
+    margin: 0;
+    padding: 0.55em 0.8em;
+    font-size: $type-size-6;
+    border: 1px solid $teach-line;
+    border-radius: 8px;
+
+    &:focus {
+      border-color: $teach-accent;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(82, 173, 200, 0.2);
+    }
+  }
+
+  .library-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+  }
+
+  .chip {
+    margin: 0;
+    padding: 0.3em 0.8em;
+    font-family: inherit;
+    font-size: $type-size-7;
+    color: $gray;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid $teach-line;
+    border-radius: 999px;
+
+    &:hover {
+      border-color: #c9d1d9;
+    }
+
+    &.is-active {
+      color: #fff;
+      background: mix(#000, $primary-color, 35%);
+      border-color: transparent;
+    }
+  }
+
+  .library {
+    margin-bottom: 2.5em;
+  }
+
+  .library-more {
+    display: block;
+    width: 100%;
+    margin: 0.5em 0 0;
+    padding: 0.6em;
+    font-family: inherit;
+    font-size: $type-size-6;
+    font-weight: bold;
+    color: $gray;
+    cursor: pointer;
+    background: $teach-soft;
+    border: 1px dashed #c9d1d9;
+    border-radius: 10px;
+
+    &:hover {
+      color: $teach-accent;
+      border-color: $teach-accent;
+    }
+
+    &[hidden] { display: none; }
+  }
+
+  .library-empty {
+    color: $gray;
+    font-style: italic;
+  }
+
+  /* ---- Course page header ---- */
+
+  .course-head {
+    margin-bottom: 1.5em;
+
+    &__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4em 0.9em;
+      align-items: center;
+      margin: 0 0 0.6em;
+      font-size: $type-size-6;
+      color: $gray;
+    }
+
+    &__summary {
+      font-size: 1.05em;
+      line-height: 1.6;
+    }
+
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+  }
+
+  .course-code {
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    color: $text-color;
+  }
+
+  .course-status {
+    padding: 0.05em 0.6em;
+    font-size: $type-size-7;
+    font-weight: bold;
+    border-radius: 999px;
+
+    &--current {
+      color: #1b6e3a;
+      background: #e3f4e8;
+    }
+  }
+
+  .course-empty,
+  .course-back {
+    color: $gray;
+  }
+
+  .course-back {
+    margin-top: 2.5em;
+    font-size: $type-size-6;
+  }
+
+  /* ---- Week groups and lecture rows ---- */
+
+  .week {
+    margin-bottom: 1.5em;
+
+    &__title {
+      margin: 1.2em 0 0.5em;
+      font-size: $type-size-6;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: $gray;
+    }
+  }
+
+  .lecture {
+    display: grid;
+    grid-template-columns: 3.2em 1fr auto;
+    gap: 0.25em 1em;
+    align-items: start;
+    padding: 0.95em 1.1em;
+    margin-bottom: 0.6em;
+    background: #fff;
+    border: 1px solid $teach-line;
+    border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      border-color: #c9d1d9;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    }
+
+    &:target {
+      border-color: $teach-accent;
+      box-shadow: 0 0 0 3px rgba(82, 173, 200, 0.2);
+    }
+
+    &[hidden] {
+      display: none;
+    }
+
+    &__num {
+      padding-top: 0.1em;
+      font-size: 1.15em;
+      font-weight: bold;
+      font-variant-numeric: tabular-nums;
+      color: $teach-accent;
+    }
+
+    &__course {
+      margin: 0 0 0.15em;
+      font-size: $type-size-7;
+      color: $gray;
+
+      a {
+        font-weight: bold;
+        color: $gray;
+        text-decoration: none;
+
+        &:hover { color: $teach-accent; }
+      }
+    }
+
+    &__title {
+      margin: 0;
+      font-size: 1em;
+      line-height: 1.35;
+
+      a {
+        color: $text-color;
+        text-decoration: none;
+
+        &:hover { color: $teach-accent; }
+      }
+    }
+
+    &__date,
+    &__note {
+      margin: 0.25em 0 0;
+      font-size: $type-size-6;
+      color: $gray;
+    }
+
+    &__readings {
+      margin: 0.5em 0 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin: 0 0 0.35em;
+        padding-left: 1.3em;
+        font-size: $type-size-6;
+        line-height: 1.45;
+        text-indent: -1.3em;
+      }
+
+      i {
+        width: 1.3em;
+        text-indent: 0;
+        color: $gray;
+      }
+
+      a {
+        font-weight: bold;
+        color: $text-color;
+
+        &:hover { color: $teach-accent; }
+      }
+    }
+
+    &__cite {
+      display: block;
+      font-size: $type-size-7;
+      color: $gray;
+    }
+
+    &__topics {
+      margin: 0.45em 0 0;
+      line-height: 1.2;
+    }
+
+    &__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4em;
+      justify-content: flex-end;
+    }
+
+    &__link {
+      display: inline-flex;
+      gap: 0.35em;
+      align-items: center;
+      padding: 0.3em 0.75em;
+      font-size: $type-size-7;
+      font-weight: bold;
+      color: $text-color;
+      text-decoration: none;
+      white-space: nowrap;
+      background: #fff;
+      border: 1px solid $teach-line;
+      border-radius: 6px;
+
+      &:hover {
+        color: $teach-accent;
+        border-color: $teach-accent;
+      }
+
+      &--primary {
+        color: #fff;
+        background: mix(#000, $teach-accent, 20%);
+        border-color: transparent;
+
+        &:hover {
+          color: #fff;
+          background: mix(#000, $teach-accent, 35%);
+        }
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      grid-template-columns: 2.6em 1fr;
+
+      &__links {
+        grid-column: 2;
+        justify-content: flex-start;
+        margin-top: 0.4em;
+      }
+    }
+  }
+}

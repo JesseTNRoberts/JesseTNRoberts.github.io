@@ -1,4 +1,5 @@
 ---
+published: false  # private journal entry; flip to true to publish
 title: 'Fulbight Application'
 date: 2023-05-09
 permalink: /posts/2023/05/09/FulbrightApplication

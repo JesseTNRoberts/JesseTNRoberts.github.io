@@ -1,0 +1,524 @@
+{
+  "source": "https://github.com/JesseTNRoberts/torch-canvas",
+  "commit": "b95b1489e743ae7d4e436ba256cc9079eca5b889",
+  "updated": "2026-10-23T03:45:35.422Z",
+  "networks": [
+    {
+      "kind": "network",
+      "file": "networks/01_residual_mlp.json",
+      "id": "residual_mlp",
+      "title": "Residual MLP",
+      "description": "The reference diagram: a down projection, three gated residual branches and a gated head, every layer drawn out.",
+      "blocks": [],
+      "params": "1.52M",
+      "thumb": "/assets/torch-canvas/thumbs/residual_mlp.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/02_residual_mlp_block.json",
+      "id": "residual_mlp_block",
+      "title": "Residual MLP with a block",
+      "description": "The same network with the gated branch defined once as GatedBlock and repeated 3 times.",
+      "blocks": [
+        "GatedBlock"
+      ],
+      "params": "1.52M",
+      "thumb": "/assets/torch-canvas/thumbs/residual_mlp_block.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/03_mlp_10_relu.py",
+      "id": "mlp_10_relu",
+      "title": "MLP, 10 layers, ReLU",
+      "description": "A plain deep MLP: 10 Linear layers with ReLU between them. Good for seeing how depth and init affect the signal.",
+      "blocks": [],
+      "params": "729.9K",
+      "thumb": "/assets/torch-canvas/thumbs/mlp_10_relu.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/04_mlp_10_tanh.py",
+      "id": "mlp_10_tanh",
+      "title": "MLP, 10 layers, Tanh",
+      "description": "The same 10-layer MLP with Tanh between the layers.",
+      "blocks": [],
+      "params": "729.9K",
+      "thumb": "/assets/torch-canvas/thumbs/mlp_10_tanh.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/05_prenorm_residual_mlp.py",
+      "id": "prenorm_residual_mlp",
+      "title": "Pre-norm residual MLP",
+      "description": "A transformer-style stack: four pre-LayerNorm GELU MLP blocks with residual connections, then a classifier.",
+      "blocks": [],
+      "params": "2.31M",
+      "thumb": "/assets/torch-canvas/thumbs/prenorm_residual_mlp.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/06_decoder_transformer.json",
+      "id": "decoder_transformer",
+      "title": "Decoder-only transformer, fully expanded",
+      "description": "A 2-layer GPT-style decoder with every layer drawn out: token and position embeddings, causal multi-head self-attention, a GELU MLP, residuals, LayerNorms and the LM head.",
+      "blocks": [],
+      "params": "92.16M",
+      "thumb": "/assets/torch-canvas/thumbs/decoder_transformer.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/07_gpt2.json",
+      "id": "gpt2",
+      "title": "GPT-2 (124M architecture)",
+      "description": "GPT-2 small: token and position embeddings, 12 × GPT2Block (pre-norm causal self-attention and a tanh-GELU MLP, with dropout), a final LayerNorm and the LM head. GPT-2 initialization: N(0, 0.02), residual projections scaled by 1/√24. The LM head shares its weights with the token embedding (weight tying), as in GPT-2: 124,439,808 parameters.",
+      "blocks": [
+        "GPT2Block"
+      ],
+      "params": "124.44M",
+      "thumb": "/assets/torch-canvas/thumbs/gpt2.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/08_bert_base.json",
+      "id": "bert_base",
+      "title": "BERT-base (masked LM)",
+      "description": "BERT-base as BertForMaskedLM: word, position and token-type embeddings with a LayerNorm, 12 × BertLayer (post-norm: bidirectional self-attention, then a GELU feed-forward, each followed by add & LayerNorm), and the masked-LM head whose decoder shares its weights with the word embedding. 109,514,298 parameters, BERT initialization N(0, 0.02).",
+      "blocks": [
+        "BertLayer"
+      ],
+      "params": "109.51M",
+      "thumb": "/assets/torch-canvas/thumbs/bert_base.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/09_llama2_7b.json",
+      "id": "llama2_7b",
+      "title": "Llama 2 7B",
+      "description": "Llama 2 7B as LlamaForCausalLM: token embedding, 32 × LlamaDecoderLayer (pre-norm with RMSNorm; causal self-attention with rotary position embeddings on q and k; a SwiGLU MLP, down(silu(gate(x)) · up(x))), a final RMSNorm and an untied LM head. No biases. 6,738,415,616 parameters, initialization N(0, 0.02). The code builds the full model, about 27 GB in float32.",
+      "blocks": [
+        "LlamaDecoderLayer"
+      ],
+      "params": "6.74B",
+      "thumb": "/assets/torch-canvas/thumbs/llama2_7b.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/10_qwen2_5_vl_3b.json",
+      "id": "qwen2_5_vl_3b",
+      "title": "Qwen2.5-VL 3B",
+      "description": "Qwen2.5-VL-3B-Instruct as Qwen2_5_VLForConditionalGeneration, giving the same output as the reference implementation in Hugging Face transformers. Inputs as Qwen's processor gives them: pixel_values (every image's 14 × 14 × 2-frame patches, 1176 values each, one list for all images), image_grid_thw (frames, rows, columns of patches per image) and input_ids (with image placeholder tokens). Vision: patch embedding, patches put in window order, 4 × Qwen2_5_VLVisionStage (32 blocks: 2D rotary positions, attention within 112-pixel windows except every eighth block, which attends over the whole frame), patch merger, original order restored. The image features replace the placeholder tokens; 36 × Qwen2_5_VLDecoderLayer with M-RoPE 3-D positions; final RMSNorm and an LM head tied to the embedding. 3,754,622,976 parameters.",
+      "blocks": [
+        "Qwen2_5_VLVisionBlock",
+        "Qwen2_5_VLVisionStage",
+        "Qwen2_5_VLPatchMerger",
+        "Qwen2_5_VLDecoderLayer"
+      ],
+      "params": "3.75B",
+      "thumb": "/assets/torch-canvas/thumbs/qwen2_5_vl_3b.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/11_basic_cnn.json",
+      "id": "basic_cnn",
+      "title": "Basic CNN (MNIST)",
+      "description": "A plain convolutional classifier for 28 × 28 digits, no blocks: two Conv 3×3 → ReLU → max pool stages (32 and 64 channels), then flatten, Linear 3136 → 128 → ReLU → dropout → Linear 128 → 10, trained with cross-entropy.",
+      "blocks": [],
+      "params": "421.6K",
+      "thumb": "/assets/torch-canvas/thumbs/basic_cnn.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/12_resnet50.json",
+      "id": "resnet50",
+      "title": "ResNet-50 (ImageNet)",
+      "description": "ResNet-50 as in torchvision (v1.5, stride on the 3×3): a 7×7 stem and max pool, then four stages of bottleneck blocks (3, 4, 6, 3) at 256 / 512 / 1024 / 2048 channels, global average pooling and a 1000-way Linear. 25.6M parameters; the same layers, in the same order, as torchvision.models.resnet50.",
+      "blocks": [
+        "Bottleneck",
+        "BottleneckDown"
+      ],
+      "params": "25.56M",
+      "thumb": "/assets/torch-canvas/thumbs/resnet50.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/13_yolov3.json",
+      "id": "yolov3",
+      "title": "YOLOv3 (416, COCO)",
+      "description": "YOLOv3 as in Darknet's yolov3.cfg: the Darknet-53 backbone (Conv-BN-LeakyReLU layers and 1 + 2 + 8 + 8 + 4 residual blocks), then detection at three scales: 13 × 13 for large objects, and 26 × 26 and 52 × 52 after upsampling and joining the backbone's features. Each output has 255 = 3 boxes × (4 coordinates + objectness + 80 classes) channels per cell. 61.9M parameters.",
+      "blocks": [
+        "DarknetConv",
+        "DarknetResidual",
+        "YoloConvSet",
+        "YoloDetect"
+      ],
+      "params": "61.95M",
+      "thumb": "/assets/torch-canvas/thumbs/yolov3.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/14_rnn.json",
+      "id": "rnn",
+      "title": "RNN (Elman)",
+      "description": "A basic recurrent network drawn flat: h = tanh(W_ih·x + W_hh·h_prev), where h_prev comes from a Delay (the previous time step, zeros at the start). The code runs it as a loop over time. Same parameters and outputs as nn.RNN(16, 64) with tanh; a Linear reads 8 values out of every step, trained by mean squared error against a target sequence.",
+      "blocks": [],
+      "params": "5.8K",
+      "thumb": "/assets/torch-canvas/thumbs/rnn.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/15_lstm.json",
+      "id": "lstm",
+      "title": "LSTM",
+      "description": "A long short-term memory network drawn flat: four gates (input i, forget f, cell g, output o), each from x and from h_prev; then c = f ⊙ c_prev + i ⊙ g and h = o ⊙ tanh(c). Delays carry h and c to the next step. Same parameters and outputs as nn.LSTM(16, 64) (its weight_ih is the four gates' ih weights stacked); a Linear reads 8 values out of every step, trained by mean squared error against a target sequence.",
+      "blocks": [],
+      "params": "21.5K",
+      "thumb": "/assets/torch-canvas/thumbs/lstm.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/16_gru.json",
+      "id": "gru",
+      "title": "GRU",
+      "description": "A gated recurrent unit drawn flat: reset r and update z gates from x and h_prev, the candidate n = tanh(W_in·x + r ⊙ (W_hn·h_prev)), then h = (1 − z) ⊙ n + z ⊙ h_prev, with a Delay carrying h to the next step. Same parameters and outputs as nn.GRU(16, 64); a Linear reads 8 values out of every step, trained by mean squared error against a target sequence.",
+      "blocks": [],
+      "params": "16.3K",
+      "thumb": "/assets/torch-canvas/thumbs/gru.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/17_vit_b_16.json",
+      "id": "vit_b_16",
+      "title": "ViT-B/16 (ImageNet)",
+      "description": "The Vision Transformer, as torchvision's vit_b_16: the 224 × 224 image is cut into 16 × 16 patches by a strided convolution (196 patches of 768 features), a learned class token goes in front, learned position embeddings are added, then 12 pre-norm encoder blocks (12-head self-attention and a GELU MLP of width 3072), a final LayerNorm, and a 1000-way Linear on the class token. 86.6M parameters, the same as torchvision.",
+      "blocks": [
+        "ViTEncoderBlock"
+      ],
+      "params": "86.57M",
+      "thumb": "/assets/torch-canvas/thumbs/vit_b_16.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/18_mamba_130m.json",
+      "id": "mamba_130m",
+      "title": "Mamba-130M",
+      "description": "Mamba (state-spaces/mamba-130m, as transformers' MambaForCausalLM): token embeddings, 24 MambaBlocks (RMSNorm, then the selective state space mixer: input projections, a causal depthwise convolution, input-dependent Δ, B and C, and the scan h = exp(Δ·A) ⊙ h_prev + Δ·B·u drawn flat with a Delay, read out by C, plus D·u, gated by SiLU(z)), a final RMSNorm and an LM head tied to the embeddings, trained on the next token. 129M parameters, the same as the reference.",
+      "blocks": [
+        "MambaBlock"
+      ],
+      "params": "129.14M",
+      "thumb": "/assets/torch-canvas/thumbs/mamba_130m.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/19_vae_mnist.json",
+      "id": "vae_mnist",
+      "title": "VAE (MNIST)",
+      "description": "A variational autoencoder, as in PyTorch's examples/vae: the encoder (784 → 400, ReLU) gives the mean μ and log-variance of a 20-dimensional Gaussian; z = μ + ε·exp(½·logvar) with ε from a Noise node (the reparameterization trick, so gradients reach μ and σ); the decoder (20 → 400 → 784) gives pixel logits. The loss is the negative evidence lower bound: binary cross-entropy summed over the pixels (784 × the mean) plus the KL divergence of the latent Gaussian from N(0, 1). predict() applies the sigmoid. 652,824 parameters.",
+      "blocks": [],
+      "params": "652.8K",
+      "thumb": "/assets/torch-canvas/thumbs/vae_mnist.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/20_unet.json",
+      "id": "unet",
+      "title": "U-Net (segmentation)",
+      "description": "U-Net as in milesial/Pytorch-UNet (bilinear=False): an encoder of DoubleConv and four Down steps (64 → 1024 channels, 256 → 16 pixels), a decoder of four Up steps that double the size with a transposed convolution and join the encoder's map at the same size (the skip connections), and a 1×1 convolution to a score per class per pixel. Trained with per-pixel cross-entropy against a mask of class indices. 31,037,698 parameters, the same as the reference.",
+      "blocks": [
+        "DoubleConv",
+        "Down",
+        "Up"
+      ],
+      "params": "31.04M",
+      "thumb": "/assets/torch-canvas/thumbs/unet.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/21_transformer_base.json",
+      "id": "transformer_base",
+      "title": "Transformer (encoder-decoder)",
+      "description": "The original Transformer, \"Attention Is All You Need\" (base: d = 512, 8 heads, feed-forward 2048, 6 + 6 layers, dropout 0.1), computed as nn.Transformer does (post-norm, with a final LayerNorm on the encoder and the decoder). Source and target tokens share one embedding (37,000 BPE tokens), scaled by √d, plus fixed sinusoidal positions; the encoder's output (memory) goes to the cross-attention of every decoder layer; the output projection shares the embedding's weights. Trained on the next target token with label smoothing 0.1. 63,084,544 parameters.",
+      "blocks": [
+        "EncoderLayer",
+        "DecoderLayer"
+      ],
+      "params": "63.08M",
+      "thumb": "/assets/torch-canvas/thumbs/transformer_base.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/22_ijepa_small.json",
+      "id": "ijepa_small",
+      "title": "I-JEPA (small)",
+      "description": "A small I-JEPA (facebookresearch/ijepa: ViT encoder and predictor; 32 × 32 images, 4 × 4 patches, width 192, 6 + 3 layers). The context encoder sees only the context patches (ctx_idx); the predictor, given their embeddings plus a mask token at each target position (tgt_idx), predicts the target patches' embeddings; the target encoder sees the whole image and gives the embeddings to predict. It follows the context encoder (an EMA tie: a copy that gets no gradients, moved toward it after each step, momentum 0.996 → 1.0), as does its patch embedding. Fixed 2-D sine/cosine positions (frozen); smooth L1 loss. train.py draws I-JEPA's block masks for every batch.",
+      "blocks": [
+        "JEPABlock",
+        "Encoder"
+      ],
+      "params": "5.75M params · ❄ 2.70M",
+      "thumb": "/assets/torch-canvas/thumbs/ijepa_small.png"
+    }
+  ],
+  "blocks": [
+    {
+      "kind": "block",
+      "file": "blocks/bert_layer.json",
+      "id": "bert_layer",
+      "title": "BertLayer",
+      "description": "BERT encoder layer (post-norm): bidirectional multi-head self-attention, then a GELU feed-forward, each followed by add & LayerNorm.",
+      "blocks": [],
+      "params": "7.09M",
+      "thumb": "/assets/torch-canvas/thumbs/bert_layer.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/darknet_conv.json",
+      "id": "darknet_conv",
+      "title": "DarknetConv",
+      "description": "Darknet's convolutional layer: Conv k×k with padding k // 2 and no bias, BatchNorm, LeakyReLU(0.1).",
+      "blocks": [],
+      "params": "18.6K",
+      "thumb": "/assets/torch-canvas/thumbs/darknet_conv.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/darknet_residual.json",
+      "id": "darknet_residual",
+      "title": "DarknetResidual",
+      "description": "Darknet-53 residual block: a 1×1 DarknetConv to half the channels, a 3×3 back to the channels, plus the input.",
+      "blocks": [],
+      "params": "20.7K",
+      "thumb": "/assets/torch-canvas/thumbs/darknet_residual.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/gated_block.json",
+      "id": "gated_block",
+      "title": "GatedBlock",
+      "description": "Pre-norm gated residual branch: x + (σ(N W) ⊙ N W ⊙ N V) W_out, with N = RMSNorm(x).",
+      "blocks": [],
+      "params": "393.5K",
+      "thumb": "/assets/torch-canvas/thumbs/gated_block.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/gpt2_block.json",
+      "id": "gpt2_block",
+      "title": "GPT2Block",
+      "description": "GPT-2 transformer block: pre-LayerNorm causal multi-head self-attention and a tanh-GELU MLP, each with dropout and a residual.",
+      "blocks": [],
+      "params": "7.09M",
+      "thumb": "/assets/torch-canvas/thumbs/gpt2_block.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/jepa_block.json",
+      "id": "jepa_block",
+      "title": "JEPABlock",
+      "description": "I-JEPA's Vision Transformer block (as timm's): pre-norm multi-head self-attention and a GELU MLP (4× width), each with a residual add; LayerNorm eps 1e-6; weights N(0, 0.02), zero biases.",
+      "blocks": [],
+      "params": "444.9K",
+      "thumb": "/assets/torch-canvas/thumbs/jepa_block.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/jepa_encoder.json",
+      "id": "jepa_encoder",
+      "title": "Encoder",
+      "description": "An I-JEPA encoder's transformer: JEPABlock × 6 and a final LayerNorm (eps 1e-6), on a sequence of patch embeddings.",
+      "blocks": [],
+      "params": "2.67M",
+      "thumb": "/assets/torch-canvas/thumbs/jepa_encoder.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/linear_relu.py",
+      "id": "linear_relu",
+      "title": "LinearReLU",
+      "description": "A Linear layer followed by ReLU; repeat it to make a deep MLP.",
+      "blocks": [],
+      "params": "65.8K",
+      "thumb": "/assets/torch-canvas/thumbs/linear_relu.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/llama_decoder_layer.json",
+      "id": "llama_decoder_layer",
+      "title": "LlamaDecoderLayer",
+      "description": "Llama decoder layer: pre-RMSNorm causal self-attention with rotary position embeddings on q and k, then a SwiGLU MLP, each with a residual. No biases.",
+      "blocks": [],
+      "params": "202.38M",
+      "thumb": "/assets/torch-canvas/thumbs/llama_decoder_layer.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/mamba_block.json",
+      "id": "mamba_block",
+      "title": "MambaBlock",
+      "description": "Mamba residual block (transformers' MambaBlock with MambaMixer): RMSNorm; in_proj split into in_x and in_z; causal depthwise Conv1d and SiLU on x (u); x_proj split into Δ (low rank, then dt_proj and softplus), B and C; the selective scan h_t = exp(Δ_t·A) ⊙ h_{t−1} + Δ_t·B_t·u_t with A = −exp(A_log), drawn flat with a Delay; y = Σ_n h·C + D·u; gated by SiLU(z); out_proj; residual.",
+      "blocks": [],
+      "params": "3.77M",
+      "thumb": "/assets/torch-canvas/thumbs/mamba_block.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/prenorm_mlp.py",
+      "id": "prenorm_mlp",
+      "title": "PreNormMLP",
+      "description": "Transformer-style MLP with a residual: x + W2 GELU(W1 LayerNorm(x)).",
+      "blocks": [],
+      "params": "526.1K",
+      "thumb": "/assets/torch-canvas/thumbs/prenorm_mlp.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/qwen2_5_vl_decoder_layer.json",
+      "id": "qwen2_5_vl_decoder_layer",
+      "title": "Qwen2_5_VLDecoderLayer",
+      "description": "Qwen2.5 decoder layer: pre-RMSNorm causal self-attention with M-RoPE positions (time, row, column; sections 16/24/24, base 1e6) where 16 query heads share 2 key/value heads (bias on q, k, v), then a SwiGLU MLP, each with a residual. Inputs: hidden states and the 3-D positions.",
+      "blocks": [],
+      "params": "77.08M",
+      "thumb": "/assets/torch-canvas/thumbs/qwen2_5_vl_decoder_layer.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/qwen2_5_vl_patch_merger.json",
+      "id": "qwen2_5_vl_patch_merger",
+      "title": "Qwen2_5_VLPatchMerger",
+      "description": "Qwen2.5-VL patch merger: RMSNorm, then each 2 × 2 group of patches side by side, Linear → GELU → Linear to the language model width.",
+      "blocks": [],
+      "params": "36.71M",
+      "thumb": "/assets/torch-canvas/thumbs/qwen2_5_vl_patch_merger.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/qwen2_5_vl_vision_block.json",
+      "id": "qwen2_5_vl_vision_block",
+      "title": "Qwen2_5_VLVisionBlock",
+      "description": "Qwen2.5-VL vision encoder block: pre-RMSNorm multi-head self-attention (bias on the projections; 2D rotary positions from each patch's row and column; attention limited by the mask input) and a SwiGLU MLP with bias, each with a residual. Inputs: patches, the allowed-attention mask, patch positions.",
+      "blocks": [],
+      "params": "19.70M",
+      "thumb": "/assets/torch-canvas/thumbs/qwen2_5_vl_vision_block.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/qwen2_5_vl_vision_stage.json",
+      "id": "qwen2_5_vl_vision_stage",
+      "title": "Qwen2_5_VLVisionStage",
+      "description": "Eight Qwen2.5-VL vision blocks: seven attending within 112-pixel windows (window_mask), then one attending over each whole frame (frame_mask). Four of these make the 32-block vision encoder.",
+      "blocks": [],
+      "params": "157.62M",
+      "thumb": "/assets/torch-canvas/thumbs/qwen2_5_vl_vision_stage.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/resnet_bottleneck.json",
+      "id": "resnet_bottleneck",
+      "title": "Bottleneck",
+      "description": "ResNet bottleneck block: 1×1 convolution down to the width, 3×3, 1×1 back up to the channels, each followed by BatchNorm (ReLU between), plus the identity shortcut and a final ReLU.",
+      "blocks": [],
+      "params": "70.4K",
+      "thumb": "/assets/torch-canvas/thumbs/resnet_bottleneck.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/resnet_bottleneck_down.json",
+      "id": "resnet_bottleneck_down",
+      "title": "BottleneckDown",
+      "description": "The first ResNet bottleneck block of a stage: like Bottleneck, but it changes the channels (and halves the size with stride 2, on the 3×3), so its shortcut is a 1×1 convolution with the same stride and a BatchNorm.",
+      "blocks": [],
+      "params": "379.4K",
+      "thumb": "/assets/torch-canvas/thumbs/resnet_bottleneck_down.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/swiglu.py",
+      "id": "swiglu",
+      "title": "SwiGLU",
+      "description": "Gated MLP without a residual: W_out (SiLU(x W) ⊙ x V). Output size can differ from input size.",
+      "blocks": [],
+      "params": "393.2K",
+      "thumb": "/assets/torch-canvas/thumbs/swiglu.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/transformer_decoder_layer.json",
+      "id": "transformer_decoder_layer",
+      "title": "DecoderLayer",
+      "description": "A Transformer decoder layer (post-norm, as nn.TransformerDecoderLayer): causal self-attention; cross-attention, with queries from the decoder and keys and values from the encoder's output (memory, the second input); the feed-forward network. Each followed by dropout, a residual add and a LayerNorm.",
+      "blocks": [],
+      "params": "4.20M",
+      "thumb": "/assets/torch-canvas/thumbs/transformer_decoder_layer.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/transformer_encoder_layer.json",
+      "id": "transformer_encoder_layer",
+      "title": "EncoderLayer",
+      "description": "A Transformer encoder layer (post-norm, as nn.TransformerEncoderLayer): multi-head self-attention, dropout, residual add, LayerNorm; then Linear → ReLU → dropout → Linear, dropout, residual add, LayerNorm.",
+      "blocks": [],
+      "params": "3.15M",
+      "thumb": "/assets/torch-canvas/thumbs/transformer_encoder_layer.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/unet_double_conv.json",
+      "id": "unet_double_conv",
+      "title": "DoubleConv",
+      "description": "U-Net's double convolution: (Conv 3×3 with padding 1, no bias → BatchNorm → ReLU) twice.",
+      "blocks": [],
+      "params": "221.7K",
+      "thumb": "/assets/torch-canvas/thumbs/unet_double_conv.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/unet_down.json",
+      "id": "unet_down",
+      "title": "Down",
+      "description": "A U-Net step down: max pool 2 (half the size), then DoubleConv.",
+      "blocks": [],
+      "params": "221.7K",
+      "thumb": "/assets/torch-canvas/thumbs/unet_down.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/unet_up.json",
+      "id": "unet_up",
+      "title": "Up",
+      "description": "A U-Net step up: ConvTranspose 2×2 with stride 2 on the deeper map (twice the size, c_out channels), joined along the channels with the skip connection from the way down (x2 first), then DoubleConv.",
+      "blocks": [],
+      "params": "143.7K",
+      "thumb": "/assets/torch-canvas/thumbs/unet_up.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/vit_encoder_block.json",
+      "id": "vit_encoder_block",
+      "title": "ViTEncoderBlock",
+      "description": "Vision Transformer encoder block (torchvision's EncoderBlock): LayerNorm, multi-head self-attention without a mask, residual; LayerNorm, Linear → GELU → Linear, residual. LayerNorm eps 1e-6.",
+      "blocks": [],
+      "params": "7.09M",
+      "thumb": "/assets/torch-canvas/thumbs/vit_encoder_block.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/yolo_conv_set.json",
+      "id": "yolo_conv_set",
+      "title": "YoloConvSet",
+      "description": "The five convolutions before each YOLOv3 detection: 1×1 to c, 3×3 to 2c, 1×1, 3×3, 1×1.",
+      "blocks": [],
+      "params": "11.02M",
+      "thumb": "/assets/torch-canvas/thumbs/yolo_conv_set.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/yolo_detect.json",
+      "id": "yolo_detect",
+      "title": "YoloDetect",
+      "description": "A YOLOv3 detection head: a 3×3 DarknetConv to twice the channels, then a 1×1 convolution with bias to n_out = 3 × (5 + classes) values per cell.",
+      "blocks": [],
+      "params": "4.98M",
+      "thumb": "/assets/torch-canvas/thumbs/yolo_detect.png"
+    }
+  ]
+}
