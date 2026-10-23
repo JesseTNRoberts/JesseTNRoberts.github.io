@@ -1,7 +1,7 @@
 # Generated from Google Scholar by scripts/update_stats.rb (daily via GitHub Actions).
 # Don't edit by hand. To fix a paper, edit it on your Scholar profile.
 profile: https://scholar.google.com/citations?user=Bj9GEfkAAAAJ
-updated: '2026-10-22T23:42:04Z'
+updated: '2026-10-23T15:12:16Z'
 papers:
 - title: Augmenting LLM-Based Agents for Improved Performance in Pentesting and Commissioning
     Operational Technology in Critical Infrastructure
@@ -17,6 +17,12 @@ papers:
   year: 2026
   cited_by: 0
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:bEWYMUwI8FkC
+- title: Exploitation Is All You Need… for Exploration
+  authors: M Rentschler, J Roberts
+  venue: 2026 International Joint Conference on Neural Networks (IJCNN), 1-6
+  year: 2026
+  cited_by: 5
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:7PzlFSSx8tAC
 - title: Generation and Validation of Configuration Management Code for Cyber Range
     Environments Using Large Language Models
   authors: T Lee, M Ismail, J Roberts
@@ -95,7 +101,7 @@ papers:
   venue: Proceedings of the 1st Workshop for Research on Agent Language Models (REALM
     …
   year: 2025
-  cited_by: 10
+  cited_by: 11
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:WF5omc3nYNoC
 - title: Enhancing Post Earnings Announcement Drift Measurement with Large Language
     Models
@@ -104,12 +110,6 @@ papers:
   year: 2025
   cited_by: 1
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:qUcmZB5y_30C
-- title: Exploitation is all you need... for exploration
-  authors: M Rentschler, J Roberts
-  venue: arXiv preprint arXiv:2508.01287
-  year: 2025
-  cited_by: 5
-  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:7PzlFSSx8tAC
 - title: 'Harnessing the Power of AI in Honors: Equipping Students to Leverage Tools
     Effectively'
   authors: L Roberts, J Roberts

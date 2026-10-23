@@ -2,12 +2,12 @@
 # targets and manual numbers live in _data/goals.yml.
 year: 2026
 publications:
-  papers_this_year: 12
+  papers_this_year: 13
   papers_total: 39
-  citations: 200
+  citations: 201
   source: Google Scholar
-  updated: '2026-10-22T23:42:04Z'
+  updated: '2026-10-23T15:12:14Z'
 strava:
   miles_this_year: 664.0
   activities: 253
-  updated: '2026-10-22T23:42:04Z'
+  updated: '2026-10-23T15:12:14Z'
