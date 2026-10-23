@@ -13,9 +13,9 @@ group:
 
 # One line that frames all of the work (shown on the homepage and the Research page).
 tagline: >-
-  I work on understanding how neural networks, and language models in particular, learn and
-  reason, and on putting that understanding to work where it matters: keeping endangered
-  languages alive, and detecting tornadoes.
+  I study how neural networks, and language models in particular, learn and reason. I also put
+  that understanding to work on real problems, from helping keep endangered languages alive to
+  detecting tornadoes.
 
 areas:
   - id: fundamentals
@@ -31,15 +31,15 @@ areas:
     links:
       - { title: Torch Canvas, url: /tools/torch-canvas/ }
       - { title: Interactive demos, url: /learn/ }
-      - { title: "Course: Deep Learning (AI 4200/5200)", url: /teaching/F2026-AI4200 }
+      - { title: "Deep Learning course (AI 4200/5200)", url: /teaching/F2026-AI4200 }
 
   - id: llms
     title: Large language models
     icon: fas fa-comments
     summary: >-
       How large language models represent uncertainty, reason, and learn, and how their behavior
-      compares with human cognition: calibration and human-aligned uncertainty, memory effects,
-      test-taking strategies, and alignment from feedback.
+      compares with human cognition. Topics include calibration and human-aligned uncertainty,
+      memory effects, test-taking strategies, and alignment from feedback.
     keywords: [language model, llm, llms, chain of thought, artificial populations, base-rate effect, reward model, bart, uncertainty]
     # Papers to showcase (title fragments, in order). Leave empty to show the most cited.
     selected:
@@ -49,7 +49,7 @@ areas:
       - "Chain of thought still thinks fast"
       - "Investigating Human-Aligned Large Language Model Uncertainty"
     links:
-      - { title: "Seminar: Special Topics on LLMs (CSC 7970)", url: /teaching/S2026-CSC7970 }
+      - { title: "CSC 7970 seminar on LLMs", url: /teaching/S2026-CSC7970 }
       - { title: LLM foundations reading list, url: "https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE" }
 
   - id: cherokee
@@ -75,21 +75,19 @@ areas:
     title: Spiking neural networks
     icon: fas fa-bolt
     emerging: true
-    # DRAFT: please review
     summary: >-
-      Brain-inspired networks that compute with discrete spikes over time. This newer line of work
-      builds on earlier research into biologically extending artificial neural networks, and asks
-      how spiking models can be trained and analyzed with the same rigor as conventional deep networks.
-    keywords: [spiking, gen 2 ann]
+      We are studying the fundamentals of spiking neural networks and their use in real-time
+      environments. We are developing capability in this space now and have multiple papers in
+      the works.
+    keywords: [spiking, spike, neuromorphic, gen 2 ann]
 
   - id: tornado
     title: Tornado detection
     icon: fas fa-wind
     emerging: true
-    # DRAFT: please review
     summary: >-
-      Applying deep learning to severe-weather data to detect tornadoes more reliably and earlier,
-      where better detection can directly save lives.
+      We are working on tornado detection in areas where radar sweeps pass well above the ideal
+      range for detecting couplet rotation, as they do across a large portion of Tennessee.
     keywords: [tornado, severe weather, radar]
 
 # Grants: shown on the Research page (Funding) and generated into the CV's Grants section.
@@ -134,7 +132,7 @@ funding:
 # Fellowships and similar honors highlighted on the Research page and listed on the CV.
 honors:
   - id: fellowship-core
-    title: "CORE Institute Fellow: Indigenous Language Revitalization"
+    title: "CORE Institute Fellow for Indigenous Language Revitalization"
     org: "CORE Institute"
     years: "2027"            # fellowship year (selected in 2026)
     year: 2027

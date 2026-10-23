@@ -20,7 +20,7 @@ excerpt: "Courses, lecture slides, and interactive demos by Jesse Roberts at Ten
 {% for c in courses %}{% assign has = false %}{% for l in c.lectures %}{% if l.slides or l.pdf or l.video %}{% assign has = true %}{% endif %}{% endfor %}{% if has %}{% assign library_courses = library_courses | plus: 1 %}{% endif %}{% endfor %}
 
 <p class="teaching-intro">
-  I teach machine learning and deep learning at Tennessee Tech. Slides open in the browser; interactive
+  I teach machine learning and deep learning at Tennessee Tech. Slides open in the browser. Interactive
   demos and <a href="/torch-canvas/">Torch Canvas</a> models are on the <a href="{{ '/learn/' | relative_url }}">Learn</a> page.
 </p>
 

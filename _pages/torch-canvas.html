@@ -123,7 +123,7 @@ excerpt: "Torch Canvas: a visual editor for neural networks that writes PyTorch 
 
 <h2 id="teaching">For teaching</h2>
 <p>
-  Every example has its own link, so a slide or course page can open exactly the model being discussed:
+  Every example has its own link, so a slide or course page can open exactly the model being discussed. For example,
   <code>{{ site.url }}{{ tc.tool.url }}?open=gpt2</code> opens GPT-2.
   {% assign used = "" %}{% for pair in tc.courses %}{% assign codes = pair[1] | join: "," %}{% assign used = used | append: codes | append: "," %}{% endfor %}
   {% assign course_pages = site.teaching | sort: "date" | reverse %}{% assign listed = 0 %}

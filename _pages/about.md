@@ -12,19 +12,19 @@ redirect_from:
 
 My name is Jesse (Vanderbilt PhD '24). I am an assistant professor at Tennessee Tech University where I lead the language and artificial intelligence research (LAIR) group. 
 
-{{ site.data.research.tagline }} My work is supported by two [NSF grants]({{ '/research/#funding' | relative_url }}), and I've been selected as a **CORE Institute Fellow for Indigenous Language Revitalization** for 2027.
+{{ site.data.research.tagline }}
 
 <ul class="home-areas">
 {% for a in site.data.research.areas %}  <li><a href="{{ '/research/' | relative_url }}#{{ a.id }}"><i class="{{ a.icon }}" aria-hidden="true"></i> {{ a.title }}{% if a.emerging %} <span class="research-badge">Emerging</span>{% endif %}</a></li>
 {% endfor %}</ul>
 
-The Cherokee work draws on what worked for Irish (Gaeilge): the hope is a living resource that supports future generations of Tsalagi speakers. More on each area, with papers and press, is on the [Research]({{ '/research/' | relative_url }}) page.
+More on each area, with papers and press, is on the [Research]({{ '/research/' | relative_url }}) page.
 
 I am currently **accepting applications** for master's and Ph.D. students. If you are a curious person with an interest in solving real problems and exploring untrodden paths through AI then feel free to reach out via email!
 
 Introduction to LLMs
 ------
-For those interested in learning more about LLMs, I have put together a reading list [here](https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE)! It's the backbone of my graduate seminar, [CSC 7970: Special Topics on LLMs]({{ '/teaching/S2026-CSC7970' | relative_url }}), where you can see the papers week by week.
+For those interested in learning more about LLMs, I have put together a reading list [here](https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE)! It's the backbone of my graduate seminar on LLMs, [CSC 7970]({{ '/teaching/S2026-CSC7970' | relative_url }}), where you can see the papers week by week.
 
 <!-- Additionally, I have given some lectures on LLMs and research that might be useful:
 

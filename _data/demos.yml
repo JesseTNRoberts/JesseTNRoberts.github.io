@@ -34,7 +34,7 @@
 - id: operator-norm-2d
   title: Operator Norm as a Matrix Equation
   url: /assets/demonstrations/operator_norm_matrix_equation.html
-  description: A 2×2 matrix warps the unit circle; find the input direction it stretches most.
+  description: A 2×2 matrix warps the unit circle. Find the input direction it stretches most.
   topics: [linear algebra, operator norm]
 
 - id: operator-norm-3d

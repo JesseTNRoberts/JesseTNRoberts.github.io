@@ -30,7 +30,7 @@ features:
     title: Diagram ⇄ code, both ways
     text: >-
       Draw a network and the PyTorch code updates as you go. Paste an nn.Module (or a torch.fx export)
-      and it becomes a diagram. Every example round-trips: diagram → code → the same diagram.
+      and it becomes a diagram. Every example round-trips from diagram to code and back to the same diagram.
   - icon: fas fa-ruler-combined
     title: Shapes and parameters, live
     text: >-
@@ -54,8 +54,8 @@ features:
   - icon: fas fa-check-double
     title: Real architectures, checked
     text: >-
-      GPT-2, BERT, Llama 2 and Qwen2.5-VL match their reference implementations: the same parameter
-      counts at full size, and the same outputs with the weights copied across (GPT-2 against nanoGPT;
+      GPT-2, BERT, Llama 2 and Qwen2.5-VL match their reference implementations, with the same parameter
+      counts at full size, and the same outputs with the weights copied across (GPT-2 against nanoGPT,
       the others against Hugging Face transformers).
 
 # Categories for the example list on the Torch Canvas page, in display order. Each example (network

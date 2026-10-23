@@ -8,7 +8,7 @@
   <span class="course-card__title">{{ c.title }}</span>
   {% if c.summary and c.summary != "" %}<span class="course-card__summary">{{ c.summary }}</span>{% endif %}
   <span class="course-card__foot">
-    {% if n > 0 %}{{ n }} published lecture{% if n != 1 %}s{% endif %}{% if include.featured and latest %} · latest: {{ latest.title }}{% endif %}
+    {% if n > 0 %}{{ n }} published lecture{% if n != 1 %}s{% endif %}{% if include.featured and latest %} · newest is “{{ latest.title }}”{% endif %}
     {% elsif c.website %}Course website →{% elsif c.lectures.size > 0 %}Course schedule →{% else %}{{ c.level }}{% endif %}
   </span>
 </a>

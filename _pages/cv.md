@@ -21,7 +21,7 @@ Cookeville, TN
 
 
 ## Interests
-Deep learning fundamentals · Large language models · Cherokee language revitalization · Spiking neural networks · Tornado detection · Also: computational linguistics, machine cognition, robotics
+Deep learning fundamentals · Large language models · Cherokee language revitalization · Spiking neural networks · Tornado detection · Computational linguistics, machine cognition, robotics
 
 ---
 ## Education

@@ -25,7 +25,7 @@
   {% assign pct = current | times: 100.0 | divided_by: g.target %}
   {% if pct > 100 %}{% assign pct = 100 %}{% endif %}
   <div class="goal-card" data-due="{{ goals.year | plus: 1 }}-01-01" data-met="{% if current >= g.target %}true{% else %}false{% endif %}">
-    <div class="goal-card__title">{{ g.label }} goal: {{ g.target }} {{ g.unit }}</div>
+    <div class="goal-card__title">{{ g.label }} goal of {{ g.target }} {{ g.unit }}</div>
     <div class="goal-card__bar" role="progressbar" aria-valuemin="0" aria-valuemax="{{ g.target }}" aria-valuenow="{{ current }}" aria-label="{{ g.label }} progress">
       <div class="goal-card__fill" style="width: {{ pct | round: 1 }}%"></div>
     </div>
