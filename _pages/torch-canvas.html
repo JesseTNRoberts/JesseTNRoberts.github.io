@@ -3,7 +3,7 @@ layout: single
 title: "Torch Canvas"
 permalink: /tools/torch-canvas/
 author_profile: true
-excerpt: "Torch Canvas: a visual editor for neural networks that writes PyTorch as you draw. Open GPT-2, BERT, Llama 2 and more in the browser."
+excerpt: "Torch Canvas is a browser tool for visualizing, coding and understanding neural networks. Draw a model to get PyTorch, turn PyTorch into a diagram, and export figures for teaching and papers."
 ---
 {% comment %}
   The example list below is synced daily from the torch-canvas repo (scripts/sync_torch_canvas.js →
@@ -26,9 +26,20 @@ excerpt: "Torch Canvas: a visual editor for neural networks that writes PyTorch 
   </div>
 </section>
 
+<h2 id="uses">What it's for</h2>
+<div class="tc-features tc-uses">
+  {% for u in tc.uses %}
+  <div class="tc-feature">
+    <i class="{{ u.icon }}" aria-hidden="true"></i>
+    <h3>{{ u.title }}</h3>
+    <p>{{ u.text }}</p>
+  </div>
+  {% endfor %}
+</div>
+
 {% if lib %}
-<h2 id="models">Start from a real model</h2>
-<p class="tc-lede">Each one opens in the editor, ready to explore, change, and export. {{ lib.networks.size }} networks and {{ lib.blocks.size }} building blocks, straight from the project's example library. A few favorites first, then <a href="#browse">everything by category</a>.</p>
+<h2 id="models">Explore real models</h2>
+<p class="tc-lede">Every example opens as a diagram you can read, change and export, with its PyTorch code beside it. There are {{ lib.networks.size }} networks and {{ lib.blocks.size }} building blocks from the project's example library. A few favorites come first, then <a href="#browse">everything by category</a>.</p>
 
 <div class="tc-grid tc-grid--featured">
   {% for id in tc.featured %}{% assign m = lib.networks | where: "id", id | first %}{% if m %}{% include tc-model-card.html model=m %}{% endif %}{% endfor %}
@@ -110,7 +121,7 @@ excerpt: "Torch Canvas: a visual editor for neural networks that writes PyTorch 
 </script>
 {% endif %}
 
-<h2 id="features">What it does</h2>
+<h2 id="features">Features</h2>
 <div class="tc-features">
   {% for f in tc.features %}
   <div class="tc-feature">

@@ -16,7 +16,7 @@ Hands-on tools I've built for my courses. Everything runs in the browser, with n
   <p>{{ tc.tool.description }}</p>
   <p>
     <a class="btn btn--primary" href="{{ tc.tool.url }}">Open {{ tc.tool.title }}</a>
-    <a class="btn btn--inverse" href="{{ tc.tool.page | relative_url }}">All {{ tcl.networks.size }} example models →</a>
+    <a class="btn btn--inverse" href="{{ tc.tool.page | relative_url }}">More about it, and all {{ tcl.networks.size | plus: tcl.blocks.size }} examples →</a>
   </p>
   {% if tcl %}
   <div class="tc-grid tc-grid--featured">

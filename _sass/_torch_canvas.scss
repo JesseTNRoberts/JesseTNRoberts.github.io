@@ -269,3 +269,19 @@ $tc-line: #e3e7eb;
 
   .tc-empty { color: $gray; }
 }
+
+/* "What it's for" cards near the top of the Torch Canvas page */
+.page__content .tc-uses {
+  grid-template-columns: 1fr;
+
+  @media (min-width: 600px) { grid-template-columns: repeat(2, 1fr); }
+
+  gap: 1em;
+
+  .tc-feature {
+    padding: 1em 1.1em;
+    background: #f7f6fd;
+    border: 1px solid #e6e3f7;
+    border-radius: 12px;
+  }
+}

@@ -53,7 +53,7 @@ areas:
       - { title: LLM foundations reading list, url: "https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE" }
 
   - id: cherokee
-    title: Cherokee language revitalization
+    title: Cherokee language NLP
     icon: fas fa-language
     summary: >-
       Language technology in support of Cherokee (Tsalagi) revitalization, built with and for the

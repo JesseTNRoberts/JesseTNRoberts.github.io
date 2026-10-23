@@ -12,10 +12,36 @@ tool:
   url: /torch-canvas/              # the app itself (do not create this path in this repo)
   page: /tools/torch-canvas/       # the site's page about it (_pages/torch-canvas.html)
   repo: https://github.com/JesseTNRoberts/torch-canvas
-  tagline: "Diagram ⇄ PyTorch"
+  tagline: "See, build and understand neural networks"
   description: >-
-    A visual editor for neural networks that writes PyTorch as you draw, and turns PyTorch
-    modules back into diagrams. It runs in the browser with nothing to install.
+    Torch Canvas turns neural networks into diagrams you can read, edit and run. Draw a model and
+    the PyTorch code writes itself, or paste PyTorch and watch it become a diagram. Use it to teach,
+    to make figures for papers, and to understand what every component does. It runs in the browser
+    with nothing to install.
+
+# What it's for, shown near the top of the Torch Canvas page.
+uses:
+  - icon: fas fa-chalkboard-teacher
+    title: Teach architectures
+    text: >-
+      Show how a network is put together, from a 10-layer MLP to Llama 2, with tensor shapes on
+      every connection. Each example has its own link, so a slide can open the exact model.
+  - icon: fas fa-file-image
+    title: Make figures for papers
+    text: >-
+      Export any diagram as a clean SVG for papers and slides, drawn the way it looks on screen,
+      with size labels placed where they read best.
+  - icon: fas fa-pencil-ruler
+    title: Code visually
+    text: >-
+      Build a model by drawing it. Every edit updates clean, runnable PyTorch, and pasting a module
+      turns it back into a diagram you can keep editing.
+  - icon: fas fa-microscope
+    title: Understand the components
+    text: >-
+      Select any piece to see what it computes, how it changes the shape and what it adds in
+      parameters. A variance plot shows how the signal grows or shrinks through the network before
+      training.
 
 # Shown first on the Torch Canvas page and on /learn/ (ids from the library).
 featured: [gpt2, llama2_7b, bert_base, qwen2_5_vl_3b]

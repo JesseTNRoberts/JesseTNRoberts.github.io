@@ -35,7 +35,7 @@ For those interested in learning more about LLMs, I have put together a reading 
 
 Interactive Tools
 ------
-I build browser-based tools for teaching machine learning. The main one is [Torch Canvas](/torch-canvas/), where you draw a neural network as a diagram and get the PyTorch code (and can go the other way, from code to diagram). For example, here is a full LLM:
+I build browser-based tools for teaching machine learning. The main one is [Torch Canvas](/torch-canvas/), for visualizing, coding and understanding neural networks. Draw a network and get the PyTorch code, or paste code and get the diagram. I use it to teach how architectures work, to make figures for papers, and to see what each component does. For example, here is a full LLM.
 
 {% include torch-canvas-link.html model="llama2_7b" label="Open Llama 2 7B" %}
 
