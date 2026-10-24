@@ -1,7 +1,7 @@
 {
   "source": "https://github.com/JesseTNRoberts/torch-canvas",
-  "commit": "316971e1dd4b6627dac7c5c902a3d029ae2a5178",
-  "updated": "2026-10-23T15:14:46.756Z",
+  "commit": "c6b394cefe3db36e8f9ddbb7bec23c9616ad1888",
+  "updated": "2026-10-24T14:05:35.458Z",
   "networks": [
     {
       "kind": "network",
@@ -257,6 +257,30 @@
       ],
       "params": "5.75M params · ❄ 2.70M",
       "thumb": "/assets/torch-canvas/thumbs/ijepa_small.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/23_residual_cnn_gap.json",
+      "id": "residual_cnn_gap",
+      "title": "Residual CNN, global average pooling head",
+      "description": "The CNN from the inductive-bias lecture: a 5×5 conv stem, then three pre-norm residual blocks (GroupNorm → ReLU → 3×3 conv, twice, plus a clean identity skip) with 2×2 max pooling, a final GroupNorm and ReLU, then global average pooling (adaptive average pool to 1 × 1) and one Linear. Position is averaged away before the classifier. 57,098 parameters.",
+      "blocks": [
+        "PreNormConvBlock"
+      ],
+      "params": "57.1K",
+      "thumb": "/assets/torch-canvas/thumbs/residual_cnn_gap.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/24_residual_cnn_dense.json",
+      "id": "residual_cnn_dense",
+      "title": "Residual CNN, dense head",
+      "description": "The same residual CNN, but the 32 × 7 × 7 feature maps are flattened into one Linear. Every position gets its own classifier weights, so the dense head brings back the addresses convolution removed. 72,458 parameters.",
+      "blocks": [
+        "PreNormConvBlock"
+      ],
+      "params": "72.5K",
+      "thumb": "/assets/torch-canvas/thumbs/residual_cnn_dense.png"
     }
   ],
   "blocks": [
@@ -359,6 +383,16 @@
       "blocks": [],
       "params": "3.77M",
       "thumb": "/assets/torch-canvas/thumbs/mamba_block.png"
+    },
+    {
+      "kind": "block",
+      "file": "blocks/prenorm_conv_block.json",
+      "id": "prenorm_conv_block",
+      "title": "PreNormConvBlock",
+      "description": "A pre-norm residual block for images: GroupNorm → ReLU → 3×3 conv, twice, plus a clean identity skip (x + h). The channel count and image size stay the same.",
+      "blocks": [],
+      "params": "18.6K",
+      "thumb": "/assets/torch-canvas/thumbs/prenorm_conv_block.png"
     },
     {
       "kind": "block",
