@@ -20,6 +20,7 @@ theme and is deployed to GitHub Pages by GitHub Actions.
 | Torch Canvas page | `/tools/torch-canvas/` (`_pages/torch-canvas.html`); text and features in `_data/torch_canvas.yml` |
 | Torch Canvas models | synced from the torch-canvas repo into `_data/torch_canvas_library.json` + `assets/torch-canvas/thumbs/` (daily, when it changes). Link: `/torch-canvas/?open=<id>`; button: `{% include torch-canvas-link.html model="<id>" %}` |
 | Lecture slides | `assets/lectures/<COURSE>/` |
+| General talks (not tied to a course) | `assets/talks/`, linked from the homepage |
 | CV | `_pages/cv.md` (plain Markdown; layout `_layouts/cv.html`, styles `_sass/_cv.scss`). Each deploy renders it to `/files/Jesse-Roberts-CV.pdf` (US Letter) with `scripts/cv_pdf.js`, which the page's Download PDF button serves |
 | Downloadable files (PDFs) | `files/` |
 | Journal and meeting notes (unpublished) | `_posts/` (`published: false`) |
