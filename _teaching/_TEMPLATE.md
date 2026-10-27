@@ -32,6 +32,7 @@ lectures:
     slides: /assets/lectures/AI4200/week1.1-slides.html
     pdf:                        # optional: PDF version of the slides
     video:                      # optional: recording link
+    notebook:                   # optional: Jupyter notebook (.ipynb) in assets/lectures/<COURSE>/; adds Notebook and Colab links
     demos: [neuron-2d]          # optional: ids from _data/demos.yml
     models: [llama2_7b]         # optional: Torch Canvas preset ids from _data/torch_canvas.yml
     readings:                   # optional: papers for this session

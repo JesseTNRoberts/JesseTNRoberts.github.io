@@ -24,7 +24,7 @@ I am currently **accepting applications** for master's and Ph.D. students. If yo
 
 Introduction to LLMs
 ------
-New to generative AI? My talk [How Generative AI Really Works]({{ '/assets/talks/how-generative-ai-really-works.html' | relative_url }}) explains what AI is and how large language models write one token at a time. It also introduces Tennessee Tech's new B.S. in Artificial Intelligence.
+New to generative AI? My talk [How Generative AI Really Works]({{ '/assets/talks/how-generative-ai-really-works.html' | relative_url }}) explains what AI is and how large language models write one token at a time. It also introduces Tennessee Tech's new B.S. in Artificial Intelligence. A companion notebook reproduces the numbers on the slides, and you can [open it in Colab](https://colab.research.google.com/github/JesseTNRoberts/JesseTNRoberts.github.io/blob/master/assets/talks/how-generative-ai-really-works.ipynb) or [download it]({{ '/assets/talks/how-generative-ai-really-works.ipynb' | relative_url }}).
 
 For those interested in learning more about LLMs, I have put together a reading list [here](https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE)! It's the backbone of my graduate seminar on LLMs, [CSC 7970]({{ '/teaching/S2026-CSC7970' | relative_url }}), where you can see the papers week by week.
 

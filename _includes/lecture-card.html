@@ -39,6 +39,8 @@
     {% if l.slides %}<a class="lecture__link lecture__link--primary" href="{{ l.slides | relative_url }}"><i class="fas fa-desktop" aria-hidden="true"></i> Slides</a>{% endif %}
     {% if l.pdf %}<a class="lecture__link" href="{{ l.pdf | relative_url }}"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a>{% endif %}
     {% if l.video %}<a class="lecture__link" href="{{ l.video }}"><i class="fas fa-play" aria-hidden="true"></i> Video</a>{% endif %}
+    {% if l.notebook %}<a class="lecture__link" href="{{ l.notebook | relative_url }}" download title="Download the Jupyter notebook behind this lecture's numbers"><i class="fas fa-code" aria-hidden="true"></i> Notebook</a>
+    <a class="lecture__link" href="https://colab.research.google.com/github/JesseTNRoberts/JesseTNRoberts.github.io/blob/master{{ l.notebook }}" title="Open the notebook in Google Colab"><i class="fas fa-play-circle" aria-hidden="true"></i> Colab</a>{% endif %}
     {% for id in l.demos %}{% assign d = site.data.demos | where: "id", id | first %}{% if d %}
       <a class="lecture__link" href="{{ d.url | relative_url }}" title="{{ d.title }}"><i class="fas fa-sliders-h" aria-hidden="true"></i> Demo</a>
     {% endif %}{% endfor %}
