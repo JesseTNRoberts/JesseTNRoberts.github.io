@@ -1,0 +1,45 @@
+{% comment %}
+  Citation metrics and citations per year, like the box on a Google Scholar profile. Data comes
+  from _data/publications.yml (metrics, citations_by_year), written by scripts/update_stats.rb
+  from the same daily Scholar fetch as the paper list. Shows nothing until that data exists.
+{% endcomment %}
+{% assign pubs = site.data.publications %}
+{% assign m = pubs.metrics %}
+{% assign graph = pubs.citations_by_year %}
+{% if m or graph %}
+<section class="cite-panel" aria-labelledby="cite-title">
+  <h2 id="cite-title" class="cite-panel__title">Citations</h2>
+  <div class="cite-panel__body">
+    {% if m %}
+    <table class="cite-metrics">
+      <thead><tr><th></th><th scope="col">All</th>{% if m.since %}<th scope="col">Since {{ m.since }}</th>{% endif %}</tr></thead>
+      <tbody>
+        {% if m.citations %}<tr><th scope="row">Citations</th><td>{{ m.citations.all }}</td>{% if m.since %}<td>{{ m.citations.since }}</td>{% endif %}</tr>{% endif %}
+        {% if m.h_index %}<tr><th scope="row">h-index</th><td>{{ m.h_index.all }}</td>{% if m.since %}<td>{{ m.h_index.since }}</td>{% endif %}</tr>{% endif %}
+        {% if m.i10_index %}<tr><th scope="row">i10-index</th><td>{{ m.i10_index.all }}</td>{% if m.since %}<td>{{ m.i10_index.since }}</td>{% endif %}</tr>{% endif %}
+      </tbody>
+    </table>
+    {% endif %}
+    {% if graph and graph.size > 0 %}
+    {% assign max = 1 %}{% for g in graph %}{% if g.citations > max %}{% assign max = g.citations %}{% endif %}{% endfor %}
+    {% assign first_year = graph.first.year %}{% assign last_year = graph.last.year %}
+    {% assign this_year = site.time | date: "%Y" | plus: 0 %}
+    <figure class="cite-chart">
+      <div class="cite-chart__bars" role="img" aria-label="Citations per year, {% for g in graph %}{{ g.year }} {{ g.citations }}{% unless forloop.last %}, {% endunless %}{% endfor %}">
+        {% comment %} Scholar leaves out years with no citations, so fill the gaps with zero. {% endcomment %}
+        {% for y in (first_year..last_year) %}
+        {% assign c = 0 %}{% for g in graph %}{% if g.year == y %}{% assign c = g.citations %}{% endif %}{% endfor %}
+        {% assign pct = c | times: 100.0 | divided_by: max %}
+        <div class="cite-chart__col{% if y == this_year %} is-current{% endif %}" title="{{ y }}, {{ c }} citations{% if y == this_year %} so far{% endif %}">
+          <span class="cite-chart__val">{{ c }}</span>
+          <span class="cite-chart__bar{% if c == 0 %} is-zero{% endif %}" style="height: {{ pct | round: 1 }}%"></span>
+          <span class="cite-chart__year">{{ y }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      <figcaption>Citations per year from <a href="{{ pubs.profile }}">Google Scholar</a>{% assign last = graph | last %}{% if last.year == this_year %}, with {{ this_year }} so far{% endif %}.</figcaption>
+    </figure>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

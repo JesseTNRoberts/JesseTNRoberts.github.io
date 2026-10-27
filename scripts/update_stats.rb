@@ -115,10 +115,23 @@ def parse_scholar(html)
       "url" => link && "https://scholar.google.com#{link.gsub('&amp;', '&')}"
     }
   end
-  # First cell of the "Cited by" table is all-time citations.
-  citations = html[%r{class="gsc_rsb_std[^"]*"[^>]*>\s*(\d+)\s*<}, 1]&.to_i
+  # The "Cited by" table: citations, h-index, i10-index, each as [all, since <year>].
+  cells = html.scan(%r{class="gsc_rsb_std[^"]*"[^>]*>\s*(\d+)\s*<}).flatten.map(&:to_i)
+  citations = cells[0]
+  since = html[%r{Since\s+((?:19|20)\d\d)}, 1]&.to_i
+  metrics = if cells.size >= 6
+              { "since" => since,
+                "citations" => { "all" => cells[0], "since" => cells[1] },
+                "h_index" => { "all" => cells[2], "since" => cells[3] },
+                "i10_index" => { "all" => cells[4], "since" => cells[5] } }
+            end
+  # The bar chart: year labels and bar values. Years with no citations have no bar, so only
+  # use it when the counts line up.
+  years = html.scan(%r{class="gsc_g_t"[^>]*>\s*((?:19|20)\d\d)\s*<}).flatten.map(&:to_i)
+  vals = html.scan(%r{class="gsc_g_al"[^>]*>\s*(\d+)\s*<}).flatten.map(&:to_i)
+  graph = years.size == vals.size && !years.empty? ? years.zip(vals).map { |y, c| { "year" => y, "citations" => c } } : nil
 
-  { papers: papers, citations: citations }
+  { papers: papers, citations: citations, metrics: metrics, graph: graph }
 end
 
 def fetch_scholar(user_id, year)
@@ -126,27 +139,34 @@ def fetch_scholar(user_id, year)
 
   papers = []
   citations = nil
+  extra = {}
   # Scholar shows up to 100 papers per page; loop in case the profile grows past that.
   (0..900).step(100) do |start|
     url = "https://scholar.google.com/citations?user=#{user_id}&hl=en&cstart=#{start}&pagesize=100&sortby=pubdate"
     page = parse_scholar(http_get(url, "Accept-Language" => "en-US,en;q=0.9"))
     papers.concat(page[:papers])
     citations ||= page[:citations]
+    extra["metrics"] ||= page[:metrics]
+    extra["citations_by_year"] ||= page[:graph]
     break if page[:papers].size < 100
 
     sleep 2
   end
-  write_publications(papers, user_id)
+  write_publications(papers, user_id, extra)
   { "papers_this_year" => papers.count { |p| p["year"] == year }, "papers_total" => papers.size,
     "citations" => citations, "source" => "Google Scholar" }
 end
 
 # Full publication list for the Publications page (_includes/scholar-publications.html).
 # Only written after a successful Scholar fetch, so a blocked request never wipes the list.
-def write_publications(papers, user_id)
+# `extra` may carry "metrics" (citations, h-index, i10-index) and "citations_by_year"
+# (Scholar's bar chart), shown above the list. Missing pieces are simply left out.
+def write_publications(papers, user_id, extra = {})
   sorted = papers.sort_by { |p| [-(p["year"] || 0), p["title"].downcase] }
   data = { "profile" => "https://scholar.google.com/citations?user=#{user_id}",
-           "updated" => Time.now.utc.iso8601, "papers" => sorted }
+           "updated" => Time.now.utc.iso8601 }
+  extra.each { |k, v| data[k] = v if v }
+  data["papers"] = sorted
   header = "# Generated from Google Scholar by scripts/update_stats.rb (daily via GitHub Actions).\n" \
            "# Don't edit by hand. To fix a paper, edit it on your Scholar profile.\n"
   File.write(PUBS_PATH, header + data.to_yaml.sub(/\A---\n/, ""))
@@ -163,6 +183,7 @@ def fetch_serpapi(user_id, year)
 
   papers = []
   citations = nil
+  extra = {}
   (0..900).step(100) do |start|
     url = "https://serpapi.com/search.json?engine=google_scholar_author&author_id=#{user_id}" \
           "&hl=en&sort=pubdate&num=100&start=#{start}&api_key=#{key}"
@@ -170,6 +191,10 @@ def fetch_serpapi(user_id, year)
     raise FetchError, "SerpApi: #{data['error']}" if data["error"]
 
     citations ||= data.dig("cited_by", "table", 0, "citations", "all")
+    extra["metrics"] ||= serpapi_metrics(data.dig("cited_by", "table"))
+    extra["citations_by_year"] ||= (data.dig("cited_by", "graph") || []).map do |g|
+      { "year" => g["year"].to_i, "citations" => g["citations"].to_i }
+    end.reject { |g| g["year"].zero? }.then { |g| g.empty? ? nil : g }
     arts = data["articles"] || []
     arts.each do |a|
       year_i = a["year"].to_s[/\d{4}/]&.to_i
@@ -186,9 +211,27 @@ def fetch_serpapi(user_id, year)
   end
   raise FetchError, "SerpApi returned no articles" if papers.empty?
 
-  write_publications(papers, user_id)
+  write_publications(papers, user_id, extra)
   { "papers_this_year" => papers.count { |p| p["year"] == year }, "papers_total" => papers.size,
     "citations" => citations, "source" => "Google Scholar" }
+end
+
+# SerpApi's cited_by.table looks like
+#   [{"citations"=>{"all"=>200,"since_2021"=>190}}, {"h_index"=>{...}}, {"i10_index"=>{...}}]
+def serpapi_metrics(table)
+  return nil unless table.is_a?(Array)
+
+  m = {}
+  table.each do |row|
+    row.each do |name, v|
+      next unless v.is_a?(Hash)
+
+      since_key = v.keys.find { |k| k.start_with?("since_") }
+      m["since"] ||= since_key&.split("_")&.last&.to_i
+      m[name] = { "all" => v["all"].to_i, "since" => since_key ? v[since_key].to_i : nil }
+    end
+  end
+  m.key?("citations") ? m : nil
 end
 
 # Scholar is the only source for publications (it's the curated one). Tries SerpApi first

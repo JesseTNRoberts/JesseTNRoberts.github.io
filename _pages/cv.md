@@ -258,11 +258,27 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 
 ## Presentations
 
+### Invited Talks
+
+`October 2026`
+How Generative AI Really Works. Chattanooga State Community College. [Slides]({{ '/assets/talks/how-generative-ai-really-works.html' | relative_url }})
+
 `April 2026`
-Foundation Models and Responsible AI at TN-THRIVE-AI 
+Foundation Models and Responsible AI. TN-THRIVE-AI.
+
+`November 2024`
+Artificial Intelligence: All Hype or a Revolution? Maryville College.
+
+### Conference Presentations
+
+`November 2026`
+Upcoming talk on AI. National Collegiate Honors Council (NCHC) Annual Conference, New Orleans, LA.
+
+`February 2026`
+When Artificial Code Mirrors God's Image: Toward a Post-Anthropocentric Imago Dei. Baylor Symposium on Faith and Culture, "Technology and the Human Person in the Age of AI," Waco, TX.
 
 `May 2025`
-Poster: A Few-Shot Learning Method for SMS Phishing Detection and Explanation Using SLMs
+A Few-Shot Learning Method for SMS Phishing Detection and Explanation Using SLMs (poster). IEEE Symposium on Security and Privacy (S&P), San Francisco, CA.
 
 Seyed Mohammad Sanjari, Jesse Roberts, Mir Mehedi A. Pritom
 

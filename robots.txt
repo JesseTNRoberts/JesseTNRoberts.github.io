@@ -5,3 +5,5 @@ User-agent: *
 Sitemap: {{ site.url }}/sitemap.xml
 Disallow: /posts/*
 Disallow: /New-site-test/
+Disallow: /foodlog/
+Disallow: /liftlog/
