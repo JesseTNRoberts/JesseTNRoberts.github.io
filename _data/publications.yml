@@ -1,7 +1,7 @@
 # Generated from Google Scholar by scripts/update_stats.rb (daily via GitHub Actions).
 # Don't edit by hand. To fix a paper, edit it on your Scholar profile.
 profile: https://scholar.google.com/citations?user=Bj9GEfkAAAAJ
-updated: '2026-10-27T14:33:25Z'
+updated: '2026-10-28T16:43:21Z'
 metrics:
   since: 2021
   citations:
@@ -71,7 +71,8 @@ papers:
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:3fE2CSJIrl8C
 - title: 'KARMA: Karma-Aligned Reward Model Adaptation'
   authors: J Scott, J Roberts
-  venue: arXiv preprint arXiv:2605.26738
+  venue: 'Findings of the Association for Computational Linguistics: EMNLP 2026, 48030
+    …'
   year: 2026
   cited_by: 1
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:j3f4tGmQtD8C

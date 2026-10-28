@@ -1,7 +1,7 @@
 {
   "source": "https://github.com/JesseTNRoberts/torch-canvas",
-  "commit": "c6b394cefe3db36e8f9ddbb7bec23c9616ad1888",
-  "updated": "2026-10-24T14:05:51.129Z",
+  "commit": "f832128d018831132e997c7a4f458872c18555a2",
+  "updated": "2026-10-28T16:46:06.677Z",
   "networks": [
     {
       "kind": "network",
@@ -281,6 +281,16 @@
       ],
       "params": "72.5K",
       "thumb": "/assets/torch-canvas/thumbs/residual_cnn_dense.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/25_residual_cnn_expanded.json",
+      "id": "residual_cnn_expanded",
+      "title": "Residual CNN, every layer drawn out",
+      "description": "The residual CNN with the global-average-pooling head, with its three pre-norm residual blocks drawn out layer by layer instead of as PreNormConvBlock uses, laid out like the Residual MLP: the residual stream runs along the top through the + nodes, and each block is a column below its +: GroupNorm → ReLU → 3×3 conv, twice. A 5×5 conv stem and 2×2 max pooling lead in, 2×2 max pooling follows the first block, and a final GroupNorm and ReLU, global average pooling and one Linear make the head. 57,098 parameters, the same network and the same code as Residual CNN, global average pooling head, written without the block class.",
+      "blocks": [],
+      "params": "57.1K",
+      "thumb": "/assets/torch-canvas/thumbs/residual_cnn_expanded.png"
     }
   ],
   "blocks": [
