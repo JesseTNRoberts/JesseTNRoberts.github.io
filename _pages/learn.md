@@ -25,6 +25,17 @@ Hands-on tools I've built for my courses. Everything runs in the browser, with n
   {% endif %}
 </section>
 
+{% assign sw = site.data.slidewright %}
+<section class="learn-feature">
+  <p class="learn-feature__eyebrow">Tool · {{ sw.tool.tagline }}</p>
+  <h2 class="learn-feature__title"><a href="{{ sw.tool.page | relative_url }}">{{ sw.tool.title }}</a></h2>
+  <p>{{ sw.tool.description }}</p>
+  <p>
+    <a class="btn btn--primary" href="{{ sw.tool.url }}">Open {{ sw.tool.title }}</a>
+    <a class="btn btn--inverse" href="{{ sw.tool.page | relative_url }}">More about it →</a>
+  </p>
+</section>
+
 ## Interactive demos
 
 <ul class="learn-list">

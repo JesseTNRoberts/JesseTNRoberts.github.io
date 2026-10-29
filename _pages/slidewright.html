@@ -1,0 +1,54 @@
+---
+layout: single
+title: "Slidewright"
+permalink: /tools/slidewright/
+author_profile: true
+excerpt: "Slidewright is a minimalist browser editor for reveal.js presentations. Edit a deck on the slide, add equations and code, check accessibility, present with live drawing tools, and work with GitHub."
+---
+{% comment %}
+  Text and features live in _data/slidewright.yml.
+  Note: this page is at /tools/slidewright/ because /slidewright/ is the app itself (another repo).
+{% endcomment %}
+{% assign sw = site.data.slidewright %}
+
+<section class="sw-hero">
+  <img class="sw-hero__mark" src="{{ '/assets/slidewright/logo.svg' | relative_url }}" alt="" width="72" height="72">
+  <div>
+    <p class="sw-hero__tagline">{{ sw.tool.tagline }}</p>
+    <p class="sw-hero__desc">{{ sw.tool.description }}</p>
+    <p class="sw-hero__actions">
+      <a class="btn btn--primary btn--large" href="{{ sw.tool.url }}">Open Slidewright</a>
+      <a class="btn btn--inverse btn--large" href="{{ sw.tool.repo }}"><i class="fab fa-github" aria-hidden="true"></i> Source on GitHub</a>
+    </p>
+  </div>
+</section>
+
+<figure class="sw-shot">
+  <a href="{{ sw.tool.url }}"><img src="{{ '/assets/slidewright/screenshot.jpg' | relative_url }}" alt="The Slidewright editor with its practice deck open. Slide thumbnails are on the left, the selected slide is in the middle, and slide settings such as title, background, clicks and speaker notes are on the right." width="1440" height="900"></a>
+  <figcaption>Slidewright opens with a short practice deck. Press Open to load one of your own.</figcaption>
+</figure>
+
+<nav class="sw-jump" aria-label="Features">
+  {% for g in sw.groups %}<a href="#{{ g.id }}">{{ g.title }}</a>{% endfor %}
+</nav>
+
+{% for g in sw.groups %}
+<h2 id="{{ g.id }}">{{ g.title }}</h2>
+<div class="tc-features">
+  {% for f in g.features %}
+  <div class="tc-feature">
+    <i class="{{ f.icon }}" aria-hidden="true"></i>
+    <h3>{{ f.title }}</h3>
+    <p>{{ f.text }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% if g.image %}
+<figure class="sw-shot">
+  <img src="{{ '/assets/slidewright/' | append: g.image | relative_url }}" alt="{{ g.image_alt | strip }}" width="1440" height="900" loading="lazy">
+  {% if g.image_caption %}<figcaption>{{ g.image_caption }}</figcaption>{% endif %}
+</figure>
+{% endif %}
+{% endfor %}
+
+<p class="sw-license">{{ sw.tool.license }} <a href="{{ sw.tool.repo }}">See the source on GitHub.</a></p>

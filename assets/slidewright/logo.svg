@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Slidewright logo: a wooden cartwheel whose hub is a selected slide">
+<title>Slidewright</title>
+<circle cx="256" cy="256" r="236" fill="none" stroke="#1E2027" stroke-width="18"/>
+<path d="M262.28,31.09 A225,225 0 0 1 447.64,138.10 L417.83,156.44 A190,190 0 0 0 261.31,66.07 Z" fill="#A86A30" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M283.44,50.32 A207.5,207.5 0 0 1 420.40,129.39" fill="none" stroke="#7A4A20" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+<path d="M453.92,148.98 A225,225 0 0 1 453.92,363.02 L423.13,346.37 A190,190 0 0 0 423.13,165.63 Z" fill="#A86A30" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M447.84,176.93 A207.5,207.5 0 0 1 447.84,335.07" fill="none" stroke="#7A4A20" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+<path d="M447.64,373.90 A225,225 0 0 1 262.28,480.91 L261.31,445.93 A190,190 0 0 0 417.83,355.56 Z" fill="#A86A30" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M420.40,382.61 A207.5,207.5 0 0 1 283.44,461.68" fill="none" stroke="#7A4A20" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+<path d="M249.72,480.91 A225,225 0 0 1 64.36,373.90 L94.17,355.56 A190,190 0 0 0 250.69,445.93 Z" fill="#A86A30" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M228.56,461.68 A207.5,207.5 0 0 1 91.60,382.61" fill="none" stroke="#7A4A20" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+<path d="M58.08,363.02 A225,225 0 0 1 58.08,148.98 L88.87,165.63 A190,190 0 0 0 88.87,346.37 Z" fill="#A86A30" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M64.16,335.07 A207.5,207.5 0 0 1 64.16,176.93" fill="none" stroke="#7A4A20" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+<path d="M64.36,138.10 A225,225 0 0 1 249.72,31.09 L250.69,66.07 A190,190 0 0 0 94.17,156.44 Z" fill="#A86A30" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M91.60,129.39 A207.5,207.5 0 0 1 228.56,50.32" fill="none" stroke="#7A4A20" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+<path d="M271.02,165.23 L300.36,69.20 L310.98,72.04 L288.38,169.89 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M314.39,184.90 L387.82,116.40 L395.60,124.18 L327.10,197.61 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M342.11,223.62 L439.96,201.02 L442.80,211.64 L346.77,240.98 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M346.77,271.02 L442.80,300.36 L439.96,310.98 L342.11,288.38 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M327.10,314.39 L395.60,387.82 L387.82,395.60 L314.39,327.10 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M288.38,342.11 L310.98,439.96 L300.36,442.80 L271.02,346.77 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M240.98,346.77 L211.64,442.80 L201.02,439.96 L223.62,342.11 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M197.61,327.10 L124.18,395.60 L116.40,387.82 L184.90,314.39 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M169.89,288.38 L72.04,310.98 L69.20,300.36 L165.23,271.02 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M165.23,240.98 L69.20,211.64 L72.04,201.02 L169.89,223.62 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M184.90,197.61 L116.40,124.18 L124.18,116.40 L197.61,184.90 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<path d="M223.62,169.89 L201.02,72.04 L211.64,69.20 L240.98,165.23 Z" fill="#C68A4E" stroke="#7A4A20" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="256" cy="256" r="100" fill="#7A4A20"/>
+<circle cx="256" cy="256" r="100" fill="none" stroke="#1E2027" stroke-width="8"/>
+<rect x="182.0" y="214.5" width="148" height="83" rx="9" fill="#FBFBFA" stroke="#1E2027" stroke-width="7"/>
+<rect x="200.0" y="232.5" width="70" height="10" rx="3" fill="#1E2027"/>
+<rect x="200.0" y="250.5" width="34" height="5" rx="2.5" fill="#2F55D4"/>
+<rect x="200.0" y="265.5" width="112" height="6" rx="3" fill="#B9BEC8"/>
+<rect x="200.0" y="277.5" width="84" height="6" rx="3" fill="#B9BEC8"/>
+<rect x="175.0" y="207.5" width="14" height="14" rx="2" fill="#FFFFFF" stroke="#E0407A" stroke-width="4"/>
+<rect x="323.0" y="207.5" width="14" height="14" rx="2" fill="#FFFFFF" stroke="#E0407A" stroke-width="4"/>
+<rect x="175.0" y="290.5" width="14" height="14" rx="2" fill="#FFFFFF" stroke="#E0407A" stroke-width="4"/>
+<rect x="323.0" y="290.5" width="14" height="14" rx="2" fill="#FFFFFF" stroke="#E0407A" stroke-width="4"/>
+</svg>

@@ -15,6 +15,9 @@ main:
   - title: "Torch Canvas"
     url: /tools/torch-canvas/
 
+  - title: "Slidewright"
+    url: /tools/slidewright/
+
   - title: "Meeting Request"
     url: /meeting/
 

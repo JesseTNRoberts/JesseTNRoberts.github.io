@@ -41,7 +41,13 @@ I build browser-based tools for teaching machine learning. The main one is [Torc
 
 {% include torch-canvas-link.html model="llama2_7b" label="Open Llama 2 7B" %}
 
-See [everything it can open]({{ '/tools/torch-canvas/' | relative_url }}), from a 10-layer MLP to Qwen2.5-VL, or browse more tools and demos on the [Learn]({{ '/learn/' | relative_url }}) page.
+See [everything it can open]({{ '/tools/torch-canvas/' | relative_url }}), from a 10-layer MLP to Qwen2.5-VL.
+
+The newest is [Slidewright]({{ '/tools/slidewright/' | relative_url }}), a minimalist editor for reveal.js presentations. Open an HTML deck and edit it right on the slide, with equations, code and layouts that match the deck. It checks accessibility with a score modeled on campus tools, presents with a pen and laser pointer, and saves back to the same file or to GitHub.
+
+<a class="btn btn--primary" href="/slidewright/">Open Slidewright</a>
+
+Browse more tools and demos on the [Learn]({{ '/learn/' | relative_url }}) page.
 
 Goals
 ------

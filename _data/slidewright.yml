@@ -1,0 +1,129 @@
+# Slidewright: the tool (separate repo, served at /slidewright/) and how the site features it.
+# The site's page about it is _pages/slidewright.html at /tools/slidewright/.
+# Never create /slidewright/ in this repo, because the app itself is served there.
+# Feature text follows the slidewright repo's README. Update it here when the app gains features.
+
+tool:
+  title: Slidewright
+  url: /slidewright/               # the app itself (do not create this path in this repo)
+  page: /tools/slidewright/        # the site's page about it (_pages/slidewright.html)
+  repo: https://github.com/JesseTNRoberts/slidewright
+  tagline: "Edit, check and present reveal.js slide decks"
+  description: >-
+    Slidewright is a minimalist editor for reveal.js presentations. Open an HTML deck, change it
+    right on the slide, check it for accessibility, and present it with live drawing tools. It saves
+    back to the same kind of file, with the deck's own scripts and styles untouched. It runs in the
+    browser with nothing to install.
+  license: >-
+    The code is free and open source under the MIT License.
+
+# Feature groups, shown in this order on the Slidewright page.
+# A group can name a screenshot (in assets/slidewright/) with alt text and a caption.
+groups:
+  - id: editing
+    title: Editing
+    features:
+      - icon: fas fa-arrows-alt
+        title: Edit on the slide
+        text: >-
+          Drag, resize and rotate anything, with snapping to the slide and to other items. Alt-drag
+          a corner to scale an item with its text and padding together. Paste or drop images
+          straight onto a slide.
+      - icon: fas fa-square-root-alt
+        title: Equations
+        text: >-
+          Type LaTeX straight into text and it renders when you finish typing. Or right-click to
+          open an equation editor at the cursor.
+      - icon: fas fa-code
+        title: Code blocks
+        text: >-
+          Syntax highlighting for Python, JavaScript, shell and JSON, with line numbers, dark or
+          light colors, and line ranges that light up one click at a time.
+      - icon: fas fa-paint-brush
+        title: Text styles
+        text: >-
+          Use the styles already in the deck (Title, Subtitle, Body and more), save your own, and
+          copy a look from one item to others with the style painter.
+      - icon: fas fa-undo
+        title: Undo anything
+        text: >-
+          Undo and redo cover every change, including slide changes. Group, align, layer and
+          duplicate items, and find and replace across the deck.
+
+  - id: slides
+    title: Slides and builds
+    features:
+      - icon: fas fa-th-large
+        title: Layouts that match the deck
+        text: >-
+          Start a new slide from a standard layout styled like the deck you opened, such as title,
+          section header, two columns, comparison, picture with caption, key number or statement.
+          Or start from one of the deck's own slides.
+      - icon: fas fa-grip-horizontal
+        title: Slide sorter
+        text: >-
+          See every slide at once, select several, and drag to reorder, duplicate or delete them.
+      - icon: fas fa-layer-group
+        title: Linked build steps
+        text: >-
+          An item that looks the same in every click step changes everywhere at once. Preview
+          clicks and animations in place, and reorder what appears on each click.
+
+  - id: accessibility
+    title: Accessibility
+    image: accessibility-check.jpg
+    image_alt: >-
+      The Slidewright accessibility check showing an estimated score of 64 percent, filters for
+      major, minor and unscored issues, and a list of problems by slide with buttons that fix them.
+    image_caption: >-
+      The accessibility check gives an estimated score, explains each problem, and offers a
+      one-click fix where it can.
+    features:
+      - icon: fas fa-universal-access
+        title: Alt text at a glance
+        text: >-
+          See the alt text on every picture, spot the ones that have none, and write it or mark the
+          picture as decorative.
+      - icon: fas fa-clipboard-check
+        title: Accessibility check
+        text: >-
+          Modeled on how YuJa Panorama and Anthology Ally score HTML. It gives an estimated score
+          and lists problems by severity, such as missing alt text, headings, contrast, tables,
+          lists and small text, with filters and one-click fixes.
+
+  - id: presenting
+    title: Presenting and sharing
+    features:
+      - icon: fas fa-desktop
+        title: Presenter view
+        text: >-
+          See your notes and the next slide, with a total and a per-slide timer, while it drives a
+          separate audience window.
+      - icon: fas fa-pen
+        title: Draw while you present
+        text: >-
+          Pen, highlighter, laser pointer and blank screen. Strokes stay with their slide and show
+          on both the presenter and audience screens.
+      - icon: fas fa-file-pdf
+        title: PDF and handouts
+        text: >-
+          Export a PDF with one page per slide or per click, or a student handout with the speaker
+          notes.
+
+  - id: github
+    title: Files, GitHub and history
+    features:
+      - icon: fas fa-folder-open
+        title: Save back to the file
+        text: >-
+          Open a deck from a folder, reopen recent decks, and save straight back to the file in
+          Chrome and Edge. Other browsers download a copy.
+      - icon: fab fa-github
+        title: Work with GitHub
+        text: >-
+          Sign in with GitHub to open decks from your repositories, commit changes and browse their
+          history. Your token stays in your browser.
+      - icon: fas fa-code-branch
+        title: Compare versions
+        text: >-
+          Compare the deck slide by slide with its saved version, an older commit or another file.

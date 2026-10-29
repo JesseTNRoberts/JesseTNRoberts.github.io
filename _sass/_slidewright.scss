@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Slidewright page (/tools/slidewright/). Feature cards reuse .tc-features.
+   ========================================================================== */
+
+$sw-ink: #1e2027;        /* from the Slidewright logo */
+$sw-wood: #a86a30;
+$sw-paper: #faf6f0;
+
+.page__content {
+  .sw-hero {
+    display: flex;
+    gap: 1.25em;
+    align-items: flex-start;
+    margin: 0.5em 0 1.5em;
+    padding: 1.5em;
+    color: $sw-ink;
+    background: $sw-paper;
+    border: 1px solid mix($sw-wood, #fff, 25%);
+    border-left: 6px solid $sw-wood;
+    border-radius: 16px;
+
+    &__mark {
+      flex: none;
+      width: 72px;
+      height: 72px;
+    }
+
+    &__tagline {
+      margin: 0 0 0.3em;
+      font-size: 1.35em;
+      font-weight: bold;
+    }
+
+    &__desc {
+      margin: 0 0 1em;
+      line-height: 1.55;
+    }
+
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+    }
+  }
+
+  .sw-shot {
+    margin: 0 0 2em;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #e3e7eb;
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(30, 32, 39, 0.12);
+    }
+
+    figcaption {
+      margin-top: 0.6em;
+      font-size: $type-size-6;
+      color: $gray;
+    }
+  }
+
+  .sw-jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin: 0 0 1em;
+
+    a {
+      padding: 0.3em 0.8em;
+      font-size: $type-size-6;
+      color: $sw-ink;
+      text-decoration: none;
+      background: $sw-paper;
+      border: 1px solid mix($sw-wood, #fff, 30%);
+      border-radius: 999px;
+
+      &:hover,
+      &:focus {
+        border-color: $sw-wood;
+      }
+    }
+  }
+
+  .sw-license {
+    margin-top: 2em;
+    font-size: $type-size-6;
+    color: $gray;
+  }
+
+  @media (max-width: 600px) {
+    .sw-hero {
+      flex-direction: column;
+
+      &__mark {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  }
+}

@@ -19,6 +19,7 @@ theme and is deployed to GitHub Pages by GitHub Actions.
 | Interactive demos | files in `assets/demonstrations/`, listed in `_data/demos.yml` (shown on `/learn/`) |
 | Torch Canvas page | `/tools/torch-canvas/` (`_pages/torch-canvas.html`); text and features in `_data/torch_canvas.yml` |
 | Torch Canvas models | synced from the torch-canvas repo into `_data/torch_canvas_library.json` + `assets/torch-canvas/thumbs/` (daily, when it changes). Link: `/torch-canvas/?open=<id>`; button: `{% include torch-canvas-link.html model="<id>" %}` |
+| Slidewright page | `/tools/slidewright/` (`_pages/slidewright.html`); text and features in `_data/slidewright.yml`, logo and screenshot in `assets/slidewright/`. The app itself is the slidewright repo, served at `/slidewright/` |
 | Lecture slides and notebooks | `assets/lectures/<COURSE>/` |
 | General talks (not tied to a course) | `assets/talks/`, linked from the homepage |
 | CV | `_pages/cv.md` (plain Markdown; layout `_layouts/cv.html`, styles `_sass/_cv.scss`). Each deploy renders it to `/files/Jesse-Roberts-CV.pdf` (US Letter) with `scripts/cv_pdf.js`, which the page's Download PDF button serves |
@@ -29,7 +30,7 @@ theme and is deployed to GitHub Pages by GitHub Actions.
 ## Other sites under this domain
 
 GitHub serves Pages from Jesse's other repos under this domain, for example
-`https://www.jessetnroberts.com/torch-canvas/` and `/SP25-CSC4220/`.
+`https://www.jessetnroberts.com/torch-canvas/`, `/slidewright/` and `/SP25-CSC4220/`.
 
 - **Don't** create files, folders, permalinks or redirects in this repo with those names.
 - **Don't** remove the custom domain from this repo's Pages settings, because every project site's URL depends on it.
