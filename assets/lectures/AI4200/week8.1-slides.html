@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="slidewright-source" content="github:JesseTNRoberts/New-site-test@main:assets/lectures/AI4200/week8.1-slides.html">
 <title>Understanding modern activation functions</title>
 <style>/*!
 * reveal.js 5.1.0
@@ -76,6 +77,14 @@ html,body,.reveal-viewport{width:1280px!important;height:auto!important;overflow
 .reveal .controls,.reveal .progress,.reveal .backgrounds,.reveal .slide-number,.reveal .speaker-notes,.reveal .aria-status,.pdf-get{display:none!important}
 }
 
+
+/* ---- Present with Slidewright (corner of the window, not on a slide) ---- */
+.sw-present{position:fixed;top:10px;right:10px;z-index:30;display:inline-flex;align-items:center;gap:8px;padding:7px 12px 7px 10px;border:1px solid rgba(22,24,29,.25);border-radius:6px;background:rgba(251,251,250,.92);color:#16181D;font:500 13px/1 'IBM Plex Sans',system-ui,sans-serif;cursor:pointer;opacity:.35;transition:opacity .2s,background-color .15s,border-color .15s}
+.sw-present svg{width:16px;height:16px;flex:none}
+.sw-present:hover,.sw-present:focus-visible{opacity:1;background:#DCE5FA;border-color:#2557D6;color:#1B3F9E}
+.sw-present:focus-visible{outline:3px solid #2557D6;outline-offset:2px}
+:fullscreen .sw-present,html.print-pdf .sw-present,.reveal.overview~.sw-present{display:none!important}
+@media print{.sw-present{display:none!important}}
 </style>
 </head>
 <body>
@@ -2228,6 +2237,10 @@ Download slides as PDF</button>
 <div class="slide-copy" aria-hidden="true">&copy; 2026 Dr. Jesse Roberts</div>
 </section>
 </div></div>
+<button class="sw-present" type="button" title="Open this deck in Slidewright: presenter view with notes, timer, pen and laser pointer">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M12 16.5v3.5M8.5 20h7"/><path d="M10.5 8.5v4.5l3.75-2.25z" fill="currentColor"/></svg>
+Present with Slidewright</button>
+<script id="sw-pristine">window.__swPristine={html:[].map.call(document.documentElement.attributes,function(a){return[a.name,a.value];}),body:[].map.call(document.body.attributes,function(a){return[a.name,a.value];}),head:document.head.children.length,inner:document.body.innerHTML};</script>
 <script>/*!
 * reveal.js 5.1.0
 * https://revealjs.com
@@ -2817,6 +2830,27 @@ function start(){ (document.fonts ? document.fonts.ready : Promise.resolve()).th
 if(window.Reveal && Reveal.isReady && Reveal.isReady()) start(); else Reveal.on('ready', start);
 })();
 
+</script>
+<script>
+(function(){
+var SW="https://www.jessetnroberts.com/slidewright/", ORIGIN=new URL(SW, location.href).origin;
+function attrs(l){ return l.map(function(a){ return ' '+a[0]+'="'+String(a[1]).replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"'; }).join(''); }
+function rebuild(){ var P=window.__swPristine, cap=document.getElementById('sw-pristine'), NL=String.fromCharCode(10); if(!P||!cap) return null;
+  var head=[].slice.call(document.head.children,0,P.head).map(function(e){ return e.outerHTML; }).join(NL);
+  var later=[].filter.call(document.body.children,function(e){ return e.tagName==='SCRIPT' && (cap.compareDocumentPosition(e)&4); }).map(function(e){ return e.outerHTML; }).join(NL);
+  return '<!doctype html>'+NL+'<html'+attrs(P.html)+'>'+NL+'<head>'+NL+head+NL+'</head>'+NL+'<body'+attrs(P.body)+'>'+P.inner+NL+later+NL+'</body>'+NL+'</html>'+NL; }
+function source(){ var fall=function(){ var h=rebuild(); return h?{html:h,exact:false}:null; };
+  if(!/^https?:$/.test(location.protocol)) return Promise.resolve(fall());
+  return fetch(location.href.split('#')[0],{cache:'force-cache'}).then(function(r){ return r.ok?r.text().then(function(t){ return {html:t,exact:true}; }):fall(); }).catch(fall); }
+function name(){ var n=decodeURIComponent(location.pathname.split('/').pop()||''); return /\.html?$/i.test(n)?n:((document.title||'lecture').replace(/[\/:*?"<>|]+/g,'')+'.html'); }
+function open(){ var w=window.open(SW+'#present','_blank'); if(!w){ alert('Allow pop-ups for this page to present with Slidewright.'); return; }
+  var src=source();
+  function onMsg(e){ if(e.source!==w||!e.data||e.data.type!=='slidewright-ready') return; window.removeEventListener('message',onMsg);
+    src.then(function(r){ if(!r){ return; } w.postMessage({type:'slidewright-deck',html:r.html,exact:r.exact,name:name(),url:/^https?:$/.test(location.protocol)?location.href.split('#')[0]:'',slide:(window.Reveal&&Reveal.getIndices?Reveal.getIndices().h:0)},ORIGIN); }); }
+  window.addEventListener('message',onMsg); }
+window.SW_present={open:open,source:source,rebuild:rebuild};
+document.querySelectorAll('.sw-present').forEach(function(b){ b.addEventListener('click',function(e){ e.stopPropagation(); open(); }); });
+})();
 </script>
 </body>
 </html>
