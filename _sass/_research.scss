@@ -20,7 +20,7 @@ $rs-soft: #f6f8fa;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
-    @media (min-width: 900px) { grid-template-columns: repeat(5, 1fr); }
+    @media (min-width: 600px) { grid-template-columns: repeat(3, 1fr); }
 
     gap: 0.75em;
     margin: 1.25em 0 1em;
@@ -49,6 +49,15 @@ $rs-soft: #f6f8fa;
     i { font-size: 1.3em; color: $rs-accent; }
 
     &__title { font-weight: bold; line-height: 1.3; }
+
+    &__count { font-size: $type-size-7; color: $gray; }
+
+    &--pubs {
+      background: $rs-soft;
+      border-top-color: $gray;
+
+      i { color: $gray; }
+    }
 
     .research-badge { align-self: flex-start; }
   }
@@ -224,4 +233,213 @@ $rs-soft: #f6f8fa;
 
     i { margin-right: 0.35em; color: #b7791f; }
   }
+}
+
+/* ==========================================================================
+   Research page layout: main column plus a side column that follows the reader
+   (merged Research and Publications, 2026-10-30). Panels are _includes/research-rail-panel.html.
+   ========================================================================== */
+
+$rs-rail-width: 270px;
+$rs-rail-min: 1024px;     /* below this the side column is hidden and areas show panels inline */
+
+/* Give this page the theme's empty right margin so the side column has room. */
+.page:has(.rs) {
+  @include breakpoint($large) {
+    padding-right: 0;
+  }
+}
+
+.page__content {
+  .rs__rail { display: none; }
+
+  @media (min-width: $rs-rail-min) {
+    .rs {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) $rs-rail-width;
+      gap: 2.25em;
+      align-items: start;
+    }
+
+    .rs__rail {
+      display: block;
+      position: sticky;
+      top: calc(#{$masthead-height} + 1em);
+      max-height: calc(100vh - #{$masthead-height} - 2em);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+    }
+
+    .rs-inline,
+    .rs-narrow-only { display: none; }
+
+    .research-area,
+    .research-areas { scroll-margin-top: calc(#{$masthead-height} + 1em); }
+  }
+
+  .rs-inline { margin-top: 1.25em; }
+
+  .research-pubs .count { font-size: 0.55em; }
+
+  /* One panel (side column or inline) */
+  .rail-panel {
+    padding: 1em 1.1em 1.1em;
+    font-size: $type-size-6;
+    background: $rs-soft;
+    border: 1px solid $rs-line;
+    border-radius: 12px;
+    animation: rail-in 0.25s ease both;
+
+    &[hidden] { display: none; }
+
+    &--inline { animation: none; }
+
+    &__eyebrow {
+      margin: 0 0 0.5em;
+      font-size: $type-size-7;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $rs-accent;
+
+      i { margin-right: 0.25em; }
+    }
+
+    &__heading {
+      margin: 1em 0 0.5em;
+      font-size: $type-size-7;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $gray;
+    }
+
+    &__more,
+    &__empty {
+      margin: 0.75em 0 0;
+      font-size: $type-size-7;
+      color: $gray;
+    }
+  }
+
+  .rail-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em 1em;
+    margin: 0;
+    font-size: $type-size-7;
+    color: $gray;
+
+    strong {
+      font-size: 1.45em;
+      color: $text-color;
+    }
+  }
+
+  .rail-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 70px;
+    margin: 0.9em 0 0.2em;
+
+    &__col {
+      display: flex;
+      flex: 1;
+      align-items: flex-end;
+      height: 100%;
+    }
+
+    &__bar {
+      width: 100%;
+      min-height: 2px;
+      background: $rs-accent;
+      border-radius: 2px 2px 0 0;
+    }
+
+    &__col.is-current &__bar {
+      background: repeating-linear-gradient(135deg, $rs-accent 0 4px, mix($rs-accent, #fff, 55%) 4px 8px);
+    }
+
+    &__axis {
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      font-size: 0.7em;
+      color: $gray;
+    }
+  }
+
+  .rail-papers {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rail-paper {
+    margin: 0 0 0.7em;
+    font-size: 1em;
+    line-height: 1.3;
+
+    &:last-child { margin-bottom: 0; }
+
+    &__title {
+      display: -webkit-box;
+      overflow: hidden;
+      font-size: 0.86em;
+      font-weight: 600;
+      color: $text-color;
+      text-decoration: none;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    a.rail-paper__title:hover { color: $rs-accent; text-decoration: underline; }
+
+    &__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+      margin-top: 0.2em;
+      font-size: 0.72em;
+      color: $gray;
+    }
+
+    &__venue {
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__cites {
+      display: flex;
+      flex: 0 0 38%;
+      align-items: center;
+      gap: 0.35em;
+    }
+
+    &__bar {
+      height: 6px;
+      min-width: 2px;
+      background: $rs-accent;
+      border-radius: 3px;
+    }
+
+    &__num {
+      font-weight: bold;
+      color: $text-color;
+    }
+  }
+}
+
+@keyframes rail-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page__content .rail-panel { animation: none; }
 }

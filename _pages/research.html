@@ -3,15 +3,25 @@ layout: single
 title: "Research"
 permalink: /research/
 author_profile: true
-excerpt: "Jesse Roberts's research at Tennessee Tech in deep learning fundamentals, large language models, Cherokee language NLP, spiking neural networks, and tornado detection."
+excerpt: "Jesse Roberts's research and publications at Tennessee Tech in deep learning fundamentals, large language models, Cherokee language NLP, spiking neural networks, and tornado detection."
 ---
 {% comment %}
   Built from _data/research.yml (areas, funding, honors). Papers per area come from the Scholar
   mirror, tagged by _plugins/publications.rb.
+
+  Research and Publications are one page (merged 2026-10-30). /publications/ redirects to #publications.
+  Layout: the main column (.rs__main) and, on wide screens, a side column (.rs__rail) that stays in
+  view and swaps to the panel of whichever section is on screen (each section's data-rail names its
+  panel). On narrow screens the side column is hidden and each area shows its panel inline instead.
 {% endcomment %}
 {% assign r = site.data.research %}
 {% assign major_funding = r.funding | where_exp: "f", "f.minor != true" %}
+{% assign pubs = site.data.publications %}
 
+<div class="rs">
+<div class="rs__main">
+
+<div data-rail="overview">
 <p class="research-lede">{{ r.tagline }}</p>
 <p class="research-group">I lead the <strong>{{ r.group.name }}</strong> at {{ r.group.institution }}.</p>
 
@@ -23,10 +33,16 @@ excerpt: "Jesse Roberts's research at Tennessee Tech in deep learning fundamenta
     {% if a.emerging %}<span class="research-badge">Emerging</span>{% endif %}
   </a>
   {% endfor %}
+  <a class="research-area-card research-area-card--pubs" href="#publications">
+    <i class="fas fa-book-open" aria-hidden="true"></i>
+    <span class="research-area-card__title">All publications</span>
+    {% if pubs.paper_count %}<span class="research-area-card__count">{{ pubs.paper_count }} papers</span>{% endif %}
+  </a>
 </nav>
+</div>
 
 {% for a in r.areas %}
-<section class="research-area" id="{{ a.id }}">
+<section class="research-area" id="{{ a.id }}" data-rail="{{ a.id }}">
   <h2><i class="{{ a.icon }}" aria-hidden="true"></i> {{ a.title }}{% if a.emerging %} <span class="research-badge">Emerging</span>{% endif %}</h2>
   <p>{{ a.summary }}</p>
 
@@ -51,9 +67,6 @@ excerpt: "Jesse Roberts's research at Tennessee Tech in deep learning fundamenta
     </li>
     {% endfor %}
   </ul>
-  {% if a.paper_count > a.selected_papers.size %}
-  <p class="research-more"><a href="{{ '/publications/' | relative_url }}">All {{ a.paper_count }} papers in this area are on the Publications page →</a></p>
-  {% endif %}
   {% elsif a.emerging %}
   <p class="research-more">New work is in progress, and papers will appear here as they're published.</p>
   {% endif %}
@@ -62,6 +75,12 @@ excerpt: "Jesse Roberts's research at Tennessee Tech in deep learning fundamenta
   <p class="research-links">
     {% for l in a.links %}<a class="chip" href="{% if l.url contains '://' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.title }}</a>{% endfor %}
   </p>
+  {% endif %}
+
+  {% if a.paper_count > 0 %}
+  <div class="rs-inline">
+    {% include research-rail-panel.html id=a.id area=a limit=5 inline=true %}
+  </div>
   {% endif %}
 
   {% if a.press and a.press.size > 0 %}
@@ -74,7 +93,7 @@ excerpt: "Jesse Roberts's research at Tennessee Tech in deep learning fundamenta
 {% endfor %}
 
 {% if major_funding.size > 0 %}
-<section class="research-area" id="funding">
+<section class="research-area" id="funding" data-rail="overview">
   <h2><i class="fas fa-landmark" aria-hidden="true"></i> Funding</h2>
   <div class="funding-grid">
     {% for f in major_funding %}
@@ -95,7 +114,7 @@ excerpt: "Jesse Roberts's research at Tennessee Tech in deep learning fundamenta
 </section>
 {% endif %}
 
-<section class="research-area research-join" id="join">
+<section class="research-area research-join" id="join" data-rail="overview">
   <h2><i class="fas fa-user-graduate" aria-hidden="true"></i> Join the group</h2>
   <p>
     I'm accepting <strong>master's and Ph.D. students</strong>. If you're curious and want to work on real
@@ -103,3 +122,42 @@ excerpt: "Jesse Roberts's research at Tennessee Tech in deep learning fundamenta
     <a href="{{ '/meeting/' | relative_url }}">book a meeting</a>.
   </p>
 </section>
+
+<section class="research-area research-pubs" id="publications" data-rail="overview">
+  <h2><i class="fas fa-book-open" aria-hidden="true"></i> Publications{% if pubs.paper_count %} <span class="count">{{ pubs.paper_count }}</span>{% endif %}</h2>
+  {% if site.author.googlescholar %}<p>All of my papers, mirrored daily from <a href="{{ site.author.googlescholar }}">my Google Scholar profile</a>. Sort them by date, citations or venue.</p>{% endif %}
+  <div class="rs-narrow-only">{% include citation-chart.html %}</div>
+  <h3>Textbook</h3>
+  <p>Jesse Roberts, 2024, Introduction to PLC Automation, <a href="{{ '/files/Introduction_to_PLC_Automation.pdf' | relative_url }}">PDF Version</a></p>
+  <h3>Papers</h3>
+  {% include scholar-publications.html subsection=true %}
+</section>
+
+</div>
+
+<aside class="rs__rail" aria-label="Citations and papers for the section on screen">
+  {% include research-rail-panel.html id="overview" %}
+  {% for a in r.areas %}{% include research-rail-panel.html id=a.id area=a %}{% endfor %}
+</aside>
+</div>
+
+<script>
+  (function () {
+    var rail = document.querySelector('.rs__rail');
+    if (!rail || !('IntersectionObserver' in window)) return;
+    var panels = Array.prototype.slice.call(rail.querySelectorAll('.rail-panel'));
+    var current = 'overview';
+    function show(id) {
+      if (!panels.some(function (p) { return p.dataset.panel === id; })) id = 'overview';
+      if (id === current) return;
+      panels.forEach(function (p) { p.hidden = p.dataset.panel !== id; });
+      current = id;
+      rail.scrollTop = 0;
+    }
+    /* The section crossing a band about a third of the way down the screen picks the panel. */
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) show(e.target.dataset.rail); });
+    }, { rootMargin: '-33% 0px -62% 0px' });
+    document.querySelectorAll('[data-rail]').forEach(function (el) { observer.observe(el); });
+  })();
+</script>

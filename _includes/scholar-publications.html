@@ -10,7 +10,7 @@
 {% assign pubs = site.data.publications %}
 {% if pubs and pubs.papers and pubs.papers.size > 0 %}
 
-<h2 id="papers">Papers <span class="count">{{ pubs.papers.size }}</span></h2>
+{% if include.subsection %}<span id="papers"></span>{% else %}<h2 id="papers">Papers <span class="count">{{ pubs.papers.size }}</span></h2>{% endif %}
 <div class="pub-sort" role="group" aria-label="Sort papers by">
   <span class="pub-sort__label">Sort by</span>
   <button type="button" class="chip is-active" data-sort="date" aria-pressed="true">Date</button>

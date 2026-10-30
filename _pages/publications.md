@@ -1,21 +1,8 @@
 ---
-layout: single
+# Research and Publications are one page since 2026-10-30. The full paper list is at
+# /research/#publications, and this address sends old links there.
 title: "Publications"
 permalink: /publications/
-author_profile: true
+redirect_to: /research/#publications
+sitemap: false
 ---
-
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
-
-{% include citation-chart.html %}
-
-## Textbook
-
-Jesse Roberts, 2024, Introduction to PLC Automation, [PDF Version]({{ '/files/Introduction_to_PLC_Automation.pdf' | relative_url }})
-
-
-
-{% include scholar-publications.html %}
-

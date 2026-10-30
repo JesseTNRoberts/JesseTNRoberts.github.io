@@ -1,0 +1,72 @@
+{% comment %}
+  One panel of the Research page's side column (also shown inline under each area on narrow screens).
+  Params:
+    id        panel id ("overview" or an area id), matched by data-rail on the page's sections
+    area      a research area from _data/research.yml (omit for the overview)
+    limit     how many papers to list (default 10)
+    inline    true when rendered inside the page instead of the side column
+  Papers come from the publications plugin (top_papers, citation_total, paper_count).
+{% endcomment %}
+{% assign pubs = site.data.publications %}
+{% assign a = include.area %}
+{% assign limit = include.limit | default: 10 %}
+{% if a %}
+  {% assign papers = a.top_papers %}{% assign count = a.paper_count | default: 0 %}{% assign cites = a.citation_total | default: 0 %}
+{% else %}
+  {% assign papers = pubs.top_papers %}{% assign count = pubs.paper_count | default: 0 %}{% assign cites = pubs.metrics.citations.all | default: 0 %}
+{% endif %}
+<section class="rail-panel{% if include.inline %} rail-panel--inline{% endif %}" data-panel="{{ include.id }}"{% unless include.inline %}{% if include.id != "overview" %} hidden{% endif %}{% endunless %} aria-label="{% if a %}Papers in {{ a.title }}{% else %}Citations and most-cited papers{% endif %}">
+  {% unless include.inline %}
+  <p class="rail-panel__eyebrow">{% if a %}<i class="{{ a.icon }}" aria-hidden="true"></i> {{ a.title }}{% else %}<i class="fas fa-chart-bar" aria-hidden="true"></i> All research{% endif %}</p>
+  {% endunless %}
+
+  {% if a %}
+  {% if count > 0 %}
+  <p class="rail-stats">
+    <span><strong>{{ count }}</strong> {% if count == 1 %}paper{% else %}papers{% endif %}</span>
+    {% if cites > 0 %}<span><strong>{{ cites }}</strong> citations</span>{% endif %}
+  </p>
+  {% endif %}
+  {% else %}
+  {% assign m = pubs.metrics %}
+  <p class="rail-stats">
+    <span><strong>{{ count }}</strong> papers</span>
+    {% if m.citations %}<span><strong>{{ m.citations.all }}</strong> citations</span>{% endif %}
+    {% if m.h_index %}<span><strong>{{ m.h_index.all }}</strong> h-index</span>{% endif %}
+  </p>
+  {% assign graph = pubs.citations_by_year %}
+  {% if graph and graph.size > 0 %}
+  {% assign max = 1 %}{% for g in graph %}{% if g.citations > max %}{% assign max = g.citations %}{% endif %}{% endfor %}
+  {% assign first_year = graph.first.year %}{% assign last_year = graph.last.year %}
+  {% assign this_year = site.time | date: "%Y" | plus: 0 %}
+  <div class="rail-chart" role="img" aria-label="Citations per year, {% for g in graph %}{{ g.year }} {{ g.citations }}{% unless forloop.last %}, {% endunless %}{% endfor %}">
+    {% for y in (first_year..last_year) %}
+    {% assign c = 0 %}{% for g in graph %}{% if g.year == y %}{% assign c = g.citations %}{% endif %}{% endfor %}
+    {% assign pct = c | times: 100.0 | divided_by: max %}
+    <span class="rail-chart__col{% if y == this_year %} is-current{% endif %}" title="{{ y }}, {{ c }} citations{% if y == this_year %} so far{% endif %}"><span class="rail-chart__bar" style="height: {{ pct | round: 1 }}%"></span></span>
+    {% endfor %}
+  </div>
+  <p class="rail-chart__axis"><span>{{ first_year }}</span><span>Citations per year</span><span>{{ last_year }}</span></p>
+  {% endif %}
+  {% endif %}
+
+  {% if papers and papers.size > 0 %}
+  <h3 class="rail-panel__heading">Most cited{% if a %} in this area{% endif %}</h3>
+  {% assign top = papers.first.cited_by | default: 0 %}{% if top < 1 %}{% assign top = 1 %}{% endif %}
+  <ol class="rail-papers">
+    {% for p in papers limit: limit %}
+    {% assign w = p.cited_by | times: 100.0 | divided_by: top %}
+    <li class="rail-paper">
+      {% if p.url %}<a class="rail-paper__title" href="{{ p.url }}" title="{{ p.title | escape }}">{{ p.title }}</a>{% else %}<span class="rail-paper__title" title="{{ p.title | escape }}">{{ p.title }}</span>{% endif %}
+      <span class="rail-paper__meta">
+        <span class="rail-paper__venue">{% if p.label %}{{ p.label }}{% elsif p.venue != "" %}{{ p.venue | truncate: 34 }}{% endif %}{% if p.year %}{% if p.label or p.venue != "" %} · {% endif %}{{ p.year }}{% endif %}</span>
+        {% if p.cited_by > 0 %}<span class="rail-paper__cites"><span class="rail-paper__bar" style="width: {{ w | round: 1 }}%"></span><span class="rail-paper__num">{{ p.cited_by }}</span></span>{% endif %}
+      </span>
+    </li>
+    {% endfor %}
+  </ol>
+  {% if count > limit %}<p class="rail-panel__more"><a href="#publications">Top {{ limit }} of {{ count }}. All papers are listed below ↓</a></p>{% endif %}
+  {% elsif a %}
+  <p class="rail-panel__empty">Papers are in progress. They'll appear here once they're on Google Scholar.</p>
+  {% endif %}
+</section>

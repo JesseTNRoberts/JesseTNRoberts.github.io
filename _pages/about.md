@@ -51,7 +51,7 @@ Browse more tools and demos on the [Learn]({{ '/learn/' | relative_url }}) page.
 
 Goals
 ------
-Here you'll find [papers]({{ '/publications/' | relative_url }}), work in progress, and whatever I'm up to (usually running/climbing, reading, and writing). 
+Here you'll find [papers]({{ '/research/#publications' | relative_url }}), work in progress, and whatever I'm up to (usually running/climbing, reading, and writing). 
 
 I think of goals like completing a thru hike. To reach an objective, you need to minimize _zero days_. To do that I track progress publicly and below there a set of widgets that show my progress. 
 

@@ -66,8 +66,20 @@ module JesseSite
         picks = tagged.sort_by { |p| [-p["cited_by"], -p["sort_year"]] }.first(5) if picks.empty?
         a["paper_count"] = tagged.size
         a["selected_papers"] = picks
+        # For the Research page's side panel: the area's most-cited papers and its total citations.
+        a["top_papers"] = most_cited(tagged).first(10)
+        a["citation_total"] = tagged.sum { |p| p["cited_by"] }
       end
+      pubs["top_papers"] = most_cited(papers).first(10)
+      pubs["paper_count"] = papers.size
       Jekyll.logger.info "Publications:", "#{papers.size} papers"
+    end
+
+    private
+
+    # Most cited first, then newest, then title, so the order is stable between builds.
+    def most_cited(list)
+      list.sort_by { |p| [-p["cited_by"], -p["sort_year"], p["title"].to_s] }
     end
   end
 end

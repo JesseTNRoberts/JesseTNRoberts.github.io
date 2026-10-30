@@ -12,6 +12,7 @@ theme and is deployed to GitHub Pages by GitHub Actions.
 | Top navigation | `_data/navigation.yml` |
 | Goal trackers (homepage) | targets in `_data/goals.yml`; live numbers in `_data/stats.yml` (auto, daily) |
 | Strava / Goodreads widgets | `_includes/widgets/` |
+| Research and Publications page | One page, `/research/` (`_pages/research.html`), built from `_data/research.yml` and the Scholar mirror. Its side column (`_includes/research-rail-panel.html`) follows the reader and shows the citations and most-cited papers for the area on screen. The full paper list is at `/research/#publications`, and `/publications/` redirects there |
 | Publications list | `_data/publications.yml`, mirrored from Google Scholar daily (`_data/citations.csv` is the fallback) |
 | Venue order (Publications sort) | `_data/venues.yml` (ICORE A* → journals → A/B/C → unranked → preprints; tiers never shown) and per-paper tweaks in `_data/publication_overrides.yml`, applied at build by `_plugins/publications.rb` |
 | CV publications | same Scholar list, chronological (`_includes/cv-publications.html`) |
@@ -47,8 +48,8 @@ bundle exec jekyll serve --livereload   # http://localhost:4000
 The workflow runs every day at about 5:23am Central and on every push. It runs
 `scripts/update_stats.rb`, which:
 
-- reads your Google Scholar profile (the URL in `_config.yml`), rewrites the Publications page
-  list, and counts this year's papers. Scholar blocks GitHub's servers, so this goes through
+- reads your Google Scholar profile (the URL in `_config.yml`), rewrites the paper list on the Research page,
+  and counts this year's papers. Scholar blocks GitHub's servers, so this goes through
   [SerpApi](https://serpapi.com) (free plan; add its key as the `SERPAPI_KEY` repo secret).
   If Scholar can't be reached, the last good numbers and list are kept (the page shows
   `_data/citations.csv` until the first successful mirror);
