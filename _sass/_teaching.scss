@@ -92,6 +92,9 @@ $teach-soft: #f6f8fa;
     }
   }
 
+  /* Keep headings that links jump to (#lectures, #demos) clear of the fixed header. */
+  h2[id] { scroll-margin-top: calc(#{$masthead-height} + 1em); }
+
   /* ---- Lecture library tools ---- */
 
   .library-tools {

@@ -3,10 +3,11 @@ layout: single
 title: "Teaching"
 permalink: /teaching/
 author_profile: true
-excerpt: "Courses, lecture slides, and interactive demos by Jesse Roberts at Tennessee Tech."
+excerpt: "Courses, a library of lecture slides, and a library of interactive demos by Jesse Roberts at Tennessee Tech."
 ---
 {% comment %}
-  Built entirely from the course files in _teaching/ (see _teaching/_TEMPLATE.md).
+  Built entirely from the course files in _teaching/ (see _teaching/_TEMPLATE.md) and the demo list
+  in _data/demos.yml. The demo library replaced the old /learn/ page on 2026-10-30.
 {% endcomment %}
 {% assign courses = site.teaching | sort: "date" | reverse %}
 {% assign current = courses | where: "status", "current" %}
@@ -20,8 +21,11 @@ excerpt: "Courses, lecture slides, and interactive demos by Jesse Roberts at Ten
 {% for c in courses %}{% assign has = false %}{% for l in c.lectures %}{% if l.slides or l.pdf or l.video %}{% assign has = true %}{% endif %}{% endfor %}{% if has %}{% assign library_courses = library_courses | plus: 1 %}{% endif %}{% endfor %}
 
 <p class="teaching-intro">
-  I teach machine learning and deep learning at Tennessee Tech. Slides open in the browser. Interactive
-  demos and <a href="/torch-canvas/">Torch Canvas</a> models are on the <a href="{{ '/learn/' | relative_url }}">Learn</a> page.
+  I teach machine learning and deep learning at Tennessee Tech. Slides and demos open in the browser,
+  with nothing to install. You'll find them in the <a href="#lectures">lecture library</a> and the
+  <a href="#demos">demo library</a> below. I also build tools for teaching, like
+  <a href="{{ '/tools/torch-canvas/' | relative_url }}">Torch Canvas</a> and
+  <a href="{{ '/tools/slidewright/' | relative_url }}">Slidewright</a>.
 </p>
 
 {% if current.size > 0 %}
@@ -63,6 +67,22 @@ excerpt: "Courses, lecture slides, and interactive demos by Jesse Roberts at Ten
 </div>
 {% endif %}
 
+{% assign demos = site.data.demos %}
+{% if demos and demos.size > 0 %}
+<h2 id="demos">Demo library <span class="count">{{ demos.size }}</span></h2>
+<p class="teaching-intro">Interactive demos and in-class handouts. Each one is a single page you can open in class or on your own.</p>
+{% if demos.size > 8 %}
+<div class="library-tools">
+  <label class="sr-only" for="demo-search">Search demos</label>
+  <input id="demo-search" class="library-search" type="search" placeholder="Search demos by title or topic…" autocomplete="off">
+</div>
+{% endif %}
+<div class="library" id="demo-library">
+  {% for d in demos %}{% include demo-card.html demo=d %}{% endfor %}
+  <p class="library-empty" hidden>No demos match that search.</p>
+</div>
+{% endif %}
+
 {% if past.size > 0 %}
 <h2>Past courses</h2>
 <div class="course-grid">
@@ -71,6 +91,23 @@ excerpt: "Courses, lecture slides, and interactive demos by Jesse Roberts at Ten
 {% endif %}
 
 <script>
+  (function () {
+    var search = document.getElementById('demo-search');
+    var lib = document.getElementById('demo-library');
+    if (!search || !lib) return;
+    var items = lib.querySelectorAll('.lecture');
+    var empty = lib.querySelector('.library-empty');
+    search.addEventListener('input', function () {
+      var words = search.value.toLowerCase().split(/\s+/).filter(Boolean);
+      var shown = 0;
+      items.forEach(function (el) {
+        var ok = words.every(function (w) { return el.dataset.search.toLowerCase().indexOf(w) !== -1; });
+        el.hidden = !ok;
+        if (ok) shown++;
+      });
+      empty.hidden = shown !== 0;
+    });
+  })();
   (function () {
     var lib = document.getElementById('library');
     if (!lib || !document.getElementById('lecture-search')) return;

@@ -30,7 +30,7 @@ areas:
     selected: ["How Powerful are Decoder-Only", "RL+ Transformer"]
     links:
       - { title: Torch Canvas, url: /tools/torch-canvas/ }
-      - { title: Interactive demos, url: /learn/ }
+      - { title: Interactive demos, url: /teaching/#demos }
       - { title: "Deep Learning course (AI 4200/5200)", url: /teaching/F2026-AI4200 }
 
   - id: llms

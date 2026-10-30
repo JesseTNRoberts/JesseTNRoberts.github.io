@@ -6,9 +6,6 @@ main:
   - title: "Teaching"
     url: /teaching/
 
-  - title: "Learn"
-    url: /learn/
-
   - title: "Torch Canvas"
     url: /tools/torch-canvas/
 

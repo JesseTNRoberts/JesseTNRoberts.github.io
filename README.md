@@ -17,7 +17,7 @@ theme and is deployed to GitHub Pages by GitHub Actions.
 | Venue order (Publications sort) | `_data/venues.yml` (ICORE A* → journals → A/B/C → unranked → preprints; tiers never shown) and per-paper tweaks in `_data/publication_overrides.yml`, applied at build by `_plugins/publications.rb` |
 | CV publications | same Scholar list, chronological (`_includes/cv-publications.html`) |
 | Courses | `_teaching/` |
-| Interactive demos | files in `assets/demonstrations/`, listed in `_data/demos.yml` (shown on `/learn/`) |
+| Interactive demos | files in `assets/demonstrations/`, listed in `_data/demos.yml` (shown in the demo library on `/teaching/#demos`, and on tagged course pages). `/learn/` redirects there |
 | Torch Canvas page | `/tools/torch-canvas/` (`_pages/torch-canvas.html`); text and features in `_data/torch_canvas.yml` |
 | Torch Canvas models | synced from the torch-canvas repo into `_data/torch_canvas_library.json` + `assets/torch-canvas/thumbs/` (daily, when it changes). Link: `/torch-canvas/?open=<id>`; button: `{% include torch-canvas-link.html model="<id>" %}` |
 | Slidewright page | `/tools/slidewright/` (`_pages/slidewright.html`); text and features in `_data/slidewright.yml`, logo and screenshot in `assets/slidewright/`. The app itself is the slidewright repo, served at `/slidewright/` |

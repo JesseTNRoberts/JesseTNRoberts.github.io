@@ -43,7 +43,7 @@ uses:
       parameters. A variance plot shows how the signal grows or shrinks through the network before
       training.
 
-# Shown first on the Torch Canvas page and on /learn/ (ids from the library).
+# Shown first on the Torch Canvas page (ids from the library).
 featured: [gpt2, llama2_7b, bert_base, qwen2_5_vl_3b]
 
 # Which courses use which examples (shown on those course pages).

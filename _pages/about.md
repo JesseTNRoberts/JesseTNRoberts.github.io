@@ -47,7 +47,7 @@ The newest is [Slidewright]({{ '/tools/slidewright/' | relative_url }}), a minim
 
 <a class="btn btn--primary" href="/slidewright/">Open Slidewright</a>
 
-Browse more tools and demos on the [Learn]({{ '/learn/' | relative_url }}) page.
+Browse my lecture slides and interactive demos on the [Teaching]({{ '/teaching/' | relative_url }}) page.
 
 Goals
 ------

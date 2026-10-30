@@ -1,4 +1,5 @@
-# Interactive demos and handouts shown on /learn/.
+# Interactive demos and handouts, shown in the Teaching page's demo library (/teaching/#demos)
+# and on the pages of the courses they're tagged with.
 # Self-contained HTML files live in assets/demonstrations/.
 #
 #   id (used to attach a demo to a lecture), title, url (site path), description, courses, topics

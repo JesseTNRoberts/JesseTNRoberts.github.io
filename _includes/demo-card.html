@@ -1,0 +1,24 @@
+{% comment %}
+  One interactive demo in the Teaching page's demo library, styled like a lecture row.
+  Param: demo (an entry from _data/demos.yml).
+{% endcomment %}
+{% assign d = include.demo %}
+<article class="lecture lecture--demo" id="demo-{{ d.id }}"
+  data-search="{{ d.title }} {{ d.description }} {{ d.topics | join: ' ' }} {{ d.courses | join: ' ' }}">
+  <div class="lecture__num" aria-hidden="true"><i class="fas fa-sliders-h"></i></div>
+  <div class="lecture__body">
+    {% if d.courses and d.courses.size > 0 %}
+    <p class="lecture__course">
+      {% for cid in d.courses %}{% assign c = site.teaching | where: "course_id", cid | sort: "date" | last %}{% if c %}<a href="{{ c.url | relative_url }}">{{ c.code }} · {{ c.title }}</a>{% else %}{{ cid }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+    </p>
+    {% endif %}
+    <h4 class="lecture__title"><a href="{{ d.url | relative_url }}">{{ d.title }}</a></h4>
+    {% if d.description %}<p class="lecture__note">{{ d.description }}</p>{% endif %}
+    {% if d.topics and d.topics.size > 0 %}
+    <p class="lecture__topics">{% for t in d.topics %}<span class="learn-tag">{{ t }}</span>{% endfor %}</p>
+    {% endif %}
+  </div>
+  <div class="lecture__links">
+    <a class="lecture__link lecture__link--primary" href="{{ d.url | relative_url }}"><i class="fas fa-play" aria-hidden="true"></i> Open demo</a>
+  </div>
+</article>
