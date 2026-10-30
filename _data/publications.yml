@@ -1,12 +1,12 @@
 # Generated from Google Scholar by scripts/update_stats.rb (daily via GitHub Actions).
 # Don't edit by hand. To fix a paper, edit it on your Scholar profile.
 profile: https://scholar.google.com/citations?user=Bj9GEfkAAAAJ
-updated: '2026-10-29T16:59:07Z'
+updated: '2026-10-30T16:44:28Z'
 metrics:
   since: 2021
   citations:
-    all: 202
-    since: 198
+    all: 204
+    since: 200
   h_index:
     all: 8
     since: 8
@@ -27,7 +27,7 @@ citations_by_year:
 - year: 2025
   citations: 80
 - year: 2026
-  citations: 84
+  citations: 86
 papers:
 - title: Augmenting LLM-Based Agents for Improved Performance in Pentesting and Commissioning
     Operational Technology in Critical Infrastructure
@@ -188,7 +188,7 @@ papers:
   authors: K Moore, J Roberts, T Pham, D Fisher
   venue: Proceedings of the Annual Meeting of the Cognitive Science Society 47
   year: 2024
-  cited_by: 13
+  cited_by: 14
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:kNdYIx-mwKoC
 - title: Do Large Language Models Learn to Human-Like Learn?
   authors: J Roberts
@@ -219,7 +219,7 @@ papers:
   authors: J Roberts, L Roberts, A Reed
   venue: Proceedings of the AAAI Symposium Series 4 (1), 182-186
   year: 2024
-  cited_by: 6
+  cited_by: 7
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:roLk4NBRz8UC
 - title: 'The base-rate effect on llm benchmark performance: Disambiguating test-taking
     strategies from benchmark performance'
