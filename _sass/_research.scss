@@ -53,6 +53,10 @@ $rs-soft: #f6f8fa;
     &__count { font-size: $type-size-7; color: $gray; }
 
     &--pubs {
+      grid-column: 1 / -1;     /* its own full-width row, however many areas there are */
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
       background: $rs-soft;
       border-top-color: $gray;
 

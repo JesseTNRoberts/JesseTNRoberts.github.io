@@ -18,3 +18,30 @@
 
 - title: "A Theoretical & Empirical Analysis of Transformer Language Model Behavior"
   label: "Ph.D. Dissertation"
+  areas: [llms, fundamentals]
+
+# Research areas set by Jesse on 2026-10-31. Papers in more than one area show in each.
+- title: "How Powerful are Decoder-Only Transformer"
+  areas: [fundamentals, llms]
+
+- title: "Exploitation Is All You Need"
+  areas: [fundamentals]
+
+- title: "RL+ Transformer"
+  areas: [fundamentals, games]
+
+- title: "pReview: The artificially intelligent conference reviewer"
+  areas: [llms]
+
+- title: "Do Large Language Models Learn Human-Like Strategic Preferences"
+  areas: [llms, games]
+
+- title: "LLMs as Agentic Cooperative Players in Multiplayer UNO"
+  areas: [llms, games]
+
+- title: "Action Plan for Artificial Intelligence Education"
+  areas: [games]
+
+# Outliers (Jesse, 2026-10-31). They stay in the full paper list but belong to no research area:
+# urban traffic simulation, AI in Honors, Traveler's Dilemma, computational criticism (ICCC), and
+# the solar MPPT papers. Keep them out of area keywords.

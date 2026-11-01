@@ -52,6 +52,17 @@ areas:
       - { title: "CSC 7970 seminar on LLMs", url: /teaching/S2026-CSC7970 }
       - { title: LLM foundations reading list, url: "https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE" }
 
+  - id: games
+    title: Games and decision making
+    icon: fas fa-chess-knight
+    # Draft summary written by Claude on 2026-10-31 for Jesse to edit.
+    summary: >-
+      How AI agents make decisions when other players and their choices matter. This work studies
+      whether language models show human-like strategic preferences, how they cooperate as players
+      in multiplayer games, and how transformers can learn to act as general-purpose problem
+      solvers.
+    keywords: [multiplayer, strategic preference, game theory, decision making, decision-making]
+
   - id: cherokee
     title: Cherokee language NLP
     icon: fas fa-language
