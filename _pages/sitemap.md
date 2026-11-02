@@ -1,37 +1,33 @@
 ---
-layout: archive
+layout: single
 title: "Sitemap"
 permalink: /sitemap/
 author_profile: true
+description: "Every page on Jesse Roberts's website, from research and teaching to the Torch Canvas and Slidewright tools."
 ---
 
-{% include base_path %}
+{% comment %}
+  Lists real pages only. Redirect stubs (redirect_to), pages kept out of search (sitemap: false)
+  and non-HTML files are skipped. Search engines use the XML sitemap at /sitemap.xml.
+{% endcomment %}
 
-A list of all the posts and pages found on the site. For you robots out there is an [XML version]({{ base_path }}/sitemap.xml) available for digesting as well.
+Every page on this site is listed below. Search engines can use the [XML version]({{ '/sitemap.xml' | relative_url }}).
 
-<h2>Pages</h2>
-{% for post in site.pages %}
-  {% include archive-single.html %}
-{% endfor %}
+## Pages
 
-<h2>Posts</h2>
-{% for post in site.posts %}
-  {% include archive-single.html %}
-{% endfor %}
+<ul>
+{% assign pages = site.pages | sort: "title" %}
+<li><a href="{{ '/' | relative_url }}">Home</a></li>
+{% for p in pages %}{% if p.title and p.sitemap != false and p.redirect_to == nil and p.url != "/" and p.url != page.url %}{% assign ext = p.url | split: "." | last %}{% unless p.url contains "." and ext != "html" %}
+<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+{% endunless %}{% endif %}{% endfor %}
+</ul>
 
-{% capture written_label %}'None'{% endcapture %}
+## Courses
 
-{% for collection in site.collections %}
-{% unless collection.output == false or collection.label == "posts" %}
-  {% capture label %}{{ collection.label }}{% endcapture %}
-  {% if label != written_label %}
-  <h2>{{ label }}</h2>
-  {% capture written_label %}{{ label }}{% endcapture %}
-  {% endif %}
-{% endunless %}
-{% for post in collection.docs %}
-  {% unless collection.output == false or collection.label == "posts" %}
-  {% include archive-single.html %}
-  {% endunless %}
-{% endfor %}
-{% endfor %}
+<ul>
+{% assign courses = site.teaching | sort: "date" | reverse %}
+{% for c in courses %}{% if c.sitemap != false and c.published != false %}
+<li><a href="{{ c.url | relative_url }}">{{ c.code }} {{ c.title }}</a>, {{ c.term }}</li>
+{% endif %}{% endfor %}
+</ul>

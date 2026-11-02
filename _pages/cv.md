@@ -5,6 +5,7 @@ permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
+description: "Curriculum vitae of Jesse Roberts, assistant professor at Tennessee Tech University, with publications, grants, fellowships, talks and teaching."
 ---
 
 # Jesse Roberts

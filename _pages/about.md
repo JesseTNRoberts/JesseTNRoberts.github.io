@@ -1,11 +1,12 @@
 ---
 permalink: /
 title: "About Me"
-seo_title: "Jesse Roberts - Research, Connections, and Updates"
+seo_title: "Jesse Roberts - AI Researcher at Tennessee Tech University"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
+description: "Jesse Roberts leads the Language and AI Research (LAIR) group at Tennessee Tech University and studies how neural networks and language models learn and reason."
 ---
 
 
