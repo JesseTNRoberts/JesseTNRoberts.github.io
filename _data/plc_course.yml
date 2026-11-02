@@ -1,0 +1,140 @@
+# Introduction to PLC Automation: the free online course page (_pages/plc-course.html, /teaching/plc/).
+# It ties together three things.
+#   Ladderbox, the browser PLC environment (repo JesseTNRoberts/Ladderbox, served at /Ladderbox/).
+#     Never create /Ladderbox/ in this repo, because the app itself is served there.
+#   The book, files/Introduction_to_PLC_Automation.pdf (page numbers below are PDF pages).
+#   The lecture playlist on YouTube (the ECE 3270 lectures).
+# Modules follow the chapters of Ladderbox's Book tab (BOOK_CH in the Ladderbox index.html) and
+# the challenge titles follow its LESSONS list. Update both here when Ladderbox gains chapters.
+# Add `lecture:` (url and title) to a module once its video is known. Until then it links the playlist.
+
+course:
+  title: "Introduction to PLC Automation"
+  ladderbox: /Ladderbox/
+  ladderbox_repo: https://github.com/JesseTNRoberts/Ladderbox
+  book: /files/Introduction_to_PLC_Automation.pdf
+  playlist: https://www.youtube.com/playlist?list=PL08zDkmLSnzFXJt9FVlfNPbG_KlcI_Qck
+  playlist_id: PL08zDkmLSnzFXJt9FVlfNPbG_KlcI_Qck
+  lead: >-
+    A free, self-paced course on programming programmable logic controllers with ladder logic.
+    It's built from the PLC course I taught at Tennessee Tech. You watch the lectures, read the
+    book, and do every lab in Ladderbox, a PLC that runs in your browser. There's nothing to
+    install and no hardware to buy.
+
+# The four steps of each module, shown as cards.
+steps:
+  - icon: fas fa-play-circle
+    title: Watch
+    text: >-
+      Each module has a video lecture that covers the instructions and ideas the lab needs.
+  - icon: fas fa-book-open
+    title: Read
+    text: >-
+      Open the chapter in Ladderbox's Book tab. The reading has small rungs to try, quizzes and
+      animations of the scan. The PDF book has the original lab write-ups.
+  - icon: fas fa-project-diagram
+    title: Build
+    text: >-
+      Each challenge opens in the ladder editor with its tags ready. Write the rungs, run the
+      controller, and drive the inputs, the HMI or the simulation.
+  - icon: fas fa-check-circle
+    title: Check
+    text: >-
+      Press Check my code and Ladderbox tests your program against the specification. Your
+      progress stays in your browser, and you can export a completion report.
+
+modules:
+  - n: 0
+    title: Getting around the controller
+    labs: Lab 0
+    page: 11
+    summary: >-
+      Download a program, go online, and make your first edits to a running controller, both
+      online and offline.
+    challenges: ["Is it Fall? Fix the OR", "Is it Fall? The AND way"]
+  - n: 1
+    title: Contacts, coils and logic
+    labs: Pre-lab 1 and Lab 1
+    page: 33
+    summary: >-
+      Read a rung like a circuit. XIC and XIO contacts, series and branches as AND and OR, the scan
+      cycle, seal-in circuits and De Morgan's theorem.
+    challenges: ["Sound the alarm", "Robot cell E-stop", "Safe to move", "Storefront door", "Storefront door, again", "Sawmill seal-in", "De Morgan challenge"]
+  - n: 2
+    title: Latches and bit-latch sequences
+    labs: Pre-lab 2 and Lab 2
+    page: 45
+    summary: >-
+      Latch and unlatch bits to remember what happened, step a machine through a sequence, and
+      build a toggle without a one-shot.
+    challenges: ["Stove bit-latch sequence", "The formula with a temporary tag", "Box transfer system", "Toggle without a one-shot"]
+  - n: 3
+    title: Math and compare instructions
+    labs: Pre-lab 3 and Lab 3
+    page: 55
+    summary: >-
+      Do arithmetic in ladder, compare values to make decisions, and count events by hand.
+    challenges: ["Point on the unit circle", "Transmission shim thickness", "Modulo without MOD", "Seven boxes, counted by hand"]
+  - n: 4
+    title: Timers and counters
+    labs: Pre-lab 4&5 and Labs 4&5
+    page: 65
+    summary: >-
+      Use TON timers and CTU counters and the data inside their TIMER and COUNTER structures.
+      Debounce a signal, count boxes and make a square wave.
+    challenges: ["Debounce a signal", "Seven boxes with a CTU", "Square wave", "Maze challenge"]
+  - n: 5
+    title: Talking to the HMI
+    labs: Pre-lab 6 and Labs 6&7
+    page: 75
+    summary: >-
+      Send values from an operator screen to the PLC and display results back, with buttons,
+      numeric entry and displays, and multi-state indicators.
+    challenges: ["Centrifuge speed entry", "Stopwatch", "Blinking light", "Calculator", "Safe combination"]
+  - n: 6
+    title: A real specification
+    labs: Pre-lab 8&9 and Labs 8&9
+    page: 89
+    summary: >-
+      Turn a written functional specification into a working program and HMI, measuring vehicle
+      speeds with pressure road tubes.
+    challenges: ["Pressure road tubes"]
+  - n: 7
+    title: State machines
+    labs: Pre-lab 10&11 and Labs 10&11
+    page: 95
+    summary: >-
+      Design a state machine and code it in ladder logic, from a simple toggle to a traffic light.
+    challenges: ["Simple state machine", "Toggle as a state machine", "Wamapoke stoplight", "The final problem"]
+  - n: 8
+    title: Lab final
+    labs: Lab final
+    page: 105
+    summary: >-
+      Put it all together on a full industrial problem, with HMI object visibility and messages.
+    challenges: ["Winnipeg Industrial"]
+  - n: 9
+    title: Process simulations
+    labs: Beyond the book
+    summary: >-
+      Run a transmission cell and a sorting line, live simulations driven entirely by your PLC
+      program, with a 3D view.
+    challenges: ["Transmission press and spin test", "Package sorting line"]
+
+# Short notes at the bottom of the page.
+notes:
+  - icon: fas fa-industry
+    title: Real controllers too
+    text: >-
+      Ladderbox uses the Allen-Bradley instruction set and data types. You can export a program to
+      Studio 5000 (L5X) or to an Arduino sketch, and import L5X files.
+  - icon: fas fa-code
+    title: Ladder and C side by side
+    text: >-
+      A Structured C view stays in sync with the ladder in both directions, so you can read a rung
+      as code or type code and watch the rung appear.
+  - icon: fas fa-chalkboard-teacher
+    title: For instructors
+    text: >-
+      The course works as a full lab sequence. Students can hand in Ladderbox's completion report,
+      which lists every activity and challenge with best scores and dates.

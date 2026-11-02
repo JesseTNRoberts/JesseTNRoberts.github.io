@@ -1,0 +1,92 @@
+---
+layout: single
+title: "Introduction to PLC Automation (Beta)"
+seo_title: "Introduction to PLC Automation, a Free Online Course (Beta)"
+permalink: /teaching/plc/
+author_profile: true
+excerpt: "A free, self-paced online course on PLC programming with ladder logic. Video lectures, a book, and labs you solve and check in Ladderbox, a PLC in your browser."
+description: "Beta. A free online course on PLC programming with ladder logic, with video lectures, a book, and labs you check in Ladderbox, a PLC in your browser."
+og_image: /assets/plc-course/share.png
+og_image_alt: "Ladderbox with a ladder rung on the left and a book chapter on contacts, coils and logic on the right"
+---
+{% comment %}
+  Standalone online PLC course. Content lives in _data/plc_course.yml.
+  Ladderbox itself is another repo served at /Ladderbox/. Never create that path here.
+{% endcomment %}
+{% assign pc = site.data.plc_course %}
+{% assign lb = pc.course.ladderbox | relative_url %}
+{% assign book = pc.course.book | relative_url %}
+
+<section class="plc-hero">
+  <p class="plc-hero__kicker">Free online course <span class="plc-beta">Beta</span></p>
+  <p class="plc-hero__desc">{{ pc.course.lead }}</p>
+  <div class="plc-hero__actions">
+    <a class="btn btn--primary btn--large" href="{{ lb }}"><i class="fas fa-play" aria-hidden="true"></i> Open Ladderbox</a>
+    <a class="btn btn--inverse btn--large" href="{{ book }}"><i class="fas fa-book" aria-hidden="true"></i> The book (PDF)</a>
+    <a class="btn btn--inverse btn--large" href="{{ pc.course.playlist }}"><i class="fab fa-youtube" aria-hidden="true"></i> Lecture playlist</a>
+  </div>
+</section>
+
+<div class="plc-beta-note" role="note">
+  <span class="plc-beta">Beta</span>
+  <p>This course is still being built. Ladderbox, the interactive book and the lecture links will change, and you may run into rough edges. So far only chapter 1 has its full reading and activities in Ladderbox, but every module's challenges work now. Your progress is saved in your browser, so clearing site data resets it.</p>
+</div>
+
+<figure class="plc-shot">
+  <a href="{{ lb }}"><img src="{{ '/assets/plc-course/ladderbox.jpg' | relative_url }}" alt="Ladderbox in the browser. A ladder diagram with a motor seal-in rung and a TON timer is on the left, the book chapter Contacts, coils and logic is open on the right, and the controller tag table is below." width="1440" height="900"></a>
+  <figcaption>Ladderbox runs the ladder on the left while the book's chapter sits on the right. Tags, the HMI and the simulations are a click away.</figcaption>
+</figure>
+
+<h2 id="how">How the course works</h2>
+<div class="plc-steps">
+  {% for s in pc.steps %}
+  <div class="plc-step">
+    <span class="plc-step__n">{{ forloop.index }}</span>
+    <i class="{{ s.icon }}" aria-hidden="true"></i>
+    <h3>{{ s.title }}</h3>
+    <p>{{ s.text }}</p>
+  </div>
+  {% endfor %}
+</div>
+<p class="plc-aside">Work through the modules in order, since each lab only uses the instructions covered so far. If you already know PLCs, try solving each challenge with just those instructions.</p>
+
+<h2 id="modules">Modules</h2>
+<ol class="plc-modules">
+  {% for m in pc.modules %}
+  <li class="plc-module" id="module-{{ m.n }}">
+    <span class="plc-module__n" aria-hidden="true">{{ m.n }}</span>
+    <div class="plc-module__body">
+      <h3>{{ m.title }}</h3>
+      <p class="plc-module__labs">{{ m.labs }} · {{ m.challenges.size }} challenge{% if m.challenges.size != 1 %}s{% endif %}</p>
+      <p>{{ m.summary }}</p>
+      <ul class="plc-module__chal" aria-label="Challenges in module {{ m.n }}">
+        {% for c in m.challenges %}<li>{{ c }}</li>{% endfor %}
+      </ul>
+      <p class="plc-module__links">
+        {% if m.lecture %}<a href="{{ m.lecture.url }}"><i class="fab fa-youtube" aria-hidden="true"></i> {{ m.lecture.title }}</a>
+        {% else %}<a href="{{ pc.course.playlist }}"><i class="fab fa-youtube" aria-hidden="true"></i> Lectures</a>{% endif %}
+        {% if m.page %}<a href="{{ book }}#page={{ m.page }}"><i class="fas fa-book" aria-hidden="true"></i> Book, page {{ m.page }}</a>{% endif %}
+        <a href="{{ lb }}"><i class="fas fa-play" aria-hidden="true"></i> Ladderbox, Book tab, chapter {{ m.n }}</a>
+      </p>
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+
+<h2 id="lectures">Lectures</h2>
+<p>The full lecture series plays below, or you can <a href="{{ pc.course.playlist }}">open the playlist on YouTube</a>.</p>
+<div class="plc-video">
+  <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list={{ pc.course.playlist_id }}" title="Introduction to PLC Automation lecture playlist" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+</div>
+
+<h2 id="about-ladderbox">About Ladderbox</h2>
+<div class="plc-notes">
+  {% for n in pc.notes %}
+  <div class="plc-note">
+    <i class="{{ n.icon }}" aria-hidden="true"></i>
+    <h3>{{ n.title }}</h3>
+    <p>{{ n.text }}</p>
+  </div>
+  {% endfor %}
+</div>
+<p class="plc-fine">Ladderbox is free to use and runs entirely in your browser. Allen-Bradley, Studio 5000 and Arduino are trademarks of their respective owners, and Ladderbox is not affiliated with them. <a href="{{ pc.course.ladderbox_repo }}">See the source on GitHub.</a></p>

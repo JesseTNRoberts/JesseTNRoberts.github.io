@@ -1,0 +1,295 @@
+/* ==========================================================================
+   Introduction to PLC Automation course page (/teaching/plc/).
+   Colors follow Ladderbox's own green.
+   ========================================================================== */
+
+$plc-green: #178a4c;
+$plc-ink: #17201b;
+$plc-paper: #f3f7f4;
+$plc-line: #d3e0d8;
+
+.page__content {
+  .plc-hero {
+    margin: 0.5em 0 1.5em;
+    padding: 1.5em;
+    color: $plc-ink;
+    background: $plc-paper;
+    border: 1px solid $plc-line;
+    border-left: 6px solid $plc-green;
+    border-radius: 16px;
+
+    &__kicker {
+      margin: 0 0 0.4em;
+      font-size: $type-size-6;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: $plc-green;
+    }
+
+    &__desc {
+      margin: 0 0 1em;
+      line-height: 1.55;
+    }
+
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+
+      .btn {
+        margin: 0;
+      }
+    }
+  }
+
+  .plc-shot {
+    margin: 0 0 2em;
+
+    /* figure is a flex box in the theme, so the link has to take the full width. */
+    > a {
+      display: block;
+      width: 100%;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #e3e7eb;
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(23, 32, 27, 0.12);
+    }
+
+    figcaption {
+      margin-top: 0.6em;
+      font-size: $type-size-6;
+      color: $gray;
+    }
+  }
+
+  .plc-steps,
+  .plc-notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1em;
+    margin: 1em 0 1em;
+  }
+
+  .plc-step,
+  .plc-note {
+    position: relative;
+    padding: 1em 1.1em;
+    background: $plc-paper;
+    border: 1px solid $plc-line;
+    border-radius: 12px;
+
+    i {
+      font-size: 1.3em;
+      color: $plc-green;
+    }
+
+    h3 {
+      margin: 0.4em 0 0.3em;
+      font-size: 1em;
+    }
+
+    p {
+      margin: 0;
+      font-size: $type-size-6;
+      line-height: 1.5;
+    }
+  }
+
+  .plc-step__n {
+    position: absolute;
+    top: 0.7em;
+    right: 0.9em;
+    font-size: $type-size-6;
+    font-weight: bold;
+    color: mix($plc-green, #fff, 55%);
+  }
+
+  .plc-aside,
+  .plc-fine {
+    font-size: $type-size-6;
+    color: $gray;
+  }
+
+  .plc-modules {
+    margin: 1em 0 2em;
+    padding: 0;
+    list-style: none;
+  }
+
+  .plc-module {
+    display: flex;
+    gap: 1em;
+    margin: 0 0 1em;
+    padding: 1em 1.1em;
+    border: 1px solid $plc-line;
+    border-radius: 12px;
+    scroll-margin-top: 4em;
+
+    &__n {
+      flex: none;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      background: $plc-green;
+      border-radius: 50%;
+    }
+
+    &__body {
+      min-width: 0;
+
+      h3 {
+        margin: 0.15em 0 0.1em;
+        font-size: 1.05em;
+      }
+
+      p {
+        margin: 0 0 0.5em;
+        font-size: $type-size-6;
+        line-height: 1.5;
+      }
+    }
+
+    &__labs {
+      color: $gray;
+    }
+
+    &__chal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35em;
+      margin: 0 0 0.6em;
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin: 0;
+        padding: 0.15em 0.65em;
+        font-size: $type-size-7;
+        background: $plc-paper;
+        border: 1px solid $plc-line;
+        border-radius: 999px;
+      }
+    }
+
+    &__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4em 1.2em;
+      margin: 0 !important;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .plc-video {
+    position: relative;
+    margin: 1em 0 2em;
+    aspect-ratio: 16 / 9;
+
+    iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 10px;
+    }
+  }
+
+  /* Teaching page feature box linking to the course. */
+  .plc-feature {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75em 1.25em;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1em 0 1.5em;
+    padding: 1.1em 1.25em;
+    background: $plc-paper;
+    border: 1px solid $plc-line;
+    border-left: 6px solid $plc-green;
+    border-radius: 12px;
+
+    &__text {
+      flex: 1 1 320px;
+
+      p {
+        margin: 0.2em 0 0;
+        font-size: $type-size-6;
+        line-height: 1.5;
+      }
+    }
+
+    &__kicker {
+      font-size: $type-size-7;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: $plc-green;
+    }
+
+    &__title {
+      display: block;
+      font-size: 1.15em;
+      font-weight: bold;
+    }
+
+    .btn {
+      margin: 0;
+    }
+  }
+
+  /* Beta label and notice. */
+  .plc-beta {
+    display: inline-block;
+    margin-left: 0.4em;
+    padding: 0.1em 0.55em;
+    font-size: 0.8em;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    vertical-align: middle;
+    color: #7a4a00;
+    background: #ffe9b8;
+    border: 1px solid #f0c060;
+    border-radius: 999px;
+  }
+
+  .plc-beta-note {
+    display: flex;
+    gap: 0.8em;
+    align-items: flex-start;
+    margin: 0 0 1.5em;
+    padding: 0.9em 1.1em;
+    background: #fff8e6;
+    border: 1px solid #f0c060;
+    border-radius: 12px;
+
+    .plc-beta {
+      flex: none;
+      margin: 0.15em 0 0;
+    }
+
+    p {
+      margin: 0;
+      font-size: $type-size-6;
+      line-height: 1.5;
+    }
+  }
+}
