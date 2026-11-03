@@ -1,7 +1,7 @@
 {
   "source": "https://github.com/JesseTNRoberts/torch-canvas",
-  "commit": "a6b9868b235a2a4606627cbbb5afa90c1ea9ef1c",
-  "updated": "2026-10-29T17:01:51.804Z",
+  "commit": "8093749f3fc2c98a95ff60c5f8edca37ea2e027e",
+  "updated": "2026-11-03T17:57:51.131Z",
   "networks": [
     {
       "kind": "network",

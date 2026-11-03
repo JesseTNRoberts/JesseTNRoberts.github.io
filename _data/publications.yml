@@ -1,7 +1,7 @@
 # Generated from Google Scholar by scripts/update_stats.rb (daily via GitHub Actions).
 # Don't edit by hand. To fix a paper, edit it on your Scholar profile.
 profile: https://scholar.google.com/citations?user=Bj9GEfkAAAAJ
-updated: '2026-11-02T20:25:12Z'
+updated: '2026-11-03T17:54:58Z'
 metrics:
   since: 2021
   citations:
@@ -119,7 +119,7 @@ papers:
 - title: 'Basic Categories in Vision Language Models: Expert Prompting Doesn’t Grant
     Expertise'
   authors: H Sawyer, J Roberts, K Moore
-  venue: Advances in Cognitive Systems 2025, 177
+  venue: Twelfth Annual Conference on Advances in Cognitive Systems 2025, 177
   year: 2025
   cited_by: 0
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:MXK_kJrjxJIC
