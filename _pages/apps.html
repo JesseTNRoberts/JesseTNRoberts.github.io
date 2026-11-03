@@ -1,0 +1,31 @@
+---
+layout: single
+title: "Apps"
+permalink: /apps/
+author_profile: true
+excerpt: "Free apps by Jesse Roberts that run in your browser. Torch Canvas for neural networks, Slidewright for slide decks, and Ladderbox for learning to program PLCs."
+description: "Free apps that run in your browser. Torch Canvas for neural networks, Slidewright for slide decks, and Ladderbox for learning to program PLCs."
+---
+{% comment %}
+  Lists _data/apps.yml, the same list as the Apps panel in the top menu.
+{% endcomment %}
+{% assign apps = site.data.apps %}
+
+<p class="apps-intro">{{ apps.intro }} There's nothing to install.</p>
+
+<div class="apps-grid">
+  {% for a in apps.items %}
+  <section class="apps-card" aria-labelledby="app-{{ forloop.index }}">
+    <img class="apps-card__mark" src="{{ a.icon | relative_url }}" alt="" width="64" height="64">
+    <div class="apps-card__body">
+      <h2 id="app-{{ forloop.index }}">{{ a.name }}{% if a.beta %}<span class="apps-card__beta">Beta</span>{% endif %}</h2>
+      <p class="apps-card__tagline">{{ a.tagline }}</p>
+      <p class="apps-card__desc">{{ a.description }}</p>
+      <p class="apps-card__actions">
+        <a class="btn btn--primary" href="{{ a.url | relative_url }}">Open {{ a.name }}</a>
+        {% if a.page %}<a class="btn btn--inverse" href="{{ a.page | relative_url }}">{{ a.more }}</a>{% endif %}
+      </p>
+    </div>
+  </section>
+  {% endfor %}
+</div>

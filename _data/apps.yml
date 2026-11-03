@@ -1,0 +1,38 @@
+# Apps: Jesse's browser apps, shown in the Apps menu panel (_includes/apps-menu.html) and on /apps/.
+# Each app lives in its own repo and is served under the domain at `url`. Never create those paths here.
+# `page` is the site's page about the app. `more` is the label for that link.
+# Add an app here and it appears in the menu and on /apps/.
+
+intro: "Free apps that run in your browser, built for teaching and learning."
+
+items:
+  - name: Torch Canvas
+    url: /torch-canvas/
+    page: /tools/torch-canvas/
+    more: About Torch Canvas
+    icon: /assets/torch-canvas/logo.svg
+    tagline: "See, build and understand neural networks"
+    description: >-
+      Draw a network and get the PyTorch code, or paste code and get the diagram. Use it to teach
+      how architectures work, make figures for papers, and see what each component does.
+
+  - name: Slidewright
+    url: /slidewright/
+    page: /tools/slidewright/
+    more: About Slidewright
+    icon: /assets/slidewright/logo.svg
+    tagline: "Edit, check and present slide decks"
+    description: >-
+      A minimalist editor for reveal.js presentations. Edit right on the slide, check accessibility,
+      and present with live drawing tools.
+
+  - name: Ladderbox
+    url: /Ladderbox/
+    page: /teaching/plc/
+    more: Free PLC course
+    icon: /assets/plc-course/ladderbox-mark.svg
+    tagline: "Learn to program PLCs in your browser"
+    beta: true
+    description: >-
+      A PLC learning environment with Allen-Bradley ladder logic, a synced C view, an HMI, process
+      simulations and labs that check your work. It goes with the free PLC course.

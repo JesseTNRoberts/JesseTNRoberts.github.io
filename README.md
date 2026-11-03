@@ -21,6 +21,7 @@ theme and is deployed to GitHub Pages by GitHub Actions.
 | Torch Canvas page | `/tools/torch-canvas/` (`_pages/torch-canvas.html`); text and features in `_data/torch_canvas.yml` |
 | Torch Canvas models | synced from the torch-canvas repo into `_data/torch_canvas_library.json` + `assets/torch-canvas/thumbs/` (daily, when it changes). Link: `/torch-canvas/?open=<id>`; button: `{% include torch-canvas-link.html model="<id>" %}` |
 | Slidewright page | `/tools/slidewright/` (`_pages/slidewright.html`); text and features in `_data/slidewright.yml`, logo and screenshot in `assets/slidewright/`. The app itself is the slidewright repo, served at `/slidewright/` |
+| Apps menu and page | The Apps item in the top menu opens a panel on hover or focus (`_includes/apps-menu.html`, hooked in `_includes/masthead.html` by `menu: apps` in `_data/navigation.yml`). It and `/apps/` (`_pages/apps.html`) both list `_data/apps.yml`. Add an app there. Styles in `_sass/_apps.scss` |
 | PLC online course | `/teaching/plc/` (`_pages/plc-course.html`); modules, steps and links in `_data/plc_course.yml`, screenshot and share image in `assets/plc-course/`. Ladderbox itself is the Ladderbox repo, served at `/Ladderbox/`, and the book is `files/Introduction_to_PLC_Automation.pdf` |
 | Lecture slides and notebooks | `assets/lectures/<COURSE>/` |
 | General talks (not tied to a course) | `assets/talks/`, linked from the homepage |

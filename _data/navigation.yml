@@ -6,11 +6,11 @@ main:
   - title: "Teaching"
     url: /teaching/
 
-  - title: "Torch Canvas"
-    url: /tools/torch-canvas/
-
-  - title: "Slidewright"
-    url: /tools/slidewright/
+  # Apps opens a panel on hover or keyboard focus, listing _data/apps.yml (see _includes/apps-menu.html).
+  # Clicking the word itself goes to /apps/.
+  - title: "Apps"
+    url: /apps/
+    menu: apps
 
   - title: "Meeting Request"
     url: /meeting/

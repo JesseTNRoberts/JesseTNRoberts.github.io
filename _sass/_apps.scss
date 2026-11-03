@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Apps: the top-menu panel (_includes/apps-menu.html) and the /apps/ page.
+   The greedy nav styles every li and a inside .visible-links, so the panel
+   resets those rules for its own items.
+   ========================================================================== */
+
+$apps-beta-ink: #7a4a00;
+$apps-beta-bg: #ffe9b8;
+$apps-beta-line: #f0c060;
+
+%apps-beta {
+  display: inline-block;
+  padding: 0.05em 0.5em;
+  font-size: 0.7em;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  vertical-align: middle;
+  color: $apps-beta-ink;
+  background: $apps-beta-bg;
+  border: 1px solid $apps-beta-line;
+  border-radius: 999px;
+}
+
+.greedy-nav .apps-menu {
+  position: relative;
+
+  .apps-menu__caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.35em;
+    vertical-align: 0.15em;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+  }
+
+  .apps-menu__panel {
+    font-weight: normal;
+  }
+
+  .apps-menu__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .apps-menu__beta {
+    @extend %apps-beta;
+    margin-left: 0.3em;
+  }
+}
+
+/* In the menu bar: a panel that opens on hover or focus. */
+.greedy-nav .visible-links .apps-menu {
+  .apps-menu__panel {
+    position: absolute;
+    top: 100%;
+    left: 0.25rem;
+    z-index: 30;
+    width: 380px;
+    margin-top: 0.35rem;
+    padding: 0.8rem 0.6rem 0.6rem;
+    font-size: $type-size-6;
+    white-space: normal;
+    background: #fff;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+
+    /* An invisible bridge so the pointer can cross the gap without closing the panel. */
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -0.6rem;
+      height: 0.6rem;
+    }
+  }
+
+  &:hover .apps-menu__panel,
+  &:focus-within .apps-menu__panel {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s;
+  }
+
+  .apps-menu__intro {
+    margin: 0 0.6rem 0.5rem;
+    color: $gray;
+    line-height: 1.4;
+  }
+
+  .apps-menu__list li,
+  .apps-menu__list li:first-child,
+  .apps-menu__list li:last-child {
+    display: block;
+    font-weight: normal;
+  }
+
+  .apps-menu__item {
+    display: block;
+    position: relative;
+    border-radius: 8px;
+
+    &:hover,
+    &:focus-within {
+      background: mix(#fff, $primary-color, 90%);
+    }
+  }
+
+  .apps-menu__app,
+  .apps-menu__list li:first-child .apps-menu__app,
+  .apps-menu__list li:last-child .apps-menu__app {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0.55rem 0.6rem 0.2rem;
+    color: $text-color;
+
+    &::before {
+      display: none;
+    }
+
+    img {
+      flex: none;
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+  }
+
+  .apps-menu__text {
+    display: block;
+    min-width: 0;
+  }
+
+  .apps-menu__name {
+    display: block;
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  .apps-menu__tagline {
+    display: block;
+    color: $gray;
+    line-height: 1.35;
+  }
+
+  .apps-menu__more,
+  .apps-menu__list li:first-child .apps-menu__more,
+  .apps-menu__list li:last-child .apps-menu__more {
+    display: inline-block;
+    margin: 0 0 0 calc(36px + 1.35rem);
+    padding: 0.1rem 0 0.55rem;
+    font-size: 0.85em;
+    color: $masthead-link-color;
+
+    &::before {
+      display: none;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .apps-menu__all {
+    display: inline-block;
+    margin: 0.4rem 0.6rem 0.1rem;
+    padding: 0;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: $masthead-link-color;
+
+    &::before {
+      display: none;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* In the ☰ menu: the apps show inline, indented under Apps. */
+.greedy-nav .hidden-links .apps-menu {
+  .apps-menu__caret,
+  .apps-menu__intro,
+  .apps-menu__tagline,
+  .apps-menu__more,
+  .apps-menu__all {
+    display: none;
+  }
+
+  .apps-menu__app {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    padding: 8px 20px 8px 36px;
+
+    img {
+      flex: none;
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+  }
+}
+
+/* The /apps/ page. */
+.page__content {
+  .apps-intro {
+    font-size: 1.05em;
+  }
+
+  .apps-grid {
+    display: grid;
+    gap: 1.25em;
+    margin: 1.5em 0 2em;
+  }
+
+  .apps-card {
+    display: flex;
+    gap: 1.1em;
+    align-items: flex-start;
+    padding: 1.2em 1.3em;
+    border: 1px solid $border-color;
+    border-radius: 14px;
+
+    &__mark {
+      flex: none;
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    &__body {
+      min-width: 0;
+    }
+
+    h2 {
+      margin: 0 0 0.15em;
+      padding: 0;
+      font-size: 1.25em;
+      border: 0;
+    }
+
+    &__tagline {
+      margin: 0 0 0.5em;
+      font-weight: bold;
+      color: $gray;
+    }
+
+    &__desc {
+      margin: 0 0 0.9em;
+      font-size: $type-size-6;
+      line-height: 1.55;
+    }
+
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      margin: 0;
+
+      .btn {
+        margin: 0;
+      }
+    }
+  }
+
+  .apps-card__beta {
+    @extend %apps-beta;
+    margin-left: 0.4em;
+  }
+}

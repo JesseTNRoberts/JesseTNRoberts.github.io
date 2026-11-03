@@ -1,0 +1,27 @@
+{% comment %}
+  The Apps item in the top menu. On wide screens a panel opens on hover or keyboard focus, so every
+  app is one click away. When the theme's greedy nav moves this item into the ☰ menu, the panel shows
+  inline as indented links. Apps are listed in _data/apps.yml. Params: link, base.
+{% endcomment %}
+{% assign apps = site.data.apps %}
+<li class="masthead__menu-item apps-menu">
+  <a class="apps-menu__label" href="{{ include.base }}{{ include.link.url }}">{{ include.link.title }}<span class="apps-menu__caret" aria-hidden="true"></span></a>
+  <div class="apps-menu__panel">
+    <p class="apps-menu__intro">{{ apps.intro }}</p>
+    <ul class="apps-menu__list">
+      {% for a in apps.items %}
+      <li class="apps-menu__item">
+        <a class="apps-menu__app" href="{{ include.base }}{{ a.url }}">
+          <img src="{{ include.base }}{{ a.icon }}" alt="" width="36" height="36">
+          <span class="apps-menu__text">
+            <span class="apps-menu__name">{{ a.name }}{% if a.beta %} <span class="apps-menu__beta">Beta</span>{% endif %}</span>
+            <span class="apps-menu__tagline">{{ a.tagline }}</span>
+          </span>
+        </a>
+        {% if a.page %}<a class="apps-menu__more" href="{{ include.base }}{{ a.page }}">{{ a.more }}</a>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <a class="apps-menu__all" href="{{ include.base }}{{ include.link.url }}">All apps</a>
+  </div>
+</li>

@@ -13,7 +13,9 @@
               {% else %}
               {% assign domain = base_path %}
             {% endif %}
+            {% if link.menu == "apps" %}{% include apps-menu.html link=link base=domain %}{% else %}
             <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            {% endif %}
           {% endfor %}
         </ul>
         <ul class="hidden-links hidden"></ul>
