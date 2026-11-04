@@ -1,0 +1,84 @@
+# Services page (_pages/services.html).
+# Site writing rules apply to every string here. No em dashes, colons or semicolons
+# (official talk titles keep their own punctuation).
+#
+# Each offering's `id` is the value the Request button preselects in the form.
+
+headline: "I help universities and companies use AI well."
+
+intro: >-
+  I'm an Assistant Professor of Computer Science at Tennessee Tech University, where I research how
+  AI systems learn and reason and teach students and faculty to use them. I bring that work to
+  organizations through talks, hands-on workshops, and AI audits and consulting.
+
+offerings:
+  - id: talk
+    name: Talks
+    single: Talk
+    button: Request a talk
+    service: AI talks and keynotes
+    icon: fas fa-microphone
+    for: "Universities, conferences, professional groups and community events."
+    what: >-
+      Keynotes, guest lectures and panels on AI, pitched to your audience, whether technical or general.
+    length: "30 to 60 minutes, plus Q&amp;A"
+    topics_label: "Sample topics"
+    topics:
+      - "How Generative AI Really Works"
+      - "Artificial Intelligence: All Hype or a Revolution?"
+      - "Foundation Models and Responsible AI"
+
+  - id: workshop
+    name: Workshops
+    single: Workshop
+    button: Request a workshop
+    service: AI workshops
+    icon: fas fa-chalkboard-teacher
+    for: "Faculty, staff, professional teams and students."
+    what: >-
+      Hands-on sessions on using AI well, such as AI in the classroom for faculty, or practical AI
+      tools for a team's daily work.
+    length: "Half day or full day"
+
+  - id: audit
+    name: AI Audits & Consulting
+    single: AI Audit & Consulting
+    button: Request an AI audit
+    service: AI audits and consulting
+    icon: fas fa-clipboard-check
+    for: "Companies and organizations."
+    what: >-
+      An audit of where AI could help your organization and the risks to watch, then a practical
+      plan for adoption, with ongoing help if you want it.
+    length: "Scoped per engagement"
+
+# Proof. Audit and consulting clients stay unnamed (Jesse, 2026-11-04). Name the sectors only.
+worked_with:
+  - "Tennessee Tech University"
+  - "National Collegiate Honors Council (NCHC)"
+  - "Chattanooga State Community College"
+  - "Maryville College"
+  - "TN-THRIVE-AI"
+audits_note: "AI audits and consulting for three organizations, in healthcare, lending and banking, and manufacturing."
+
+# Past talks, newest first. Keep in step with the CV's Presentations section.
+past_talks:
+  - title: "AI in Honors (panel)"
+    where: "NCHC Annual Conference, New Orleans, November 2026"
+  - title: "How Generative AI Really Works"
+    where: "Chattanooga State Community College, October 2026"
+    url: /assets/talks/how-generative-ai-really-works.html
+  - title: "Foundation Models and Responsible AI"
+    where: "TN-THRIVE-AI, April 2026"
+  - title: "When Artificial Code Mirrors God's Image: Toward a Post-Anthropocentric Imago Dei"
+    where: "Baylor Symposium on Faith and Culture, February 2026"
+  - title: "Artificial Intelligence: All Hype or a Revolution?"
+    where: "Maryville College, November 2024"
+
+# Testimonials. Add entries (quote, name, role) when Jesse has them. The section hides while empty.
+testimonials: []
+
+# The form posts to FormSubmit, which emails each request to this address.
+# The first submission sends a one-time activation email to this inbox. After activating,
+# FormSubmit offers a random alias that can replace the address here to keep it out of the page.
+form_email: "JTRoberts@tntech.edu"
