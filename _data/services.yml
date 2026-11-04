@@ -48,8 +48,10 @@ offerings:
     icon: fas fa-clipboard-check
     for: "Companies and organizations."
     what: >-
-      An audit of where AI could help your organization and the risks to watch, then a practical
-      plan for adoption, with ongoing help if you want it.
+      An audit of where AI could help your organization and the risks to watch, how your processes
+      and structure could change to make the most of it, and new ways machine learning and data
+      science could serve your work. You get a practical plan for adoption, with ongoing help if you
+      want it.
     length: "Scoped per engagement"
 
 # Proof. Audit and consulting clients stay unnamed (Jesse, 2026-11-04). Name the sectors only.
