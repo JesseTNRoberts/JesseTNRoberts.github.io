@@ -12,9 +12,9 @@ main:
     url: /apps/
     menu: apps
 
-  # Services (/services/) is hidden for now (Jesse, 2026-11-04). To show it again, add here, before Meeting Request:
-  #  - title: "Services"
-  #    url: /services/
+  # Talks, workshops, and AI audits and consulting for outside groups. Separate from Meeting Request (office hours).
+  - title: "Services"
+    url: /ai-consulting/
 
   - title: "Meeting Request"
     url: /meeting/

@@ -21,6 +21,8 @@ My name is Jesse (Vanderbilt PhD '24). I am an assistant professor at Tennessee 
 
 More on each area, with papers and press, is on the [Research]({{ '/research/' | relative_url }}) page.
 
+I also give talks and workshops on AI and help organizations put it to use. See [Services]({{ '/ai-consulting/' | relative_url }}).
+
 I am currently **accepting applications** for master's and Ph.D. students. If you are a curious person with an interest in solving real problems and exploring untrodden paths through AI then feel free to reach out via email!
 
 Introduction to LLMs

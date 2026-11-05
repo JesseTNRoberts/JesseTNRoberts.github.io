@@ -1,67 +1,71 @@
 ---
 layout: single
 title: "Services"
-permalink: /services/
-# Hidden for now (Jesse, 2026-11-04). sitemap false also adds noindex. Not linked from anywhere.
-sitemap: false
+permalink: /ai-consulting/
+# Briefly lived at /services/ (live, hidden) on 2026-11-04.
+redirect_from:
+  - /services/
+# The hero headline is the page's h1, so the theme title is hidden (Jesse, 2026-11-04).
+hide_title: true
 author_profile: true
-seo_title: "Jesse Roberts - AI Speaker, Workshops and Consulting in Tennessee"
-description: "Book AI speaker and consultant Jesse Roberts of Tennessee Tech for a talk, a workshop or an AI audit. Based in Cookeville, serving Nashville and Tennessee."
+seo_title: "AI Consulting, Workshops and Talks in Tennessee - Jesse Roberts"
+description: "AI consultant and speaker Jesse Roberts helps companies use AI well. Free AI consultation for Tennessee businesses, plus AI audits, workshops and talks."
 # photo: /images/services.jpg
 # photo_alt: "Jesse Roberts giving a talk"
 ---
 {% comment %}
   Talks, workshops, and AI audits and consulting. Text lives in _data/services.yml.
   This is a service inquiry, kept separate from Meeting Request (office hours, Calendly).
-  The form posts to FormSubmit, which emails Jesse. Each card's Request button links
+  The form sends to Formspree in the background (fetch), which emails Jesse. If Formspree
+  fails, or no formspree_id is set, it offers a pre-filled email to contact_email instead. Each card's Request button links
   ?offering=<id>#request and the small script below preselects that offering.
 {% endcomment %}
 {% assign w = site.data.services %}
 
 <header class="ww-hero">
   <div class="ww-hero__text">
-    <p class="ww-hero__headline">{{ w.headline }}</p>
-    <p class="ww-hero__intro">{{ w.intro }}</p>
-    <p class="ww-hero__where">AI speaker, workshop leader and consultant based in Cookeville, Tennessee, working with groups in Nashville, across the state and online.</p>
+    <h1 class="ww-hero__headline"><span class="ww-hero__kicker">{{ w.kicker }}</span> {{ w.headline }}</h1>
+    <p class="ww-hero__intro">{{ w.subhead }}</p>
+    <p class="ww-hero__actions">
+      {% for b in w.hero_buttons %}<a class="btn btn--{{ b.style }} btn--large{% if b.offering %} ww-offer__btn{% endif %}" href="{% if b.offering %}?offering={{ b.offering }}#request{% else %}{{ b.href }}{% endif %}"{% if b.offering %} data-offering="{{ b.offering }}"{% endif %}>{{ b.label }}</a>{% endfor %}
+    </p>
+    <p class="ww-hero__where"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ w.where }}</p>
   </div>
   {% if page.photo %}
   <img class="ww-hero__photo" src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: 'Jesse Roberts' }}">
   {% endif %}
 </header>
 
-<h2 id="offerings">What I offer</h2>
+<h2 id="offerings">How I can help</h2>
 <div class="ww-offers">
   {% for o in w.offerings %}
-  <section class="ww-offer" aria-labelledby="ww-{{ o.id }}">
+  <section class="ww-offer{% if forloop.first %} ww-offer--main{% endif %}" aria-labelledby="ww-{{ o.id }}">
     <h3 id="ww-{{ o.id }}"><i class="{{ o.icon }}" aria-hidden="true"></i> {{ o.name }}</h3>
-    <dl class="ww-offer__facts">
-      <dt>Who it's for</dt><dd>{{ o.for }}</dd>
-      <dt>What you get</dt><dd>{{ o.what }}</dd>
-      <dt>How long</dt><dd>{{ o.length }}</dd>
-    </dl>
-    {% if o.topics %}
-    <p class="ww-offer__label">{{ o.topics_label }}</p>
-    <ul class="ww-offer__topics">
-      {% for t in o.topics %}<li>{{ t }}</li>{% endfor %}
+    <p class="ww-offer__pitch">{{ o.pitch }}</p>
+    <ul class="ww-offer__points">
+      {% for pt in o.points %}<li>{{ pt }}</li>{% endfor %}
     </ul>
-    {% endif %}
+    <p class="ww-offer__meta">{{ o.meta }}</p>
+    {% if o.offer %}<a class="ww-offer__free ww-pick" href="?offering={{ o.offer_id }}#request" data-offering="{{ o.offer_id }}"><i class="fas fa-gift" aria-hidden="true"></i> {{ o.offer }}</a>{% endif %}
     <a class="btn btn--primary ww-offer__btn" href="?offering={{ o.id }}#request" data-offering="{{ o.id }}">{{ o.button }}</a>
   </section>
   {% endfor %}
 </div>
 
-<h2 id="experience">Where I've worked</h2>
-<ul class="ww-orgs">
-  {% for org in w.worked_with %}<li>{{ org }}</li>{% endfor %}
+<h2 id="experience">Industries I've worked with</h2>
+<ul class="ww-chips ww-chips--strong ww-industries">
+  {% for ind in w.industries %}<li><i class="{{ ind.icon }}" aria-hidden="true"></i> {{ ind.name }}</li>{% endfor %}
 </ul>
-<p>{{ w.audits_note }}</p>
 
-<h3 class="ww-sub">Recent talks</h3>
-<ul class="ww-talks">
-  {% for t in w.past_talks %}
-  <li>{% if t.url %}<a href="{{ t.url | relative_url }}">{{ t.title }}</a>{% else %}{{ t.title }}{% endif %} <span>{{ t.where }}</span></li>
+<h2 id="faq">Common questions</h2>
+<div class="ww-faq">
+  {% for f in w.faq %}
+  <details>
+    <summary>{{ f.q }}</summary>
+    <p>{{ f.a }}</p>
+  </details>
   {% endfor %}
-</ul>
+</div>
 
 {% if w.testimonials.size > 0 %}
 <div class="ww-quotes">
@@ -71,16 +75,14 @@ description: "Book AI speaker and consultant Jesse Roberts of Tennessee Tech for
 </div>
 {% endif %}
 
-<h2 id="request">Send a request</h2>
-<div class="notice--success ww-sent" id="ww-sent" hidden>Thanks, your request is on its way. I'll reply by email, usually within a few days.</div>
-<p>Tell me a little about what you have in mind and I'll follow up by email. To talk with me as a student or colleague, use <a href="{{ '/meeting/' | relative_url }}">Meeting Request</a> instead.</p>
+<h2 id="request">Get in touch</h2>
+<div class="notice--success ww-sent" id="ww-sent" role="status" hidden>Thanks, your request is on its way. I'll reply by email.</div>
+<div class="notice--warning ww-sent" id="ww-failed" role="alert" hidden>The form couldn't send just now. <a id="ww-mailto" href="mailto:{{ w.contact_email }}">Email me your request instead</a>, it's already filled in.</div>
+<p class="ww-form__lede">A few details are enough. I'll reply by email.</p>
 
-<form class="ww-form" action="https://formsubmit.co/{{ w.form_email }}" method="POST">
+<form class="ww-form" id="ww-form" action="{% if w.formspree_id != "" %}https://formspree.io/f/{{ w.formspree_id }}{% else %}mailto:{{ w.contact_email }}{% endif %}" method="POST" data-mailto="{{ w.contact_email }}">
   <input type="hidden" name="_subject" value="Services request from jessetnroberts.com">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="{{ site.url }}{{ site.baseurl }}/services/?sent=1#request">
-  <input type="text" name="_honey" class="ww-form__trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <input type="text" name="_gotcha" class="ww-form__trap" tabindex="-1" autocomplete="off" aria-hidden="true">
 
   <div class="ww-form__row">
     <label>Name <input type="text" name="name" required autocomplete="name"></label>
@@ -91,12 +93,13 @@ description: "Book AI speaker and consultant Jesse Roberts of Tennessee Tech for
     <label>Which offering
       <select name="offering" id="ww-offering" required>
         <option value="" disabled selected>Choose one</option>
+        {% for x in w.extra_options %}<option value="{{ x.label }}" data-id="{{ x.id }}">{{ x.label }}</option>{% endfor %}
         {% for o in w.offerings %}<option value="{{ o.single }}" data-id="{{ o.id }}">{{ o.single }}</option>{% endfor %}
       </select>
     </label>
   </div>
-  <label>Rough dates <input type="text" name="dates" placeholder="For example, sometime in March, or a specific day"></label>
-  <label>A short note <textarea name="note" rows="4" placeholder="Your audience or team, what you hope to get out of it, and anything else that helps"></textarea></label>
+  <label>Timing <span class="ww-form__opt">(optional)</span> <input type="text" name="timing" placeholder="For example, this spring, or a specific date"></label>
+  <label>A short note <textarea name="note" rows="4" placeholder="Your team or audience, and what you hope to get out of it"></textarea></label>
   <button type="submit" class="btn btn--primary btn--large">Send request</button>
 </form>
 
@@ -114,9 +117,19 @@ description: "Book AI speaker and consultant Jesse Roberts of Tennessee Tech for
     "@type": "OfferCatalog",
     "name": "AI talks, workshops, audits and consulting",
     "itemListElement": [{% for o in site.data.services.offerings %}
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": {{ o.service | jsonify }}, "description": {{ o.what | strip | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": {{ o.service | jsonify }}, "description": {{ o.pitch | strip | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
     ]
   }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{% for f in site.data.services.faq %}
+    { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
 }
 </script>
 
@@ -131,8 +144,40 @@ description: "Book AI speaker and consultant Jesse Roberts of Tennessee Tech for
   }
   var params = new URLSearchParams(window.location.search);
   pick(params.get('offering'));
-  if (params.get('sent')) { var s = document.getElementById('ww-sent'); if (s) s.hidden = false; }
-  var btns = document.querySelectorAll('.ww-offer__btn');
+  var form = document.getElementById('ww-form');
+  function mailtoHref() {
+    var f = form.elements, lines = [];
+    ['name', 'email', 'organization', 'offering', 'timing', 'note'].forEach(function (k) {
+      if (f[k] && f[k].value) { lines.push(k.charAt(0).toUpperCase() + k.slice(1) + ' ' + f[k].value); }
+    });
+    return 'mailto:' + form.getAttribute('data-mailto') + '?subject=' + encodeURIComponent('Services request from jessetnroberts.com') + '&body=' + encodeURIComponent(lines.join('\n'));
+  }
+  function show(id) {
+    document.getElementById('ww-sent').hidden = id !== 'ww-sent';
+    document.getElementById('ww-failed').hidden = id !== 'ww-failed';
+  }
+  function failed() {
+    document.getElementById('ww-mailto').href = mailtoHref();
+    show('ww-failed');
+    document.getElementById('request').scrollIntoView({ behavior: 'smooth' });
+  }
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      if (form.action.indexOf('mailto:') === 0) { window.location.href = mailtoHref(); return; }
+      btn.disabled = true; btn.textContent = 'Sending';
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) { throw new Error('status ' + r.status); }
+          form.reset(); form.hidden = true; show('ww-sent');
+          document.getElementById('request').scrollIntoView({ behavior: 'smooth' });
+        })
+        .catch(failed)
+        .then(function () { btn.disabled = false; btn.textContent = 'Send request'; });
+    });
+  }
+  var btns = document.querySelectorAll(".ww-offer__btn, .ww-pick");
   for (var j = 0; j < btns.length; j++) {
     btns[j].addEventListener('click', function (e) {
       var id = this.getAttribute('data-offering');
