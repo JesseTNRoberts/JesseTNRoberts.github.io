@@ -21,7 +21,11 @@ repository               : "JesseTNRoberts.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "avatar.jpg"
+  # Cropped from Jesse's AAAI photo (2026-11-08). New file name so browsers fetch it fresh.
+  # The old avatar.jpg (with another person) is kept in images/ but unused.
+  avatar           : "avatar-aaai.jpg"
+  # Wide AAAI photo for the sidebar on screens 1200px and up (Jesse, 2026-11-08). Phones keep the square.
+  avatar_wide      : "avatar-aaai-wide.jpg"
   name             : "Jesse Roberts"
   pronouns         : # example: "she/her"  
   bio              : "Native Tennesseean Researching AI, Language, and Robotics"

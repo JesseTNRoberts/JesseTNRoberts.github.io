@@ -12,8 +12,9 @@ main:
     url: /apps/
     menu: apps
 
-  # Talks, workshops, and AI audits and consulting for outside groups. Separate from Meeting Request (office hours).
-  - title: "Services"
+  # Cumberland Gradient, Jesse's AI consulting practice (audits, workshops, talks for businesses).
+  # Was "Services" until 2026-11-08. Separate from Meeting Request (office hours).
+  - title: "Consulting"
     url: /ai-consulting/
 
   - title: "Meeting Request"

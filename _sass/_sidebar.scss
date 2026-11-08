@@ -91,12 +91,17 @@
 
   img {
     max-width: 175px;
-    border-radius: 50%;
+    // Slightly softened corners, not round (Jesse, 2026-11-08).
+    border-radius: 6px;
 
-    @include breakpoint($large) {
-      padding: 5px;
-      border: 1px solid $border-color;
+    // The wide AAAI photo fills the sidebar width on large screens.
+    &.author__avatar--wide {
+      @include breakpoint($large) {
+        max-width: 100%;
+      }
     }
+
+    // No frame around the photo (Jesse, 2026-11-08).
   }
 }
 

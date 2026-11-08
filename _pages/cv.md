@@ -85,7 +85,7 @@ CS 1101 (Su2020) - Programming and Problem Solving (Java Based)
 
 ## Consulting
 
-**Gradient Consulting**, Cookeville, Tennessee   
+**[Cumberland Gradient]({{ '/ai-consulting/' | relative_url }})**, Founder, Cookeville, Tennessee   
 
 ### Phoenix Rural Health
 `2024 - Present`

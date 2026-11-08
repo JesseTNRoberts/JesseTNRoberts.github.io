@@ -1,18 +1,36 @@
-# Services page (_pages/services.html). Hidden for now (not in the menu, noindex).
+# Consulting page (_pages/services.html, /ai-consulting/, "Consulting" in the menu).
+# The page belongs to Cumberland Gradient, Jesse's AI consulting practice (named 2026-11-08,
+# cumberlandgradient.com redirects here). The voice stays "I", the firm is Jesse.
 # Site writing rules apply to every string here. No em dashes, colons or semicolons
 # (official talk titles keep their own punctuation).
 #
 # Written to be scanned, not read (Jesse, 2026-11-04). Keep the pitch to one line and
 # each point to a few words. No paragraphs.
 #
+# Strategy (Claude's, Jesse asked Claude to decide, 2026-11-08). The page exists to turn a
+# Tennessee owner or operations lead into a conversation, and the audit is the product.
+# Talks and workshops are for business audiences only, since they lead to audits. University
+# talks and faculty workshops are faculty work and are not offered here (one FAQ line
+# points universities to Meeting Request).
+#
 # Each offering's `id` is the value its Request button preselects in the form.
 # The first offering is the main one and gets the featured style.
 
-# Small label above the headline, inside the h1, so the main heading carries search words.
-kicker: "AI Consulting in Tennessee"
-headline: "I help companies use AI well."
+brand:
+  name: "Cumberland Gradient"
+  motto: "Closing the gap"
+  tagline: "AI consulting that closes the gap."
+  domain: "cumberlandgradient.com"
+  lockup: /assets/cumberland-gradient/lockup.svg
+  logo_square: /assets/cumberland-gradient/logo-square.png
+
+# The h1. Jesse found "I help companies use AI well." a little silly and the hero crowded
+# (2026-11-08). The logo carries the motto, so the headline just says what and where, which also
+# keeps the search words in the h1. Set `kicker` to add a small label above it again.
+headline: "AI consulting in Tennessee"
 subhead: "AI researcher specializing in large language models, the technology behind tools like ChatGPT."
-where: "Assistant Professor at Tennessee Tech in Cookeville. Working with organizations in Nashville, across Tennessee and online."
+# Tennessee Tech is left out until Jesse checks the university's outside-work policy (2026-11-08).
+where: "Based in Cookeville. Working across Tennessee and online."
 
 hero_buttons:
   - label: Request an AI audit
@@ -21,6 +39,21 @@ hero_buttons:
   - label: See how I can help
     href: "#offerings"
     style: inverse
+
+# Why choose Jesse. Confirmed true by Jesse (2026-11-08). On-site work starts once there's a
+# contract, the free consultation is by phone or video.
+why:
+  - icon: fas fa-balance-scale
+    title: "Vendor-neutral"
+    text: "I don't sell software, so my advice isn't tied to a product."
+  - icon: fas fa-brain
+    title: "Deep LLM expertise"
+    text: "I research how large language models reason, and where they fail."
+  - icon: fas fa-map-marker-alt
+    title: "Tennessee based"
+    # Jesse found the "once we're working together" caveat unhelpful (2026-11-08). On-site work
+    # still starts with a contract, the free call is by phone or video.
+    text: "Close enough to work on-site with your team."
 
 # Form options that aren't offering cards. Listed before the cards' options.
 extra_options:
@@ -40,8 +73,8 @@ offerings:
       - "Risks to watch"
       - "Process and structure changes"
       - "New uses for machine learning and data science"
-      - "A practical plan for adoption"
-    meta: "For companies and organizations. Scoped to you."
+      - "A practical roadmap your team can follow"
+    meta: "For companies and organizations. Scoped to you, with ongoing support if you want it."
     # Free first consultation for Tennessee businesses (Jesse, 2026-11-04). Shown in this card only.
     offer: "Short free consultation for Tennessee businesses"
     offer_id: consult
@@ -52,12 +85,12 @@ offerings:
     button: Request a workshop
     service: AI workshops
     icon: fas fa-chalkboard-teacher
-    pitch: "Hands-on sessions on using AI well."
+    pitch: "Hands-on sessions for your team on using AI well."
     points:
       - "Practical AI integration for teams"
-      - "AI in the classroom for faculty"
-      - "Built around your group's real tasks"
-    meta: "For teams, faculty, staff and students. Half or full day."
+      - "Built around your company's real tasks"
+      - "For leaders, staff or technical teams"
+    meta: "For businesses and organizations. Half or full day."
 
   - id: talk
     name: Talks
@@ -65,12 +98,39 @@ offerings:
     button: Request a talk
     service: AI talks
     icon: fas fa-microphone
-    pitch: "Clear talks on AI, pitched to your audience."
+    pitch: "Clear talks on AI for business audiences."
     points:
-      - "Guest lectures and panels"
-      - "Technical or general audiences"
+      - "Chambers, associations and industry groups"
+      - "Leadership retreats and company events"
       - "30 to 60 minutes, plus Q&amp;A"
-    meta: "For universities, conferences, professional groups and community events."
+    meta: "Technical or general audiences."
+
+# How an audit works, shown as numbered steps (mirrors Jesse's manufacturing project).
+steps:
+  - title: "A short call"
+    text: "Free for Tennessee businesses. We talk through your goals and whether an audit fits."
+  - title: "The audit"
+    text: "Interviews and process mapping to see how your business really runs."
+  - title: "Your roadmap"
+    text: "A practical plan your team or developers can follow."
+  - title: "Ongoing support"
+    text: "Help putting the plan into practice, if you want it."
+
+# No photos on this page for now (2026-11-08). Jesse found the wide AAAI photo too big and not
+# helpful, and a tight crop of it added nothing. To add one back, set wide_photo (src, alt, caption).
+
+# Recent work, anonymized. Jesse's description (2026-11-08). Never name the client.
+cases:
+  - who: "International manufacturer, Tennessee"
+    icon: fas fa-industry
+    did:
+      - "Reviewed the production process from order to delivery"
+      - "Wrote a developer roadmap to make it manageable and ready for AI"
+      - "Supported the team through implementation"
+    results:
+      - "Less friction taking orders"
+      - "More automation"
+      - "Fewer delivery issues"
 
 # Industries Jesse has done audit and consulting work with (2026-11-04). Never name the clients.
 industries:
@@ -82,14 +142,20 @@ industries:
     icon: fas fa-cogs
   - name: "Finance"
     icon: fas fa-university
+  # An accounting firm (Jesse, 2026-11-08).
+  - name: "Accounting"
+    icon: fas fa-calculator
   # An NBA team, the Memphis Grizzlies (Jesse, 2026-11-04). Not named unless Jesse says so.
   - name: "Professional sports"
     icon: fas fa-basketball-ball
 
 # Common questions, shown collapsed and also as FAQPage structured data for search.
-# Claude's drafts from what the page already says (2026-11-04), except the audit, free consultation and workshop answers, which are Jesse's. Jesse to correct or replace.
-# Keep answers to one or two short sentences.
+# The audit, free consultation and workshop answers are Jesse's (2026-11-04), keep his wording.
+# The others are Claude's drafts from what the page already says. Keep answers short.
+# Answers may hold a link. Structured data gets the text only.
 faq:
+  - q: "What is Cumberland Gradient?"
+    a: "Cumberland Gradient is the AI consulting practice of Jesse Roberts, an AI researcher based in Cookeville, Tennessee."
   - q: "What does an AI audit include?"
     # Jesse's own definition (2026-11-04). Keep his wording.
     a: "An AI audit is a customized investigation of processes and pain points to understand how a company does business and how the technology involved is used and interconnected. The goal is to understand where AI may provide leverage and how the process might change to provide more opportunities."
@@ -99,10 +165,16 @@ faq:
   - q: "Do you work with organizations outside Tennessee?"
     a: "Yes. I'm based in Cookeville and work with organizations across Tennessee and online."
   - q: "What industries have you worked with?"
-    a: "Industrial automation, healthcare, manufacturing, finance and professional sports."
+    a: "Industrial automation, healthcare, manufacturing, finance, accounting and professional sports."
   - q: "Can a workshop be built around our team's work?"
     # Jesse's wording (2026-11-04).
     a: "Yes, workshops can be tailored to your team and work scenario."
+  - q: "Do you give university talks or guest lectures?"
+    a: "Yes, as part of my faculty work. Reach me through the <a href=\"/meeting/\">Meeting Request</a> page."
+
+# One line at the bottom of the page. The Cumberland Gap is the pass through the mountains
+# that opened the way west.
+name_story: "The Cumberland Gap is the pass that opened a way west through these mountains. A gradient is the math that shows an AI model the way downhill. Cumberland Gradient closes the gap between AI and your work."
 
 # Testimonials. Add entries (quote, name, role) when Jesse has them. The section hides while empty.
 testimonials: []
@@ -111,5 +183,7 @@ testimonials: []
 # Put the form's ID here, the code after formspree.io/f/ in its endpoint. While empty, the form
 # opens a pre-filled email instead. FormSubmit was dropped on 2026-11-04 (its server timed out).
 formspree_id: "xzeeoknl"
-# Fallback address for the pre-filled email if Formspree fails. Already public in _config.yml.
-contact_email: "JTRoberts@tntech.edu"
+# Shown next to the form for people who prefer to email directly (Jesse, 2026-11-08), and the
+# fallback address for the pre-filled email if Formspree fails. Forwards to Jesse's Gmail
+# through Cloudflare Email Routing (set up 2026-11-08).
+contact_email: "jesse@cumberlandgradient.com"

@@ -10,7 +10,10 @@
     {% if author.avatar contains "://" %}
     	<img src="{{ author.avatar }}" alt="{{ author.name }}">
     {% else %}
-    	<img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ author.name }}">
+    	{% if author.avatar_wide %}<picture>
+    	  <source media="(min-width: 1200px)" srcset="{{ author.avatar_wide | prepend: "/images/" | prepend: base_path }}">
+    	  <img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar author__avatar--wide" alt="{{ author.name }} at the AAAI conference">
+    	</picture>{% else %}<img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ author.name }}">{% endif %}
     {% endif %}
   </div>
 

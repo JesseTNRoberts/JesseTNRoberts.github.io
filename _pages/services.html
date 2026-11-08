@@ -1,17 +1,24 @@
 ---
 layout: single
-title: "Services"
+title: "Consulting"
 permalink: /ai-consulting/
 # Briefly lived at /services/ (live, hidden) on 2026-11-04.
 redirect_from:
   - /services/
 # The hero headline is the page's h1, so the theme title is hidden (Jesse, 2026-11-04).
 hide_title: true
-author_profile: true
-seo_title: "AI Consulting, Workshops and Talks in Tennessee - Jesse Roberts"
-description: "AI consultant and speaker Jesse Roberts helps companies use AI well. Free AI consultation for Tennessee businesses, plus AI audits, workshops and talks."
-# photo: /images/services.jpg
-# photo_alt: "Jesse Roberts giving a talk"
+# No sidebar (Claude's call, 2026-11-08). Its photo shows another person and its links are academic.
+# A solo headshot goes in the hero instead (photo below) once Jesse sends one.
+author_profile: false
+seo_title: "Cumberland Gradient | AI Consulting, Workshops and Talks in Tennessee"
+description: "Cumberland Gradient is Jesse Roberts's AI consulting practice. AI audits, workshops and talks for Tennessee companies, and a free first consultation."
+og_image: /assets/cumberland-gradient/share.png
+og_image_alt: "Cumberland Gradient logo. AI consulting that closes the gap."
+# No photos for now (2026-11-08). Jesse found the AAAI photo unhelpful, tight or wide. For a
+# headshot later, set photo, photo_alt and (optional) photo_caption here. A wide image can go in
+# wide_photo in _data/services.yml.
+# photo: /images/consulting-headshot.jpg
+# photo_alt: "Jesse Roberts"
 ---
 {% comment %}
   Talks, workshops, and AI audits and consulting. Text lives in _data/services.yml.
@@ -21,10 +28,13 @@ description: "AI consultant and speaker Jesse Roberts helps companies use AI wel
   ?offering=<id>#request and the small script below preselects that offering.
 {% endcomment %}
 {% assign w = site.data.services %}
+{% capture rel_href %}href="{{ site.baseurl }}/{% endcapture %}
+<div class="cg">
 
 <header class="ww-hero">
   <div class="ww-hero__text">
-    <h1 class="ww-hero__headline"><span class="ww-hero__kicker">{{ w.kicker }}</span> {{ w.headline }}</h1>
+    <img class="cg-lockup" src="{{ w.brand.lockup | relative_url }}" alt="{{ w.brand.name }}, {{ w.brand.motto | downcase }}" width="820" height="72">
+    <h1 class="ww-hero__headline">{% if w.kicker %}<span class="ww-hero__kicker">{{ w.kicker }}</span> {% endif %}{{ w.headline }}</h1>
     <p class="ww-hero__intro">{{ w.subhead }}</p>
     <p class="ww-hero__actions">
       {% for b in w.hero_buttons %}<a class="btn btn--{{ b.style }} btn--large{% if b.offering %} ww-offer__btn{% endif %}" href="{% if b.offering %}?offering={{ b.offering }}#request{% else %}{{ b.href }}{% endif %}"{% if b.offering %} data-offering="{{ b.offering }}"{% endif %}>{{ b.label }}</a>{% endfor %}
@@ -32,9 +42,23 @@ description: "AI consultant and speaker Jesse Roberts helps companies use AI wel
     <p class="ww-hero__where"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ w.where }}</p>
   </div>
   {% if page.photo %}
-  <img class="ww-hero__photo" src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: 'Jesse Roberts' }}">
+  <figure class="ww-hero__figure">
+    <img class="ww-hero__photo" src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: 'Jesse Roberts' }}" width="336" height="420">
+    {% if page.photo_caption %}<figcaption>{{ page.photo_caption }}</figcaption>{% endif %}
+  </figure>
   {% endif %}
 </header>
+
+<ul class="cg-why" aria-label="Why work with me">
+  {% for y in w.why %}<li><i class="{{ y.icon }}" aria-hidden="true"></i><strong>{{ y.title }}</strong> <span>{{ y.text }}</span></li>{% endfor %}
+</ul>
+
+{% if w.wide_photo %}
+<figure class="cg-wide">
+  <img src="{{ w.wide_photo.src | relative_url }}" alt="{{ w.wide_photo.alt }}" width="1290" height="430">
+  <figcaption>{{ w.wide_photo.caption }}</figcaption>
+</figure>
+{% endif %}
 
 <h2 id="offerings">How I can help</h2>
 <div class="ww-offers">
@@ -52,6 +76,22 @@ description: "AI consultant and speaker Jesse Roberts helps companies use AI wel
   {% endfor %}
 </div>
 
+<h2 id="how">How an audit works</h2>
+<ol class="cg-steps">
+  {% for st in w.steps %}<li><strong>{{ st.title }}</strong> <span>{{ st.text }}</span></li>{% endfor %}
+</ol>
+
+<h2 id="work">Recent work</h2>
+{% for c in w.cases %}
+<section class="cg-case" aria-label="{{ c.who }}">
+  <h3><i class="{{ c.icon }}" aria-hidden="true"></i> {{ c.who }}</h3>
+  <div class="cg-case__cols">
+    <div><p class="cg-case__label">What I did</p><ul class="ww-offer__points">{% for d in c.did %}<li>{{ d }}</li>{% endfor %}</ul></div>
+    <div><p class="cg-case__label">Results</p><ul class="cg-case__results">{% for r in c.results %}<li>{{ r }}</li>{% endfor %}</ul></div>
+  </div>
+</section>
+{% endfor %}
+
 <h2 id="experience">Industries I've worked with</h2>
 <ul class="ww-chips ww-chips--strong ww-industries">
   {% for ind in w.industries %}<li><i class="{{ ind.icon }}" aria-hidden="true"></i> {{ ind.name }}</li>{% endfor %}
@@ -62,7 +102,7 @@ description: "AI consultant and speaker Jesse Roberts helps companies use AI wel
   {% for f in w.faq %}
   <details>
     <summary>{{ f.q }}</summary>
-    <p>{{ f.a }}</p>
+    <p>{{ f.a | replace: 'href="/', rel_href }}</p>
   </details>
   {% endfor %}
 </div>
@@ -78,10 +118,10 @@ description: "AI consultant and speaker Jesse Roberts helps companies use AI wel
 <h2 id="request">Get in touch</h2>
 <div class="notice--success ww-sent" id="ww-sent" role="status" hidden>Thanks, your request is on its way. I'll reply by email.</div>
 <div class="notice--warning ww-sent" id="ww-failed" role="alert" hidden>The form couldn't send just now. <a id="ww-mailto" href="mailto:{{ w.contact_email }}">Email me your request instead</a>, it's already filled in.</div>
-<p class="ww-form__lede">A few details are enough. I'll reply by email.</p>
+<p class="ww-form__lede">A few details are enough. I'll reply by email. Prefer your own email? Write to <a href="mailto:{{ w.contact_email }}?subject={{ 'Inquiry for Cumberland Gradient' | uri_escape }}"><strong>{{ w.contact_email }}</strong></a>.</p>
 
 <form class="ww-form" id="ww-form" action="{% if w.formspree_id != "" %}https://formspree.io/f/{{ w.formspree_id }}{% else %}mailto:{{ w.contact_email }}{% endif %}" method="POST" data-mailto="{{ w.contact_email }}">
-  <input type="hidden" name="_subject" value="Services request from jessetnroberts.com">
+  <input type="hidden" name="_subject" value="Cumberland Gradient request">
   <input type="text" name="_gotcha" class="ww-form__trap" tabindex="-1" autocomplete="off" aria-hidden="true">
 
   <div class="ww-form__row">
@@ -103,19 +143,27 @@ description: "AI consultant and speaker Jesse Roberts helps companies use AI wel
   <button type="submit" class="btn btn--primary btn--large">Send request</button>
 </form>
 
+<p class="cg-name"><img src="{{ '/assets/cumberland-gradient/mark.svg' | relative_url }}" alt="" width="60" height="20"> <strong>About the name.</strong> {{ w.name_story }}</p>
+</div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Jesse Roberts, AI talks, workshops, audits and consulting",
+  "name": {{ w.brand.name | jsonify }},
+  "slogan": {{ w.brand.motto | jsonify }},
   "url": {{ page.url | absolute_url | jsonify }},
+  "sameAs": [{{ "https://" | append: w.brand.domain | jsonify }}],
+  "logo": {{ w.brand.logo_square | absolute_url | jsonify }},
+  "image": {{ page.og_image | absolute_url | jsonify }},
+  "email": {{ w.contact_email | jsonify }},
   "description": {{ page.description | jsonify }},
-  "provider": { "@type": "Person", "name": "Jesse Roberts", "jobTitle": "Assistant Professor of Computer Science", "worksFor": { "@type": "CollegeOrUniversity", "name": "Tennessee Tech University" } },
+  "founder": { "@type": "Person", "name": "Jesse Roberts", "url": {{ "/" | absolute_url | jsonify }} },
   "address": { "@type": "PostalAddress", "addressLocality": "Cookeville", "addressRegion": "TN", "addressCountry": "US" },
   "areaServed": [{ "@type": "State", "name": "Tennessee" }, { "@type": "City", "name": "Nashville" }, { "@type": "City", "name": "Cookeville" }],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "AI talks, workshops, audits and consulting",
+    "name": "AI audits, consulting, workshops and talks",
     "itemListElement": [{% for o in site.data.services.offerings %}
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": {{ o.service | jsonify }}, "description": {{ o.pitch | strip | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
     ]
@@ -128,7 +176,7 @@ description: "AI consultant and speaker Jesse Roberts helps companies use AI wel
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [{% for f in site.data.services.faq %}
-    { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
+    { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | strip_html | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
   ]
 }
 </script>
@@ -150,7 +198,7 @@ description: "AI consultant and speaker Jesse Roberts helps companies use AI wel
     ['name', 'email', 'organization', 'offering', 'timing', 'note'].forEach(function (k) {
       if (f[k] && f[k].value) { lines.push(k.charAt(0).toUpperCase() + k.slice(1) + ' ' + f[k].value); }
     });
-    return 'mailto:' + form.getAttribute('data-mailto') + '?subject=' + encodeURIComponent('Services request from jessetnroberts.com') + '&body=' + encodeURIComponent(lines.join('\n'));
+    return 'mailto:' + form.getAttribute('data-mailto') + '?subject=' + encodeURIComponent('Cumberland Gradient request') + '&body=' + encodeURIComponent(lines.join('\n'));
   }
   function show(id) {
     document.getElementById('ww-sent').hidden = id !== 'ww-sent';
