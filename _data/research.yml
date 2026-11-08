@@ -61,7 +61,7 @@ areas:
       whether language models show human-like strategic preferences, how they cooperate as players
       in multiplayer games, and how transformers can learn to act as general-purpose problem
       solvers.
-    keywords: [multiplayer, strategic preference, game theory, decision making, decision-making]
+    keywords: [multiplayer, strategic preference, game theory, decision, dilemma, equilibrium]
 
   - id: cherokee
     title: Cherokee language NLP
