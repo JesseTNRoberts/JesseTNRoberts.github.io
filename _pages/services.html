@@ -35,8 +35,7 @@ og_image_alt: "Cumberland Gradient logo. AI consulting that closes the gap."
   <div class="ww-hero__text">
     <img class="cg-lockup" src="{{ w.brand.lockup | relative_url }}" alt="{{ w.brand.name }}, {{ w.brand.motto | downcase }}" width="820" height="72">
     <h1 class="ww-hero__headline">{% if w.kicker %}<span class="ww-hero__kicker">{{ w.kicker }}</span> {% endif %}{{ w.headline }}</h1>
-    {% if w.person %}<p class="cg-person">{{ w.person }}</p>{% endif %}
-    <p class="ww-hero__intro">{{ w.subhead }}</p>
+    <p class="ww-hero__intro">{% if w.person %}<strong class="cg-person">{{ w.person }}</strong>, {% endif %}{{ w.subhead }}</p>
     <p class="ww-hero__actions">
       {% for b in w.hero_buttons %}<a class="btn btn--{{ b.style }} btn--large{% if b.offering %} ww-offer__btn{% endif %}" href="{% if b.offering %}?offering={{ b.offering }}#request{% else %}{{ b.href }}{% endif %}"{% if b.offering %} data-offering="{{ b.offering }}"{% endif %}>{{ b.label }}</a>{% endfor %}
     </p>
