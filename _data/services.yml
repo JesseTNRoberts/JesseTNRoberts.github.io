@@ -28,6 +28,8 @@ brand:
 # (2026-11-08). The logo carries the motto, so the headline just says what and where, which also
 # keeps the search words in the h1. Set `kicker` to add a small label above it again.
 headline: "AI consulting in Tennessee"
+# Jesse's name sits above the subhead, since the page has no sidebar or photo (Jesse, 2026-11-08).
+person: "Jesse Roberts, Ph.D."
 subhead: "AI researcher specializing in large language models, the technology behind tools like ChatGPT."
 # Tennessee Tech is left out until Jesse checks the university's outside-work policy (2026-11-08).
 where: "Based in Cookeville. Working across Tennessee and online."
