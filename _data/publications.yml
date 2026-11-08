@@ -1,12 +1,12 @@
 # Generated from Google Scholar by scripts/update_stats.rb (daily via GitHub Actions).
 # Don't edit by hand. To fix a paper, edit it on your Scholar profile.
 profile: https://scholar.google.com/citations?user=Bj9GEfkAAAAJ
-updated: '2026-11-07T16:32:24Z'
+updated: '2026-11-08T16:44:08Z'
 metrics:
   since: 2021
   citations:
-    all: 205
-    since: 201
+    all: 207
+    since: 203
   h_index:
     all: 8
     since: 8
@@ -27,7 +27,7 @@ citations_by_year:
 - year: 2025
   citations: 80
 - year: 2026
-  citations: 87
+  citations: 89
 papers:
 - title: Augmenting LLM-Based Agents for Improved Performance in Pentesting and Commissioning
     Operational Technology in Critical Infrastructure
@@ -157,7 +157,7 @@ papers:
   venue: 2025 IEEE 15th Annual Computing and Communication Workshop and Conference
     …
   year: 2025
-  cited_by: 23
+  cited_by: 24
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:0EnyYjriUFMC
 - title: LLMs as Agentic Cooperative Players in Multiplayer UNO
   authors: YR Matinez, J Roberts
@@ -246,7 +246,7 @@ papers:
   authors: J Roberts
   venue: 2024 International Joint Conference on Neural Networks (IJCNN), 1--8
   year: 2023
-  cited_by: 67
+  cited_by: 68
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:Tyk-4Ss8FVUC
 - title: Finding an Equilibrium in the Traveler's Dilemma with Fuzzy Weak Domination
   authors: J Roberts
