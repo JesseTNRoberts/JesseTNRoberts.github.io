@@ -55,12 +55,13 @@ areas:
   - id: games
     title: Games and decision making
     icon: fas fa-chess-knight
-    # Draft summary written by Claude on 2026-10-31 for Jesse to edit.
+    # Summary by Claude (2026-10-31, revised 2026-11-08 with Jesse's go-ahead).
     summary: >-
-      How AI agents make decisions when other players and their choices matter. This work studies
-      whether language models show human-like strategic preferences, how they cooperate as players
-      in multiplayer games, and how transformers can learn to act as general-purpose problem
-      solvers.
+      How AI agents make decisions, on their own and when other players' choices matter. This work
+      ranges from equilibria in classic games like the Traveler's Dilemma and models trained for
+      threshold-based decisions to the strategic preferences of language models, how they cooperate
+      as players in multiplayer games, and transformers that learn to act as general-purpose
+      problem solvers.
     keywords: [multiplayer, strategic preference, game theory, decision, dilemma, equilibrium]
 
   - id: cherokee
