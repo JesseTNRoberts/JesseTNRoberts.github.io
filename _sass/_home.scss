@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Homepage (_pages/about.md): News list and the compact Apps list.
+   Uses the $rs-* colors from _research.scss, so it's imported after it.
+   ========================================================================== */
+
+.page__content {
+  .home-news {
+    margin: 1em 0 1.5em;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 0 0 0.7em;
+      padding: 0.8em 1em;
+      background: $rs-soft;
+      border: 1px solid $rs-line;
+      border-left: 4px solid $rs-accent;
+      border-radius: 8px;
+    }
+
+    p { margin: 0; }
+  }
+
+  .home-news__tag {
+    display: inline-block;
+    margin-bottom: 0.25em;
+    color: $rs-accent;
+    font-size: $type-size-7;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .home-news__title {
+    font-weight: bold;
+    line-height: 1.35;
+  }
+
+  .home-news__text {
+    margin-top: 0.25em !important;
+    color: $gray;
+    font-size: $type-size-6;
+  }
+
+  .home-apps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6em;
+    margin: 1em 0;
+    padding: 0;
+    list-style: none;
+
+    @media (min-width: 900px) { grid-template-columns: repeat(3, 1fr); }
+
+    li {
+      display: flex;
+      gap: 0.75em;
+      align-items: flex-start;
+      margin: 0;
+      padding: 0.8em 0.9em;
+      background: $rs-soft;
+      border: 1px solid $rs-line;
+      border-radius: 8px;
+    }
+
+    img { flex: none; width: 40px; height: 40px; }
+
+    p { margin: 0; }
+  }
+
+  .home-apps__name { font-weight: bold; }
+
+  .home-apps__beta {
+    padding: 0.05em 0.45em;
+    color: #5c4300;
+    font-size: $type-size-8;
+    font-weight: bold;
+    background: #ffe08a;
+    border-radius: 4px;
+  }
+
+  .home-apps__tagline {
+    font-size: $type-size-6;
+    line-height: 1.4;
+  }
+}
