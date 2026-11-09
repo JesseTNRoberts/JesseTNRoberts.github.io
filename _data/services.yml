@@ -1,5 +1,6 @@
 # Consulting page (_pages/services.html, /ai-consulting/, "Consulting" in the menu).
-# The page belongs to Cumberland Gradient, Jesse's AI consulting practice (named 2026-11-08,
+# The page belongs to Cumberland Gradient, Jesse's AI consulting practice (named 2026-11-08, motto
+# "Find the gap" since 2026-11-09, was "Closing the gap",
 # cumberlandgradient.com redirects here). The voice stays "I", the firm is Jesse.
 # Site writing rules apply to every string here. No em dashes, colons or semicolons
 # (official talk titles keep their own punctuation).
@@ -18,8 +19,8 @@
 
 brand:
   name: "Cumberland Gradient"
-  motto: "Closing the gap"
-  tagline: "AI consulting that closes the gap."
+  motto: "Find the gap"
+  tagline: "AI consulting that helps you find the gap."
   domain: "cumberlandgradient.com"
   lockup: /assets/cumberland-gradient/lockup.svg
   logo_square: /assets/cumberland-gradient/logo-square.png
@@ -175,9 +176,9 @@ faq:
   - q: "Do you give university talks or guest lectures?"
     a: "Yes, as part of my faculty work. Reach me through the <a href=\"/meeting/\">Meeting Request</a> page."
 
-# One line at the bottom of the page. The Cumberland Gap is the pass through the mountains
-# that opened the way west.
-name_story: "The Cumberland Gap is the pass that opened a way west through these mountains. A gradient is the math that shows an AI model the way downhill. Cumberland Gradient closes the gap between AI and your work."
+# One line at the bottom of the page. Jesse's wording (2026-11-09). The gap is the way through,
+# never a flaw in the client, so don't say they "have gaps".
+name_story: "The Cumberland Gap is the natural pass through the Appalachians, and a gradient is how AI gets better. Cumberland Gradient helps you find the path to better results with AI."
 
 # Testimonials. Add entries (quote, name, role) when Jesse has them. The section hides while empty.
 testimonials: []
