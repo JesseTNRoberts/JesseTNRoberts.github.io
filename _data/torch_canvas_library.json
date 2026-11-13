@@ -1,7 +1,7 @@
 {
   "source": "https://github.com/JesseTNRoberts/torch-canvas",
-  "commit": "bb85a8c09f1c5c189a95d820e50c7545d17576e7",
-  "updated": "2026-11-10T18:01:01.019Z",
+  "commit": "b42f693ca1b17bdda1f7f8e9687a8c476f066f71",
+  "updated": "2026-11-13T17:55:31.811Z",
   "networks": [
     {
       "kind": "network",
@@ -291,6 +291,56 @@
       "blocks": [],
       "params": "57.1K",
       "thumb": "/assets/torch-canvas/thumbs/residual_cnn_expanded.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/26_lif.json",
+      "id": "lif",
+      "title": "LIF neuron (spiking)",
+      "description": "A layer of leaky integrate-and-fire neurons drawn as one step of a recurrent cell with two Delays: the membrane potential v and the last spike s. v = W·x + β·v_prev − θ·s_prev adds the input current to the leaked potential and takes the threshold back off the neurons that fired last step (reset by subtraction); s = Spike(v − θ) fires where v is over the threshold. The leak β = 0.9 and the threshold θ = 1 are constant operations; Spike is a step with a fast-sigmoid surrogate gradient (slope 25). Same spikes and membrane potentials as snnTorch's Leaky(beta=0.9) after a Linear(16, 64, bias=False): 1,024 parameters.",
+      "blocks": [],
+      "params": "1.0K",
+      "thumb": "/assets/torch-canvas/thumbs/lif.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/27_lif_axonal.json",
+      "id": "lif_axonal",
+      "title": "LIF with an axonal delay",
+      "description": "The LIF neuron with a Delay on its way out: the axon. The Delay holds each spike back a whole number of steps (3 here, set in its details), so a spike fired at step t leaves the layer at step t + 3 and whatever reads this layer hears it late. The reset still reads the neuron's own last spike straight away; only what travels down the axon is delayed. 1,024 parameters.",
+      "blocks": [],
+      "params": "1.0K",
+      "thumb": "/assets/torch-canvas/thumbs/lif_axonal.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/28_lif_synaptic.json",
+      "id": "lif_synaptic",
+      "title": "LIF with a synaptic current",
+      "description": "A leaky integrate-and-fire layer whose input passes through a synapse first: a second leaky state, the synaptic current i = α·i_prev + W·x (α = 0.8), feeds the membrane potential v = β·v_prev + i − θ·s_prev (β = 0.9, θ = 1). Three Delays: i, v and the last spike s. Same spikes as snnTorch's Synaptic(alpha=0.8, beta=0.9): 1,024 parameters.",
+      "blocks": [],
+      "params": "1.0K",
+      "thumb": "/assets/torch-canvas/thumbs/lif_synaptic.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/29_lif_recurrent.json",
+      "id": "lif_recurrent",
+      "title": "Recurrent LIF",
+      "description": "A leaky integrate-and-fire layer whose spikes feed back into it through a Linear: v = W·x + V·s_prev + β·v_prev − θ·s_prev (β = 0.9, θ = 1). The last spike is read twice, once by the recurrent weights V and once by the reset. Same spikes as snnTorch's RLeaky(beta=0.9) with its recurrent weights copied in: 5,120 parameters.",
+      "blocks": [],
+      "params": "5.1K",
+      "thumb": "/assets/torch-canvas/thumbs/lif_recurrent.png"
+    },
+    {
+      "kind": "network",
+      "file": "networks/30_lif_adaptive.json",
+      "id": "lif_adaptive",
+      "title": "LIF with an adaptive threshold",
+      "description": "A leaky integrate-and-fire layer whose threshold rises each time it fires and decays back: a third state a = ρ·a_prev + s_prev (ρ = 0.95) is added to the threshold, s = Spike(v − θ − b·a) with b = 0.2, so a neuron that has just fired is harder to fire again and its firing slows under steady input. Three Delays: v, s and a. 1,024 parameters.",
+      "blocks": [],
+      "params": "1.0K",
+      "thumb": "/assets/torch-canvas/thumbs/lif_adaptive.png"
     }
   ],
   "blocks": [
