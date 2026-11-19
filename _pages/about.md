@@ -40,7 +40,7 @@ News
   </li>
   <li>
     <span class="home-news__tag">Talk</span>
-    <p class="home-news__title"><a href="{{ '/assets/talks/how-generative-ai-really-works.html' | relative_url }}">How Generative AI Really Works</a></p>
+    <p class="home-news__title"><a href="https://www.jessetnroberts.com/lectures/talks/how-generative-ai-really-works.html">How Generative AI Really Works</a></p>
     <p class="home-news__text">Given at Chattanooga State Community College in October 2026. More about it below.</p>
   </li>
 </ul>
@@ -53,7 +53,7 @@ Work with me
 
 Learn about LLMs
 ------
-New to generative AI? My talk [How Generative AI Really Works]({{ '/assets/talks/how-generative-ai-really-works.html' | relative_url }}) explains what AI is and how large language models write one token at a time. It also introduces Tennessee Tech's new B.S. in Artificial Intelligence. A companion notebook reproduces the numbers on the slides, and you can [open it in Colab](https://colab.research.google.com/github/JesseTNRoberts/JesseTNRoberts.github.io/blob/master/assets/talks/how-generative-ai-really-works.ipynb) or [download it]({{ '/assets/talks/how-generative-ai-really-works.ipynb' | relative_url }}).
+New to generative AI? My talk [How Generative AI Really Works](https://www.jessetnroberts.com/lectures/talks/how-generative-ai-really-works.html) explains what AI is and how large language models write one token at a time. It also introduces Tennessee Tech's new B.S. in Artificial Intelligence. A companion notebook reproduces the numbers on the slides, and you can [open it in Colab](https://colab.research.google.com/github/JesseTNRoberts/lectures/blob/main/talks/how-generative-ai-really-works.ipynb) or [download it](https://www.jessetnroberts.com/lectures/talks/how-generative-ai-really-works.ipynb).
 
 For those interested in learning more about LLMs, I have put together a reading list [here](https://www.zotero.org/groups/5650079/llm_foundations_reading/items/PA9EGZCE)! It's the backbone of my graduate seminar on LLMs, [CSC 7970]({{ '/teaching/S2026-CSC7970' | relative_url }}), where you can see the papers week by week.
 

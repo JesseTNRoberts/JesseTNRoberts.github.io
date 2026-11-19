@@ -219,6 +219,15 @@ collections:
 
 # Defaults
 defaults:
+  # Old deck addresses, now redirect stubs to the lectures repo. Keep them out of the sitemap.
+  - scope:
+      path: "assets/lectures"
+    values:
+      sitemap: false
+  - scope:
+      path: "assets/talks"
+    values:
+      sitemap: false
   # _posts
   - scope:
       path: ""

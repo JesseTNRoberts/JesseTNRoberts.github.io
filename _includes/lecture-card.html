@@ -5,6 +5,9 @@
 {% assign l = include.lecture %}
 {% assign c = include.course %}
 {% assign tc = site.data.torch_canvas %}
+{% comment %} Decks and notebooks in the lectures repo (/lectures/...) are their own Pages site, so they keep the bare path, and Colab reads them from that repo. {% endcomment %}
+{% assign s_head = l.slides | slice: 0, 10 %}{% if s_head == '/lectures/' %}{% assign slides_url = l.slides %}{% else %}{% assign slides_url = l.slides | relative_url %}{% endif %}
+{% assign n_head = l.notebook | slice: 0, 10 %}{% if n_head == '/lectures/' %}{% assign nb_url = l.notebook %}{% capture colab_url %}https://colab.research.google.com/github/JesseTNRoberts/lectures/blob/main{{ l.notebook | remove_first: '/lectures' }}{% endcapture %}{% else %}{% assign nb_url = l.notebook | relative_url %}{% capture colab_url %}https://colab.research.google.com/github/JesseTNRoberts/JesseTNRoberts.github.io/blob/master{{ l.notebook }}{% endcapture %}{% endif %}
 {% capture num %}{{ l.week }}{% if l.session %}.{{ l.session }}{% endif %}{% endcapture %}
 {% capture anchor %}{{ c.course_id | downcase }}-w{{ l.week }}{% if l.session %}-{{ l.session }}{% endif %}{% endcapture %}
 <article class="lecture" id="{{ anchor }}"
@@ -16,7 +19,7 @@
     <p class="lecture__course"><a href="{{ c.url | relative_url }}">{{ c.code }} · {{ c.title }}</a> <span>· {{ c.term }} · Week {{ num }}</span></p>
     {% endif %}
     <h4 class="lecture__title">
-      {% if l.slides %}<a href="{{ l.slides | relative_url }}">{{ l.title }}</a>{% else %}{{ l.title }}{% endif %}
+      {% if l.slides %}<a href="{{ slides_url }}">{{ l.title }}</a>{% else %}{{ l.title }}{% endif %}
     </h4>
     {% if l.date %}<p class="lecture__date">{% if c.dates_are_weeks %}Week of {{ l.date | date: "%b %-d" }}{% else %}{{ l.date | date: "%a, %b %-d" }}{% endif %}</p>{% endif %}
     {% if l.topics and l.topics.size > 0 %}
@@ -36,11 +39,11 @@
     {% if l.note and l.note != "" %}<p class="lecture__note">{{ l.note }}</p>{% endif %}
   </div>
   <div class="lecture__links">
-    {% if l.slides %}<a class="lecture__link lecture__link--primary" href="{{ l.slides | relative_url }}"><i class="fas fa-desktop" aria-hidden="true"></i> Slides</a>{% endif %}
+    {% if l.slides %}<a class="lecture__link lecture__link--primary" href="{{ slides_url }}"><i class="fas fa-desktop" aria-hidden="true"></i> Slides</a>{% endif %}
     {% if l.pdf %}<a class="lecture__link" href="{{ l.pdf | relative_url }}"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a>{% endif %}
     {% if l.video %}<a class="lecture__link" href="{{ l.video }}"><i class="fas fa-play" aria-hidden="true"></i> Video</a>{% endif %}
-    {% if l.notebook %}<a class="lecture__link" href="{{ l.notebook | relative_url }}" download title="Download the Jupyter notebook behind this lecture's numbers"><i class="fas fa-code" aria-hidden="true"></i> Notebook</a>
-    <a class="lecture__link" href="https://colab.research.google.com/github/JesseTNRoberts/JesseTNRoberts.github.io/blob/master{{ l.notebook }}" title="Open the notebook in Google Colab"><i class="fas fa-play-circle" aria-hidden="true"></i> Colab</a>{% endif %}
+    {% if l.notebook %}<a class="lecture__link" href="{{ nb_url }}" download title="Download the Jupyter notebook behind this lecture's numbers"><i class="fas fa-code" aria-hidden="true"></i> Notebook</a>
+    <a class="lecture__link" href="{{ colab_url }}" title="Open the notebook in Google Colab"><i class="fas fa-play-circle" aria-hidden="true"></i> Colab</a>{% endif %}
     {% for id in l.demos %}{% assign d = site.data.demos | where: "id", id | first %}{% if d %}
       <a class="lecture__link" href="{{ d.url | relative_url }}" title="{{ d.title }}"><i class="fas fa-sliders-h" aria-hidden="true"></i> Demo</a>
     {% endif %}{% endfor %}

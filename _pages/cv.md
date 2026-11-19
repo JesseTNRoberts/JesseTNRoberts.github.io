@@ -262,7 +262,7 @@ J. Roberts, "MNFIS+; or, a Better Hybrid Heuristic Maximum Power Point Tracker,"
 ### Invited Talks
 
 `October 2026`
-How Generative AI Really Works. Chattanooga State Community College. [Slides]({{ '/assets/talks/how-generative-ai-really-works.html' | relative_url }})
+How Generative AI Really Works. Chattanooga State Community College. [Slides](https://www.jessetnroberts.com/lectures/talks/how-generative-ai-really-works.html)
 
 `April 2026`
 Foundation Models and Responsible AI. TN-THRIVE-AI.

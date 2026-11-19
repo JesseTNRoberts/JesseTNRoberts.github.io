@@ -2,8 +2,8 @@
 # Course template. Copy this file to e.g. _teaching/S2027-AI4200.md and fill it in.
 # Files starting with "_" are not published, so this template never appears on the site.
 #
-# Adding a lecture: put the slide file in assets/lectures/<COURSE>/ and add an entry under
-# `lectures:`. It appears on the course page and in the lecture library on /teaching/.
+# Adding a lecture: put the slide file in <COURSE>/ in the JesseTNRoberts/lectures repo (served at
+# /lectures/, live about a minute after a push) and add an entry under `lectures:`. It appears on the course page and in the lecture library on /teaching/.
 
 layout: course
 title: "Course Title"
@@ -29,10 +29,10 @@ lectures:
     date: 2027-01-12            # optional
     title: "Lecture title"
     topics: [topic one, topic two]
-    slides: /assets/lectures/AI4200/week1.1-slides.html
+    slides: /lectures/AI4200/week1.1-slides.html
     pdf:                        # optional: PDF version of the slides
     video:                      # optional: recording link
-    notebook:                   # optional: Jupyter notebook (.ipynb) in assets/lectures/<COURSE>/; adds Notebook and Colab links
+    notebook:                   # optional: Jupyter notebook (.ipynb) in the lectures repo, e.g. /lectures/AI4200/week1.1-notebook.ipynb; adds Notebook and Colab links
     demos: [neuron-2d]          # optional: ids from _data/demos.yml
     models: [llama2_7b]         # optional: Torch Canvas preset ids from _data/torch_canvas.yml
     readings:                   # optional: papers for this session
