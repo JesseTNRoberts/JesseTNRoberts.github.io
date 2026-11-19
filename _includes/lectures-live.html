@@ -1,0 +1,215 @@
+{% comment %}
+  Re-reads the lectures repo's list (/lectures/lectures.yml, parsed with js-yaml from assets/js/lib) in the browser and adds any lecture
+  the page doesn't have yet, so a lecture pushed to the lectures repo appears before the next site
+  build. Params: mode ("library" on /teaching/, "course" on a course page), course (course pages).
+  Cards mirror _includes/lecture-card.html. Demos and Torch Canvas models appear after a build.
+  No // comments in this script (HTML compression joins lines).
+{% endcomment %}
+<script>
+(function () {
+  var MODE = {{ include.mode | jsonify }};
+  var PAGE_COURSE = {{ include.course.course_id | jsonify }};
+  var COURSES = [{% for c in site.teaching %}{"id": {{ c.course_id | jsonify }}, "code": {{ c.code | jsonify }}, "title": {{ c.title | jsonify }}, "term": {{ c.term | jsonify }}, "url": {{ c.url | relative_url | jsonify }}, "weeks": {{ c.dates_are_weeks | default: false | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}];
+  var root = document.getElementById(MODE === 'library' ? 'library' : 'course-lectures');
+  if (!root || !window.fetch) return;
+  var meta = {};
+  COURSES.forEach(function (c) { if (c.id) meta[c.id] = c; });
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined && text !== null) n.textContent = String(text);
+    return n;
+  }
+  function icon(cls) { var i = el('i', 'fas ' + cls); i.setAttribute('aria-hidden', 'true'); return i; }
+  function path(p) {
+    if (!p) return null;
+    return /^(https?:|\/)/.test(p) ? p : '/lectures/' + String(p).replace(/^\/+/, '');
+  }
+  function num(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+  function order(w, s) { return num(w) * 1000 + num(s); }
+  function anchor(cid, l) {
+    return String(cid).toLowerCase() + '-w' + l.week + (l.session ? '-' + l.session : '');
+  }
+  function fmtDate(d, weeks) {
+    var dt;
+    if (d instanceof Date) {
+      dt = new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+    } else {
+      var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(d || ''));
+      if (!m) return null;
+      dt = new Date(+m[1], +m[2] - 1, +m[3]);
+    }
+    if (isNaN(dt)) return null;
+    if (weeks) return 'Week of ' + dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return dt.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  }
+  function link(cls, href, iconCls, text) {
+    var a = el('a', 'lecture__link' + (cls ? ' ' + cls : ''));
+    a.href = href;
+    a.appendChild(icon(iconCls));
+    a.appendChild(document.createTextNode(' ' + text));
+    return a;
+  }
+
+  function card(l, cid, showCourse) {
+    var c = meta[cid] || { id: cid, code: cid, title: '', term: '', url: '#' };
+    var topics = l.topics || [];
+    var readings = l.readings || [];
+    var n = String(l.week) + (l.session ? '.' + l.session : '');
+    var slides = path(l.slides), pdf = path(l.pdf), nb = path(l.notebook);
+    var art = el('article', 'lecture');
+    art.id = anchor(cid, l);
+    art.setAttribute('data-course', cid);
+    art.setAttribute('data-search', [c.code, c.title, l.title, topics.join(' '), l.note || '', 'week ' + l.week]
+      .concat(readings.map(function (r) { return (r.title || '') + ' ' + (r.authors || ''); })).join(' '));
+    art.setAttribute('data-live', '');
+    var numEl = el('div', 'lecture__num', n); numEl.setAttribute('aria-hidden', 'true'); art.appendChild(numEl);
+    var body = el('div', 'lecture__body');
+    if (showCourse) {
+      var pc = el('p', 'lecture__course');
+      var ca = el('a', null, c.code + ' · ' + c.title); ca.href = c.url;
+      pc.appendChild(ca);
+      pc.appendChild(document.createTextNode(' '));
+      pc.appendChild(el('span', null, '· ' + c.term + ' · Week ' + n));
+      body.appendChild(pc);
+    }
+    var h = el('h4', 'lecture__title');
+    if (slides) { var ta = el('a', null, l.title); ta.href = slides; h.appendChild(ta); } else { h.textContent = l.title || ''; }
+    body.appendChild(h);
+    var ds = fmtDate(l.date, c.weeks);
+    if (ds) body.appendChild(el('p', 'lecture__date', ds));
+    if (topics.length) {
+      var tp = el('p', 'lecture__topics');
+      topics.forEach(function (t) { tp.appendChild(el('span', 'learn-tag', t)); });
+      body.appendChild(tp);
+    }
+    if (readings.length) {
+      var ul = el('ul', 'lecture__readings');
+      readings.forEach(function (r) {
+        var li = el('li');
+        li.appendChild(icon('fa-file-alt'));
+        li.appendChild(document.createTextNode(' '));
+        if (r.url) { var ra = el('a', null, r.title); ra.href = r.url; li.appendChild(ra); } else { li.appendChild(document.createTextNode(r.title || '')); }
+        var cite = (r.authors || '') + (r.year ? ', ' + r.year : '') + (r.venue ? ' · ' + r.venue : '');
+        li.appendChild(document.createTextNode(' '));
+        li.appendChild(el('span', 'lecture__cite', cite));
+        ul.appendChild(li);
+      });
+      body.appendChild(ul);
+    }
+    if (l.note) body.appendChild(el('p', 'lecture__note', l.note));
+    art.appendChild(body);
+    var links = el('div', 'lecture__links');
+    if (slides) links.appendChild(link('lecture__link--primary', slides, 'fa-desktop', 'Slides'));
+    if (pdf) links.appendChild(link('', pdf, 'fa-file-pdf', 'PDF'));
+    if (l.video) links.appendChild(link('', l.video, 'fa-play', 'Video'));
+    if (nb) {
+      var d = link('', nb, 'fa-code', 'Notebook');
+      d.setAttribute('download', '');
+      d.title = "Download the Jupyter notebook behind this lecture's numbers";
+      links.appendChild(d);
+      var colab = nb.indexOf('/lectures/') === 0
+        ? 'https://colab.research.google.com/github/JesseTNRoberts/lectures/blob/main/' + nb.slice('/lectures/'.length)
+        : 'https://colab.research.google.com/github/JesseTNRoberts/JesseTNRoberts.github.io/blob/master' + nb;
+      var ca2 = link('', colab, 'fa-play-circle', 'Colab');
+      ca2.title = 'Open the notebook in Google Colab';
+      links.appendChild(ca2);
+    }
+    art.appendChild(links);
+    return art;
+  }
+
+  function bump(heading) {
+    var cnt = heading && heading.querySelector('.count');
+    if (cnt) cnt.textContent = String(num(cnt.textContent) + 1);
+  }
+  function topLevel(node) { while (node.parentNode && node.parentNode !== root) node = node.parentNode; return node; }
+
+  function addToLibrary(l, cid) {
+    var mine = Array.prototype.filter.call(root.querySelectorAll('.lecture'), function (a) { return a.getAttribute('data-course') === cid; });
+    var o = order(l.week, l.session);
+    var node = card(l, cid, true);
+    var before = null;
+    for (var i = 0; i < mine.length; i++) {
+      var m = /-w(\d+)(?:-(\d+))?$/.exec(mine[i].id) || [];
+      if (order(m[1], m[2]) < o) { before = topLevel(mine[i]); break; }
+    }
+    if (before) root.insertBefore(node, before);
+    else if (mine.length) { var last = topLevel(mine[mine.length - 1]); root.insertBefore(node, last.nextSibling); }
+    else root.insertBefore(node, root.firstChild);
+    bump(document.getElementById('lectures'));
+  }
+
+  function addToCourse(l, cid) {
+    var heading = document.getElementById('lectures');
+    if (!heading) {
+      heading = el('h2', null, 'Schedule ');
+      heading.id = 'lectures';
+      heading.appendChild(el('span', 'count', '0'));
+      root.insertBefore(heading, root.firstChild);
+      var empty = root.querySelector('.course-empty');
+      if (empty) empty.parentNode.removeChild(empty);
+    }
+    var w = String(l.week);
+    var sec = root.querySelector('section.week[data-week="' + w + '"]');
+    if (!sec) {
+      sec = el('section', 'week');
+      sec.setAttribute('data-week', w);
+      sec.appendChild(el('h3', 'week__title', 'Week ' + w));
+      var after = null;
+      Array.prototype.forEach.call(root.querySelectorAll('section.week'), function (s) {
+        if (num(s.getAttribute('data-week')) < num(w)) after = s;
+      });
+      root.insertBefore(sec, after ? after.nextSibling : heading.nextSibling);
+    }
+    var node = card(l, cid, false);
+    var next = null;
+    Array.prototype.some.call(sec.querySelectorAll('.lecture'), function (a) {
+      var m = /-w(\d+)(?:-(\d+))?$/.exec(a.id) || [];
+      if (order(m[1], m[2]) > order(l.week, l.session)) { next = a; return true; }
+      return false;
+    });
+    sec.insertBefore(node, next);
+    bump(heading);
+  }
+
+  function loadYaml() {
+    if (window.jsyaml) return Promise.resolve(window.jsyaml);
+    return new Promise(function (ok, fail) {
+      var s = document.createElement('script');
+      s.src = {{ '/assets/js/lib/js-yaml.min.js' | relative_url | jsonify }};
+      s.onload = function () { window.jsyaml ? ok(window.jsyaml) : fail(new Error('js-yaml')); };
+      s.onerror = fail;
+      document.head.appendChild(s);
+    });
+  }
+
+  Promise.all([
+    fetch('/lectures/lectures.yml', { cache: 'no-cache' }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.text();
+    }),
+    loadYaml()
+  ]).then(function (res) {
+    var data = res[1].load(res[0]) || {};
+    var courses = (data.courses && typeof data.courses === 'object') ? data.courses : data;
+    Object.keys(courses).forEach(function (cid) {
+      if (MODE === 'course' && cid !== PAGE_COURSE) return;
+      (courses[cid] || []).forEach(function (l) {
+        if (!l || l.week === undefined) return;
+        var published = l.slides || l.pdf || l.video;
+        if (MODE === 'library' && !published) return;
+        var have = document.getElementById(anchor(cid, l));
+        if (have) {
+          var hasSlides = have.querySelector('.lecture__link--primary');
+          if (hasSlides || !published) return;
+          have.parentNode.replaceChild(card(l, cid, MODE === 'library'), have);
+          return;
+        }
+        if (MODE === 'library') addToLibrary(l, cid); else addToCourse(l, cid);
+      });
+    });
+  }).catch(function () { /* Offline or the list moved, the built page still stands. */ });
+})();
+</script>

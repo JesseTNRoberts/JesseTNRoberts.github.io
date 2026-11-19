@@ -2,8 +2,10 @@
 # Course template. Copy this file to e.g. _teaching/S2027-AI4200.md and fill it in.
 # Files starting with "_" are not published, so this template never appears on the site.
 #
-# Adding a lecture: put the slide file in <COURSE>/ in the JesseTNRoberts/lectures repo (served at
-# /lectures/, live about a minute after a push) and add an entry under `lectures:`. It appears on the course page and in the lecture library on /teaching/.
+# Adding a lecture: put the slide file in <COURSE>/ in the JesseTNRoberts/lectures repo and add an
+# entry for it to that repo's lectures.yml (see its README). It shows on the site within a minute,
+# no site build needed. Entries under `lectures:` here still work (planned sessions, past courses)
+# and are merged with lectures.yml by week and session. It appears on the course page and in the lecture library on /teaching/.
 
 layout: course
 title: "Course Title"

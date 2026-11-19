@@ -75,6 +75,7 @@ excerpt: "Courses, a library of lecture slides, and a library of interactive dem
   {% endif %}
 </div>
 {% endif %}
+{% include lectures-live.html mode="library" %}
 
 {% assign demos = site.data.demos %}
 {% if demos and demos.size > 0 %}
@@ -122,7 +123,6 @@ excerpt: "Courses, a library of lecture slides, and a library of interactive dem
     if (!lib || !document.getElementById('lecture-search')) return;
     var search = document.getElementById('lecture-search');
     var chips = document.querySelectorAll('.library-filters .chip');
-    var items = lib.querySelectorAll('.lecture');
     var extras = lib.querySelectorAll('.library-extra');
     var more = document.getElementById('library-more');
     var empty = lib.querySelector('.library-empty');
@@ -135,7 +135,8 @@ excerpt: "Courses, a library of lecture slides, and a library of interactive dem
       extras.forEach(function (el) { el.hidden = !(filtering || expanded); });
       if (more) more.hidden = filtering || expanded;
       var shown = 0;
-      items.forEach(function (el) {
+      /* Look the cards up each time, lectures-live.html may have added some. */
+      lib.querySelectorAll('.lecture').forEach(function (el) {
         var text = el.dataset.search.toLowerCase();
         var ok = (!course || el.dataset.course === course) &&
                  words.every(function (w) { return text.indexOf(w) !== -1; });

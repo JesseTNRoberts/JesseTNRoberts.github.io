@@ -32,12 +32,13 @@ layout: single
 </div>
 
 {% capture lect_block %}
+<div id="course-lectures">
 
 {% if lectures.size > 0 %}
 <h2 id="lectures">{% if c.schedule_label %}{{ c.schedule_label }}{% else %}Schedule{% endif %} <span class="count">{{ lectures.size }}</span></h2>
 {% assign weeks = lectures | group_by: "week" %}
 {% for w in weeks %}
-<section class="week">
+<section class="week" data-week="{{ w.name }}">
   <h3 class="week__title">{% if w.name != "" %}Week {{ w.name }}{% else %}Other{% endif %}</h3>
   {% for l in w.items %}
     {% include lecture-card.html lecture=l course=c %}
@@ -47,7 +48,8 @@ layout: single
 {% else %}
   {% if c.status == "current" and c.website == nil %}<p class="course-empty">Lecture materials for this course will appear here.</p>{% endif %}
 {% endif %}
-
+</div>
+{% include lectures-live.html mode="course" course=c %}
 {% endcapture %}
 {% capture course_notes %}{{ content | strip }}{% endcapture %}
 {% comment %} Current courses lead with the lectures (what students come for); past courses lead with the description. {% endcomment %}
