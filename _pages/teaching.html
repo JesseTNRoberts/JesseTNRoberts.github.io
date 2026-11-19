@@ -11,7 +11,7 @@ excerpt: "Courses, a library of lecture slides, and a library of interactive dem
 {% endcomment %}
 {% assign courses = site.teaching | sort: "date" | reverse %}
 {% assign current = courses | where: "status", "current" %}
-{% assign past = courses | where_exp: "c", "c.status != 'current'" %}
+{% assign past = courses | where_exp: "c", "c.status != 'current'" | where_exp: "c", "c.status != 'misc'" %}
 {% comment %} The library lists only published lectures (sessions with slides, a PDF or a video).
    Planned sessions, readings-only days and exams stay on their course pages. {% endcomment %}
 {% assign lecture_total = 0 %}

@@ -39,7 +39,7 @@ layout: single
 {% assign weeks = lectures | group_by: "week" %}
 {% for w in weeks %}
 <section class="week" data-week="{{ w.name }}">
-  <h3 class="week__title">{% if w.name != "" %}Week {{ w.name }}{% else %}Other{% endif %}</h3>
+  {% unless c.numbered == false %}<h3 class="week__title">{% if w.name != "" %}Week {{ w.name }}{% else %}Other{% endif %}</h3>{% endunless %}
   {% for l in w.items %}
     {% include lecture-card.html lecture=l course=c %}
   {% endfor %}

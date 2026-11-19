@@ -9,14 +9,15 @@
 {% assign s_head = l.slides | slice: 0, 10 %}{% if s_head == '/lectures/' %}{% assign slides_url = l.slides %}{% else %}{% assign slides_url = l.slides | relative_url %}{% endif %}
 {% assign n_head = l.notebook | slice: 0, 10 %}{% if n_head == '/lectures/' %}{% assign nb_url = l.notebook %}{% capture colab_url %}https://colab.research.google.com/github/JesseTNRoberts/lectures/blob/main{{ l.notebook | remove_first: '/lectures' }}{% endcapture %}{% else %}{% assign nb_url = l.notebook | relative_url %}{% capture colab_url %}https://colab.research.google.com/github/JesseTNRoberts/JesseTNRoberts.github.io/blob/master{{ l.notebook }}{% endcapture %}{% endif %}
 {% capture num %}{{ l.week }}{% if l.session %}.{{ l.session }}{% endif %}{% endcapture %}
+{% if c.numbered == false %}{% assign shown_num = "" %}{% assign when = "" %}{% else %}{% assign shown_num = num %}{% capture when %}{% if c.term and c.term != "" %}{{ c.term }} · {% endif %}Week {{ num }}{% endcapture %}{% endif %}
 {% capture anchor %}{{ c.course_id | downcase }}-w{{ l.week }}{% if l.session %}-{{ l.session }}{% endif %}{% endcapture %}
 <article class="lecture" id="{{ anchor }}"
   data-course="{{ c.course_id }}"
   data-search="{{ c.code }} {{ c.title }} {{ l.title }} {{ l.topics | join: ' ' }} {{ l.note }} week {{ l.week }}{% for r in l.readings %} {{ r.title }} {{ r.authors }}{% endfor %}">
-  <div class="lecture__num" aria-hidden="true">{{ num }}</div>
+  <div class="lecture__num" aria-hidden="true">{{ shown_num }}</div>
   <div class="lecture__body">
     {% if include.show_course %}
-    <p class="lecture__course"><a href="{{ c.url | relative_url }}">{{ c.code }} · {{ c.title }}</a> <span>· {{ c.term }} · Week {{ num }}</span></p>
+    <p class="lecture__course"><a href="{{ c.url | relative_url }}">{{ c.code }} · {{ c.title }}</a> {% if when != "" %}<span>· {{ when }}</span>{% endif %}</p>
     {% endif %}
     <h4 class="lecture__title">
       {% if l.slides %}<a href="{{ slides_url }}">{{ l.title }}</a>{% else %}{{ l.title }}{% endif %}

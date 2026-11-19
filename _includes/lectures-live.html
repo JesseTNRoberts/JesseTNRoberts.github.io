@@ -9,7 +9,7 @@
 (function () {
   var MODE = {{ include.mode | jsonify }};
   var PAGE_COURSE = {{ include.course.course_id | jsonify }};
-  var COURSES = [{% for c in site.teaching %}{"id": {{ c.course_id | jsonify }}, "code": {{ c.code | jsonify }}, "title": {{ c.title | jsonify }}, "term": {{ c.term | jsonify }}, "url": {{ c.url | relative_url | jsonify }}, "weeks": {{ c.dates_are_weeks | default: false | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}];
+  var COURSES = [{% for c in site.teaching %}{"id": {{ c.course_id | jsonify }}, "code": {{ c.code | jsonify }}, "title": {{ c.title | jsonify }}, "term": {{ c.term | jsonify }}, "url": {{ c.url | relative_url | jsonify }}, "weeks": {{ c.dates_are_weeks | default: false | jsonify }}, "numbered": {% if c.numbered == false %}false{% else %}true{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}];
   var root = document.getElementById(MODE === 'library' ? 'library' : 'course-lectures');
   if (!root || !window.fetch) return;
   var meta = {};
@@ -64,14 +64,15 @@
     art.setAttribute('data-search', [c.code, c.title, l.title, topics.join(' '), l.note || '', 'week ' + l.week]
       .concat(readings.map(function (r) { return (r.title || '') + ' ' + (r.authors || ''); })).join(' '));
     art.setAttribute('data-live', '');
-    var numEl = el('div', 'lecture__num', n); numEl.setAttribute('aria-hidden', 'true'); art.appendChild(numEl);
+    var numEl = el('div', 'lecture__num', c.numbered === false ? '' : n); numEl.setAttribute('aria-hidden', 'true'); art.appendChild(numEl);
     var body = el('div', 'lecture__body');
     if (showCourse) {
       var pc = el('p', 'lecture__course');
       var ca = el('a', null, c.code + ' · ' + c.title); ca.href = c.url;
       pc.appendChild(ca);
       pc.appendChild(document.createTextNode(' '));
-      pc.appendChild(el('span', null, '· ' + c.term + ' · Week ' + n));
+      var when = c.numbered === false ? '' : (c.term ? c.term + ' · ' : '') + 'Week ' + n;
+      if (when) pc.appendChild(el('span', null, '· ' + when));
       body.appendChild(pc);
     }
     var h = el('h4', 'lecture__title');
@@ -156,7 +157,7 @@
     if (!sec) {
       sec = el('section', 'week');
       sec.setAttribute('data-week', w);
-      sec.appendChild(el('h3', 'week__title', 'Week ' + w));
+      if (!(meta[PAGE_COURSE] && meta[PAGE_COURSE].numbered === false)) sec.appendChild(el('h3', 'week__title', 'Week ' + w));
       var after = null;
       Array.prototype.forEach.call(root.querySelectorAll('section.week'), function (s) {
         if (num(s.getAttribute('data-week')) < num(w)) after = s;
