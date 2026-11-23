@@ -1,12 +1,12 @@
 # Generated from Google Scholar by scripts/update_stats.rb (daily via GitHub Actions).
 # Don't edit by hand. To fix a paper, edit it on your Scholar profile.
 profile: https://scholar.google.com/citations?user=Bj9GEfkAAAAJ
-updated: '2026-11-21T17:38:26Z'
+updated: '2026-11-23T22:05:56Z'
 metrics:
   since: 2021
   citations:
-    all: 208
-    since: 204
+    all: 210
+    since: 206
   h_index:
     all: 8
     since: 8
@@ -27,7 +27,7 @@ citations_by_year:
 - year: 2025
   citations: 80
 - year: 2026
-  citations: 90
+  citations: 92
 papers:
 - title: Augmenting LLM-Based Agents for Improved Performance in Pentesting and Commissioning
     Operational Technology in Critical Infrastructure
@@ -83,6 +83,12 @@ papers:
   year: 2026
   cited_by: 0
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:iH-uZ7U-co4C
+- title: LLM-Guided Cyber-Physical Attack Path Identification in Smart Grids
+  authors: A Elshazly, J Roberts, R Atat, M Ismail
+  venue: arXiv preprint arXiv:2611.24765
+  year: 2026
+  cited_by: 0
+  url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:YFjsv_pBGBYC
 - title: Multimodal Language Model Vision Analysis for Leader Drone Identification
     in Adversarial Swarms
   authors: M Soare, A Elshazly, J Roberts, M Ismail
@@ -183,7 +189,7 @@ papers:
   authors: E Brown, J Roberts, D Talbert
   venue: American Society of Engineering Education
   year: 2025
-  cited_by: 3
+  cited_by: 4
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:ZeXyd9-uunAC
 - title: A Theoretical & Empirical Analysis of Transformer Language Model Behavior
   authors: JTN Roberts
@@ -214,7 +220,7 @@ papers:
   authors: R Umphrey, J Roberts, L Roberts
   venue: 4th International Conference on Natural Language Processing for Digital …
   year: 2024
-  cited_by: 14
+  cited_by: 15
   url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Bj9GEfkAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=Bj9GEfkAAAAJ:hqOjcs7Dif8C
 - title: Large language model recall uncertainty is modulated by the fan effect
   authors: J Roberts, K Moore, T Pham, O Ewaleifoh, D Fisher
